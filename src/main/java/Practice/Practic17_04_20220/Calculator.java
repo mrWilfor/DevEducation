@@ -7,10 +7,7 @@ public class Calculator {
 
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter mathematical expression:");
-        String mathExpression1 = scan.nextLine();
-        System.out.println(calculator(mathExpression1));
+        entered();
     }
 
     public static double calculator(String mathExpression1) {
@@ -75,5 +72,18 @@ public class Calculator {
             }
         }
         return result;
+    }
+    public static void entered() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter mathematical expression(enter EXIT to exit):");
+        String mathExpression1 = scan.nextLine();
+        if(mathExpression1.equals("EXIT")) {
+            System.out.println("See you");
+        }
+        else{
+            System.out.println(calculator(mathExpression1));
+            entered();
+        }
+
     }
 }
