@@ -1,7 +1,7 @@
 /*
-* //Задача 4*. реализовать расчет гипотенузы по теореме Пифагора для целочисленных (int) и дробных (double) значений
-* катетов. Т.е. меняя только сами значения катетов, программа все равно должна компилироваться и верно рассчитывать
-* гипотенузу.
+* // Task 4 *. implement the calculation of the hypotenuse by the Pythagorean theorem for integer (int) and fractional (double) values
+ * legs. Those. changing only the values ??of the legs, the program should still compile and correctly calculate
+ * hypotenuse.
  */
 package HomeWork.hw_15_04_2020;
 

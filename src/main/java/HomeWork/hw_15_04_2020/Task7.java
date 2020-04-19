@@ -1,4 +1,4 @@
-//Задача 7: Тоже самое что и Задача 5 только используем тернарный оператор
+//Problem 7: The same as Problem 5 only use the ternary operator
 package HomeWork.hw_15_04_2020;
 
 import java.util.Scanner;

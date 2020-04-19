@@ -1,17 +1,18 @@
 /*Практика.
+Practice.
 
-Написать калькулятор (парсер математических выражений)
-Входные данные - строка:
+Write a calculator (parser of mathematical expressions)
+Input - line:
 "3 + 2"
 
-Выходные данные - число, результат математического выражения:
+The output is a number, the result of a mathematical expression:
 5
 
-Программа должна реагировать на исключительные ситуации.
-Покрыть программу тестами.
+The program must respond to exceptional situations.
+Cover the program with tests.
 
-*после получения ответа программа не завершается и мы можем ввести новое выражение
-*между символами в строке может не быть пробелов
+* after receiving a response, the program does not end and we can enter a new expression
+* there may be no spaces between characters in a line
 */
 package Practice.Practic17_04_20220;
 

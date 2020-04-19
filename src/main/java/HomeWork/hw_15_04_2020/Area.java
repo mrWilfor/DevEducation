@@ -1,5 +1,5 @@
 /*
-//Задача 2. Вычислить площадь круга (переменная area). Код писать только в указанный рамках (// ... //)
+//Task 2. Calculate the area of ??the circle (the variable area). Write code only within the specified framework(// ... //)
 
 public class Area {
 

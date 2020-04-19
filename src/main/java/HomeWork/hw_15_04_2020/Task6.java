@@ -1,4 +1,4 @@
-//Задача 6: Тоже самое что и Задача 5 только используем switch
+//Task 6: The same as Task 5, only use switch
 package HomeWork.hw_15_04_2020;
 
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-/*2. Ќайти пример программы УHello, World!Ф, вывести на консоль УHello, DevEducation!Ф */
+/*2. Find the example program УHello, World!Ф, Output to the console УHello, DevEducation!Ф */
 package HomeWork.hw_13_04_2020;
 
 public class HelloDevEduction {

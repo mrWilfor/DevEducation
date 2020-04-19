@@ -1,3 +1,19 @@
+/*Primitive data, their reduction.
+
+        - Declaration and initialization of all primitive data types.
+        - see about converting data types to another data type.
+        - perform arithmetic operations (including%) between the same type (int -> int, byte -> byte, ...)
+        ---- see how integer types behave during division (example: 9/2)
+        - perform arithmetic operations (including%) between different types (long -> int, byte -> int, float -> int, ...)
+        - work with floating point numbers (data loss when casting a fractional number to an integer)
+        ---- see how it behaves
+
+        ** work with char. What this data type is.
+        - conversion int -> char
+        - conversion char -> int
+
+        Write tests for all operations with primitive data types.*/
+
 package HomeWork.hw_14_04_2020;
 
 public class ArithmeticOperation {

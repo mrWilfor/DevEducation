@@ -1,6 +1,6 @@
-/* Вводится натуральное число. Найти сумму четных цифр, входящих в его состав. тест: при вводе числа "1474"
-на выходе получим "8", так как четными являются лишь две цифры "4".
-Написать программу, подсчитывающую количество четных и нечетных цифр в числе.
+/* A natural number is entered. Find the sum of the even numbers in its composition. test: when entering the number "1474"
+we get "8" at the output, since only two digits of "4" are even.
+Write a program that counts the number of even and odd numbers in a number.
 */
 package Practice.Practic16_04_20220;
 

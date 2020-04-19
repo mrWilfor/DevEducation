@@ -1,5 +1,5 @@
 /*
-//Задача 3. Найти и устранить ошибку, не удаляя ничего в коде! Подсказка - необходимо что-то сделать с одной строкой. Код должен компилироваться.
+//Task 3. Find and fix the error without deleting anything in the code! Hint - you need to do something with one line. The code must compile.
 
 public class ClassX {
 

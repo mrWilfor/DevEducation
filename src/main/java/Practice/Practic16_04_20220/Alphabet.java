@@ -1,4 +1,4 @@
-//Вывод на экран алфавит ASCII. Вывод на экран соответствий между символами и их численными обозначениями.
+// Display the alphabet ASCII. Displays on the screen the correspondence between the characters and their numerical designations.
 package Practice.Practic16_04_20220;
 
 public class Alphabet {

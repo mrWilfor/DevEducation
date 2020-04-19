@@ -1,4 +1,4 @@
-/*//Задача 1. Выберите строки, где требуется явное приведение.
+/*//Task 1. Select strings where explicit casts are required.
 
 int q = 'q';  // 1
 char ch2 = q; // 2

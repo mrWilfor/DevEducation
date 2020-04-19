@@ -1,5 +1,5 @@
-/* Написать метод, который будет принимать в качестве параметра два числа, а в результате
-выводить в консоль их суму. Необходимые варианты входных параметров:
+/* Write a method that will take two numbers as a parameter, and as a result
+display their sum in the console. Required input options:
 1) 2 и 2
 2) -2 и 2
 3) 2.5 и 2.5

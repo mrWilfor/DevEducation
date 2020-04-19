@@ -1,9 +1,9 @@
 /*
-Пользователь вводит от 2 чисел и больше (проверочка)
-    - вывести минимальное на экран.
-    - вывести максимальное на экран.
-    - вывести сумму всех чисел на экран.
-    - вывести среднее значение чисел на экран.
+User enters from 2 numbers and more (check)
+    - display the minimum on the screen.
+    - display the maximum on the screen.
+    - display the sum of all numbers on the screen.
+    - display the average value of numbers on the screen.
     */
 package Practice.Practic16_04_20220;
 

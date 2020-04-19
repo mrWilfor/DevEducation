@@ -1,10 +1,9 @@
-//Определить какое из трех, введенных пользователем, чисел максимальное и вывести его на экран.
+//Determine which of the three numbers entered by the user is the maximum and display it on the screen.
 package Practice.Practic16_04_20220;
 
 import java.util.Scanner;
 
 public class MaxNumber {
-
 
     public static void main(String[] args) {
         enterNumbers();
