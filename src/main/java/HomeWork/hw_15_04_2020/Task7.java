@@ -1,5 +1,8 @@
+//Задача 7: Тоже самое что и Задача 5 только используем тернарный оператор
 package HomeWork.hw_15_04_2020;
+
 import java.util.Scanner;
+
 public class Task7 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -7,7 +10,7 @@ public class Task7 {
         enterNumber(number);
     }
 
-    public static int enterNumber(int a) {
+    public static int enterNumber(int a) { //Displays number which was enter
 
        String out = a == 1 ? "Your number: " + a :a == 2 ? "Your number: " + a : a == 3 ? "Your number: " + a : "You enter other number, try again";
        System.out.println(out);

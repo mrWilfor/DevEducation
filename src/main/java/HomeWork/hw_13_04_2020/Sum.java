@@ -1,3 +1,11 @@
+/* Написать метод, который будет принимать в качестве параметра два числа, а в результате
+выводить в консоль их суму. Необходимые варианты входных параметров:
+1) 2 и 2
+2) -2 и 2
+3) 2.5 и 2.5
+4) 2000000000 и 200000000 * */
+package HomeWork.hw_13_04_2020;
+
 public class Sum {
     public static void main(String[] args) {
         System.out.println(sum(2, 2));
@@ -6,15 +14,15 @@ public class Sum {
         System.out.println(sum(2000000000L, 200000000L));
     }
 
-    public static int sum(int a, int b) {
+    public static int sum(int a, int b) { //Sum integer numbers
         return a + b;
     }
 
-    public static double sum(double a, double b) {
+    public static double sum(double a, double b) { //Sum numbers type of double
         return a + b;
     }
 
-    public static long sum(long a, long b) {
+    public static long sum(long a, long b) { //Sum numbers type of long
         return a + b;
     }
 }

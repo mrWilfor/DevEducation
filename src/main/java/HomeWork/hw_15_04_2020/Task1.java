@@ -1,4 +1,11 @@
-package hw_15_04_2020;
+/*//Задача 1. Выберите строки, где требуется явное приведение.
+
+int q = 'q';  // 1
+char ch2 = q; // 2
+short s = 1;  // 3
+char ch3 = s; // 4
+*/
+package HomeWork.hw_15_04_2020;
 
 public class Task1 {
     public static void main(String[] args) {

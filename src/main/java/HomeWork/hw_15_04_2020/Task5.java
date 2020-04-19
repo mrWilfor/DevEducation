@@ -1,4 +1,9 @@
+/*Задача 5: Необходимо написать программу, где бы пользователю предлагалось ввести число на выбор: 1, 2 или 3,
+а программа должна сказать, какое число ввёл пользователь: 1, 2, или 3. Если пользователь ввёл другое число,
+программа должна вывести сообщение: "Вы ввели другое число". Используем Scanner для ввода с консоли и
+конструкцию if else*/
 package HomeWork.hw_15_04_2020;
+
 import java.util.Scanner;
 public class Task5 {
     public static void main(String[] args) {
@@ -7,7 +12,7 @@ public class Task5 {
         enterNumber(number);
     }
 
-    public static int enterNumber(int a) { //Comparison entered number
+    public static int enterNumber(int a) { //Displays number which was enter
         if (a == 1) {
             System.out.println("Your number: " + a);
         }

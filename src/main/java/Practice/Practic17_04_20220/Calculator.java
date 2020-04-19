@@ -1,5 +1,6 @@
 package Practice.Practic17_04_20220;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Calculator {
@@ -9,104 +10,70 @@ public class Calculator {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter mathematical expression:");
         String mathExpression1 = scan.nextLine();
-        String mathExpression2 = mathExpression1.replaceAll(".", " ");
-        String mathExpression3 = mathExpression2.replaceAll("+", " ");
-        String mathExpression4 = mathExpression3.replaceAll("-", " ");
-        String mathExpression5 = mathExpression4.replaceAll("*", " ");
-        String mathExpression6 = mathExpression5.replaceAll("/", " ");
-
-        String[] Array = mathExpression6.split("s");
-
-        int length = charArray.length;
+        System.out.println(calculator(mathExpression1));
     }
-    public static int numberDetermination(char[] Array1, int length) {
-        int[] numbers = new int[2];
-        char operation = '0';
-        int result = 0;
-        for(int i = 0, j = 0; i > length; i ++) {
-            switch (Array1[i]){
-                case ('0'):
-                    numbers[j] *= 10;
-                    break;
 
-                case ('1'):
-                    numbers[j] = numbers[j] * 10 + 1;
-                    break;
+    public static double calculator(String mathExpression1) {
+        String[] arrayNum = new String[2];
+        char operator = ' ';
+        String stringNum1 = "";
+        String stringNum2 = "";
+        BigDecimal num1;
+        BigDecimal num2;
+        double result =0.0;
 
-                case ('2'):
-                    numbers[j] = numbers[j] * 10 + 2;
-                    break;
+        int index = mathExpression1.indexOf('+'); //Definition arithmetic`s operation and splitting a string into parts
+        if (index != -1) {
+            arrayNum = mathExpression1.split("\\+");
+            operator = '+';
+        } else {
+            int index1 = mathExpression1.indexOf('-');
+            if (index1 != -1) {
+                arrayNum = mathExpression1.split("-");
+                operator = '-';
+            } else {
+                int index2 = mathExpression1.indexOf('*');
+                if (index2 != -1) {
+                    arrayNum = mathExpression1.split("\\*");
+                    operator = '*';
+                } else {
+                    int index3 = mathExpression1.indexOf('/');
+                    if (index3 != -1) {
+                        arrayNum = mathExpression1.split("/");
+                        operator = '/';
+                    }
+                }
+            }
 
-                case ('3'):
-                    numbers[j] = numbers[j] * 10 + 3;
-                    break;
+        }
+        stringNum1 = arrayNum[0];
+            num1 = BigDecimal.valueOf(Double.parseDouble(stringNum1));   // Cast string to Double
 
-                case ('4'):
-                    numbers[j] = numbers[j] * 10 + 4;
-                    break;
+        stringNum2 = arrayNum[1];
 
-                case ('5'):
-                    numbers[j] = numbers[j] * 10 + 5;
-                    break;
-                case ('6'):
-                    numbers[j] = numbers[j] * 10 + 6;
-                    break;
-                case ('7'):
-                    numbers[j] = numbers[j] * 10 + 7;
-                    break;
-                case ('8'):
-                    numbers[j] = numbers[j] * 10 + 8;
-                    break;
-                case ('9'):
-                    numbers[j] = numbers[j] * 10 + 9;
-                    break;
+            num2 = BigDecimal.valueOf(Double.parseDouble(stringNum2));    // Cast string to Double
+        if(num2.doubleValue() == 0){
+            System.out.println("cannot be divided by zero");
+        }
+        else {
+            switch (operator) {                                             //Arithmetic operation
                 case ('+'):
-                    operation = '+';
-                    j ++;
+                    BigDecimal result1 = num1.add(num2);
+                    result = result1.doubleValue();
                     break;
                 case ('-'):
-                    operation = '-';
-                    j ++;
+                    BigDecimal result2 = num1.subtract(num2);
+                    result = result2.doubleValue();
                     break;
                 case ('*'):
-                    operation = '*';
-                    j ++;
+                    BigDecimal result3 = num1.multiply(num2);
+                    result = result3.doubleValue();
                     break;
                 case ('/'):
-                    operation = '/';
-                    j ++;
-                    break;
-                case ('%'):
-                    operation = '%';
-                    j ++;
-                    break;
-                case (' '):
-                    break;
-                default:
-                    System.out.println("Entered not correctly value, please enter only this chars: 0-9, +, -, *, /, % ");
-                    break;
+                    BigDecimal result4 = num1.divide(num2);
+                    result = result4.doubleValue();
             }
         }
-            switch(operation){
-                case('+'):
-                    result = numbers[0] + numbers[1];
-                    break;
-                case('-'):
-                    result = numbers[0] - numbers[1];
-                    break;
-                case('*'):
-                    result = numbers[0] * numbers[1];
-                    break;
-                case('/'):
-                    result = numbers[0] / numbers[1];
-                    break;
-                case('%'):
-                    result = numbers[0] % numbers[1];
-                    break;
-                case('0'):
-                    System.out.println("");
-                    break;
-            }
-        return 0;
+        return result;
     }
 }

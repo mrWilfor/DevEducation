@@ -1,5 +1,8 @@
+//Задача 6: Тоже самое что и Задача 5 только используем switch
 package HomeWork.hw_15_04_2020;
+
 import java.util.Scanner;
+
 public class Task6 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -7,7 +10,7 @@ public class Task6 {
         enterNumber(number);
     }
 
-    public static int enterNumber(int a) {
+    public static int enterNumber(int a) { //Displays number which was enter
         switch(a){
             case (1):
                 System.out.println("Your number: " + a);

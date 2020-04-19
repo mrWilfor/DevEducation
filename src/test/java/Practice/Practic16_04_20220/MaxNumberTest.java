@@ -1,6 +1,5 @@
-package Practic16_04_20220;
+package Practice.Practic16_04_20220;
 
-import Practic16_04_20220.MaxNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
