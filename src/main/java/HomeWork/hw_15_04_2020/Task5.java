@@ -16,19 +16,14 @@ public class Task5 {
         if (a == 1) {
             System.out.println("Your number: " + a);
         }
+        else if (a == 2) {
+            System.out.println("Your number: " + a);
+        }
+        else if (a == 3){
+            System.out.println("Your number: " + a);
+        }
         else {
-            if (a == 2) {
-                System.out.println("Your number: " + a);
-            }
-            else {
-                if (a == 3){
-                    System.out.println("Your number: " + a);
-                }
-                else {
-                    System.out.println("You enter other number, try again");
-                }
-
-            }
+            System.out.println("You enter other number, try again");
         }
         return a;
     }
