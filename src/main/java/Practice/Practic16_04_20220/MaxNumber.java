@@ -10,8 +10,8 @@ public class MaxNumber {
     }
 
     public static void enterNumbers() {
-        int[]   numbers = new int[3];  //Announcement an array
-        for(int i = 0, j = 0; i < 3; i ++) {
+        int[] numbers = new int[3];  //Announcement an array
+        for (int i = 0, j = 0; i < 3; i++) {
             System.out.println("Enter your number: ");
             Scanner scan = new Scanner(System.in);
             int number = scan.nextInt(); //Reading a number from the keyboard
@@ -22,27 +22,25 @@ public class MaxNumber {
     }
 
     public static int maxNumber(int a, int b, int c) { //Comparison entered number
-        int d =0;
+        int d = 0;
         if (a > b) {
             if (a > c) {
                 System.out.println("Max number: " + a);
                 d = a;
             }
         }
+        else if (b > c) {
+            System.out.println("Max number: " + b);
+            d = b;
+        }
+        else if ((a == b) && (b == c)) {
+            System.out.println("All numbers are the same");
+        }
         else {
-            if (b > c) {
-                System.out.println("Max number: " + b);
-                d = b;
-            }
-            else {
-                if ((a == b) && (b == c)) {
-                    System.out.println("All numbers are the same");
-                } else {
-                    System.out.println("Max number: " + c);
-                    d = c;
-                }
-            }
+            System.out.println("Max number: " + c);
+            d = c;
         }
         return d;
     }
 }
+
