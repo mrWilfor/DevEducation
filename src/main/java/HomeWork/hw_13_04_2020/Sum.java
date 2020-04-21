@@ -1,9 +1,9 @@
 /* Write a method that will take two numbers as a parameter, and as a result
 display their sum in the console. Required input options:
-1) 2 è 2
-2) -2 è 2
-3) 2.5 è 2.5
-4) 2000000000 è 200000000 * */
+1) 2 and 2
+2) -2 and 2
+3) 2.5 and 2.5
+4) 2000000000 and 200000000 * */
 package HomeWork.hw_13_04_2020;
 
 public class Sum {
