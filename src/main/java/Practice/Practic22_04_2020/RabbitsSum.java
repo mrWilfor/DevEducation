@@ -15,8 +15,8 @@ public class RabbitsSum {
         }
         else {
             sumEars += 2;
-
         }
+
         return rabbits(requiredNumberRabbit - 1) + sumEars;
     }
 }

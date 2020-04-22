@@ -19,7 +19,8 @@ public class TicTacToe {
             System.out.println("Horizontally: ");
             int secondCoordinate = scan.nextInt();
             charArray[firstCoordinate - 1][secondCoordinate - 1] = 'X';
-        } else {
+        }
+        else {
             System.out.println("Second player enter coordinate");
             System.out.println("Vertically: ");
             int firstCoordinate = scan.nextInt();
@@ -45,6 +46,7 @@ public class TicTacToe {
                 field[i][j] = '*';
             }
         }
+
         return field;
     }
 
@@ -53,11 +55,14 @@ public class TicTacToe {
             for (int j = 0; j < 4; j++) {
                 if (i == 0 && j == 0) {
                     System.out.print("   ");
-                } else if (i == 0) {
+                }
+                else if (i == 0) {
                     System.out.print(j + "  ");
-                } else if (j == 0) {
+                }
+                else if (j == 0) {
                     System.out.print(i + "  ");
-                } else {
+                }
+                else {
                     System.out.print(charArray[i - 1][j - 1] + "  ");
                 }
             }
@@ -71,13 +76,16 @@ public class TicTacToe {
             if (((charArray[0][i] == 'X') && (charArray[1][i] == 'X')) && (charArray[2][i] == 'X')) {
                 System.out.println("First players winn");
                 result = true;
-            } else if (((charArray[0][i] == 'O') && (charArray[1][i] == 'O')) && (charArray[2][i] == 'O')) {
+            }
+            else if (((charArray[0][i] == 'O') && (charArray[1][i] == 'O')) && (charArray[2][i] == 'O')) {
                 System.out.println("Second players winn");
                 result = true;
-            } else if (((charArray[i][0] == 'X') && (charArray[i][1] == 'X')) && (charArray[i][2] == 'X')) {
+            }
+            else if (((charArray[i][0] == 'X') && (charArray[i][1] == 'X')) && (charArray[i][2] == 'X')) {
                 System.out.println("First players winn");
                 result = true;
-            } else if (((charArray[i][0] == 'O') && (charArray[i][1] == 'O')) && (charArray[i][2] == 'O')) {
+            }
+            else if (((charArray[i][0] == 'O') && (charArray[i][1] == 'O')) && (charArray[i][2] == 'O')) {
                 System.out.println("Second players winn");
                 result = true;
             }

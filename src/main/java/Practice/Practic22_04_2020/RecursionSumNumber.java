@@ -10,8 +10,10 @@ public class RecursionSumNumber {
         if(number == 0){
             return sum;
         }
+
         sum = sum + number % 10;
         number /= 10;
+
         return RecursionSumNumber(number) + sum;
     }
 }
