@@ -10,10 +10,10 @@ public class Rabbits {
             return 0;
         }
         else if (a % 2 == 0) {
-            System.out.println("rabbit " + a + ": " + "3");
+            System.out.print("3 ");
         }
         else {
-            System.out.println("rabbit " + a + ": " + "2");
+            System.out.print("2 ");
         }
         return rabbits(a + 1, b);
     }

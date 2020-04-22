@@ -4,3 +4,6 @@ target/
 DevEducation.iml
 src/main/resourses/
 src/main/com/
+src/com/
+src/main/java/BaseTasks/
+src/test/java/BaseTasks/

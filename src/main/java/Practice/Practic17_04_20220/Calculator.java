@@ -82,7 +82,7 @@ public class Calculator {
                     result = result3.doubleValue();
                     break;
                 case ('/'):
-                    BigDecimal result4 = num1.divi                      de(num2);
+                    BigDecimal result4 = num1.divide(num2);
                     result = result4.doubleValue();
             }
         }

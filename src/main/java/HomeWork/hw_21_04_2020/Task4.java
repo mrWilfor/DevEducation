@@ -14,21 +14,20 @@ package HomeWork.hw_21_04_2020;
 
 public class Task4 {
     public static void main(String[] args) {
-        task4();
+        task4(1, 7);
     }
 
-    public static void task4() {
-        int a = 1;
-        int b = 1;
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                if (i == 6 || j == 0) {
+    public static void task4(int firstBorder, int secondBorder) {
+        int diagonal = firstBorder + 1;
+
+        for (int i = 1; i <= 7; i++) {
+            for (int j = 1; j <= 7; j++) {
+                if (i == secondBorder || j == firstBorder) {
                     System.out.print("*  ");
                 }
-                else if (i == a && j == b) {
+                else if (i == diagonal && j == diagonal) {
                     System.out.print("*  ");
-                    a++;
-                    b++;
+                    diagonal++;
                 }
                 else {
                     System.out.print("   ");

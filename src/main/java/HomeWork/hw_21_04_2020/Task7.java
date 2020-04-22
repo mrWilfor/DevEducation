@@ -14,28 +14,18 @@ package HomeWork.hw_21_04_2020;
 
 public class Task7 {
     public static void main(String[] args) {
-        task7();
+        task7(1, 7);
     }
 
-    public static void task7() {
-        int a = 0;
-        int b = 0;
-        int c = 6;
-
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                if (i == a && j == a) {
+    public static void task7(int firstBorder, int secondBorder) {
+        for (int i = 1; i <= 7; i++) {
+            for (int j = 1; j <= 7; j++) {
+                if (i == firstBorder && j == firstBorder) {
                     System.out.print("*  ");
-                    a++;
+                    firstBorder++;
                 }
-                else if (b == 3 && c == 3) {
-                    b++;
-                    c--;
-                }
-                else if (i == b && j == c) {
+                else if (i + j == secondBorder + 1) {
                     System.out.print("*  ");
-                    b++;
-                    c--;
                 }
                 else {
                     System.out.print("   ");

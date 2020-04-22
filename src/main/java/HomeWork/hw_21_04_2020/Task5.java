@@ -14,22 +14,17 @@ package HomeWork.hw_21_04_2020;
 
 public class Task5 {
     public static void main(String[] args) {
-        task5();
+        task5(7);
     }
 
-    public static void task5() {
-        int a = 1;
-        int b = 5;
-
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                if (i == 6 || j == 6) {
+    public static void task5(int secondBorder) {
+        for (int i = 1; i <= 7; i++) {
+            for (int j = 1; j <= 7; j++) {
+                if (i == secondBorder || j == secondBorder) {
                     System.out.print("*  ");
                 }
-                else if (i == a && j == b) {
+                else if (i + j == secondBorder + 1) {
                     System.out.print("*  ");
-                    a++;
-                    b--;
                 }
                 else {
                     System.out.print("   ");

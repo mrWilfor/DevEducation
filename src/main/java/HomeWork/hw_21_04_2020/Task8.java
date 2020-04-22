@@ -13,32 +13,25 @@ package HomeWork.hw_21_04_2020;
 
 public class Task8 {
     public static void main(String[] args) {
-        task8();
+        task8(1, 7);
     }
 
-    public static void task8() {
-        int a = 1;
-        int b = 1;
-        int c = 5;
+    public static void task8(int firstBorder, int secondBorder) {
+        int line = firstBorder;
 
-        for(int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                if (i > 3 && j > 3) {
+        for(int i = 1; i <= 7; i++) {
+            for (int j = 1; j <= 7; j++) {
+                if (i > (secondBorder + 1) / 2) {
                     System.out.print("   ");
                 }
-                else if (i > 3 && j < 3){
-                    System.out.print("   ");
-                }
-                else if (i == a && j == a) {
+                else if (i == firstBorder && j == firstBorder) {
                     System.out.print("*  ");
-                    a++;
+                    firstBorder++;
                 }
-                else if (i == b && j == c) {
+                else if (i + j == secondBorder +1) {
                     System.out.print("*  ");
-                    b++;
-                    c--;
                 }
-                else if (i == 0) {
+                else if (i == line) {
                     System.out.print("*  ");
                 }
                 else {
