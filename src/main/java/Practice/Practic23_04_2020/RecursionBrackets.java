@@ -1,6 +1,6 @@
-package Practice.Practic22_04_2020;
+package Practice.Practic23_04_2020;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class RecursionBrackets {
     public static void main(String[] args) {
