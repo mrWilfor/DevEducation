@@ -29,7 +29,7 @@ public class AscendingOrDescending {
             if (ascending / 10 == 0) {
                 return true;
             }
-            else if (ascending % 10 > (ascending / 10) % 10) {
+            else if (ascending % 10 >= (ascending / 10) % 10) {
                 ascending /= 10;
             }
             else {
@@ -44,7 +44,7 @@ public class AscendingOrDescending {
             if (descending / 10 == 0) {
                 return true;
             }
-            else if (descending % 10 < (descending / 10) % 10) {
+            else if (descending % 10 <= (descending / 10) % 10) {
                 descending /= 10;
             }
             else {
