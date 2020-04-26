@@ -10,27 +10,27 @@ public class AscendingOrDescending {
     }
 
     public static boolean sequence(Scanner scan) {
-        int number;
-        int numbers = 0;
+        long number;
+        long numbers = 0;
 
         while ((number = scan.nextInt()) != 0) {
-            if (number > 10) {
-               System.out.println("Too many, entered number < 10");
+            if (number > 1000) {
+               System.out.println("Too many, entered number < 1000");
             }
             else {
-                numbers = numbers * 10 + number;
+                numbers = numbers * 1000 + number;
             }
         }
 
-        int ascending = numbers;
+        long ascending = numbers;
         boolean result = true;
 
         while ( ascending != 0) {
-            if (ascending / 10 == 0) {
+            if (ascending / 1000 == 0) {
                 return true;
             }
-            else if (ascending % 10 >= (ascending / 10) % 10) {
-                ascending /= 10;
+            else if (ascending % 1000 >= (ascending / 1000) % 1000) {
+                ascending /= 1000;
             }
             else {
                 result = false;
@@ -38,14 +38,14 @@ public class AscendingOrDescending {
             }
         }
 
-        int descending = numbers;
+        long descending = numbers;
 
         while (descending != 0) {
-            if (descending / 10 == 0) {
+            if (descending / 1000 == 0) {
                 return true;
             }
-            else if (descending % 10 <= (descending / 10) % 10) {
-                descending /= 10;
+            else if (descending % 1000 <= (descending / 1000) % 1000) {
+                descending /= 1000;
             }
             else {
                 result = false;
