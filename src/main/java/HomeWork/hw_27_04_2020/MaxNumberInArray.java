@@ -8,7 +8,7 @@ public class MaxNumberInArray {
 
     public static int maxNumber(int[] array) {
         int number = 0;
-        for (int i:array) {
+        for (int i : array) {
             if (i > number) {
                 number = i;
             }

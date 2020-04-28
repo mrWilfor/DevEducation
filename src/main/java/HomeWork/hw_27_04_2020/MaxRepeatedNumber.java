@@ -12,9 +12,9 @@ public class MaxRepeatedNumber {
         int counter1 = 0;
         int counter2 = 0;
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             index = i;
-            for(int j = 0; j < array.length; j++) {
+            for (int j = 0; j < array.length; j++) {
                 if (array[i] == array[j]) {
                     counter1++;
                 }

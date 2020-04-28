@@ -15,9 +15,9 @@ public class SumLeftAndRightPathArray {
             System.out.println("Enter even number:");
             evenNumber = scan.nextInt();
         }
-        while(evenNumber % 2 != 0);
+        while (evenNumber % 2 != 0);
         int[] array = new int[evenNumber];
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * 11) - 5;
         }
         System.out.println(Arrays.toString(array));

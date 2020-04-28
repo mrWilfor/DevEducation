@@ -1,7 +1,9 @@
 package HomeWork.hw_27_04_2020;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SumLeftAndRightPathArrayTest {
