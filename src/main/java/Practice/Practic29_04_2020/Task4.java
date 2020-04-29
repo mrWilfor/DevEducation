@@ -9,17 +9,20 @@ public class Task4 {
                 {16, 51, 20, 5, 26},
                 {21, 22, 23, 24, 25}
         };
-        System.out.println(maxNumberInStringArray(arr, 1));
+        System.out.println(minNumberInStringArray(arr, 1));
         System.out.println(maxNumberInColumnArray(arr, 2));
     }
 
-    public static int maxNumberInStringArray(int[][] array, int numberString) {
+    public static int minNumberInStringArray(int[][] array, int numberString) {
         int number = 0;
 
         for(int i = 0; i < array.length; i++) {
-                if (array[numberString - 1][i] > number) {
-                    number = array[numberString - 1][i];
-                }
+            if (i == 0) {
+                number = array[numberString - 1][i];
+            }
+            else if (array[numberString - 1][i] < number) {
+                number = array[numberString - 1][i];
+            }
         }
         return number;
     }
