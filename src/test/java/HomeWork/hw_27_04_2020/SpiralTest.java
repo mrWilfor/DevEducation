@@ -1,6 +1,7 @@
 package HomeWork.hw_27_04_2020;
 
 import org.junit.jupiter.api.Test;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,9 +16,9 @@ class SpiralTest {
                 {14, 23, 22, 21, 8},
                 {13, 12, 11, 10, 9}
         };
-        int[][] arr = new int[5][5];
+        String input = "5\n" + "5\n";
         assertArrayEquals(
-                arrExpected, Spiral.spiralFillOfArray(arr),
+                arrExpected, Spiral.spiralFillOfArray(new Scanner(input)),
                 "Test failed"
                 );
     }
@@ -31,9 +32,9 @@ class SpiralTest {
                 {10, 15, 6},
                 {9, 8, 7}
         };
-        int[][] arr = new int[5][3];
+        String input = "3\n" + "5\n";
         assertArrayEquals(
-                arrExpected, Spiral.spiralFillOfArray(arr),
+                arrExpected, Spiral.spiralFillOfArray(new Scanner(input)),
                 "Test failed"
         );
     }
@@ -45,9 +46,9 @@ class SpiralTest {
                 {12, 13, 14, 15, 6},
                 {11, 10, 9, 8, 7},
         };
-        int[][] arr = new int[3][5];
+        String input = "5\n" + "3\n";
         assertArrayEquals(
-                arrExpected, Spiral.spiralFillOfArray(arr),
+                arrExpected, Spiral.spiralFillOfArray(new Scanner(input)),
                 "Test failed"
         );
     }

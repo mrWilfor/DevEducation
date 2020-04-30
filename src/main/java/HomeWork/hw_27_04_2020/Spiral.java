@@ -1,11 +1,12 @@
 package HomeWork.hw_27_04_2020;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Spiral {
     public static void main(String[] args) {
-        int[][] arr = new int[6][3];
-        spiralFillOfArray(arr);
+        Scanner sc = new Scanner(System.in);
+        int[][] arr = spiralFillOfArray(sc);
+
         for (int i = 0; i < arr.length; i ++) {
             for (int j = 0; j < arr[0].length; j ++) {
                 System.out.print(arr[i][j] + "  ");
@@ -14,7 +15,14 @@ public class Spiral {
         }
     }
 
-    public static int[][] spiralFillOfArray(int[][] array) {
+    public static int[][] spiralFillOfArray(Scanner scan) {
+        System.out.println("Enter length X:");
+        int x = scan.nextInt();
+        System.out.println("Enter length X:");
+        int y = scan.nextInt();
+
+        int[][] array = new int[y][x];
+
         int right = array[0].length;
         int down = array.length;
         int left = - 1;
