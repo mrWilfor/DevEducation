@@ -20,7 +20,7 @@ class CalculatorTest {
     @Test
     void calculatingTest2() {
         String input = "2*4";
-        String strExpected = "2.0 * 4.0 = 8,00";
+        String strExpected = "2.0 * 4.0 = 8.00";
 
         assertTrue(
                 strExpected.equals(Calculator.calculating(new Scanner(input))),
@@ -31,7 +31,7 @@ class CalculatorTest {
     @Test
     void calculatingTest3() {
         String input = "3/4";
-        String strExpected = "3.0 / 4.0 = 0,75";
+        String strExpected = "3.0 / 4.0 = 0.75";
 
         assertTrue(
                 strExpected.equals(Calculator.calculating(new Scanner(input))),
@@ -42,7 +42,7 @@ class CalculatorTest {
     @Test
     void calculatingTest4() {
         String input = "-3/4";
-        String strExpected = "-3.0 / 4.0 = -0,75";
+        String strExpected = "-3.0 / 4.0 = -0.75";
 
         assertTrue(
                 strExpected.equals(Calculator.calculating(new Scanner(input))),
@@ -53,7 +53,7 @@ class CalculatorTest {
     @Test
     void calculatingTest5() {
         String input = "3*-4";
-        String strExpected = "3.0 * -4.0 = -12,00";
+        String strExpected = "3.0 * -4.0 = -12.00";
 
         assertTrue(
                 strExpected.equals(Calculator.calculating(new Scanner(input))),

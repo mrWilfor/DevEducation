@@ -1,5 +1,7 @@
 package HomeWork.HW_7_04_05_2020;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -30,15 +32,15 @@ public class Calculator {
             double number1 = Double.parseDouble(str1.substring(0, indexMultiplication));
             double number2 = Double.parseDouble(str1.substring(indexMultiplication + 1));
             double multiplication = number1 * number2;
-            String strMultiplication = df.format(multiplication);
-            result = result + number1 + " * " + number2 + " = " + strMultiplication;
+            BigDecimal res = new BigDecimal(multiplication).setScale(2, RoundingMode.HALF_EVEN);
+            result = result + number1 + " * " + number2 + " = " + res;
         }
         else if (indexDivision != -1) {
             double number1 = Double.parseDouble(str1.substring(0, indexDivision));
             double number2 = Double.parseDouble(str1.substring(indexDivision + 1));
             double division = number1 / number2;
-            String strDivision = df.format(division);
-            result = result + number1 + " / " + number2 + " = " + strDivision;
+            BigDecimal res = new BigDecimal(division).setScale(2, RoundingMode.HALF_EVEN);
+            result = result + number1 + " / " + number2 + " = " + res;
         }
         else if (indexDivisionByRemainder != -1) {
             double number1 = Double.parseDouble(str1.substring(0, indexDivisionByRemainder));
