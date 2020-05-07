@@ -17,14 +17,14 @@ public class ConverterOfTemperatures {
         if (str.endsWith("C") || str.endsWith("c")) {
             double celsius = Double.parseDouble(str.replace("C", ""));
             String kelvin = String.join(" : ", "K", new BigDecimal(celsius + 273.15).setScale(2, RoundingMode.HALF_EVEN).toString());
-            String fahrenheit =String.join(" : ", "F", new BigDecimal(celsius  * 1.8 + 32).setScale(2, RoundingMode.HALF_EVEN).toString());
+            String fahrenheit = String.join(" : ", "F", new BigDecimal(celsius * 1.8 + 32).setScale(2, RoundingMode.HALF_EVEN).toString());
             result.add(kelvin);
             result.add(fahrenheit);
         }
         else if (str.endsWith("K") || str.endsWith("k")) {
             double kelvin = Double.parseDouble(str.replace("K", ""));
             String celsius = String.join(" : ", "C", new BigDecimal(kelvin - 273.15).setScale(2, RoundingMode.HALF_EVEN).toString());
-            String fahrenheit =String.join(" : ", "F", new BigDecimal(kelvin  * 1.8 - 459.67).setScale(2, RoundingMode.HALF_EVEN).toString());
+            String fahrenheit = String.join(" : ", "F", new BigDecimal(kelvin * 1.8 - 459.67).setScale(2, RoundingMode.HALF_EVEN).toString());
             result.add(celsius);
             result.add(fahrenheit);
         }
