@@ -19,17 +19,13 @@ public class SimpleNumbers {
     public static boolean checkNumbers(int number) {
         if (number % 2 == 0 && number / 2 > 1) {
             return false;
-        }
-        else if (number % 3 == 0 && number / 3 > 1) {
+        } else if (number % 3 == 0 && number / 3 > 1) {
             return false;
-        }
-        else if (number % 5 == 0 && number / 5 > 1) {
+        } else if (number % 5 == 0 && number / 5 > 1) {
             return false;
-        }
-        else if (number % 7 == 0 && number / 7 > 1) {
+        } else if (number % 7 == 0 && number / 7 > 1) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }

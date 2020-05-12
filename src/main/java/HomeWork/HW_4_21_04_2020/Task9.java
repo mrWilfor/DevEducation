@@ -21,20 +21,16 @@ public class Task9 {
 
         for (int i = 1; i <= 7; i++) {
             for (int j = 1; j <= 7; j++) {
-                if (i < (secondBorder +1) / 2) {
+                if (i < (secondBorder + 1) / 2) {
                     System.out.print("   ");
-                }
-                else if (i == diagonal1 && j == diagonal1) {
+                } else if (i == diagonal1 && j == diagonal1) {
                     System.out.print("*  ");
                     diagonal1++;
-                }
-                else if (i == secondBorder) {
+                } else if (i == secondBorder) {
                     System.out.print("*  ");
-                }
-                else if (i + j == secondBorder + 1) {
+                } else if (i + j == secondBorder + 1) {
                     System.out.print("*  ");
-                }
-                else {
+                } else {
                     System.out.print("   ");
                 }
             }

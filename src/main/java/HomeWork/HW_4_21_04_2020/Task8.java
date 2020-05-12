@@ -19,22 +19,18 @@ public class Task8 {
     public static void task8(int firstBorder, int secondBorder) {
         int line = firstBorder;
 
-        for(int i = 1; i <= 7; i++) {
+        for (int i = 1; i <= 7; i++) {
             for (int j = 1; j <= 7; j++) {
                 if (i > (secondBorder + 1) / 2) {
                     System.out.print("   ");
-                }
-                else if (i == firstBorder && j == firstBorder) {
+                } else if (i == firstBorder && j == firstBorder) {
                     System.out.print("*  ");
                     firstBorder++;
-                }
-                else if (i + j == secondBorder +1) {
+                } else if (i + j == secondBorder + 1) {
                     System.out.print("*  ");
-                }
-                else if (i == line) {
+                } else if (i == line) {
                     System.out.print("*  ");
-                }
-                else {
+                } else {
                     System.out.print("   ");
                 }
             }

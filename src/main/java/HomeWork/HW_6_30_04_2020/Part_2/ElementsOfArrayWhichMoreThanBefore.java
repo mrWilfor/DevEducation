@@ -2,9 +2,9 @@ package HomeWork.HW_6_30_04_2020.Part_2;
 
 public class ElementsOfArrayWhichMoreThanBefore {
     public static void main(String[] args) {
-       int[] arr = {1, 2, 5, 3, 9, 4, 7};
+        int[] arr = {1, 2, 5, 3, 9, 4, 7};
 
-       System.out.println(moreThanPrevious(arr));
+        System.out.println(moreThanPrevious(arr));
     }
 
     public static String moreThanPrevious(int[] array) {
@@ -14,8 +14,7 @@ public class ElementsOfArrayWhichMoreThanBefore {
             if (array[i] > array[i - 1]) {
                 if (result == "") {
                     result = result + array[i];
-                }
-                else {
+                } else {
                     result = result + ", " + array[i];
                 }
             }

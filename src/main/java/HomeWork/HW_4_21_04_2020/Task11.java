@@ -23,18 +23,14 @@ public class Task11 {
             for (int j = 1; j <= 7; j++) {
                 if (j > (secondBorder + 1) / 2) {
                     System.out.print("   ");
-                }
-                else if (j == firstBorder) {
+                } else if (j == firstBorder) {
                     System.out.print("*  ");
-                }
-                else if (i == diagonal1 && j == diagonal1) {
+                } else if (i == diagonal1 && j == diagonal1) {
                     System.out.print("*  ");
                     diagonal1++;
-                }
-                else if (i + j == secondBorder + 1) {
+                } else if (i + j == secondBorder + 1) {
                     System.out.print("*  ");
-                }
-                else {
+                } else {
                     System.out.print("   ");
                 }
             }

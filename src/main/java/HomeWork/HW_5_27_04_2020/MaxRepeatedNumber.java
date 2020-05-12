@@ -3,6 +3,7 @@ package HomeWork.HW_5_27_04_2020;
 public class MaxRepeatedNumber {
     public static void main(String[] args) {
         int[] arr = {1, 1, 33, 2, 6, 6, 7, 6, 7, 7, 9};
+
         System.out.println(checkNumbersInArray(arr));
     }
 
@@ -14,6 +15,7 @@ public class MaxRepeatedNumber {
 
         for (int i = 0; i < array.length; i++) {
             index = i;
+
             for (int j = 0; j < array.length; j++) {
                 if (array[i] == array[j]) {
                     counter1++;
@@ -23,8 +25,7 @@ public class MaxRepeatedNumber {
                 if (array[index] > number) {
                     number = array[index];
                 }
-            }
-            else if (counter1 > counter2) {
+            } else if (counter1 > counter2) {
                 counter2 = counter1;
                 number = array[index];
             }

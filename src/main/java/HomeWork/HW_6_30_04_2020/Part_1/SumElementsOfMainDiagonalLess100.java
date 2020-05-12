@@ -19,8 +19,7 @@ public class SumElementsOfMainDiagonalLess100 {
         if (array.length != array[0].length) {
             result = false;
             System.out.println("Array is not square");
-        }
-        else {
+        } else {
             for (int i = 0; i < array.length; i++) {
                 sum += array[i][i];
             }

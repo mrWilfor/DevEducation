@@ -2,6 +2,7 @@ package Practice.Practic_4_23_04_2020;
 
 public class TeachersRomaKopylovRecursion {
     private static int depth = 0;
+
     public static void main(String[] args) {
         f(5);
     }

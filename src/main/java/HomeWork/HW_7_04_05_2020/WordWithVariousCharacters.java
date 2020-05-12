@@ -25,6 +25,7 @@ public class WordWithVariousCharacters {
                     }
                 }
             }
+
             if (quantityRepeat == 0) {
                 arrayWords[counter] = array[i];
                 counter++;
@@ -33,27 +34,23 @@ public class WordWithVariousCharacters {
 
         if (counter == 0) {
             result = "Words with various characters not found";
-        }
-        else if (counter == 1) {
+        } else if (counter == 1) {
             result = arrayWords[0];
-        }
-        else {
+        } else {
             String[] newArrayWords = new String[counter];
+
             for (int i = 0; i < newArrayWords.length; i++) {
                 newArrayWords[i] = arrayWords[i];
             }
-
             arrayWords = newArrayWords;
 
             for (int i = 0; i < arrayWords.length; i++) {
                 if (i == 0) {
                     minWord = arrayWords[i];
                     maxWord = arrayWords[i];
-                }
-                else if (arrayWords[i].length() > maxWord.length()) {
+                } else if (arrayWords[i].length() > maxWord.length()) {
                     maxWord = arrayWords[i];
-                }
-                else if (arrayWords[i].length() < minWord.length()) {
+                } else if (arrayWords[i].length() < minWord.length()) {
                     minWord = arrayWords[i];
                 }
             }

@@ -27,27 +27,27 @@ public class ComparisonNumbers {
     public static int comparisonNumbers(int amount, int[] numbers, int typeComparison) {
 
         int j = 0;
-        switch(typeComparison) {
-            case(1):                              //displays max number
-                for(int i = 0; i < amount; i ++){
+        switch (typeComparison) {
+            case (1):                              //displays max number
+                for (int i = 0; i < amount; i++) {
                     j = Math.max(j, numbers[i]);
                 }
-                    break;
+                break;
 
-            case(2):                              //displays min number
-                for(int i = 0; i < amount; i ++){
+            case (2):                              //displays min number
+                for (int i = 0; i < amount; i++) {
                     j = Math.min(j, numbers[i]);
                 }
                 break;
 
-            case(3):                              //displays sum number
-                for(int i = 0; i < amount; i ++){
+            case (3):                              //displays sum number
+                for (int i = 0; i < amount; i++) {
                     j += numbers[i];
                 }
                 break;
 
-            case(4):                              //displays average numbers
-                for(int i = 0; i < amount; i ++){
+            case (4):                              //displays average numbers
+                for (int i = 0; i < amount; i++) {
                     j += numbers[i];
                 }
                 j /= amount;

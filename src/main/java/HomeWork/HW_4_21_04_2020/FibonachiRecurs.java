@@ -13,6 +13,7 @@ public class FibonachiRecurs {
 
     public static int fibonachi(int a, int b, int d) {
         int c = a + b;
+
         a = b;
         b = c;
 

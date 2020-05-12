@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class From_1_To_3_CharsE {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        stringE (sc);
+        stringE(sc);
     }
 
-    public static boolean stringE (Scanner scan) {
+    public static boolean stringE(Scanner scan) {
         String str = scan.nextLine();
         int checkE = 0;
 
@@ -20,8 +20,7 @@ public class From_1_To_3_CharsE {
         if (checkE <= 3) {
             System.out.println(true);
             return true;
-        }
-        else {
+        } else {
             System.out.println(false);
             return false;
         }

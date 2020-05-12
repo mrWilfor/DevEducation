@@ -19,6 +19,7 @@ public class EvenAndOdd {
         int a = number;
         int amountEventNumbers = 0;
         int event = 0;
+
         for (int i = 0; a > 0; i++) {
             if ((a % 10) % 2 == 0) {
                 event += (a % 10);
@@ -35,6 +36,7 @@ public class EvenAndOdd {
         int a = number;
         int amountOddNumbers = 0;
         int odd = 0;
+
         for (int i = 0; a > 0; i++) {
             if ((a % 10) % 2 != 0) {
                 odd += (a % 10);

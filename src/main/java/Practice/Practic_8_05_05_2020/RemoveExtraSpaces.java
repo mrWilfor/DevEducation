@@ -9,15 +9,14 @@ public class RemoveExtraSpaces {
     }
 
     public static String remove(Scanner scan) {
-        String str = scan.nextLine();
-        String[] array = str.split(" ");
+        String stringInput = scan.nextLine();
+        String[] array = stringInput.split(" ");
         String result = "";
 
         for (int i = 0; i < array.length; i++) {
             if (result == "" && array[i].length() != 0) {
                 result += array[i];
-            }
-            else if(array[i].length() != 0) {
+            } else if (array[i].length() != 0) {
                 result = result + " " + array[i];
             }
         }

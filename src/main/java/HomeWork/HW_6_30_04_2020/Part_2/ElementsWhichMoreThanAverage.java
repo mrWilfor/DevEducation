@@ -23,8 +23,7 @@ public class ElementsWhichMoreThanAverage {
             if (average < array[i]) {
                 if (result == "") {
                     result += array[i];
-                }
-                else {
+                } else {
                     result = result + ", " + array[i];
                 }
             }

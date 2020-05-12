@@ -14,8 +14,7 @@ public class LastCharFirstAndLast {
         if (str.length() == 0) {
             System.out.println("Empty string");
             return "Empty string";
-        }
-        else {
+        } else {
             String newString = str.substring(str.length() - 1) + str + str.substring(str.length() - 1);
             System.out.println(newString);
             return newString;

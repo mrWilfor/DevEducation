@@ -5,7 +5,8 @@ public class WordPalindromePractice {
         System.out.println(palindrome("12321"));
     }
 
-    public static boolean palindrome(String str) {
-        return new StringBuilder(str).toString().equals(new StringBuilder(str).reverse().toString());
+    public static boolean palindrome(String stringOutput) {
+        return stringOutput.replaceAll(" ", "")
+                .equals(new StringBuilder(stringOutput).reverse().toString());
     }
 }

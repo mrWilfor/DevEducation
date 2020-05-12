@@ -19,13 +19,11 @@ public class SequenceOfMainDiagonal {
 
         if (array.length != array[0].length) {
             result = "Array is not square";
-        }
-        else {
-            for (int i = 0; i < array.length; i ++) {
+        } else {
+            for (int i = 0; i < array.length; i++) {
                 if (array[i][i] >= valueElement) {
                     valueElement = array[i][i];
-                }
-                else {
+                } else {
                     indexSequenceViolation[0] = i;
                     indexSequenceViolation[1] = i;
                     result = Arrays.toString(indexSequenceViolation);

@@ -18,13 +18,11 @@ public class WordPalindrome {
             charOfWord[i] = charOfWord[j];
             charOfWord[j] = bufferVariable;
         }
-
         String reversWord = new String(charOfWord);
 
         if (word.equals(reversWord)) {
             result = "This word is palindrome";
-        }
-        else {
+        } else {
             result = "This word is not palindrome";
         }
         return result;

@@ -33,6 +33,7 @@ public class Task1 {
 
     public static int[] displaysColumn(int[][] array) {
         int[] columnArray = new int[array.length];
+
         for (int i = 0; i < array.length; i++) {
             columnArray[i] = array[i][4];
         }

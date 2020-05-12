@@ -18,6 +18,7 @@ public class SortString {
 
         while (trigger) {
             trigger = false;
+
             for (int i = 0; i < arrayOfWords.length - 1; i++) {
                 for (int j = i + 1; j < arrayOfWords.length; j++) {
                     if (arrayOfWords[i].length() < arrayOfWords[j].length()) {
@@ -29,11 +30,11 @@ public class SortString {
                 }
             }
         }
+
         for (int i = 0; i < arrayOfWords.length; i++) {
             if (i == 0) {
                 result += arrayOfWords[i];
-            }
-            else {
+            } else {
                 result = result + " " + arrayOfWords[i];
             }
         }
@@ -61,8 +62,7 @@ public class SortString {
         for (int i = 0; i < arrayOfWords.length; i++) {
             if (i == 0) {
                 result += arrayOfWords[i];
-            }
-            else {
+            } else {
                 result = result + " " + arrayOfWords[i];
             }
         }
@@ -77,6 +77,7 @@ public class SortString {
 
         do {
             trigger = false;
+
             for (int i = 0; i < arrayOfWords.length - 1; i++) {
                 if ((int) arrayOfWords[i].charAt(0) == (int) arrayOfWords[i + 1].charAt(0)) {
                     if (arrayOfWords[i].length() < arrayOfWords[i + 1].length()) {
@@ -85,8 +86,7 @@ public class SortString {
                         arrayOfWords[i + 1] = bufferVariable;
                         trigger = true;
                     }
-                }
-                else if ((int) arrayOfWords[i].charAt(0) > (int) arrayOfWords[i + 1].charAt(0)) {
+                } else if ((int) arrayOfWords[i].charAt(0) > (int) arrayOfWords[i + 1].charAt(0)) {
                     String bufferVariable = arrayOfWords[i];
                     arrayOfWords[i] = arrayOfWords[i + 1];
                     arrayOfWords[i + 1] = bufferVariable;
@@ -98,8 +98,7 @@ public class SortString {
         for (int i = 0; i < arrayOfWords.length; i++) {
             if (i == 0) {
                 result += arrayOfWords[i];
-            }
-            else {
+            } else {
                 result = result + " " + arrayOfWords[i];
             }
         }
@@ -114,6 +113,7 @@ public class SortString {
 
         do {
             trigger = false;
+
             for (int i = 0; i < arrayOfWords.length - 1; i++) {
                 char[] array1 = arrayOfWords[i].toCharArray();
                 char[] array2 = arrayOfWords[i + 1].toCharArray();
@@ -121,8 +121,7 @@ public class SortString {
 
                 if (array1.length < array2.length) {
                     minLengthWord = array1.length;
-                }
-                else {
+                } else {
                     minLengthWord = array2.length;
                 }
 
@@ -133,8 +132,7 @@ public class SortString {
                         arrayOfWords[i + 1] = bufferVariable;
                         trigger = true;
                         break;
-                    }
-                    else if ((int) array1[j] < (int) array2[j]) {
+                    } else if ((int) array1[j] < (int) array2[j]) {
                         break;
                     }
                 }
@@ -144,8 +142,7 @@ public class SortString {
         for (int i = 0; i < arrayOfWords.length; i++) {
             if (i == 0) {
                 result += arrayOfWords[i];
-            }
-            else {
+            } else {
                 result = result + " " + arrayOfWords[i];
             }
         }

@@ -27,50 +27,41 @@ public class ConvertOfTemperature {
                 valueT += 273.15;
                 valueT = new BigDecimal(valueT).setScale(2, RoundingMode.UP).doubleValue();
                 return valueT;
-            }
-            else if (conversionUnits.equals(fahrenheit)) {
+            } else if (conversionUnits.equals(fahrenheit)) {
                 valueT = valueT * 1.8 + 32;
                 valueT = new BigDecimal(valueT).setScale(2, RoundingMode.UP).doubleValue();
                 return valueT;
-            }
-            else {
+            } else {
                 System.out.println("Entered not correctly conversion units");
                 return 0;
             }
-        }
-        else if (initialUnits.equals(kelvin)) {
+        } else if (initialUnits.equals(kelvin)) {
             if (conversionUnits.equals(celsius)) {
                 valueT -= 273.15;
                 valueT = new BigDecimal(valueT).setScale(2, RoundingMode.UP).doubleValue();
                 return valueT;
-            }
-            else if (conversionUnits.equals(fahrenheit)) {
+            } else if (conversionUnits.equals(fahrenheit)) {
                 valueT = valueT * 1.8 - 459.67;
                 valueT = new BigDecimal(valueT).setScale(2, RoundingMode.UP).doubleValue();
                 return valueT;
-            }
-            else {
+            } else {
                 System.out.println("Entered not correctly conversion units");
                 return 0;
             }
-        }
-        else if (initialUnits.equals(fahrenheit)) {
+        } else if (initialUnits.equals(fahrenheit)) {
             if (conversionUnits.equals(kelvin)) {
                 valueT = (valueT + 459.67) / 1.8;
                 valueT = new BigDecimal(valueT).setScale(2, RoundingMode.UP).doubleValue();
                 return valueT;
-            }
-            else if (conversionUnits.equals(celsius)) {
+            } else if (conversionUnits.equals(celsius)) {
                 valueT = (valueT - 32) / 1.8;
                 valueT = new BigDecimal(valueT).setScale(2, RoundingMode.UP).doubleValue();
                 return valueT;
-            }
-            else {
+            } else {
                 System.out.println("Entered not correctly conversion units");
                 return 0;
             }
-        }
-        else {
+        } else {
             System.out.println("Entered not correctly initial units");
             return 0;
         }

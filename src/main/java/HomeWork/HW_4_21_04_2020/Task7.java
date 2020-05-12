@@ -23,11 +23,9 @@ public class Task7 {
                 if (i == firstBorder && j == firstBorder) {
                     System.out.print("*  ");
                     firstBorder++;
-                }
-                else if (i + j == secondBorder + 1) {
+                } else if (i + j == secondBorder + 1) {
                     System.out.print("*  ");
-                }
-                else {
+                } else {
                     System.out.print("   ");
                 }
             }

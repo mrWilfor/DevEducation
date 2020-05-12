@@ -21,12 +21,11 @@ public class HowCommonIsTheSymbol {
         do {
             int indexOfSymbol = word.indexOf(symbol[0]);
 
-            if (indexOfSymbol != - 1) {
+            if (indexOfSymbol != -1) {
                 word = word.substring(indexOfSymbol + 1);
                 quantity++;
                 trigger = true;
-            }
-            else {
+            } else {
                 result = "Symbol " + "\"" + symbol[0] + "\"" + " occurs " + quantity + " times";
                 trigger = false;
             }

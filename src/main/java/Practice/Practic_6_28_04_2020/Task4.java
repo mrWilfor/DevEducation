@@ -23,8 +23,7 @@ public class Task4 {
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0) {
                 array[i] *= array[i];
-            }
-            else if (array[i] % 2 != 0) {
+            } else if (array[i] % 2 != 0) {
                 array[i] *= 2;
             }
         }
@@ -38,8 +37,7 @@ public class Task4 {
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0) {
                 array[i] += a;
-            }
-            else if (i % 2 == 0) {
+            } else if (i % 2 == 0) {
                 array[i] -= b;
             }
         }

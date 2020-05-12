@@ -23,8 +23,7 @@ public class AllElementsOfArrayDivideByMaxElementOfArray {
             for (int j = 0; j < array[i].length; j++) {
                 if (i == 0 && j == 0) {
                     maxElement = array[i][j];
-                }
-                else if (array[i][j] > maxElement) {
+                } else if (array[i][j] > maxElement) {
                     maxElement = array[i][j];
                 }
             }
@@ -34,8 +33,7 @@ public class AllElementsOfArrayDivideByMaxElementOfArray {
             if (maxElement == 0) {
                 System.out.println("Division is impossible, max element of array - 0");
                 break;
-            }
-            else {
+            } else {
                 for (int j = 0; j < array[i].length; j++) {
                     newArray[i][j] = df.format(array[i][j] / maxElement);
                 }

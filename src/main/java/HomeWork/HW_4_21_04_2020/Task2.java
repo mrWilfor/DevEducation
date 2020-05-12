@@ -22,8 +22,7 @@ public class Task2 {
             for (int j = 1; j <= 7; j++) {
                 if ((i == firstBorder || j == firstBorder) || (i == secondBorder || j == secondBorder)) {
                     System.out.print("*  ");
-                }
-                else {
+                } else {
                     System.out.print("   ");
                 }
             }

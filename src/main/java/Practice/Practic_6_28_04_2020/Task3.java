@@ -20,6 +20,7 @@ public class Task3 {
                     trigger = false;
                 }
             }
+
             if (trigger) {
                 arrayNumbers[k] = randomNumber;
                 k++;

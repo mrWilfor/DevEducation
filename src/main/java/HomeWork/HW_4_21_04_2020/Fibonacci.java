@@ -8,10 +8,12 @@ public class Fibonacci {
     public static void main(String[] args) {
         fibonacci();
     }
+
     public static void fibonacci() {
         int low = 0;
         int mid = 1;
         int high = 0;
+
         System.out.println(low);
         System.out.println(mid);
 

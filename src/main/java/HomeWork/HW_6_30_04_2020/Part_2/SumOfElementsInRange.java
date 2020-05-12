@@ -16,6 +16,7 @@ public class SumOfElementsInRange {
         if ((firstIndexOfRange < 0 || secondIndexOfRange > array.length) || firstIndexOfRange > secondIndexOfRange) {
             return "Invalid range";
         }
+
         for (int i = firstIndexOfRange; i <= secondIndexOfRange; i++) {
             sum += array[i];
             quantity++;

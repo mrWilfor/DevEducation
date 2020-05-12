@@ -14,8 +14,8 @@ public class Task5 {
 
     public static int twoSameElementsOfArray(int[][] array) {
         int element = 0;
-        for(int i = 0; i < array.length; i++) {
-            for(int j = 0; j < array[i].length; j++) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
 
                 if (j == array[0].length - 1) {
                     for (int k = i + 1; k < array.length; k++) {
@@ -26,8 +26,7 @@ public class Task5 {
                             }
                         }
                     }
-                }
-                else {
+                } else {
                     for (int k = i; k < array.length; k++) {
                         for (int l = j + 1; l < array[k].length; l++) {
                             if (array[i][j] == array[k][l]) {

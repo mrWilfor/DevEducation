@@ -20,12 +20,10 @@ public class NewStringConstNthCharOldString {
             if (str.length() == 0) {
                 System.out.println("Empty string");
                 return "Empty string";
-            }
-            else if (index < str.length()) {
+            } else if (index < str.length()) {
                 newString += str.substring(index, index + 1);
                 index = index + firstIndex;
-            }
-            else if (index == str.length()) {
+            } else if (index == str.length()) {
                 newString += str.substring(index);
                 index = index + firstIndex;
             }

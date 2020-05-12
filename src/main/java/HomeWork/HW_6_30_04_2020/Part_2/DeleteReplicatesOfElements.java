@@ -14,6 +14,7 @@ public class DeleteReplicatesOfElements {
 
         for (int i = 0; i < array.length; i++) {
             int counterRepeating = 0;
+
             for (int j = i; j < array.length; j++) {
                 if (array[i] == array[j]) {
                     counterRepeating++;
@@ -24,15 +25,12 @@ public class DeleteReplicatesOfElements {
                 counterNewArray++;
             }
         }
-
         int[] newNewArray = new int[counterNewArray];
-
 
         for (int i = 0; i < counterNewArray; i++) {
             newNewArray[i] = newArray[i];
         }
         array = newNewArray;
-
         return array;
     }
 }

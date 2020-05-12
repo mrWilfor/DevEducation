@@ -15,7 +15,6 @@ public class RecursionDeleteX {
         if (index == -1) {
             return string;
         }
-
         String newString = string.replaceFirst("x", "");
         return deleteX(newString);
     }

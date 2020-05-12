@@ -20,18 +20,15 @@ public class Task5 {
                 if (difference == 0 && j == 0) {
                     difference = average - array[j];
                     element = array[j];
-                }
-                else if ((average - array[j]) <= difference) {
+                } else if ((average - array[j]) <= difference) {
                     difference = average - array[j];
                     element = array[j];
                 }
-            }
-            else if (array[j] >= average) {
+            } else if (array[j] >= average) {
                 if (difference == 0 && j == 0) {
                     difference = array[j] - average;
                     element = array[j];
-                }
-                else if ((array[j] - average) <= difference) {
+                } else if ((array[j] - average) <= difference) {
                     difference = array[j] - average;
                     element = array[j];
                 }

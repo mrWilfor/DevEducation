@@ -11,7 +11,7 @@ public class Area {
     	double pi = 3.1416;
     	int radius = 10;
 
-//��� ������ ���� ��� ���
+
     	float area = ;
 //
     	System.out.printf("Area of circle is %.2f", area);
@@ -30,7 +30,6 @@ public class Area {
             double pi = 3.1416;
             int radius = 10;
 
-//��� ������ ���� ��� ���
             float area = (float)(pi * radius * radius) ; //This is my code
 
             System.out.printf("Area of circle is %.2f", area);

@@ -24,12 +24,10 @@ public class Task6 {
             for (int j = 1; j <= 7; j++) {
                 if (i == firstBorder || j == secondBorder) {
                     System.out.print("*  ");
-                }
-                else if (i == diagonal && j == diagonal){
+                } else if (i == diagonal && j == diagonal) {
                     System.out.print("*  ");
                     diagonal++;
-                }
-                else {
+                } else {
                     System.out.print("   ");
                 }
             }

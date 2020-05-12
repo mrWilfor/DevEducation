@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class DeleteFromStringRepeatCharacters {
     public static void main(String[] args) {
-      Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println(deleteRepeatCharacters(sc));
     }
 
     public static String deleteRepeatCharacters(Scanner scan) {
-        String str1 = scan.nextLine();
-        str1 = str1.replaceAll(" ", "");
-        char[] array = str1.toCharArray();
+        String stringInput = scan.nextLine();
+        stringInput = stringInput.replaceAll(" ", "");
+        char[] array = stringInput.toCharArray();
 
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
@@ -21,9 +21,9 @@ public class DeleteFromStringRepeatCharacters {
             }
         }
 
-        str1 = new String(array);
-        str1 = str1.replaceAll(" ", "");
+        String stringOutput = new String(array);
+        stringOutput = stringOutput.replaceAll(" ", "");
 
-        return str1;
+        return stringOutput;
     }
 }

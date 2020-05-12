@@ -17,23 +17,21 @@ public class RandomCombinationOfWords {
         while (!(word.equals("EXIT"))) {
             word = scan.nextLine();
 
-             if (word.equals("EXIT")) {
-                 break;
-             }
-             else if (arrayOfWords.length == counter + 1) {
-                 arrayOfWords[counter] = word;
-                 counter++;
-             }
-             else {
-                 String[] newArrayOfWords = new String[arrayOfWords.length + 1];
+            if (word.equals("EXIT")) {
+                break;
+            } else if (arrayOfWords.length == counter + 1) {
+                arrayOfWords[counter] = word;
+                counter++;
+            } else {
+                String[] newArrayOfWords = new String[arrayOfWords.length + 1];
 
-                 for (int i = 0; i < arrayOfWords.length; i++) {
-                     newArrayOfWords[i] = arrayOfWords[i];
-                 }
-                 arrayOfWords = newArrayOfWords;
-                 arrayOfWords[counter] = word;
-                 counter++;
-             }
+                for (int i = 0; i < arrayOfWords.length; i++) {
+                    newArrayOfWords[i] = arrayOfWords[i];
+                }
+                arrayOfWords = newArrayOfWords;
+                arrayOfWords[counter] = word;
+                counter++;
+            }
         }
         int[] arrayRandomNumbers = new int[arrayOfWords.length];
 
@@ -62,8 +60,7 @@ public class RandomCombinationOfWords {
         for (int i = 0; i < arrayOfWords.length; i++) {
             if (i == 0) {
                 result += arrayOfWords[i];
-            }
-            else {
+            } else {
                 result = result + " " + arrayOfWords[i];
             }
         }

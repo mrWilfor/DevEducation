@@ -16,8 +16,7 @@ public class Task9 {
             if (i < 0) {
                 newArray[leftIndexArray] = i;
                 leftIndexArray++;
-            }
-            else {
+            } else {
                 newArray[rightIndexArray] = i;
                 rightIndexArray--;
             }

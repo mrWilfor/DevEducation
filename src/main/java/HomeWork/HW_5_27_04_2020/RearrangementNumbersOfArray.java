@@ -10,6 +10,7 @@ public class RearrangementNumbersOfArray {
     public static int[] rearrangement(int... array) {
         for (int i = 0, j = array.length - 1; i < j; i++, j--) {
             int bufferVariable = 0;
+
             bufferVariable = array[i];
             array[i] = array[j];
             array[j] = bufferVariable;

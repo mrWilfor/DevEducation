@@ -9,6 +9,7 @@ public class BubbleSort {
 
     public static int[] sort(int... array) {
         boolean trigger = true;
+
         while (trigger) {
             trigger = false;
 

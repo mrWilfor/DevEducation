@@ -13,7 +13,7 @@ package HomeWork.HW_4_21_04_2020;
 
 public class Task10 {
     public static void main(String[] args) {
-        task10( 7);
+        task10(7);
     }
 
     public static void task10(int secondBorder) {
@@ -23,18 +23,14 @@ public class Task10 {
             for (int j = 1; j <= 7; j++) {
                 if (j == secondBorder) {
                     System.out.print("*  ");
-                }
-                else if (j < (secondBorder + 1) / 2) {
+                } else if (j < (secondBorder + 1) / 2) {
                     System.out.print("   ");
-                }
-                else if (i == diagonal1 && j == diagonal1) {
+                } else if (i == diagonal1 && j == diagonal1) {
                     System.out.print("*  ");
                     diagonal1++;
-                }
-                else if (i + j == secondBorder + 1) {
+                } else if (i + j == secondBorder + 1) {
                     System.out.print("*  ");
-                }
-                else {
+                } else {
                     System.out.print("   ");
                 }
             }

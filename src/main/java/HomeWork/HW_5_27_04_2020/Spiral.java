@@ -7,8 +7,8 @@ public class Spiral {
         Scanner sc = new Scanner(System.in);
         int[][] arr = spiralFillOfArray(sc);
 
-        for (int i = 0; i < arr.length; i ++) {
-            for (int j = 0; j < arr[0].length; j ++) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
                 System.out.print(arr[i][j] + "  ");
             }
             System.out.println();
@@ -20,17 +20,16 @@ public class Spiral {
         int x = scan.nextInt();
         System.out.println("Enter length X:");
         int y = scan.nextInt();
-
         int[][] array = new int[y][x];
 
         int right = array[0].length;
         int down = array.length;
-        int left = - 1;
+        int left = -1;
         int up = 0;
         int directionSwitch = 0;
         int arrayLength = (array[0].length * array.length) + 1;
-        int index1 = - 1;
-        int index2 = - 1;
+        int index1 = -1;
+        int index2 = -1;
         int number = 1;
         array[0][0] = 0;
 
@@ -38,6 +37,7 @@ public class Spiral {
             if (directionSwitch == 0) {
                 index1++;
                 index2++;
+
                 while (index2 < right) {
                     array[index1][index2] = number;
                     index2++;
@@ -45,21 +45,21 @@ public class Spiral {
                 }
                 right--;
                 directionSwitch++;
-            }
-            else if (directionSwitch == 1) {
+            } else if (directionSwitch == 1) {
                 index1++;
                 index2--;
-                    while (index1 < down) {
-                        array[index1][index2] = number;
-                        index1++;
-                        number++;
-                    }
-                    down--;
-                    directionSwitch++;
-            }
-            else if (directionSwitch == 2) {
+
+                while (index1 < down) {
+                    array[index1][index2] = number;
+                    index1++;
+                    number++;
+                }
+                down--;
+                directionSwitch++;
+            } else if (directionSwitch == 2) {
                 index1--;
                 index2--;
+
                 while (index2 > left) {
                     array[index1][index2] = number;
                     index2--;
@@ -67,10 +67,10 @@ public class Spiral {
                 }
                 left++;
                 directionSwitch++;
-            }
-            else if (directionSwitch == 3) {
+            } else if (directionSwitch == 3) {
                 index1--;
                 index2++;
+
                 while (index1 > up) {
                     array[index1][index2] = number;
                     index1--;

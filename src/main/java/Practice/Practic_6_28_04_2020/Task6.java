@@ -14,6 +14,7 @@ public class Task6 {
 
         for (int i = 2; i < array.length - 3; i++) {
             newSum = array[i - 2] + array[i - 1] + array[i] + array[i + 1] + array[i + 2];
+
             if (newSum > sum) {
                 sum = newSum;
                 newArray[0] = array[i - 2];

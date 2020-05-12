@@ -13,6 +13,7 @@ public class Task1 {
         char ch2 = (char) q; // 2 variable int q cast to char
         short s = 1;  // 3
         char ch3 = (char) s; // 4 variable short s cast to char
+
         System.out.println("q = " + q + " ch2 = " + ch2 + " s = " + s + " ch3 = " + ch3);
     }
 }

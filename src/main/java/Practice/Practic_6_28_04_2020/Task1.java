@@ -22,6 +22,7 @@ public class Task1 {
             for (int i = 0; i < array.length; i++) {
                 if (array[i] % 2 == 0) {
                     evenNumber = array[i];
+
                     for (int j = i; j < array.length; j++) {
                         if (array[j] % 2 == 0) {
                             if (array[j] < array[i]) {
@@ -38,6 +39,7 @@ public class Task1 {
 
                 if (array[i] % 2 != 0) {
                     oddNumber = array[i];
+
                     for (int j = i; j < array.length; j++) {
                         if (array[j] % 2 != 0) {
                             if (array[j] > array[i]) {
@@ -51,6 +53,7 @@ public class Task1 {
                     newArray[counterOdd] = oddNumber;
                     counterOdd = counterOdd + 2;
                 }
+
                 if (i == array.length - 1) {
                     trigger = false;
                 }

@@ -20,14 +20,13 @@ public class FillRangeRandomNumbers {
 
         if (firstIndex < 0 || secondIndex >= array.length) {
             System.out.println("Invalid range");
-        }
-        else {
+        } else {
             for (int i = firstIndex; i <= secondIndex; i++) {
                 array[i] = (int) (Math.random() * secondIndex * 2);
                 if (array[i] == 0) {
                     i--;
                 }
-        }
+            }
         }
         return array;
     }

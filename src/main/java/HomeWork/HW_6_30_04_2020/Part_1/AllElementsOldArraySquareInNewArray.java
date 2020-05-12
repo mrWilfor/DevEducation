@@ -13,8 +13,7 @@ public class AllElementsOldArraySquareInNewArray {
             System.out.println("Invalid Index");
             int[] arr = {0};
             return arr;
-        }
-        else {
+        } else {
             int[] newArray = new int[secondIndex - firstIndex + 1];
 
             for (int i = 0, j = firstIndex; j <= secondIndex; i++, j++) {

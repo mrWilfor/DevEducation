@@ -14,11 +14,13 @@ public class Hypotenuse {
 
     public static int hypotenuse(int a, int b) { //This is method using integer number
         int c = (int) Math.sqrt(a * a + b * b);
+
         return c;
     }
 
     public static double hypotenuse(double a, double b) {  //This is method using double type number
         double c = Math.sqrt(a * a + b * b);
+
         return c;
     }
 }

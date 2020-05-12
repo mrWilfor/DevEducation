@@ -21,8 +21,7 @@ public class StringStartWithHi {
         if (checkHi.equals("hi")) {
             System.out.println(true);
             return true;
-        }
-        else {
+        } else {
             System.out.println(false);
             return false;
         }

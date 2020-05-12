@@ -27,28 +27,24 @@ public class Calculator {
             double number2 = Double.parseDouble(str1.substring(indexSum + 1));
             double sum = number1 + number2;
             result = result + number1 + " + " + number2 + " = " + sum;
-        }
-        else if (indexMultiplication != -1) {
+        } else if (indexMultiplication != -1) {
             double number1 = Double.parseDouble(str1.substring(0, indexMultiplication));
             double number2 = Double.parseDouble(str1.substring(indexMultiplication + 1));
             double multiplication = number1 * number2;
             BigDecimal res = new BigDecimal(multiplication).setScale(2, RoundingMode.HALF_EVEN);
             result = result + number1 + " * " + number2 + " = " + res;
-        }
-        else if (indexDivision != -1) {
+        } else if (indexDivision != -1) {
             double number1 = Double.parseDouble(str1.substring(0, indexDivision));
             double number2 = Double.parseDouble(str1.substring(indexDivision + 1));
             double division = number1 / number2;
             BigDecimal res = new BigDecimal(division).setScale(2, RoundingMode.HALF_EVEN);
             result = result + number1 + " / " + number2 + " = " + res;
-        }
-        else if (indexDivisionByRemainder != -1) {
+        } else if (indexDivisionByRemainder != -1) {
             double number1 = Double.parseDouble(str1.substring(0, indexDivisionByRemainder));
             double number2 = Double.parseDouble(str1.substring(indexDivisionByRemainder + 1));
             double division = number1 % number2;
             result = result + number1 + " % " + number2 + " = " + division;
-        }
-        else if (indexSubtraction != -1) {
+        } else if (indexSubtraction != -1) {
             if (indexSubtraction == 0) {
                 int indexFrontNext = str1.indexOf("-", 1);
                 double number1 = Double.parseDouble(str1.substring(0, indexFrontNext));
@@ -56,6 +52,7 @@ public class Calculator {
                 double division = number1 - number2;
                 result = result + number1 + " - " + number2 + " = " + division;
             }
+
             if (indexSubtraction != 0) {
                 double number1 = Double.parseDouble(str1.substring(0, indexSubtraction));
                 double number2 = Double.parseDouble(str1.substring(indexSubtraction + 1));

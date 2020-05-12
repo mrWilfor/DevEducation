@@ -22,11 +22,9 @@ public class Task3 {
             for (int j = 1; j <= 7; j++) {
                 if (i == firstBorder || j == firstBorder) {
                     System.out.print("*  ");
-                }
-                else if (i + j == secondBorder + 1){
+                } else if (i + j == secondBorder + 1) {
                     System.out.print("*  ");
-                }
-                else {
+                } else {
                     System.out.print("   ");
                 }
             }

@@ -16,11 +16,11 @@ public class Year {
         int c = 0;
         int d;
         c = original - entered;
-        if((c % 4) == 0) {
+
+        if ((c % 4) == 0) {
             System.out.println("This year is lofty, because he have 366 days");
             d = 366;
-        }
-        else {
+        } else {
             System.out.println("This years is not lofty, because he have 365 days");
             d = 365;
         }

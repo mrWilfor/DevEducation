@@ -16,11 +16,10 @@ public class Task4 {
     public static int minNumberInStringArray(int[][] array, int numberString) {
         int number = 0;
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (i == 0) {
                 number = array[numberString - 1][i];
-            }
-            else if (array[numberString - 1][i] < number) {
+            } else if (array[numberString - 1][i] < number) {
                 number = array[numberString - 1][i];
             }
         }
@@ -30,7 +29,7 @@ public class Task4 {
     public static int maxNumberInColumnArray(int[][] array, int numberColumn) {
         int number = 0;
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (array[i][numberColumn - 1] > number) {
                 number = array[i][numberColumn - 1];
             }

@@ -7,16 +7,14 @@ public class RabbitsSum {
 
     public static int rabbits(int requiredNumberRabbit) {
         int sumEars = 0;
+
         if (requiredNumberRabbit == 0) {
             return sumEars;
-        }
-        else if (requiredNumberRabbit % 2 == 0) {
+        } else if (requiredNumberRabbit % 2 == 0) {
             sumEars += 3;
-        }
-        else {
+        } else {
             sumEars += 2;
         }
-
         return rabbits(requiredNumberRabbit - 1) + sumEars;
     }
 }

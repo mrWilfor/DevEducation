@@ -24,13 +24,12 @@ public class Task6 {
             for (int j = 0; j < array.length; j++) {
                 sum += array[i][j];
             }
+
             if (i == 0) {
                 sumString = sum;
-            }
-            else if (sum == sumString) {
+            } else if (sum == sumString) {
                 sumString = sum;
-            }
-            else {
+            } else {
                 return false;
             }
         }
@@ -41,13 +40,12 @@ public class Task6 {
             for (int j = 0; j < array.length; j++) {
                 sum += array[j][i];
             }
+
             if (i == 0) {
                 sumColumn = sum;
-            }
-            else if (sum == sumColumn) {
+            } else if (sum == sumColumn) {
                 sumColumn = sum;
-            }
-            else {
+            } else {
                 return false;
             }
         }
@@ -56,13 +54,13 @@ public class Task6 {
             sumDiagonal1 += array[i][j];
         }
 
-        for(int i = array[0].length - 1, j = 0; i >= 0 && j < array.length; i--, j++) {
+        for (int i = array[0].length - 1, j = 0; i >= 0 && j < array.length; i--, j++) {
             sumDiagonal2 += array[i][j];
         }
-        if((sumString == sumColumn && sumColumn == sumDiagonal1) && sumDiagonal1 == sumDiagonal2) {
+
+        if ((sumString == sumColumn && sumColumn == sumDiagonal1) && sumDiagonal1 == sumDiagonal2) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

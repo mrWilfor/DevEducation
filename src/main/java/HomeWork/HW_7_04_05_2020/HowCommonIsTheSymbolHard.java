@@ -15,19 +15,19 @@ public class HowCommonIsTheSymbolHard {
             if (array[i] == ' ') {
                 continue;
             }
+
             for (int j = 0; j < array.length; j++) {
                 if (i == j) {
                     counter++;
-                }
-                else if (array[i] == array[j]) {
+                } else if (array[i] == array[j]) {
                     counter++;
                     array[j] = ' ';
                 }
             }
+
             if (i == 0) {
                 result = result + "\"" + array[i] + "\" " + "repeat " + counter + " times";
-            }
-            else {
+            } else {
                 result = result + ", " + "\"" + array[i] + "\" " + "repeat " + counter + " times";
             }
             array[i] = ' ';

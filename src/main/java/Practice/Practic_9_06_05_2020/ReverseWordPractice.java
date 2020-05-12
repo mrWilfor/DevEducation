@@ -9,13 +9,12 @@ public class ReverseWordPractice {
     }
 
     public static String reverse(Scanner scan) {
-        String str = scan.nextLine();
-        String[] arrayString = str.split(" ");
+        String stringInput = scan.nextLine();
+        String[] arrayString = stringInput.split(" ");
 
-        for(int i = 0; i < arrayString.length; i++) {
+        for (int i = 0; i < arrayString.length; i++) {
             arrayString[i] = new StringBuilder(arrayString[i]).reverse().toString();
         }
-        str = String.join(" ", arrayString);
-        return str;
+        return String.join(" ", arrayString);
     }
 }

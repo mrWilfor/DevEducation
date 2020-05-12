@@ -16,12 +16,10 @@ public class TeachersRomaKopylovRecursionBrackets {
         if (first == -1 && last == -1) {
             System.out.println(s);
             return true;
-        }
-        else if (first != -1 && last != -1) {
-            s = s.substring(0, first) + s.substring(first + 1, last ) + s.substring(last + 1);
+        } else if (first != -1 && last != -1) {
+            s = s.substring(0, first) + s.substring(first + 1, last) + s.substring(last + 1);
             return rec(s);
         }
-
         return false;
     }
 }

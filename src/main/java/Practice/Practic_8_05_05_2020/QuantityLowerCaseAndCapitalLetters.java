@@ -9,17 +9,16 @@ public class QuantityLowerCaseAndCapitalLetters {
     }
 
     public static String quantity(Scanner scan) {
-        String str = scan.nextLine();
+        String stringInput = scan.nextLine();
         String result = "";
-        char[] array = str.toCharArray();
+        char[] arrayOfChars = stringInput.toCharArray();
         int counterUpperCase = 0;
         int counterLowerCase = 0;
 
-        for (int i = 0; i < array.length; i++) {
-            if (((int) array[i] > 64 && (int) array[i] < 91) && array[i] != ' ') {
+        for (int i = 0; i < arrayOfChars.length; i++) {
+            if (((int) arrayOfChars[i] > 64 && (int) arrayOfChars[i] < 91) && arrayOfChars[i] != ' ') {
                 counterUpperCase++;
-            }
-            else if (((int) array[i] > 96 && (int) array[i] < 123) && array[i] != ' ') {
+            } else if (((int) arrayOfChars[i] > 96 && (int) arrayOfChars[i] < 123) && arrayOfChars[i] != ' ') {
                 counterLowerCase++;
             }
         }

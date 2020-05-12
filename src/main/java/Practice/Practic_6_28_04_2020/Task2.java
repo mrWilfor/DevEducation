@@ -20,21 +20,18 @@ public class Task2 {
                     bufferVariable = array[i];
                     array[i] = array[arrayLength];
                     array[arrayLength] = bufferVariable;
-                }
-                else if ((array[i] % 2 != 0 && array[j] % 2 == 0) && array[j] != 0) {
+                } else if ((array[i] % 2 != 0 && array[j] % 2 == 0) && array[j] != 0) {
                     bufferVariable = array[i];
                     array[i] = array[j];
                     array[j] = bufferVariable;
 
-                }
-                else if (array[j] % 2 == 0 && array[j] != 0) {
+                } else if (array[j] % 2 == 0 && array[j] != 0) {
                     if (array[i] > array[j]) {
                         bufferVariable = array[i];
                         array[i] = array[j];
                         array[j] = bufferVariable;
                     }
-                }
-                else if (array[i] % 2 != 0 && array[j] != 0) {
+                } else if (array[i] % 2 != 0 && array[j] != 0) {
                     if (array[i] < array[j]) {
                         bufferVariable = array[i];
                         array[i] = array[j];

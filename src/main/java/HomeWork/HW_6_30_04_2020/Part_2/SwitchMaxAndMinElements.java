@@ -39,8 +39,7 @@ public class SwitchMaxAndMinElements {
                     minNumber = array[i][j];
                     minNumberIndex1 = i;
                     minNumberIndex2 = j;
-                }
-                else if (array[i][j] < minNumber) {
+                } else if (array[i][j] < minNumber) {
                     minNumber = array[i][j];
                     minNumberIndex1 = i;
                     minNumberIndex2 = j;

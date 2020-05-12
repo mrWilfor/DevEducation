@@ -13,15 +13,16 @@ public class DeletePartOfString {
         String str1 = scan.nextLine();
         System.out.print("Entered number of symbol:");
         int index = scan.nextInt();
+
         if (index > str1.length() || index < 0) {
             return "invalid number of symbol";
         }
         System.out.print("Entered delete size:");
         int length = scan.nextInt();
+
         if (index - 1 + length > str1.length()) {
             return "invalid delete size";
         }
-
         String str2 = str1.substring(0, index - 1) + str1.substring(index - 1 + length);
         return str2;
     }
