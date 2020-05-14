@@ -13,7 +13,7 @@ Cover the program with tests.
 * after receiving a response, the program does not end and we can enter a new expression
 * there may be no spaces between characters in a line
 */
-package Practice.Practic_2_17_04_20220;
+package practice.practic_2_17_04_20220;
 
 import java.math.BigDecimal;
 import java.util.Scanner;

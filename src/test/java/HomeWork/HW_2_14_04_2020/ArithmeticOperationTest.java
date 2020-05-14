@@ -1,4 +1,4 @@
-package HomeWork.HW_2_14_04_2020;
+package homeWork.hw_2_14_04_2020;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

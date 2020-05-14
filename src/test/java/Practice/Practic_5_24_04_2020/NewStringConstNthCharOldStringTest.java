@@ -1,4 +1,4 @@
-package Practice.Practic_5_24_04_2020;
+package practice.practic_5_24_04_2020;
 
 import org.junit.jupiter.api.Test;
 import java.util.Scanner;

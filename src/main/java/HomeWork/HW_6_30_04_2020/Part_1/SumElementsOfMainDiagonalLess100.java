@@ -1,4 +1,4 @@
-package HomeWork.HW_6_30_04_2020.Part_1;
+package homeWork.hw_6_30_04_2020.part_1;
 
 public class SumElementsOfMainDiagonalLess100 {
     public static void main(String[] args) {

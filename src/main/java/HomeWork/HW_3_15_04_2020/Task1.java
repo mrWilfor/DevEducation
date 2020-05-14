@@ -5,7 +5,7 @@ char ch2 = q; // 2
 short s = 1;  // 3
 char ch3 = s; // 4
 */
-package HomeWork.HW_3_15_04_2020;
+package homeWork.hw_3_15_04_2020;
 
 public class Task1 {
     public static void main(String[] args) {

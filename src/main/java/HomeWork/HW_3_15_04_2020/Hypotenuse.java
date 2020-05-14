@@ -3,7 +3,7 @@
  * legs. Those. changing only the values ??of the legs, the program should still compile and correctly calculate
  * hypotenuse.
  */
-package HomeWork.HW_3_15_04_2020;
+package homeWork.hw_3_15_04_2020;
 
 public class Hypotenuse {
 

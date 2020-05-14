@@ -1,5 +1,5 @@
 // Display the alphabet ASCII. Displays on the screen the correspondence between the characters and their numerical designations.
-package Practice.Practic_1_16_04_20220;
+package practice.practic_1_16_04_20220;
 
 public class Alphabet {
 

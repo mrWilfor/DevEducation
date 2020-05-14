@@ -2,7 +2,7 @@
 This program displays on the screen numbers of fibonacci
 * */
 
-package HomeWork.HW_4_21_04_2020;
+package homeWork.hw_4_21_04_2020;
 
 public class FibonachiRecurs {
     public static void main(String[] args) {

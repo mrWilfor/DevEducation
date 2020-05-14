@@ -2,7 +2,7 @@
 we get "8" at the output, since only two digits of "4" are even.
 Write a program that counts the number of even and odd numbers in a number.
 */
-package Practice.Practic_1_16_04_20220;
+package practice.practic_1_16_04_20220;
 
 import java.util.Scanner;
 

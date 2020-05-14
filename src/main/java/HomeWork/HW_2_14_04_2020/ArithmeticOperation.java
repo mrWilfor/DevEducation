@@ -14,7 +14,7 @@
 
         Write tests for all operations with primitive data types.*/
 
-package HomeWork.HW_2_14_04_2020;
+package homeWork.hw_2_14_04_2020;
 
 public class ArithmeticOperation {
 

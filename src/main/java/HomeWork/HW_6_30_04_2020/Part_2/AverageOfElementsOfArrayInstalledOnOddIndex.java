@@ -1,4 +1,4 @@
-package HomeWork.HW_6_30_04_2020.Part_2;
+package homeWork.hw_6_30_04_2020.part_2;
 
 public class AverageOfElementsOfArrayInstalledOnOddIndex {
     public static void main(String[] args) {

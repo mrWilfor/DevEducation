@@ -1,6 +1,6 @@
-package HomeWork.HW_8_07_05_2020.toFormatFromFormatPerson;
+package homeWork.hw_8_07_05_2020.toFormatFromFormatPerson;
 
-import HomeWork.HW_8_07_05_2020.object.Person;
+import homeWork.hw_8_07_05_2020.object.person.Person;
 
 public class YMLFormatPerson extends AbstractFormatPerson {
     @Override
@@ -61,6 +61,48 @@ public class YMLFormatPerson extends AbstractFormatPerson {
         result.setAge(Integer.parseInt(buffer));
 
         return result;
+    }
+
+    @Override
+    public String toFormatStr(Person[] arrayInput) {
+        String result = "";
+
+        for (int i = 0; i < arrayInput.length; i++) {
+            result = result.concat(toFormat(arrayInput[i]));;
+        }
+        return result;
+    }
+
+    @Override
+    public Person[] fromFormatObj(String stringInput) {
+        boolean trigger = false;
+        Person[] arrayOutput = new Person[0];
+
+        do {
+            trigger = false;
+            int index = stringInput.lastIndexOf("Person:");
+
+            if (index != -1) {
+                String stringPerson = stringInput.substring(index);
+                Person person = fromFormat(stringPerson);
+
+                if (arrayOutput.length == 0) {
+                    arrayOutput = new Person[1];
+                    arrayOutput[0] = person;
+                } else {
+                    Person[] newArrayOutput = new Person[arrayOutput.length + 1];
+
+                    for (int i = 0; i < arrayOutput.length; i++) {
+                        newArrayOutput[i + 1] = arrayOutput[i];
+                    }
+                    newArrayOutput[0] = person;
+                    arrayOutput = newArrayOutput;
+                }
+                stringInput = stringInput.substring(0, index);
+                trigger = true;
+            }
+        } while (trigger);
+        return arrayOutput;
     }
 
     @Override

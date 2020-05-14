@@ -4,7 +4,7 @@ display their sum in the console. Required input options:
 2) -2 and 2
 3) 2.5 and 2.5
 4) 2000000000 and 200000000 * */
-package HomeWork.HW_1_13_04_2020;
+package homeWork.hw_1_13_04_2020;
 
 public class Sum {
     public static void main(String[] args) {

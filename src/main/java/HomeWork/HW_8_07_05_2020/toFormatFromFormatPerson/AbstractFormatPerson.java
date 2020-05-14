@@ -1,11 +1,15 @@
-package HomeWork.HW_8_07_05_2020.toFormatFromFormatPerson;
+package homeWork.hw_8_07_05_2020.toFormatFromFormatPerson;
 
-import HomeWork.HW_8_07_05_2020.object.Person;
+import homeWork.hw_8_07_05_2020.object.person.Person;
 
 public abstract class AbstractFormatPerson {
     public abstract String toFormat(Person p);
 
     public abstract Person fromFormat(String str);
+
+    public abstract String toFormatStr(Person[] arrayInput);
+
+    public abstract Person[] fromFormatObj(String stringInput);
 
     public String[] toFormat(Person[] arrayInput){
         String[] result = new String[arrayInput.length];

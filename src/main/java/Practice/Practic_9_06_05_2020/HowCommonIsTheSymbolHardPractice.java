@@ -1,4 +1,4 @@
-package Practice.Practic_9_06_05_2020;
+package practice.practic_9_06_05_2020;
 
 public class HowCommonIsTheSymbolHardPractice {
     public static void main(String[] args) {

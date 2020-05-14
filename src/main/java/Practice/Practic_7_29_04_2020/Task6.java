@@ -1,4 +1,4 @@
-package Practice.Practic_7_29_04_2020;
+package practice.practic_7_29_04_2020;
 
 public class Task6 {
     public static void main(String[] args) {

@@ -1,5 +1,5 @@
 //Determine which of the three numbers entered by the user is the maximum and display it on the screen.
-package Practice.Practic_1_16_04_20220;
+package practice.practic_1_16_04_20220;
 
 import java.util.Scanner;
 

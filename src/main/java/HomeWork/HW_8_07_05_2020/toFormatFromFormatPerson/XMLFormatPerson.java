@@ -1,14 +1,13 @@
-package HomeWork.HW_8_07_05_2020.toFormatFromFormatPerson;
+package homeWork.hw_8_07_05_2020.toFormatFromFormatPerson;
 
-import HomeWork.HW_8_07_05_2020.object.Person;
+import homeWork.hw_8_07_05_2020.object.person.Person;
 
 public class XMLFormatPerson extends AbstractFormatPerson {
     @Override
     public String toFormat(Person p) {
         if (p == null) {
             return null;
-        }
-        else {
+        } else {
             return "<Person>\n" +
                     "\t<id>" + p.getId() + "</id>\n\r" +
                     "\t<firstName>" + p.getFirstName() + "</firstName>\n\r" +
@@ -56,6 +55,49 @@ public class XMLFormatPerson extends AbstractFormatPerson {
 
         result.setAge(Integer.parseInt(buffer));
         return result;
+    }
+
+    @Override
+    public String toFormatStr(Person[] arrayInput) {
+        String result = "";
+
+        for (int i = 0; i < arrayInput.length; i++) {
+            result = result.concat(toFormat(arrayInput[i]));
+            result = result.concat("\n\n");
+        }
+        return result;
+    }
+
+    @Override
+    public Person[] fromFormatObj(String stringInput) {
+        boolean trigger = false;
+        Person[] arrayOutput = new Person[0];
+
+        do {
+            trigger = false;
+            int index = stringInput.indexOf("</Person>");
+
+            if (index != -1) {
+                String stringPerson = stringInput.substring(0, index + 9);
+                Person person = fromFormat(stringPerson);
+
+                if (arrayOutput.length == 0) {
+                    arrayOutput = new Person[1];
+                    arrayOutput[0] = person;
+                } else {
+                    Person[] newArrayOutput = new Person[arrayOutput.length + 1];
+
+                    for (int i = 0; i < arrayOutput.length; i++) {
+                        newArrayOutput[i] = arrayOutput[i];
+                    }
+                    newArrayOutput[newArrayOutput.length - 1] = person;
+                    arrayOutput = newArrayOutput;
+                }
+                    stringInput = stringInput.substring(index + 9);
+                trigger = true;
+            }
+        } while (trigger);
+        return arrayOutput;
     }
 
     @Override

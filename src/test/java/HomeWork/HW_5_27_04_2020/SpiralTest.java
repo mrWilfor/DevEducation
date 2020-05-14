@@ -1,4 +1,4 @@
-package HomeWork.HW_5_27_04_2020;
+package homeWork.hw_5_27_04_2020;
 
 import org.junit.jupiter.api.Test;
 import java.util.Scanner;

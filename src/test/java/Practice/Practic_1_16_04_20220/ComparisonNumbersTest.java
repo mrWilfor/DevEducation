@@ -1,4 +1,4 @@
-package Practice.Practic_1_16_04_20220;
+package practice.practic_1_16_04_20220;
 
 import org.junit.jupiter.api.Test;
 

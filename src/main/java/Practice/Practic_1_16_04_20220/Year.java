@@ -1,5 +1,5 @@
 // 2: Determine the number of days in a year that a user enters. In leap - 366 days, in the usual 365.
-package Practice.Practic_1_16_04_20220;
+package practice.practic_1_16_04_20220;
 
 import java.util.Scanner;
 

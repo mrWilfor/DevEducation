@@ -5,7 +5,7 @@ User enters from 2 numbers and more (check)
 ����- display the sum of all numbers on the screen.
 ����- display the average value of numbers on the screen.
     */
-package Practice.Practic_1_16_04_20220;
+package practice.practic_1_16_04_20220;
 
 import java.util.Scanner;
 

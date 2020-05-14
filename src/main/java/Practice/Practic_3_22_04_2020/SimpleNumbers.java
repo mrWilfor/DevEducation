@@ -1,4 +1,4 @@
-package Practice.Practic_3_22_04_2020;
+package practice.practic_3_22_04_2020;
 
 public class SimpleNumbers {
     public static void main(String[] args) {

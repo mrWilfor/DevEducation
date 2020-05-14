@@ -9,7 +9,7 @@ This program displays on the screen:
 *
 
 * */
-package HomeWork.HW_4_21_04_2020;
+package homeWork.hw_4_21_04_2020;
 
 public class Task11 {
     public static void main(String[] args) {

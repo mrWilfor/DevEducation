@@ -1,6 +1,6 @@
-package HomeWork.HW_8_07_05_2020.toFormatFromFormatPerson;
+package homeWork.hw_8_07_05_2020.toFormatFromFormatPerson;
 
-import HomeWork.HW_8_07_05_2020.object.Person;
+import homeWork.hw_8_07_05_2020.object.person.Person;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -300,6 +300,220 @@ class XMLFormatTest {
 
         assertArrayEquals(
                 arrayExpected, new XMLFormatPerson().fromFormat(arrayInput),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void toFormatSrtMany() {
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+        Person p2 = new Person(13L, "Ilya", "Petrov", 20);
+        Person p3 = new Person(14L, "Dmitriy", "Sidorov", 24);
+        Person p4 = new Person(15L, "Sergey", "Barabash", 19);
+        Person p5 = new Person(16L, "Max", "Chirva", 25);
+
+        Person[] arrayInput = {p1, p2, p3, p4, p5};
+
+        String expected =
+                "<Person>\n" +
+                        "\t<id>12</id>\n\r" +
+                        "\t<firstName>Ivan</firstName>\n\r" +
+                        "\t<lastName>Ivanov</lastName>\n\r" +
+                        "\t<age>21</age>\n\r" +
+                        "</Person>\n\n" +
+                "<Person>\n" +
+                        "\t<id>13</id>\n\r" +
+                        "\t<firstName>Ilya</firstName>\n\r" +
+                        "\t<lastName>Petrov</lastName>\n\r" +
+                        "\t<age>20</age>\n\r" +
+                        "</Person>\n\n" +
+                "<Person>\n" +
+                        "\t<id>14</id>\n\r" +
+                        "\t<firstName>Dmitriy</firstName>\n\r" +
+                        "\t<lastName>Sidorov</lastName>\n\r" +
+                        "\t<age>24</age>\n\r" +
+                        "</Person>\n\n" +
+                "<Person>\n" +
+                        "\t<id>15</id>\n\r" +
+                        "\t<firstName>Sergey</firstName>\n\r" +
+                        "\t<lastName>Barabash</lastName>\n\r" +
+                        "\t<age>19</age>\n\r" +
+                        "</Person>\n\n" +
+                "<Person>\n" +
+                        "\t<id>16</id>\n\r" +
+                        "\t<firstName>Max</firstName>\n\r" +
+                        "\t<lastName>Chirva</lastName>\n\r" +
+                        "\t<age>25</age>\n\r" +
+                        "</Person>\n\n";
+
+        assertTrue(
+                expected.equals(new XMLFormatPerson().toFormatStr(arrayInput)),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void toFormatSrtTwo() {
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+        Person p2 = new Person(13L, "Ilya", "Petrov", 20);
+
+        Person[] arrayInput = {p1, p2};
+
+        String expected =
+                "<Person>\n" +
+                        "\t<id>12</id>\n\r" +
+                        "\t<firstName>Ivan</firstName>\n\r" +
+                        "\t<lastName>Ivanov</lastName>\n\r" +
+                        "\t<age>21</age>\n\r" +
+                        "</Person>\n\n" +
+                        "<Person>\n" +
+                        "\t<id>13</id>\n\r" +
+                        "\t<firstName>Ilya</firstName>\n\r" +
+                        "\t<lastName>Petrov</lastName>\n\r" +
+                        "\t<age>20</age>\n\r" +
+                        "</Person>\n\n";
+
+        assertTrue(
+                expected.equals(new XMLFormatPerson().toFormatStr(arrayInput)),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void toFormatSrtOne() {
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+
+        Person[] arrayInput = {p1};
+
+        String expected =
+                "<Person>\n" +
+                        "\t<id>12</id>\n\r" +
+                        "\t<firstName>Ivan</firstName>\n\r" +
+                        "\t<lastName>Ivanov</lastName>\n\r" +
+                        "\t<age>21</age>\n\r" +
+                        "</Person>\n\n";
+
+        assertTrue(
+                expected.equals(new XMLFormatPerson().toFormatStr(arrayInput)),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void toFormatSrtZero() {
+        Person p1 = new Person();
+
+        Person[] arrayInput = new Person[0];
+        String expected ="";
+
+        assertTrue(
+                expected.equals(new XMLFormatPerson().toFormatStr(arrayInput)),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void fromFormatObjMany() {
+        String stringInput =
+                "<Person>\n" +
+                        "\t<id>12</id>\n\r" +
+                        "\t<firstName>Ivan</firstName>\n\r" +
+                        "\t<lastName>Ivanov</lastName>\n\r" +
+                        "\t<age>21</age>\n\r" +
+                        "</Person>\n\n" +
+                        "<Person>\n" +
+                        "\t<id>13</id>\n\r" +
+                        "\t<firstName>Ilya</firstName>\n\r" +
+                        "\t<lastName>Petrov</lastName>\n\r" +
+                        "\t<age>20</age>\n\r" +
+                        "</Person>\n\n" +
+                        "<Person>\n" +
+                        "\t<id>14</id>\n\r" +
+                        "\t<firstName>Dmitriy</firstName>\n\r" +
+                        "\t<lastName>Sidorov</lastName>\n\r" +
+                        "\t<age>24</age>\n\r" +
+                        "</Person>\n\n" +
+                        "<Person>\n" +
+                        "\t<id>15</id>\n\r" +
+                        "\t<firstName>Sergey</firstName>\n\r" +
+                        "\t<lastName>Barabash</lastName>\n\r" +
+                        "\t<age>19</age>\n\r" +
+                        "</Person>\n\n" +
+                        "<Person>\n" +
+                        "\t<id>16</id>\n\r" +
+                        "\t<firstName>Max</firstName>\n\r" +
+                        "\t<lastName>Chirva</lastName>\n\r" +
+                        "\t<age>25</age>\n\r" +
+                        "</Person>\n\n";
+
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+        Person p2 = new Person(13L, "Ilya", "Petrov", 20);
+        Person p3 = new Person(14L, "Dmitriy", "Sidorov", 24);
+        Person p4 = new Person(15L, "Sergey", "Barabash", 19);
+        Person p5 = new Person(16L, "Max", "Chirva", 25);
+
+        Person[] expected = {p1, p2, p3, p4, p5};
+
+        assertArrayEquals(
+                expected, new XMLFormatPerson().fromFormatObj(stringInput),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void fromFormatObjTwo() {
+        String stringInput =
+                "<Person>\n" +
+                        "\t<id>12</id>\n\r" +
+                        "\t<firstName>Ivan</firstName>\n\r" +
+                        "\t<lastName>Ivanov</lastName>\n\r" +
+                        "\t<age>21</age>\n\r" +
+                        "</Person>\n\n" +
+                        "<Person>\n" +
+                        "\t<id>13</id>\n\r" +
+                        "\t<firstName>Ilya</firstName>\n\r" +
+                        "\t<lastName>Petrov</lastName>\n\r" +
+                        "\t<age>20</age>\n\r" +
+                        "</Person>\n\n";
+
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+        Person p2 = new Person(13L, "Ilya", "Petrov", 20);
+
+        Person[] expected = {p1, p2};
+
+        assertArrayEquals(
+                expected, new XMLFormatPerson().fromFormatObj(stringInput),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void fromFormatObjOne() {
+        String stringInput =
+                "<Person>\n" +
+                        "\t<id>12</id>\n\r" +
+                        "\t<firstName>Ivan</firstName>\n\r" +
+                        "\t<lastName>Ivanov</lastName>\n\r" +
+                        "\t<age>21</age>\n\r" +
+                        "</Person>\n\n";
+
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+        Person[] expected = {p1};
+
+        assertArrayEquals(
+                expected, new XMLFormatPerson().fromFormatObj(stringInput),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void fromFormatObjZero() {
+        String stringInput = "";
+
+        Person[] expected = new Person[0];
+
+        assertArrayEquals(
+                expected, new XMLFormatPerson().fromFormatObj(stringInput),
                 "Test failed"
         );
     }

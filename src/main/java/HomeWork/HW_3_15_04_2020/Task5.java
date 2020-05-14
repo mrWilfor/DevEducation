@@ -2,7 +2,7 @@
 and the program should say what number the user entered: 1, 2, or 3. If the user entered a different number,
 the program should display a message: "You entered a different number." Use Scanner to enter from the console and
 if else construct */
-package HomeWork.HW_3_15_04_2020;
+package homeWork.hw_3_15_04_2020;
 
 import java.util.Scanner;
 

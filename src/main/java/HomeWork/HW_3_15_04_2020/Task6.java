@@ -1,5 +1,5 @@
 //Task 6: The same as Task 5, only use switch
-package HomeWork.HW_3_15_04_2020;
+package homeWork.hw_3_15_04_2020;
 
 import java.util.Scanner;
 

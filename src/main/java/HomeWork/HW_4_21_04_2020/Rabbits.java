@@ -1,4 +1,4 @@
-package HomeWork.HW_4_21_04_2020;
+package homeWork.hw_4_21_04_2020;
 
 public class Rabbits {
     public static void main(String[] args) {

@@ -1,5 +1,5 @@
 //Problem 7: The same as Problem 5 only use the ternary operator
-package HomeWork.HW_3_15_04_2020;
+package homeWork.hw_3_15_04_2020;
 
 import java.util.Scanner;
 

@@ -1,6 +1,6 @@
-package HomeWork.HW_8_07_05_2020.toFormatFromFormatPerson;
+package homeWork.hw_8_07_05_2020.toFormatFromFormatPerson;
 
-import HomeWork.HW_8_07_05_2020.object.Person;
+import homeWork.hw_8_07_05_2020.object.person.Person;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -194,6 +194,129 @@ class JsonFormatTest {
 
         assertArrayEquals(
                 arrayExpected, new JsonFormatPerson().fromFormat(arrayInput),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void toFormatStrMany() {
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+        Person p2 = new Person(13L, "Ilya", "Petrov", 20);
+        Person p3 = new Person(14L, "Dmitriy", "Sidorov", 24);
+        Person p4 = new Person(15L, "Sergey", "Barabash", 19);
+        Person p5 = new Person(16L, "Max", "Chirva", 25);
+
+        Person[] arrayInput = {p1, p2, p3, p4, p5};
+
+        String stringExpected = "[{\"id\": \"12\", \"firstName\": \"Ivan\", \"lastName\": \"Ivanov\", \"age\": \"21\"}, " +
+                "{\"id\": \"13\", \"firstName\": \"Ilya\", \"lastName\": \"Petrov\", \"age\": \"20\"}, " +
+                "{\"id\": \"14\", \"firstName\": \"Dmitriy\", \"lastName\": \"Sidorov\", \"age\": \"24\"}, " +
+                "{\"id\": \"15\", \"firstName\": \"Sergey\", \"lastName\": \"Barabash\", \"age\": \"19\"}, " +
+                "{\"id\": \"16\", \"firstName\": \"Max\", \"lastName\": \"Chirva\", \"age\": \"25\"}]";
+
+        assertTrue(
+                stringExpected.equals(new JsonFormatPerson().toFormatStr(arrayInput)),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void toFormatStrTwo() {
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+        Person p2 = new Person(13L, "Ilya", "Petrov", 20);
+
+        Person[] arrayInput = {p1, p2};
+        String stringExpected = "[{\"id\": \"12\", \"firstName\": \"Ivan\", \"lastName\": \"Ivanov\", \"age\": \"21\"}, " +
+                "{\"id\": \"13\", \"firstName\": \"Ilya\", \"lastName\": \"Petrov\", \"age\": \"20\"}]";
+
+        assertTrue(
+                stringExpected.equals(new JsonFormatPerson().toFormatStr(arrayInput)),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void toFormatStrOne() {
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+
+        Person[] arrayInput = {p1};
+        String stringExpected = "[{\"id\": \"12\", \"firstName\": \"Ivan\", \"lastName\": \"Ivanov\", \"age\": \"21\"}]";
+
+        assertTrue(
+                stringExpected.equals(new JsonFormatPerson().toFormatStr(arrayInput)),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void toFormatStrZero() {
+        Person[] arrayInput = new Person[0];
+        String stringExpected = "[]";
+        assertTrue(
+                stringExpected.equals(new JsonFormatPerson().toFormatStr(arrayInput)),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void fromFormatObjMany() {
+        String stringInput = "[{\"id\": \"12\", \"firstName\": \"Ivan\", \"lastName\": \"Ivanov\", \"age\": \"21\"}, " +
+                "{\"id\": \"13\", \"firstName\": \"Ilya\", \"lastName\": \"Petrov\", \"age\": \"20\"}, " +
+                "{\"id\": \"14\", \"firstName\": \"Dmitriy\", \"lastName\": \"Sidorov\", \"age\": \"24\"}, " +
+                "{\"id\": \"15\", \"firstName\": \"Sergey\", \"lastName\": \"Barabash\", \"age\": \"19\"}, " +
+                "{\"id\": \"16\", \"firstName\": \"Max\", \"lastName\": \"Chirva\", \"age\": \"25\"}]";
+
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+        Person p2 = new Person(13L, "Ilya", "Petrov", 20);
+        Person p3 = new Person(14L, "Dmitriy", "Sidorov", 24);
+        Person p4 = new Person(15L, "Sergey", "Barabash", 19);
+        Person p5 = new Person(16L, "Max", "Chirva", 25);
+
+        Person[] arrayExpected = {p1, p2, p3, p4, p5};
+
+        assertArrayEquals(
+                arrayExpected, new JsonFormatPerson().fromFormatObj(stringInput),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void fromFormatObjTwo() {
+        String stringInput = "[{\"id\": \"12\", \"firstName\": \"Ivan\", \"lastName\": \"Ivanov\", \"age\": \"21\"}, " +
+                "{\"id\": \"13\", \"firstName\": \"Ilya\", \"lastName\": \"Petrov\", \"age\": \"20\"}]";
+
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+        Person p2 = new Person(13L, "Ilya", "Petrov", 20);
+
+        Person[] arrayExpected = {p1, p2};
+
+        assertArrayEquals(
+                arrayExpected, new JsonFormatPerson().fromFormatObj(stringInput),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void fromFormatObjOne() {
+        String stringInput = "{\"id\": \"12\", \"firstName\": \"Ivan\", \"lastName\": \"Ivanov\", \"age\": \"21\"}";
+
+        Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
+
+        Person[] arrayExpected = {p1};
+
+        assertArrayEquals(
+                arrayExpected, new JsonFormatPerson().fromFormatObj(stringInput),
+                "Test failed"
+        );
+    }
+
+    @Test
+    void fromFormatObjZero() {
+        String stringInput = "";
+        Person[] arrayExpected = new Person[0];
+
+        assertArrayEquals(
+                arrayExpected, new JsonFormatPerson().fromFormatObj(stringInput),
                 "Test failed"
         );
     }

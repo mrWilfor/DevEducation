@@ -21,7 +21,7 @@ public class ClassX {
 	}
 }
 */
-package HomeWork.HW_3_15_04_2020;
+package homeWork.hw_3_15_04_2020;
 
 public class ClassX {
 

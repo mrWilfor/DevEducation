@@ -1,4 +1,4 @@
-package Practice.Practic_6_28_04_2020;
+package practice.practic_6_28_04_2020;
 
 import java.util.Arrays;
 

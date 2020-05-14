@@ -1,4 +1,4 @@
-package HomeWork.HW_7_04_05_2020;
+package homeWork.hw_7_04_05_2020;
 
 public class ReversWords {
     public static void main(String[] args) {
