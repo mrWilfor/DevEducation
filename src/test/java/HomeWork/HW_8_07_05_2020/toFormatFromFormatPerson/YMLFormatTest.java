@@ -11,11 +11,11 @@ class YMLFormatTest {
     @Test
     void toFormatTest1() {
         Person p = new Person(12L, "Ivan", "Ivanov", 21);
-        String expected = "-\tPerson:\n" +
-                " \tid: 12\n\r" +
-                " \tfirstName: Ivan\n\r" +
-                " \tlastName: Ivanov\n\r" +
-                " \tage: 21\n\r";
+        String expected = "- Person:\n" +
+                "  id: 12\n\r" +
+                "  firstName: Ivan\n\r" +
+                "  lastName: Ivanov\n\r" +
+                "  age: 21\n\r";
         String actual = new YMLFormatPerson().toFormat(p);
 
         assertTrue(
@@ -38,11 +38,11 @@ class YMLFormatTest {
 
     @Test
     void fromFormatTest1() {
-        String input = "-\tPerson:\n" +
-                " \tid: 12\n\r" +
-                " \tfirstName: Ivan\n\r" +
-                " \tlastName: Ivanov\n\r" +
-                " \tage: 21\n\r";
+        String input = "- Person:\n" +
+                "  id: 12\n\r" +
+                "  firstName: Ivan\n\r" +
+                "  lastName: Ivanov\n\r" +
+                "  age: 21\n\r";
         Person expected = new Person(12L, "Ivan", "Ivanov", 21);
 
         assertTrue(
@@ -73,31 +73,31 @@ class YMLFormatTest {
         Person[] arrayInput = {p1, p2, p3, p4, p5};
 
         String[] arrayExpected = {
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r",
-                "-\tPerson:\n" +
-                        " \tid: 13\n\r" +
-                        " \tfirstName: Ilya\n\r" +
-                        " \tlastName: Petrov\n\r" +
-                        " \tage: 20\n\r",
-                "-\tPerson:\n" +
-                        " \tid: 14\n\r" +
-                        " \tfirstName: Dmitriy\n\r" +
-                        " \tlastName: Sidorov\n\r" +
-                        " \tage: 24\n\r",
-                "-\tPerson:\n" +
-                        " \tid: 15\n\r" +
-                        " \tfirstName: Sergey\n\r" +
-                        " \tlastName: Barabash\n\r" +
-                        " \tage: 19\n\r",
-                "-\tPerson:\n" +
-                        " \tid: 16\n\r" +
-                        " \tfirstName: Max\n\r" +
-                        " \tlastName: Chirva\n\r" +
-                        " \tage: 25\n\r"
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r",
+                "- Person:\n" +
+                        "  id: 13\n\r" +
+                        "  firstName: Ilya\n\r" +
+                        "  lastName: Petrov\n\r" +
+                        "  age: 20\n\r",
+                "- Person:\n" +
+                        "  id: 14\n\r" +
+                        "  firstName: Dmitriy\n\r" +
+                        "  lastName: Sidorov\n\r" +
+                        "  age: 24\n\r",
+                "- Person:\n" +
+                        "  id: 15\n\r" +
+                        "  firstName: Sergey\n\r" +
+                        "  lastName: Barabash\n\r" +
+                        "  age: 19\n\r",
+                "- Person:\n" +
+                        "  id: 16\n\r" +
+                        "  firstName: Max\n\r" +
+                        "  lastName: Chirva\n\r" +
+                        "  age: 25\n\r"
         };
         assertArrayEquals(
                 arrayExpected, new YMLFormatPerson().toFormat(arrayInput),
@@ -113,16 +113,16 @@ class YMLFormatTest {
         Person[] arrayInput = {p1, p2};
 
         String[] arrayExpected = {
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r",
-                "-\tPerson:\n" +
-                        " \tid: 13\n\r" +
-                        " \tfirstName: Ilya\n\r" +
-                        " \tlastName: Petrov\n\r" +
-                        " \tage: 20\n\r"
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r",
+                "- Person:\n" +
+                        "  id: 13\n\r" +
+                        "  firstName: Ilya\n\r" +
+                        "  lastName: Petrov\n\r" +
+                        "  age: 20\n\r"
         };
         assertArrayEquals(
                 arrayExpected, new YMLFormatPerson().toFormat(arrayInput),
@@ -137,11 +137,11 @@ class YMLFormatTest {
         Person[] arrayInput = {p1};
 
         String[] arrayExpected = {
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r"
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r"
         };
         assertArrayEquals(
                 arrayExpected, new YMLFormatPerson().toFormat(arrayInput),
@@ -156,11 +156,11 @@ class YMLFormatTest {
         Person[] arrayInput = {p1};
 
         String[] arrayExpected = {
-                "-\tPerson:\n" +
-                        " \tid: 0\n\r" +
-                        " \tfirstName: null\n\r" +
-                        " \tlastName: null\n\r" +
-                        " \tage: 0\n\r"
+                "- Person:\n" +
+                        "  id: 0\n\r" +
+                        "  firstName: null\n\r" +
+                        "  lastName: null\n\r" +
+                        "  age: 0\n\r"
         };
         assertArrayEquals(
                 arrayExpected, new YMLFormatPerson().toFormat(arrayInput),
@@ -171,31 +171,31 @@ class YMLFormatTest {
     @Test
     void fromFormatTestArrayMany() {
         String[] arrayInput = {
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r",
-                "-\tPerson:\n" +
-                        " \tid: 13\n\r" +
-                        " \tfirstName: Ilya\n\r" +
-                        " \tlastName: Petrov\n\r" +
-                        " \tage: 20\n\r",
-                "-\tPerson:\n" +
-                        " \tid: 14\n\r" +
-                        " \tfirstName: Dmitriy\n\r" +
-                        " \tlastName: Sidorov\n\r" +
-                        " \tage: 24\n\r",
-                "-\tPerson:\n" +
-                        " \tid: 15\n\r" +
-                        " \tfirstName: Sergey\n\r" +
-                        " \tlastName: Barabash\n\r" +
-                        " \tage: 19\n\r",
-                "-\tPerson:\n" +
-                        " \tid: 16\n\r" +
-                        " \tfirstName: Max\n\r" +
-                        " \tlastName: Chirva\n\r" +
-                        " \tage: 25\n\r"
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r",
+                "- Person:\n" +
+                        "  id: 13\n\r" +
+                        "  firstName: Ilya\n\r" +
+                        "  lastName: Petrov\n\r" +
+                        "  age: 20\n\r",
+                "- Person:\n" +
+                        "  id: 14\n\r" +
+                        "  firstName: Dmitriy\n\r" +
+                        "  lastName: Sidorov\n\r" +
+                        "  age: 24\n\r",
+                "- Person:\n" +
+                        "  id: 15\n\r" +
+                        "  firstName: Sergey\n\r" +
+                        "  lastName: Barabash\n\r" +
+                        "  age: 19\n\r",
+                "- Person:\n" +
+                        "  id: 16\n\r" +
+                        "  firstName: Max\n\r" +
+                        "  lastName: Chirva\n\r" +
+                        "  age: 25\n\r"
         };
 
         Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
@@ -215,16 +215,16 @@ class YMLFormatTest {
     @Test
     void fromFormatTestArrayTwo() {
         String[] arrayInput = {
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r",
-                "-\tPerson:\n" +
-                        " \tid: 13\n\r" +
-                        " \tfirstName: Ilya\n\r" +
-                        " \tlastName: Petrov\n\r" +
-                        " \tage: 20\n\r"
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r",
+                "- Person:\n" +
+                        "  id: 13\n\r" +
+                        "  firstName: Ilya\n\r" +
+                        "  lastName: Petrov\n\r" +
+                        "  age: 20\n\r"
         };
 
         Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
@@ -241,11 +241,11 @@ class YMLFormatTest {
     @Test
     void fromFormatTestArrayOne() {
         String[] arrayInput = {
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r"
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r"
         };
 
         Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
@@ -292,31 +292,34 @@ class YMLFormatTest {
 
         Person[] arrayInput = {p1, p2, p3, p4, p5};
         String stringExpected =
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r" +
-                        "-\tPerson:\n" +
-                        " \tid: 13\n\r" +
-                        " \tfirstName: Ilya\n\r" +
-                        " \tlastName: Petrov\n\r" +
-                        " \tage: 20\n\r" +
-                        "-\tPerson:\n" +
-                        " \tid: 14\n\r" +
-                        " \tfirstName: Dmitriy\n\r" +
-                        " \tlastName: Sidorov\n\r" +
-                        " \tage: 24\n\r" +
-                        "-\tPerson:\n" +
-                        " \tid: 15\n\r" +
-                        " \tfirstName: Sergey\n\r" +
-                        " \tlastName: Barabash\n\r" +
-                        " \tage: 19\n\r" +
-                        "-\tPerson:\n" +
-                        " \tid: 16\n\r" +
-                        " \tfirstName: Max\n\r" +
-                        " \tlastName: Chirva\n\r" +
-                        " \tage: 25\n\r";
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r" +
+                        "- Person:\n" +
+                        "  id: 13\n\r" +
+                        "  firstName: Ilya\n\r" +
+                        "  lastName: Petrov\n\r" +
+                        "  age: 20\n\r" +
+                        "- Person:\n" +
+                        "  id: 14\n\r" +
+                        "  firstName: Dmitriy\n\r" +
+                        "  lastName: Sidorov\n\r" +
+                        "  age: 24\n\r" +
+                        "- Person:\n" +
+                        "  id: 15\n\r" +
+                        "  firstName: Sergey\n\r" +
+                        "  lastName: Barabash\n\r" +
+                        "  age: 19\n\r" +
+                        "- Person:\n" +
+                        "  id: 16\n\r" +
+                        "  firstName: Max\n\r" +
+                        "  lastName: Chirva\n\r" +
+                        "  age: 25\n\r";
+
+        System.out.println(new YMLFormatPerson().toFormatStr(arrayInput));
+
         assertTrue(
                 stringExpected.equals(new YMLFormatPerson().toFormatStr(arrayInput)),
                 "Test failed"
@@ -330,16 +333,16 @@ class YMLFormatTest {
 
         Person[] arrayInput = {p1, p2};
         String stringExpected =
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r" +
-                        "-\tPerson:\n" +
-                        " \tid: 13\n\r" +
-                        " \tfirstName: Ilya\n\r" +
-                        " \tlastName: Petrov\n\r" +
-                        " \tage: 20\n\r";
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r" +
+                        "- Person:\n" +
+                        "  id: 13\n\r" +
+                        "  firstName: Ilya\n\r" +
+                        "  lastName: Petrov\n\r" +
+                        "  age: 20\n\r";
         assertTrue(
                 stringExpected.equals(new YMLFormatPerson().toFormatStr(arrayInput)),
                 "Test failed"
@@ -352,11 +355,11 @@ class YMLFormatTest {
 
         Person[] arrayInput = {p1};
         String stringExpected =
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r";
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r";
         assertTrue(
                 stringExpected.equals(new YMLFormatPerson().toFormatStr(arrayInput)),
                 "Test failed"
@@ -376,31 +379,31 @@ class YMLFormatTest {
     @Test
     void fromFormatObjMany() {
         String stringInput =
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r" +
-                        "-\tPerson:\n" +
-                        " \tid: 13\n\r" +
-                        " \tfirstName: Ilya\n\r" +
-                        " \tlastName: Petrov\n\r" +
-                        " \tage: 20\n\r" +
-                        "-\tPerson:\n" +
-                        " \tid: 14\n\r" +
-                        " \tfirstName: Dmitriy\n\r" +
-                        " \tlastName: Sidorov\n\r" +
-                        " \tage: 24\n\r" +
-                        "-\tPerson:\n" +
-                        " \tid: 15\n\r" +
-                        " \tfirstName: Sergey\n\r" +
-                        " \tlastName: Barabash\n\r" +
-                        " \tage: 19\n\r" +
-                        "-\tPerson:\n" +
-                        " \tid: 16\n\r" +
-                        " \tfirstName: Max\n\r" +
-                        " \tlastName: Chirva\n\r" +
-                        " \tage: 25\n\r";
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r" +
+                        "- Person:\n" +
+                        "  id: 13\n\r" +
+                        "  firstName: Ilya\n\r" +
+                        "  lastName: Petrov\n\r" +
+                        "  age: 20\n\r" +
+                        "- Person:\n" +
+                        "  id: 14\n\r" +
+                        "  firstName: Dmitriy\n\r" +
+                        "  lastName: Sidorov\n\r" +
+                        "  age: 24\n\r" +
+                        "- Person:\n" +
+                        "  id: 15\n\r" +
+                        "  firstName: Sergey\n\r" +
+                        "  lastName: Barabash\n\r" +
+                        "  age: 19\n\r" +
+                        "- Person:\n" +
+                        "  id: 16\n\r" +
+                        "  firstName: Max\n\r" +
+                        "  lastName: Chirva\n\r" +
+                        "  age: 25\n\r";
 
         Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
         Person p2 = new Person(13L, "Ilya", "Petrov", 20);
@@ -419,16 +422,16 @@ class YMLFormatTest {
     @Test
     void fromFormatObjTwo() {
         String stringInput =
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r" +
-                        "-\tPerson:\n" +
-                        " \tid: 13\n\r" +
-                        " \tfirstName: Ilya\n\r" +
-                        " \tlastName: Petrov\n\r" +
-                        " \tage: 20\n\r";
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r" +
+                        "- Person:\n" +
+                        "  id: 13\n\r" +
+                        "  firstName: Ilya\n\r" +
+                        "  lastName: Petrov\n\r" +
+                        "  age: 20\n\r";
 
         Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
         Person p2 = new Person(13L, "Ilya", "Petrov", 20);
@@ -444,11 +447,11 @@ class YMLFormatTest {
     @Test
     void fromFormatObjOne() {
         String stringInput =
-                "-\tPerson:\n" +
-                        " \tid: 12\n\r" +
-                        " \tfirstName: Ivan\n\r" +
-                        " \tlastName: Ivanov\n\r" +
-                        " \tage: 21\n\r";
+                "- Person:\n" +
+                        "  id: 12\n\r" +
+                        "  firstName: Ivan\n\r" +
+                        "  lastName: Ivanov\n\r" +
+                        "  age: 21\n\r";
 
         Person p1 = new Person(12L, "Ivan", "Ivanov", 21);
 
