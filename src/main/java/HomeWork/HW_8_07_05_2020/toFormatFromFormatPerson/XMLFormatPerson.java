@@ -59,13 +59,20 @@ public class XMLFormatPerson extends AbstractFormatPerson {
 
     @Override
     public String toFormatStr(Person[] arrayInput) {
-        String result = "";
+        String result = "<Persons>\n\r";
+
+        if (arrayInput == null) {
+            return null;
+        }
 
         for (int i = 0; i < arrayInput.length; i++) {
             result = result.concat(toFormat(arrayInput[i]));
-            result = result.concat("\n\n");
+            result = result.concat("\n");
         }
-        return result;
+        return result.replaceAll("\t", "\t\t")
+                .replaceAll("<Person>", "\t<Person>")
+                .replaceAll("</Person>", "\t</Person>")
+                .concat("</Persons>");
     }
 
     @Override

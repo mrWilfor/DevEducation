@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class XMLFormatTest {
 
     @Test
-    void toFormatTest1() {
+    void toFormat() {
         Person p = new Person(12L, "Ivan", "Ivanov", 21);
         String expected = "<Person>\n" +
                 "\t<id>12</id>\n\r" +
@@ -25,7 +25,7 @@ class XMLFormatTest {
     }
 
     @Test
-    void toFormatTest2() {
+    void toFormatNull() {
         Person p = null;
         String expected = null;
         String actual = new XMLFormatPerson().toFormat(p);
@@ -37,7 +37,7 @@ class XMLFormatTest {
     }
 
     @Test
-    void fromFormatTest1() {
+    void fromFormat() {
         String input = "<Person>\n" +
                 "\t<id>12</id>\n\r" +
                 "\t<firstName>Ivan</firstName>\n\r" +
@@ -53,7 +53,7 @@ class XMLFormatTest {
     }
 
     @Test
-    void fromFormatTest2() {
+    void fromFormatNull() {
         String input = null;
         Person expected = null;
 
@@ -315,36 +315,38 @@ class XMLFormatTest {
         Person[] arrayInput = {p1, p2, p3, p4, p5};
 
         String expected =
-                "<Person>\n" +
-                        "\t<id>12</id>\n\r" +
-                        "\t<firstName>Ivan</firstName>\n\r" +
-                        "\t<lastName>Ivanov</lastName>\n\r" +
-                        "\t<age>21</age>\n\r" +
-                        "</Person>\n\n" +
-                "<Person>\n" +
-                        "\t<id>13</id>\n\r" +
-                        "\t<firstName>Ilya</firstName>\n\r" +
-                        "\t<lastName>Petrov</lastName>\n\r" +
-                        "\t<age>20</age>\n\r" +
-                        "</Person>\n\n" +
-                "<Person>\n" +
-                        "\t<id>14</id>\n\r" +
-                        "\t<firstName>Dmitriy</firstName>\n\r" +
-                        "\t<lastName>Sidorov</lastName>\n\r" +
-                        "\t<age>24</age>\n\r" +
-                        "</Person>\n\n" +
-                "<Person>\n" +
-                        "\t<id>15</id>\n\r" +
-                        "\t<firstName>Sergey</firstName>\n\r" +
-                        "\t<lastName>Barabash</lastName>\n\r" +
-                        "\t<age>19</age>\n\r" +
-                        "</Person>\n\n" +
-                "<Person>\n" +
-                        "\t<id>16</id>\n\r" +
-                        "\t<firstName>Max</firstName>\n\r" +
-                        "\t<lastName>Chirva</lastName>\n\r" +
-                        "\t<age>25</age>\n\r" +
-                        "</Person>\n\n";
+                "<Persons>\n\r" +
+                    "\t<Person>\n" +
+                        "\t\t<id>12</id>\n\r" +
+                        "\t\t<firstName>Ivan</firstName>\n\r" +
+                        "\t\t<lastName>Ivanov</lastName>\n\r" +
+                        "\t\t<age>21</age>\n\r" +
+                        "\t</Person>\n" +
+                    "\t<Person>\n" +
+                        "\t\t<id>13</id>\n\r" +
+                        "\t\t<firstName>Ilya</firstName>\n\r" +
+                        "\t\t<lastName>Petrov</lastName>\n\r" +
+                        "\t\t<age>20</age>\n\r" +
+                        "\t</Person>\n" +
+                    "\t<Person>\n" +
+                        "\t\t<id>14</id>\n\r" +
+                        "\t\t<firstName>Dmitriy</firstName>\n\r" +
+                        "\t\t<lastName>Sidorov</lastName>\n\r" +
+                        "\t\t<age>24</age>\n\r" +
+                        "\t</Person>\n" +
+                    "\t<Person>\n" +
+                        "\t\t<id>15</id>\n\r" +
+                        "\t\t<firstName>Sergey</firstName>\n\r" +
+                        "\t\t<lastName>Barabash</lastName>\n\r" +
+                        "\t\t<age>19</age>\n\r" +
+                        "\t</Person>\n" +
+                    "\t<Person>\n" +
+                        "\t\t<id>16</id>\n\r" +
+                        "\t\t<firstName>Max</firstName>\n\r" +
+                        "\t\t<lastName>Chirva</lastName>\n\r" +
+                        "\t\t<age>25</age>\n\r" +
+                        "\t</Person>\n" +
+                        "</Persons>";
 
         assertTrue(
                 expected.equals(new XMLFormatPerson().toFormatStr(arrayInput)),
@@ -360,18 +362,20 @@ class XMLFormatTest {
         Person[] arrayInput = {p1, p2};
 
         String expected =
-                "<Person>\n" +
-                        "\t<id>12</id>\n\r" +
-                        "\t<firstName>Ivan</firstName>\n\r" +
-                        "\t<lastName>Ivanov</lastName>\n\r" +
-                        "\t<age>21</age>\n\r" +
-                        "</Person>\n\n" +
-                        "<Person>\n" +
-                        "\t<id>13</id>\n\r" +
-                        "\t<firstName>Ilya</firstName>\n\r" +
-                        "\t<lastName>Petrov</lastName>\n\r" +
-                        "\t<age>20</age>\n\r" +
-                        "</Person>\n\n";
+                "<Persons>\n\r" +
+                        "\t<Person>\n" +
+                        "\t\t<id>12</id>\n\r" +
+                        "\t\t<firstName>Ivan</firstName>\n\r" +
+                        "\t\t<lastName>Ivanov</lastName>\n\r" +
+                        "\t\t<age>21</age>\n\r" +
+                        "\t</Person>\n" +
+                        "\t<Person>\n" +
+                        "\t\t<id>13</id>\n\r" +
+                        "\t\t<firstName>Ilya</firstName>\n\r" +
+                        "\t\t<lastName>Petrov</lastName>\n\r" +
+                        "\t\t<age>20</age>\n\r" +
+                        "\t</Person>\n" +
+                "</Persons>";
 
         assertTrue(
                 expected.equals(new XMLFormatPerson().toFormatStr(arrayInput)),
@@ -386,12 +390,14 @@ class XMLFormatTest {
         Person[] arrayInput = {p1};
 
         String expected =
-                "<Person>\n" +
-                        "\t<id>12</id>\n\r" +
-                        "\t<firstName>Ivan</firstName>\n\r" +
-                        "\t<lastName>Ivanov</lastName>\n\r" +
-                        "\t<age>21</age>\n\r" +
-                        "</Person>\n\n";
+                "<Persons>\n\r" +
+                        "\t<Person>\n" +
+                        "\t\t<id>12</id>\n\r" +
+                        "\t\t<firstName>Ivan</firstName>\n\r" +
+                        "\t\t<lastName>Ivanov</lastName>\n\r" +
+                        "\t\t<age>21</age>\n\r" +
+                        "\t</Person>\n" +
+                        "</Persons>";
 
         assertTrue(
                 expected.equals(new XMLFormatPerson().toFormatStr(arrayInput)),
@@ -401,13 +407,11 @@ class XMLFormatTest {
 
     @Test
     void toFormatSrtZero() {
-        Person p1 = new Person();
+        Person[] arrayInput = null;
+        String expected = null;
 
-        Person[] arrayInput = new Person[0];
-        String expected ="";
-
-        assertTrue(
-                expected.equals(new XMLFormatPerson().toFormatStr(arrayInput)),
+        assertEquals(
+                expected, new XMLFormatPerson().toFormatStr(arrayInput),
                 "Test failed"
         );
     }

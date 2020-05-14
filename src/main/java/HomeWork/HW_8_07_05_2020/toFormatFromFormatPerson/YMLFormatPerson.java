@@ -9,11 +9,11 @@ public class YMLFormatPerson extends AbstractFormatPerson {
             return null;
         }
         else {
-            return  "Person:\n" +
-                    "\tid: " + p.getId() + "\n\r" +
-                    "\tfirstName: " + p.getFirstName() + "\n\r" +
-                    "\tlastName: " + p.getLastName() + "\n\r" +
-                    "\tage: " + p.getAge() + "\n\r";
+            return  "-\tPerson:\n" +
+                    " \tid: " + p.getId() + "\n\r" +
+                    " \tfirstName: " + p.getFirstName() + "\n\r" +
+                    " \tlastName: " + p.getLastName() + "\n\r" +
+                    " \tage: " + p.getAge() + "\n\r";
         }
     }
 
