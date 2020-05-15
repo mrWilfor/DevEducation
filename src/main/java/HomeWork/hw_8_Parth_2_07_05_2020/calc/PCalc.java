@@ -21,12 +21,15 @@ public class PCalc extends JPanel {
         this.textSign = new JTextField();
         this.textResult = new JTextField();
         JButton btnEq = new JButton("=");
+        JButton sum = new JButton("+");
+        JButton sub = new JButton("-");
 
         this.textVal1.setBounds(10, 10, 140, 30);
         this.textVal2.setBounds(10, 50, 140, 30);
         this.textSign.setBounds(10, 90, 140, 30);
         this.textResult.setBounds(10, 130, 140, 30);
         btnEq.setBounds(10, 170, 140, 30);
+        sum.setBounds(10, 210, 70, 30);
 
         btnEq.addActionListener(this.btnEqAction);
 
