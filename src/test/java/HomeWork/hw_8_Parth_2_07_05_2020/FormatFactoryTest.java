@@ -43,4 +43,36 @@ public class FormatFactoryTest {
         Person act = this.af.fromFormat(result);
         assertEquals(exp, act);
     }
+
+    @Test
+    public void toFormatArrayFromFormatArray() {
+        Person p1 = new Person(1L, "Vasia", "Pupkin", 34);
+        Person p2 = new Person(2L, "Masia", "Kupkin", 34);
+        Person p3 = new Person(3L, "Kolia", "Lupkin", 34);
+        Person p4 = new Person(4L, "Nusia", "Pupkin", 34);
+        Person p5 = new Person(5L, "Vasia", "Pupkin", 34);
+
+        Person[] exp = new Person[] {
+                p1, p2, p3, p4, p5
+        };
+        String[] result = this.af.toFormat(exp);
+        Person[] act = this.af.fromFormat(result);
+        assertArrayEquals(exp, act);
+    }
+
+    @Test
+    public void toFormatArrayStrFromFormatArrayObj() {
+        Person p1 = new Person(1L, "Vasia", "Pupkin", 34);
+        Person p2 = new Person(2L, "Masia", "Kupkin", 34);
+        Person p3 = new Person(3L, "Kolia", "Lupkin", 34);
+        Person p4 = new Person(4L, "Nusia", "Pupkin", 34);
+        Person p5 = new Person(5L, "Vasia", "Pupkin", 34);
+
+        Person[] exp = new Person[] {
+                p1, p2, p3, p4, p5
+        };
+        String result = this.af.toFormatStr(exp);
+        Person[] act = this.af.fromFormatObj(result);
+        assertArrayEquals(exp, act);
+    }
 }
