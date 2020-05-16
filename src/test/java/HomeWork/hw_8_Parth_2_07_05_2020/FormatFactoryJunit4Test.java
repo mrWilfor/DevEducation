@@ -2,15 +2,17 @@ package homeWork.hw_8_Parth_2_07_05_2020;
 
 import homeWork.hw_8_07_05_2020.object.person.Person;
 import homeWork.hw_8_07_05_2020.toFormatFromFormatPerson.AbstractFormatPerson;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
+@RunWith(Parameterized.class)
 public class FormatFactoryJunit4Test {
     private final String format;
     private AbstractFormatPerson af;
@@ -19,11 +21,12 @@ public class FormatFactoryJunit4Test {
         this.format = format;
     }
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         this.af = FormatFactory.choose(format);
     }
 
+    @Parameterized.Parameters
     public static Collection params() {
         return Arrays.asList(new Object[][]{
                 {ConstantsFormat.CSV_FORMAT},
