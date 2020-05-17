@@ -1,21 +1,21 @@
 package homeWork.hw_8_07_05_2020.object.person;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DaoPersonTest {
 
     private IDaoPerson daoPerson;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         this.daoPerson = new DaoPerson();
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         this.daoPerson.clear();
     }

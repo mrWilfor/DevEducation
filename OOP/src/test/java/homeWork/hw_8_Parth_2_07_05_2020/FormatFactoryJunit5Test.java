@@ -5,9 +5,6 @@ import homeWork.hw_8_07_05_2020.toFormatFromFormatPerson.AbstractFormatPerson;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,15 +17,6 @@ public class FormatFactoryJunit5Test {
                 FormatFactory.choose(ConstantsFormat.XML_FORMAT),
                 FormatFactory.choose(ConstantsFormat.YML_FORMAT));
     }
-
-//    public static Collection params() {
-//        return Arrays.asList(new Object[][]{
-//                {FormatFactory.choose(ConstantsFormat.CSV_FORMAT)},
-//                {FormatFactory.choose(ConstantsFormat.JSON_FORMAT)},
-//                {FormatFactory.choose(ConstantsFormat.XML_FORMAT)},
-//                {FormatFactory.choose(ConstantsFormat.YML_FORMAT)}
-//        });
-//    }
 
     @ParameterizedTest
     @MethodSource("params")
