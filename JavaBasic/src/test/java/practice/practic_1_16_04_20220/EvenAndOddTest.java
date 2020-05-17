@@ -1,0 +1,23 @@
+package practice.practic_1_16_04_20220;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class EvenAndOddTest {
+
+     @Test
+    void evenAndOdd() {
+         assertEquals(
+                 6,
+                 EvenAndOdd.sumEven(13245),
+                 "Test failed!"
+         );
+
+         assertEquals(
+                 9,
+                 EvenAndOdd.sumOdd(13245),
+                 "Test failed!"
+         );
+    }
+}
