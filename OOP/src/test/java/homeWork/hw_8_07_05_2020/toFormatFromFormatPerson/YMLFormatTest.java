@@ -1,6 +1,5 @@
 package homeWork.hw_8_07_05_2020.toFormatFromFormatPerson;
 
-
 import homeWork.hw_8_07_05_2020.object.person.Person;
 import org.junit.jupiter.api.Test;
 
