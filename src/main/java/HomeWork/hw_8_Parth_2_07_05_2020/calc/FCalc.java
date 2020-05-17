@@ -7,7 +7,7 @@ public class FCalc extends JFrame {
     public FCalc() {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(200, 400);
+        setSize(230, 290);
         PCalc pCalc = new PCalc();
         add(pCalc);
         setVisible(Boolean.TRUE);
