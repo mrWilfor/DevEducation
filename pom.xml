@@ -25,11 +25,21 @@
         <module>JavaBasic</module>
     </modules>
 
+    <properties>
+            <jupiter_version>5.4.2</jupiter_version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.4.2</version>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${jupiter_version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${jupiter_version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
