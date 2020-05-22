@@ -1,7 +1,7 @@
-package homeWork.hw_9_19_05_2020.storeStaff;
+package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-import homeWork.hw_9_19_05_2020.Buyer;
-import homeWork.hw_9_19_05_2020.product.Product;
+import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
+import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
 
 import java.util.ArrayList;
 

@@ -1,12 +1,12 @@
-package homeWork.hw_9_19_05_2020.departments;
+package homeWork.hw_8_Parth_3_19_05_2020.departments;
 
-import homeWork.hw_9_19_05_2020.Buyer;
-import homeWork.hw_9_19_05_2020.product.Product;
-import homeWork.hw_9_19_05_2020.product.SportsEquipment;
-import homeWork.hw_9_19_05_2020.storeStaff.Cashier;
-import homeWork.hw_9_19_05_2020.storeStaff.Consultant;
-import homeWork.hw_9_19_05_2020.storeStaff.SecurityGuard;
-import homeWork.hw_9_19_05_2020.storeStaff.Staff;
+import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
+import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
+import homeWork.hw_8_Parth_3_19_05_2020.product.SportsEquipment;
+import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Cashier;
+import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
+import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
+import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Staff;
 
 import java.util.ArrayList;
 
@@ -113,7 +113,6 @@ public class SportEquipmentDepartment implements Department {
         }
         return result;
     }
-
 
     @Override
     public Staff getStaff(int index) {

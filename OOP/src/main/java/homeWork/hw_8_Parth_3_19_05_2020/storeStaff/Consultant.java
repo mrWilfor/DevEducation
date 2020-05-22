@@ -1,7 +1,6 @@
-package homeWork.hw_9_19_05_2020.storeStaff;
+package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-import com.sun.org.apache.xpath.internal.objects.XString;
-import homeWork.hw_9_19_05_2020.product.Product;
+import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
 
 public class Consultant extends Staff {
     private boolean status;

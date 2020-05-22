@@ -1,6 +1,4 @@
-package homeWork.hw_9_19_05_2020.storeStaff;
-
-import java.util.Objects;
+package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
 public abstract class Staff {
     private String name;

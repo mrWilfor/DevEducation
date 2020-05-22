@@ -1,16 +1,16 @@
-package homeWork.hw_9_19_05_2020.departments;
+package homeWork.hw_8_Parth_3_19_05_2020.departments;
 
-import homeWork.hw_9_19_05_2020.Buyer;
-import homeWork.hw_9_19_05_2020.product.Product;
-import homeWork.hw_9_19_05_2020.product.Tourism;
-import homeWork.hw_9_19_05_2020.storeStaff.Cashier;
-import homeWork.hw_9_19_05_2020.storeStaff.Consultant;
-import homeWork.hw_9_19_05_2020.storeStaff.SecurityGuard;
-import homeWork.hw_9_19_05_2020.storeStaff.Staff;
+import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
+import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
+import homeWork.hw_8_Parth_3_19_05_2020.product.SportsWear;
+import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Cashier;
+import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
+import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
+import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Staff;
 
 import java.util.ArrayList;
 
-public class TourismDepartment implements Department {
+public class SportsWearDepartment implements Department {
     private ArrayList<Product> listProduct;
     private ArrayList<Staff> listStaff;
     private ArrayList<Buyer> listBuyers;
@@ -19,42 +19,45 @@ public class TourismDepartment implements Department {
     Consultant consultant;
     SecurityGuard securityGuard;
 
-    public TourismDepartment() {
+    public SportsWearDepartment() {
         this.listProduct = new ArrayList<>();
         this.listStaff = new ArrayList<>();
         this.listBuyers = new ArrayList<>();
-        this.cashier = new Cashier("Sara", "Tourism department");
-        this.consultant = new Consultant("Denny", "Tourism department");
-        this.securityGuard = new SecurityGuard("Richard", "Tourism department");
-        Tourism tent = new Tourism(
-                "tent",
-                "green",
-                "for camping",
-                300,
-                "set on a flat surface and fasten"
+        this.cashier = new Cashier("Sara", "Sport wear department");
+        this.consultant = new Consultant("Denny", "Sport wear department");
+        this.securityGuard = new SecurityGuard("Richard", "Sport wear department");
+        SportsWear trousers = new SportsWear(
+                "sports trousers",
+                "blue",
+                "for sports and everyday wear",
+                200,
+                "34",
+                "trousers"
         );
-        Tourism knife = new Tourism(
-                "multi functional knife",
-                "orange",
-                "for different task",
-                120,
-                "use careful, sharp knife"
+        SportsWear shirt = new SportsWear(
+                "active sport shirt",
+                "red",
+                "for sports and everyday wear",
+                150,
+                "M",
+                "shirt"
         );
-        Tourism backpack = new Tourism(
-                "backpack",
-                "green",
-                "to carry a large volume of things",
-                400,
-                "put things tight and tighten the belts, in order to unpack, unfasten the tightening belts"
+        SportsWear sneakers = new SportsWear(
+                "sneakers for running",
+                "silver",
+                "for running and any active sport",
+                150,
+                "M",
+                "sneakers"
         );
 
         addStaff(cashier);
         addStaff(consultant);
         addStaff(securityGuard);
 
-        addProduct(tent);
-        addProduct(knife);
-        addProduct(backpack);
+        addProduct(trousers);
+        addProduct(shirt);
+        addProduct(sneakers);
     }
 
     @Override
@@ -69,7 +72,7 @@ public class TourismDepartment implements Department {
 
     @Override
     public void addStaff(Staff staff) {
-        staff.setDepartment("Tourism department");
+        staff.setDepartment("Sport wear department");
         listStaff.add(staff);
     }
 
@@ -165,6 +168,6 @@ public class TourismDepartment implements Department {
 
     @Override
     public String getDepartmentName() {
-        return "Tourism department";
+        return "Sport wear department";
     }
 }

@@ -1,10 +1,8 @@
-package homeWork.hw_9_19_05_2020.storeStaff;
+package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-import homeWork.hw_9_19_05_2020.Buyer;
-import homeWork.hw_9_19_05_2020.Main;
-import homeWork.hw_9_19_05_2020.SportingGoodsStore;
-import homeWork.hw_9_19_05_2020.departments.Department;
-import homeWork.hw_9_19_05_2020.departments.SportEquipmentDepartment;
+import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
+import homeWork.hw_8_Parth_3_19_05_2020.Main;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.Department;
 
 public class Administrator extends Staff {
     public Administrator(String name) {

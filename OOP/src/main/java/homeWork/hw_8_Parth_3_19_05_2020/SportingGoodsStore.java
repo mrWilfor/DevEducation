@@ -1,13 +1,13 @@
-package homeWork.hw_9_19_05_2020;
+package homeWork.hw_8_Parth_3_19_05_2020;
 
-import homeWork.hw_9_19_05_2020.departments.Department;
-import homeWork.hw_9_19_05_2020.departments.SportEquipmentDepartment;
-import homeWork.hw_9_19_05_2020.departments.SportsWearDepartment;
-import homeWork.hw_9_19_05_2020.departments.TourismDepartment;
-import homeWork.hw_9_19_05_2020.product.SportsEquipment;
-import homeWork.hw_9_19_05_2020.product.SportsWear;
-import homeWork.hw_9_19_05_2020.product.Tourism;
-import homeWork.hw_9_19_05_2020.storeStaff.*;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.Department;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.SportEquipmentDepartment;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.SportsWearDepartment;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.TourismDepartment;
+import homeWork.hw_8_Parth_3_19_05_2020.product.SportsEquipment;
+import homeWork.hw_8_Parth_3_19_05_2020.product.SportsWear;
+import homeWork.hw_8_Parth_3_19_05_2020.product.Tourism;
+import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.*;
 
 import java.util.Scanner;
 

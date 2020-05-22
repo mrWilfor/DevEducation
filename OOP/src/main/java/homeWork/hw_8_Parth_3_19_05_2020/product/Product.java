@@ -1,8 +1,4 @@
-package homeWork.hw_9_19_05_2020.product;
-
-import homeWork.hw_8_Parth_2_07_05_2020.calc.PCalc;
-
-import java.util.Objects;
+package homeWork.hw_8_Parth_3_19_05_2020.product;
 
 public abstract class Product {
     private String nameOfProduct;

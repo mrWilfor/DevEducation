@@ -1,10 +1,9 @@
-package homeWork.hw_9_19_05_2020;
+package homeWork.hw_8_Parth_3_19_05_2020;
 
-import homeWork.hw_9_19_05_2020.product.Product;
+import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Buyer {
     private String name;

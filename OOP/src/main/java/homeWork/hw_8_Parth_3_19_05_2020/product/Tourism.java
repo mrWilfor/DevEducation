@@ -1,4 +1,4 @@
-package homeWork.hw_9_19_05_2020.product;
+package homeWork.hw_8_Parth_3_19_05_2020.product;
 
 public class Tourism extends Product {
     private String instruction;
