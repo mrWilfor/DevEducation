@@ -39,7 +39,7 @@ class CarTest {
         car1.setDriver(driver1);
         car2.setDriver(driver2);
 
-        assertEquals(car1, car2);
+        assertTrue(car1.equals(car2));
     }
 
     @Test
@@ -51,7 +51,7 @@ class CarTest {
         Car car2 = new Car("Toyota", "military", 1200,  engine2);
         car1.setDriver(driver1);
 
-        assertNotEquals(car1, car2);
+        assertFalse(car1.equals(car2));
     }
 
     @Test

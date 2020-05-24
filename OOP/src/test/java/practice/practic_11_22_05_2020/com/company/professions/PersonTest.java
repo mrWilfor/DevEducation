@@ -19,7 +19,7 @@ class PersonTest {
         Person person1 = new Person("Maclein J.D.");
         Person person2 = new Person("Maclein J.D.");
 
-        assertEquals(person1, person2);
+        assertTrue(person1.equals(person2));
     }
 
     @Test
@@ -27,7 +27,7 @@ class PersonTest {
         Person person1 = new Person("Maclein D.D.");
         Person person2 = new Person("Maclein J.D.");
 
-        assertNotEquals(person1, person2);
+        assertFalse(person1.equals(person2));
     }
 
     @Test

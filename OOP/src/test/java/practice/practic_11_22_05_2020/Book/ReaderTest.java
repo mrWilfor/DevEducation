@@ -25,7 +25,7 @@ class ReaderTest {
                 304583340L
         );
 
-        assertEquals(reader1, reader2);
+        assertTrue(reader1.equals(reader2));
     }
 
     @Test
@@ -45,7 +45,7 @@ class ReaderTest {
                 304583340L
         );
 
-        assertNotEquals(reader1, reader2);
+        assertFalse(reader1.equals(reader2));
     }
 
     @Test

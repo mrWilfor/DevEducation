@@ -78,7 +78,7 @@ class AbiturientTest {
     }
 
     @Test
-    void testEqualsTest() {
+    void Equals() {
         Abiturient a1 = new Abiturient(324L, "Sidorova", "Dariya", "Petrovna", "Lviv",
                 1234567890L, new int[]{5, 4, 3, 4});
         Abiturient a2 = new Abiturient(324L, "Sidorova", "Dariya", "Petrovna", "Lviv",
@@ -88,7 +88,7 @@ class AbiturientTest {
     }
 
     @Test
-    void testEqualsTestFail() {
+    void EqualsFail() {
         Abiturient a1 = new Abiturient(324L, "Sidorova", "Dariya", "Petrovna", "Lviv",
                 1234567890L, new int[]{5, 4, 3, 4});
         Abiturient a2 = new Abiturient(324L, "Sidorova", "Maria", "Petrovna", "Lviv",
@@ -98,7 +98,7 @@ class AbiturientTest {
     }
 
     @Test
-    void testHashCodeTest() {
+    void HashCode() {
         Abiturient a1 = new Abiturient(324L, "Sidorova", "Dariya", "Petrovna", "Lviv",
                 1234567890L, new int[]{5, 4, 3, 4});
         Abiturient a2 = new Abiturient(324L, "Sidorova", "Dariya", "Petrovna", "Lviv",
@@ -108,7 +108,7 @@ class AbiturientTest {
     }
 
     @Test
-    void testHashCodeTestFail() {
+    void HashCodeFail() {
         Abiturient a1 = new Abiturient(324L, "Sidorova", "Maria", "Petrovna", "Lviv",
                 1234567890L, new int[]{5, 4, 3, 4});
         Abiturient a2 = new Abiturient(324L, "Sidorova", "Dariya", "Petrovna", "Lviv",

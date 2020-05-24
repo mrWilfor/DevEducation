@@ -22,7 +22,7 @@ class EngineTest {
         Engine engine1 = new Engine(300, "Japan");
         Engine engine2 = new Engine(300, "Japan");
 
-        assertEquals(engine1, engine2);
+        assertTrue(engine1.equals(engine2));
     }
 
     @Test
@@ -30,7 +30,7 @@ class EngineTest {
         Engine engine1 = new Engine(300, "Japan");
         Engine engine2 = new Engine(300, "USA");
 
-        assertNotEquals(engine1, engine2);
+        assertFalse(engine1.equals(engine2));
     }
 
     @Test

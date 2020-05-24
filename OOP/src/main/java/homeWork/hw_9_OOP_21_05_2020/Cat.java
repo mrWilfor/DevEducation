@@ -1,15 +1,17 @@
 package homeWork.hw_9_OOP_21_05_2020;
 
-public class Dog extends Animal{
-    boolean duckHunting;
+import java.util.Objects;
 
-    public Dog(String food, String location, boolean duckHunting) {
+public class Cat extends Animal {
+    boolean mouseHunting;
+
+    public Cat(String food, String location, boolean mouseHunting) {
         super(food, location);
-        this.duckHunting = duckHunting;
+        this.mouseHunting = mouseHunting;
     }
 
-    public boolean getDuckHunting() {
-        return duckHunting;
+    public boolean isMouseHunting() {
+        return mouseHunting;
     }
 
     @Override
@@ -17,35 +19,42 @@ public class Dog extends Animal{
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+
+        if (o == null || getClass() != o.getClass()){
             return false;
         }
-        if (!super.equals(o)) return false;
-        return super.equals(o) && this.duckHunting == (((Dog) o).duckHunting);
+
+        if (!super.equals(o)) {
+            return false;
+        }
+
+        Cat cat = (Cat) o;
+
+        return mouseHunting == cat.mouseHunting;
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode() + (duckHunting ? 1 : 0);
+        return Objects.hash(super.hashCode(), mouseHunting);
     }
 
     @Override
     public String toString() {
-        return "Dog{" +
+        return "Cat{" +
                 "food='" + super.getFood() + '\'' +
                 ", location='" + super.getLocation() + '\'' +
                 ", sleepStatus='" + super.getSleepStatus() + '\'' +
-                ", duckHunting='" + duckHunting + '\'' +
+                ", mouseHunting='" + mouseHunting + '\'' +
                 '}';
     }
 
     @Override
     public boolean makeNoise() {
         if (super.getSleepStatus()) {
-            System.out.println("snores...");
+            System.out.println("purrs...");
             return false;
         } else {
-            System.out.println("WOOF WOOF WOOF!!!");
+            System.out.println("Meow meow meow))");
             return true;
         }
     }
@@ -53,11 +62,11 @@ public class Dog extends Animal{
     @Override
     public boolean eat(String food) {
         if (super.getSleepStatus()) {
-            System.out.println("snores...");
+            System.out.println("purrs...");
             return false;
         } else {
             if (super.getFood().equals(food)) {
-                System.out.println("Champs");
+                System.out.println("eats lazily");
                 return true;
             } else {
                 System.out.println("Does not eat");

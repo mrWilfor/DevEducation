@@ -42,7 +42,7 @@ class LorryTest {
         lorry1.setDriver(driver1);
         lorry2.setDriver(driver2);
 
-        assertEquals(lorry1, lorry2);
+        assertTrue(lorry1.equals(lorry2));
     }
 
     @Test
@@ -54,7 +54,7 @@ class LorryTest {
         Lorry lorry2 = new Lorry("Toyota", "lorry", 1200, 40, engine2);
         lorry1.setDriver(driver1);
 
-        assertNotEquals(lorry1, lorry2);
+        assertFalse(lorry1.equals(lorry2));
     }
 
     @Test

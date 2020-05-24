@@ -23,7 +23,7 @@ class BookTest {
         Book book1 = new Book("Monte-Kristo", "Duma");
         Book book2 = new Book("Monte-Kristo", "Duma");
 
-        assertEquals(book1, book2);
+        assertTrue(book1.equals(book2));
     }
 
     @Test
@@ -31,7 +31,7 @@ class BookTest {
         Book book1 = new Book("Monte-Kristo", "Dante");
         Book book2 = new Book("Monte-Kristo", "Duma");
 
-        assertNotEquals(book1, book2);
+        assertFalse(book1.equals(book2));
     }
 
     @Test

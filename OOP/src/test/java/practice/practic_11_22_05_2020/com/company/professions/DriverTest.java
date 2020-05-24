@@ -19,7 +19,7 @@ class DriverTest {
         Driver driver1 = new Driver("Maclein J.D.", 15);
         Driver driver2 = new Driver("Maclein J.D.", 15);
 
-        assertEquals(driver1, driver2);
+        assertTrue(driver1.equals(driver2));
     }
 
     @Test
@@ -27,7 +27,7 @@ class DriverTest {
         Driver driver1 = new Driver("Maclein J.D.", 15);
         Driver driver2 = new Driver("Maclein J.D.", 5);
 
-        assertNotEquals(driver1, driver2);
+        assertFalse(driver1.equals(driver2));
     }
 
     @Test

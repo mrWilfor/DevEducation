@@ -42,7 +42,7 @@ class SportCarTest {
         sportCar1.setDriver(driver1);
         sportCar2.setDriver(driver2);
 
-        assertEquals(sportCar1, sportCar2);
+        assertTrue(sportCar1.equals(sportCar2));
     }
 
     @Test
@@ -54,7 +54,7 @@ class SportCarTest {
         SportCar sportCar2 = new SportCar("Toyota", "sport car", 1200, 350, engine2);
         sportCar1.setDriver(driver1);
 
-        assertNotEquals(sportCar1, sportCar2);
+        assertFalse(sportCar1.equals(sportCar2));
     }
 
     @Test
