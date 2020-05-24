@@ -1,6 +1,6 @@
-package practice.practic_11_22_05_2020.Book;
+package practice.practic_11_22_05_2020.book;
 
-public class Library implements practice.practic_11_22_05_2020.Book.Interface.Library {
+public class Library implements practice.practic_11_22_05_2020.book.interfaceBook.Library {
     Reader[] listOfReader;
 
     public Library() {

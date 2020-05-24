@@ -1,8 +1,8 @@
-package practice.practic_11_22_05_2020.Book;
+package practice.practic_11_22_05_2020.book;
 
 import java.util.Objects;
 
-public class Book implements practice.practic_11_22_05_2020.Book.Interface.Book {
+public class Book implements practice.practic_11_22_05_2020.book.interfaceBook.Book {
     private String name;
     private String author;
 

@@ -1,17 +1,17 @@
-package homeWork.hw_9_OOP_21_05_2020;
+package homeWork.hw_9_OOP_21_05_2020.animal;
 
 import java.util.Objects;
 
-public class Horse extends Animal {
-    private boolean horsebackRiding;
+public class Cat extends Animal {
+    boolean mouseHunting;
 
-    public Horse(String food, String location, boolean horsebackRiding) {
+    public Cat(String food, String location, boolean mouseHunting) {
         super(food, location);
-        this.horsebackRiding = horsebackRiding;
+        this.mouseHunting = mouseHunting;
     }
 
-    public boolean isHorsebackRiding() {
-        return horsebackRiding;
+    public boolean getMouseHunting() {
+        return mouseHunting;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Horse extends Animal {
             return true;
         }
 
-        if (o == null || getClass() != o.getClass()) {
+        if (o == null || getClass() != o.getClass()){
             return false;
         }
 
@@ -28,33 +28,33 @@ public class Horse extends Animal {
             return false;
         }
 
-        Horse horse = (Horse) o;
+        Cat cat = (Cat) o;
 
-        return horsebackRiding == horse.horsebackRiding;
+        return mouseHunting == cat.mouseHunting;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), horsebackRiding);
+        return Objects.hash(super.hashCode(), mouseHunting);
     }
 
     @Override
     public String toString() {
-        return "Horse{" +
+        return "Cat{" +
                 "food='" + super.getFood() + '\'' +
                 ", location='" + super.getLocation() + '\'' +
                 ", sleepStatus='" + super.getSleepStatus() + '\'' +
-                ", horsebackRiding=" + horsebackRiding +
+                ", mouseHunting='" + mouseHunting + '\'' +
                 '}';
     }
 
     @Override
     public boolean makeNoise() {
         if (super.getSleepStatus()) {
-            System.out.println("sniffles...");
+            System.out.println("purrs...");
             return false;
         } else {
-            System.out.println("Neigh!!!");
+            System.out.println("Meow meow meow))");
             return true;
         }
     }
@@ -62,11 +62,11 @@ public class Horse extends Animal {
     @Override
     public boolean eat(String food) {
         if (super.getSleepStatus()) {
-            System.out.println("sniffles...");
+            System.out.println("purrs...");
             return false;
         } else {
             if (super.getFood().equals(food)) {
-                System.out.println("Silently chews");
+                System.out.println("eats lazily");
                 return true;
             } else {
                 System.out.println("Does not eat");

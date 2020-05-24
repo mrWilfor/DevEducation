@@ -1,6 +1,6 @@
-package homeWork.hw_9_OOP_21_05_2020;
+package homeWork.hw_9_OOP_21_05_2020.animal;
 
-public class Dog extends Animal{
+public class Dog extends Animal {
     boolean duckHunting;
 
     public Dog(String food, String location, boolean duckHunting) {

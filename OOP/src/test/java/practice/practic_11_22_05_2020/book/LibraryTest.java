@@ -1,4 +1,4 @@
-package practice.practic_11_22_05_2020.Book;
+package practice.practic_11_22_05_2020.book;
 
 import org.junit.jupiter.api.Test;
 

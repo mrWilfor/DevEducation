@@ -1,6 +1,6 @@
-package practice.practic_11_22_05_2020.Book.Interface;
+package practice.practic_11_22_05_2020.book.interfaceBook;
 
-import practice.practic_11_22_05_2020.Book.Book;
+import practice.practic_11_22_05_2020.book.Book;
 
 import java.util.Date;
 

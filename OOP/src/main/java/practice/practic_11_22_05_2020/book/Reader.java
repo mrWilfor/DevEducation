@@ -1,11 +1,11 @@
-package practice.practic_11_22_05_2020.Book;
+package practice.practic_11_22_05_2020.book;
 
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 
-public class Reader implements practice.practic_11_22_05_2020.Book.Interface.Reader {
+public class Reader implements practice.practic_11_22_05_2020.book.interfaceBook.Reader {
     private String nameSurnamePatronymic;
     private String numberOfLibraryCard;
     private String faculty;

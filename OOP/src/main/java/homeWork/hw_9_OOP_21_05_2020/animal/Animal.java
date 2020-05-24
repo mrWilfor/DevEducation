@@ -1,8 +1,6 @@
-package homeWork.hw_9_OOP_21_05_2020;
+package homeWork.hw_9_OOP_21_05_2020.animal;
 
-import java.util.Objects;
-
-public class Animal implements IAnimal {
+public class Animal implements homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnimal.Animal {
     private String food;
     private String location;
     private boolean sleepStatus;
@@ -14,14 +12,17 @@ public class Animal implements IAnimal {
         this.sleepStatus = false;
     }
 
+    @Override
     public String getFood() {
         return food;
     }
 
+    @Override
     public boolean getSleepStatus() {
         return this.sleepStatus;
     }
 
+    @Override
     public String getLocation() {
         return location;
     }
@@ -51,7 +52,7 @@ public class Animal implements IAnimal {
         return "Animal{" +
                 "food='" + food + '\'' +
                 ", location='" + location + '\'' +
-                ", sleepStatus=" + sleepStatus +
+                ", sleepStatus='" + sleepStatus + '\'' +
                 '}';
     }
 
