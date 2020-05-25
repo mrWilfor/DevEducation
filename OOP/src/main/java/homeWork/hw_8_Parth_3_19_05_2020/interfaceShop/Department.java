@@ -25,8 +25,6 @@ public interface Department {
 
     void printListOfConsultants();
 
-    void consultation(Product product, Buyer buyer);
-
     Consultant getConsultant(int index);
 
     Consultant getConsultant(boolean status);

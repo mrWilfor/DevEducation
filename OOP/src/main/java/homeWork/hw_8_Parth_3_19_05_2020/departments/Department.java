@@ -6,7 +6,7 @@ import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
 
 import java.util.ArrayList;
 
-public class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department {
+public abstract class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department {
     private ArrayList<Product> listOfProduct;
     private ArrayList<Consultant> listOfConsultant;
 
@@ -74,11 +74,6 @@ public class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSho
                     .append(listOfConsultant.get(i).toString());
         }
         System.out.println(result);
-    }
-
-    @Override
-    public void consultation(Product product, Buyer buyer) {
-
     }
 
     @Override

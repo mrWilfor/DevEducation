@@ -13,40 +13,6 @@ import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
 import java.util.ArrayList;
 
 public interface SportingGoodsStore {
-    void addSecurityGuard(SecurityGuard securityGuard);
-
-    void deleteSecurityGuard(SecurityGuard securityGuard);
-
-    ArrayList<SecurityGuard> getListOfSecurityGuard();
-
-    SecurityGuard getSecurityGuard(int index);
-
-    void addCashier(Cashier cashier);
-
-    void deleteCashier(Cashier cashier);
-
-    ArrayList<Cashier> getListOfCashier();
-
-    Cashier getCashier(int index);
-
-    void addBuyer(Buyer buyer);
-
-    void deleteBuyer(Buyer buyer);
-
-    ArrayList<Buyer> getListOfBuyers();
-
-    Buyer getBuyer(int index);
-
-    TourismDepartment getTourismDepartment();
-
-    SportEquipmentDepartment getSportEquipmentDepartment();
-
-    SportsWearDepartment getSportsWearDepartment();
-
-    Bank getBank();
-
-    Administrator getAdministrator();
-
     void enteredIntoShop();
 
     void enteredIntoDepartment(Department department);
@@ -80,4 +46,38 @@ public interface SportingGoodsStore {
     void printListOfBuyers();
 
     void outOfShop();
+
+    void addSecurityGuard(SecurityGuard securityGuard);
+
+    void deleteSecurityGuard(SecurityGuard securityGuard);
+
+    ArrayList<SecurityGuard> getListOfSecurityGuard();
+
+    SecurityGuard getSecurityGuard(int index);
+
+    void addCashier(Cashier cashier);
+
+    void deleteCashier(Cashier cashier);
+
+    ArrayList<Cashier> getListOfCashier();
+
+    Cashier getCashier(int index);
+
+    void addBuyer(Buyer buyer);
+
+    void deleteBuyer(Buyer buyer);
+
+    ArrayList<Buyer> getListOfBuyers();
+
+    Buyer getBuyer(int index);
+
+    TourismDepartment getTourismDepartment();
+
+    SportEquipmentDepartment getSportEquipmentDepartment();
+
+    SportsWearDepartment getSportsWearDepartment();
+
+    Bank getBank();
+
+    Administrator getAdministrator();
 }
