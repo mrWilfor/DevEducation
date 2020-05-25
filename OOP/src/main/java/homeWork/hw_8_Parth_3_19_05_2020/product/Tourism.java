@@ -14,31 +14,6 @@ public class Tourism extends Product {
     }
 
     @Override
-    public String getNameOfProduct() {
-        return super.getNameOfProduct();
-    }
-
-    @Override
-    public String getCategory() {
-        return super.getCategory();
-    }
-
-    @Override
-    public String getColor() {
-        return super.getColor();
-    }
-
-    @Override
-    public String getDescription() {
-        return super.getDescription();
-    }
-
-    @Override
-    public int getPrise() {
-        return super.getPrise();
-    }
-
-    @Override
     public void setStatus(boolean status) {
         super.setStatus(status);
     }
@@ -61,6 +36,7 @@ public class Tourism extends Product {
         if (o instanceof Tourism) {
             return super.equals(o) && this.instruction.equals(((Tourism) o).instruction);
         }
+
         return false;
     }
 

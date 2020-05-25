@@ -10,15 +10,6 @@ public class Consultant extends Staff {
         this.status = true;
     }
 
-    public Consultant(String name, String position, String department) {
-        super(name, position, department);
-        this.status = true;
-    }
-
-    public String productDescription(Product product) {
-        return product.getDescription();
-    }
-
     public void setStatus(boolean status) {
         this.status = status;
     }
@@ -29,15 +20,15 @@ public class Consultant extends Staff {
 
     @Override
     public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
+        if (this == o) {
+            return true;
+        }
 
-            if (o == null || getClass() != o.getClass()) {
-                return false;
-            }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
-            return super.equals(o) && this.status == ((Consultant) o).getStatus();
+        return super.equals(o) && this.status == ((Consultant) o).getStatus();
     }
 
     @Override
@@ -47,7 +38,15 @@ public class Consultant extends Staff {
 
     @Override
     public String toString() {
-        return "Consultant{" + super.toString() + "status='" + this.status + "\'" + "}";
+        return "Consultant{" +
+                super.toString() +
+                ", status='" + this.status + "\'" +
+                "}";
+    }
+
+    public String consultation(Product product) {
+        setStatus(false);
+        return product.getDescription();
     }
 }
 

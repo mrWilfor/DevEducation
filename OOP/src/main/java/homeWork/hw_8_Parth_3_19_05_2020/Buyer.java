@@ -10,12 +10,17 @@ public class Buyer {
     private int money;
     private int bankCredit = 0;
     private boolean desireToTakeALoan;
-    private ArrayList<Product> basket = new ArrayList<>();
+    private ArrayList<Product> basket;
+
+    public Buyer() {
+
+    }
 
     public Buyer (String name, int money, boolean desireToTakeALoan) {
         this.name = name;
         this.money = money;
         this.desireToTakeALoan = desireToTakeALoan;
+        this.basket = new ArrayList<>();
     }
 
     public void addProductToBasket(Product product) {

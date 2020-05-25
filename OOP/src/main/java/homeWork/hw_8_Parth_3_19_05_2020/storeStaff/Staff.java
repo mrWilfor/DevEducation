@@ -1,6 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-public abstract class Staff {
+public abstract class Staff implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Staff {
     private String name;
     private String position;
     private String department;
@@ -11,18 +11,22 @@ public abstract class Staff {
         this.department = department;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public String getPosition() {
         return position;
     }
 
+    @Override
     public String getDepartment() {
         return department;
     }
 
+    @Override
     public void setDepartment(String department) {
         this.department = department;
     }

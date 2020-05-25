@@ -20,47 +20,12 @@ public class SportsWear extends Product {
 
     }
 
-    @Override
-    public String getNameOfProduct() {
-        return super.getNameOfProduct();
-    }
-
-    @Override
-    public String getCategory() {
-        return super.getCategory();
-    }
-
-    @Override
-    public String getColor() {
-        return super.getColor();
-    }
-
-    @Override
-    public String getDescription() {
-        return super.getDescription();
-    }
-
-    @Override
-    public int getPrise() {
-        return super.getPrise();
-    }
-
     public String getSize() {
         return size;
     }
 
     public String getTypeOfWear() {
         return typeOfWear;
-    }
-
-    @Override
-    public void setStatus(boolean status) {
-        super.setStatus(status);
-    }
-
-    @Override
-    public boolean getStatus() {
-        return super.getStatus();
     }
 
     @Override
@@ -72,7 +37,9 @@ public class SportsWear extends Product {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         SportsWear that = (SportsWear) o;
+
         return super.equals(o) && Objects.equals(size, that.size) &&
                 Objects.equals(typeOfWear, that.typeOfWear);
     }

@@ -1,6 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020.product;
 
-public abstract class Product {
+public abstract class Product implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Product {
     private String nameOfProduct;
     private String category;
     private String color;
@@ -16,30 +16,37 @@ public abstract class Product {
         this.prise = prise;
     }
 
+    @Override
     public String getNameOfProduct() {
         return nameOfProduct;
     }
 
+    @Override
     public String getCategory() {
         return category;
     }
 
+    @Override
     public String getColor() {
         return color;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
 
+    @Override
     public int getPrise() {
         return prise;
     }
 
+    @Override
     public void setStatus(boolean status) {
         this.status = status;
     }
 
+    @Override
     public boolean getStatus() {
         return status;
     }
