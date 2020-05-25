@@ -55,8 +55,8 @@ public abstract class Staff implements homeWork.hw_8_Parth_3_19_05_2020.interfac
 
     @Override
     public String toString() {
-        return "name='" + name + "\'" +
-                ", position='" + position + "\'" +
-                ", department='" + department + "\'";
+        return "name='" + name + '\'' +
+                ", position='" + position + '\'' +
+                ", department='" + department + '\'';
     }
 }

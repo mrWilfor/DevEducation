@@ -207,7 +207,7 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
             case 1:
                 System.out.print("---------------------------------------------------\n");
                 System.out.println(bank.getListOfDebtors());
-                printListOfBuyers();
+                bank.printListOfDebtors();
                 break;
             case 2:
                 enteredIntoShop();

@@ -11,17 +11,17 @@ public class Vet implements homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnimal.
         Vet vet = new Vet();
         homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnimal.Animal[] animals = {dog, cat, horse};
 
-        for (int i = 0; i < animals.length; i++) {
-            vet.treatAnimal(animals[i]);
+        for (Animal animal : animals) {
+            vet.treatAnimal(animal);
             System.out.println();
         }
-
     }
 
     @Override
     public String treatAnimal(homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnimal.Animal animal) {
         if (animal != null) {
             StringBuilder result = new StringBuilder(animal.getClass().getSimpleName());
+
             result.append(":\n")
                     .append("\tfood = ")
                     .append(animal.getFood())
@@ -31,6 +31,7 @@ public class Vet implements homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnimal.
 
             return result.toString();
         }
+
         return null;
     }
 }

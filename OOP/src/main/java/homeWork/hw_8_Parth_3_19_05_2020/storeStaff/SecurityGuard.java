@@ -30,10 +30,8 @@ public class SecurityGuard extends Staff {
                 }
             }
             Main.shop.deleteBuyer(this.buyer);
-            this.buyer = buyer;
-        } else {
-            this.buyer = buyer;
         }
+        this.buyer = buyer;
     }
 
     @Override
@@ -63,6 +61,6 @@ public class SecurityGuard extends Staff {
     @Override
     public String toString() {
         return "Security{" + super.toString() + ", buyer='" +
-                (this.buyer != null ? this.buyer.getName() : "") + "\'" + "}";
+                (this.buyer != null ? this.buyer.getName() : "") + '\'' + "}";
     }
 }

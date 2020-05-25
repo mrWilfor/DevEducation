@@ -8,6 +8,34 @@ public class Dog extends Animal {
         this.duckHunting = duckHunting;
     }
 
+
+    @Override
+    public boolean makeNoise() {
+        if (super.getSleepStatus()) {
+            System.out.println("snores...");
+            return false;
+        }
+
+        System.out.println("WOOF WOOF WOOF!!!");
+        return true;
+    }
+
+    @Override
+    public boolean eat(String food) {
+        if (super.getSleepStatus()) {
+            System.out.println("snores...");
+            return false;
+        }
+
+        if (super.getFood().equals(food)) {
+            System.out.println("Champs");
+            return true;
+        }
+
+        System.out.println("Does not eat");
+        return false;
+    }
+
     public boolean getDuckHunting() {
         return duckHunting;
     }
@@ -37,32 +65,5 @@ public class Dog extends Animal {
                 ", sleepStatus='" + super.getSleepStatus() + '\'' +
                 ", duckHunting='" + duckHunting + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean makeNoise() {
-        if (super.getSleepStatus()) {
-            System.out.println("snores...");
-            return false;
-        } else {
-            System.out.println("WOOF WOOF WOOF!!!");
-            return true;
-        }
-    }
-
-    @Override
-    public boolean eat(String food) {
-        if (super.getSleepStatus()) {
-            System.out.println("snores...");
-            return false;
-        } else {
-            if (super.getFood().equals(food)) {
-                System.out.println("Champs");
-                return true;
-            } else {
-                System.out.println("Does not eat");
-                return false;
-            }
-        }
     }
 }

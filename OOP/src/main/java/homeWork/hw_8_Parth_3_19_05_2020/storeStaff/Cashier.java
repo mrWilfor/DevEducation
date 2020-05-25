@@ -37,16 +37,13 @@ public class Cashier extends Staff {
                 }
                 System.out.println("Thank you, for your purchase");
 
-                this.buyer = buyer;
             } else {
                 System.out.println(buyer.getName() + " does not have enough money directing to the administrator");
                 Main.shop.getAdministrator()
                         .outOfOrTakeCredit(this.buyer, this.buyer.getMoney() - cost, this.buyer.getDesireToTakeALoan());
-                this.buyer = buyer;
             }
-        } else {
-            this.buyer = buyer;
         }
+        this.buyer = buyer;
     }
 
     @Override
@@ -75,6 +72,6 @@ public class Cashier extends Staff {
 
     @Override
     public String toString() {
-        return "Cashier{" + super.toString() + ", buyer='" + (this.buyer != null ? this.buyer.getName() : "") + "\'" + "}";
+        return "Cashier{" + super.toString() + ", buyer='" + (this.buyer != null ? this.buyer.getName() : "") + '\'' + "}";
     }
 }

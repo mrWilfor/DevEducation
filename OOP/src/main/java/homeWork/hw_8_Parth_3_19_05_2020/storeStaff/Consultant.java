@@ -40,12 +40,12 @@ public class Consultant extends Staff {
     public String toString() {
         return "Consultant{" +
                 super.toString() +
-                ", status='" + this.status + "\'" +
+                ", status='" + this.status + '\'' +
                 "}";
     }
 
-    public String consultation(Product product) {
+    public void consultation(Product product) {
+        System.out.println(product.getDescription());
         setStatus(false);
-        return product.getDescription();
     }
 }

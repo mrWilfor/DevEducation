@@ -10,6 +10,34 @@ public class Horse extends Animal {
         this.horsebackRiding = horsebackRiding;
     }
 
+
+    @Override
+    public boolean makeNoise() {
+        if (super.getSleepStatus()) {
+            System.out.println("sniffles...");
+            return false;
+        }
+
+        System.out.println("Neigh!!!");
+        return true;
+    }
+
+    @Override
+    public boolean eat(String food) {
+        if (super.getSleepStatus()) {
+            System.out.println("sniffles...");
+            return false;
+        }
+
+        if (super.getFood().equals(food)) {
+            System.out.println("Silently chews");
+            return true;
+        }
+
+        System.out.println("Does not eat");
+        return false;
+    }
+
     public boolean getHorsebackRiding() {
         return horsebackRiding;
     }
@@ -46,32 +74,5 @@ public class Horse extends Animal {
                 ", sleepStatus='" + super.getSleepStatus() + '\'' +
                 ", horsebackRiding='" + horsebackRiding + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean makeNoise() {
-        if (super.getSleepStatus()) {
-            System.out.println("sniffles...");
-            return false;
-        } else {
-            System.out.println("Neigh!!!");
-            return true;
-        }
-    }
-
-    @Override
-    public boolean eat(String food) {
-        if (super.getSleepStatus()) {
-            System.out.println("sniffles...");
-            return false;
-        } else {
-            if (super.getFood().equals(food)) {
-                System.out.println("Silently chews");
-                return true;
-            } else {
-                System.out.println("Does not eat");
-                return false;
-            }
-        }
     }
 }

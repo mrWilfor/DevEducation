@@ -19,12 +19,12 @@ public class Bank {
 
     public String printListOfDebtors() {
         int number = 1;
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         for (Buyer b : listOfDebtors) {
-            result = result + number + " - " + b.toString() + "\n";
+            result.append(number).append(" - ").append(b.toString()).append("\n");
             number++;
         }
-        return result;
+        return result.toString();
     }
 }

@@ -1,12 +1,11 @@
 package homeWork.hw_8_Parth_3_19_05_2020.departments;
 
-import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
 import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
 
 import java.util.ArrayList;
 
-public abstract class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department {
+public class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department {
     private ArrayList<Product> listOfProduct;
     private ArrayList<Consultant> listOfConsultant;
 
@@ -83,9 +82,9 @@ public abstract class Department implements homeWork.hw_8_Parth_3_19_05_2020.int
 
     @Override
     public Consultant getConsultant(boolean status) {
-        for (int i = 0; i < listOfConsultant.size(); i++) {
-            if (listOfConsultant.get(i).getStatus() == status) {
-                return listOfConsultant.get(i);
+        for (Consultant consultant : listOfConsultant) {
+            if (consultant.getStatus() == status) {
+                return consultant;
             }
         }
         return null;

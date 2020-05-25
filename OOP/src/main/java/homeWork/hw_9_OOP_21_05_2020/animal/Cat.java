@@ -10,6 +10,33 @@ public class Cat extends Animal {
         this.mouseHunting = mouseHunting;
     }
 
+    @Override
+    public boolean makeNoise() {
+        if (super.getSleepStatus()) {
+            System.out.println("purrs...");
+            return false;
+        }
+
+        System.out.println("Meow meow meow))");
+        return true;
+    }
+
+    @Override
+    public boolean eat(String food) {
+        if (super.getSleepStatus()) {
+            System.out.println("purrs...");
+            return false;
+        }
+
+        if (super.getFood().equals(food)) {
+            System.out.println("eats lazily");
+            return true;
+        }
+
+        System.out.println("Does not eat");
+        return false;
+    }
+
     public boolean getMouseHunting() {
         return mouseHunting;
     }
@@ -20,7 +47,7 @@ public class Cat extends Animal {
             return true;
         }
 
-        if (o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
 
@@ -46,32 +73,5 @@ public class Cat extends Animal {
                 ", sleepStatus='" + super.getSleepStatus() + '\'' +
                 ", mouseHunting='" + mouseHunting + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean makeNoise() {
-        if (super.getSleepStatus()) {
-            System.out.println("purrs...");
-            return false;
-        } else {
-            System.out.println("Meow meow meow))");
-            return true;
-        }
-    }
-
-    @Override
-    public boolean eat(String food) {
-        if (super.getSleepStatus()) {
-            System.out.println("purrs...");
-            return false;
-        } else {
-            if (super.getFood().equals(food)) {
-                System.out.println("eats lazily");
-                return true;
-            } else {
-                System.out.println("Does not eat");
-                return false;
-            }
-        }
     }
 }

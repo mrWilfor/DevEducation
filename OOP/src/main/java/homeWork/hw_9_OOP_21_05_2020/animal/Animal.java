@@ -3,13 +3,49 @@ package homeWork.hw_9_OOP_21_05_2020.animal;
 public class Animal implements homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnimal.Animal {
     private String food;
     private String location;
-    private boolean sleepStatus;
+    private boolean sleepStatus = false;
 
 
     public Animal(String food, String location) {
         this.food = food;
         this.location = location;
-        this.sleepStatus = false;
+    }
+
+    @Override
+    public boolean makeNoise() {
+        if (sleepStatus) {
+            System.out.println("sleeping");
+            return false;
+        }
+        System.out.println("Is noisy");
+        return true;
+    }
+
+    @Override
+    public boolean eat(String food) {
+        if (sleepStatus) {
+            System.out.println("sleeping");
+            return false;
+        }
+
+        if (this.food.equals(food)) {
+            System.out.println("Eating");
+            return true;
+        }
+
+        System.out.println("Does not eat");
+        return false;
+    }
+
+    @Override
+    public void sleep() {
+        if (sleepStatus) {
+            sleepStatus = false;
+            System.out.println("Awoke");
+        } else {
+            sleepStatus = true;
+            System.out.println("ZZZZZZ");
+        }
     }
 
     @Override
@@ -32,6 +68,7 @@ public class Animal implements homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnim
         if (this == o) {
             return true;
         }
+
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
@@ -54,44 +91,5 @@ public class Animal implements homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnim
                 ", location='" + location + '\'' +
                 ", sleepStatus='" + sleepStatus + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean makeNoise() {
-        if (sleepStatus) {
-            System.out.println("sleeping");
-            return false;
-        } else {
-            System.out.println("Is noisy");
-            return true;
-        }
-    }
-
-    @Override
-    public boolean eat(String food) {
-        if (sleepStatus) {
-            System.out.println("sleeping");
-            return false;
-        } else {
-            if (this.food.equals(food)) {
-                System.out.println("Eating");
-                return true;
-            } else {
-                System.out.println("Does not eat");
-                return false;
-            }
-        }
-    }
-
-    @Override
-    public void sleep() {
-        if (sleepStatus) {
-            sleepStatus = false;
-            System.out.println("Awoke");
-        } else {
-            sleepStatus = true;
-            System.out.println("ZZZZZZ");
-        }
-
     }
 }

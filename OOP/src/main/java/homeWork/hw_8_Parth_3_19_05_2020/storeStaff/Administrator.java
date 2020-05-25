@@ -21,21 +21,21 @@ public class Administrator extends Staff {
     }
 
     public void referralConsultant(Department departmentThis, Department departmentFrom1, Department departmentFrom2) {
-        Consultant consultant = null;
-        consultant = (Consultant) departmentFrom1.getConsultant(true);
+        Consultant consultant;
+        consultant = departmentFrom1.getConsultant(true);
 
         if (consultant != null) {
             departmentThis.addConsultant(consultant);
             departmentFrom1.deleteConsultant(consultant);
         } else {
-            consultant = (Consultant) departmentFrom2.getConsultant(true);
+            consultant = departmentFrom2.getConsultant(true);
         }
 
         if (consultant != null) {
             departmentThis.addConsultant(consultant);
             departmentFrom2.deleteConsultant(consultant);
         } else {
-            ((Consultant) departmentThis.getConsultant(false)).setStatus(true);
+            departmentThis.getConsultant(false).setStatus(true);
         }
     }
 

@@ -14,7 +14,6 @@ public class Banker extends Staff {
         int credit = buyer.getMoney() + lackOfMoney * (-1);
         buyer.setMoney(credit);
         buyer.setBankCredit(lackOfMoney);
-        boolean record = true;
         ArrayList<Buyer> listOfDebtors = Main.shop.getBank().getListOfDebtors();
 
         if (listOfDebtors.contains(buyer)) {
