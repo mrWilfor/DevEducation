@@ -1,7 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020;
 
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Banker;
-import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Staff;
 
 import java.util.ArrayList;
 
@@ -22,7 +21,7 @@ public class Bank {
         int number = 1;
         String result = "";
 
-        for(Buyer b : listOfDebtors) {
+        for (Buyer b : listOfDebtors) {
             result = result + number + " - " + b.toString() + "\n";
             number++;
         }

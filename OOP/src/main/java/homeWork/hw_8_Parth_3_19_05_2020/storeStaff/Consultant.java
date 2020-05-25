@@ -49,4 +49,3 @@ public class Consultant extends Staff {
         return product.getDescription();
     }
 }
-

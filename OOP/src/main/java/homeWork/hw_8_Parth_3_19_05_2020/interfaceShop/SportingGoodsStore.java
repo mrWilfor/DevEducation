@@ -6,16 +6,11 @@ import homeWork.hw_8_Parth_3_19_05_2020.departments.Department;
 import homeWork.hw_8_Parth_3_19_05_2020.departments.SportEquipmentDepartment;
 import homeWork.hw_8_Parth_3_19_05_2020.departments.SportsWearDepartment;
 import homeWork.hw_8_Parth_3_19_05_2020.departments.TourismDepartment;
-import homeWork.hw_8_Parth_3_19_05_2020.product.SportsEquipment;
-import homeWork.hw_8_Parth_3_19_05_2020.product.SportsWear;
-import homeWork.hw_8_Parth_3_19_05_2020.product.Tourism;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Administrator;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Cashier;
-import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public interface SportingGoodsStore {
     void addSecurityGuard(SecurityGuard securityGuard);
@@ -78,9 +73,9 @@ public interface SportingGoodsStore {
 
     void theBuyerManagment(Buyer buyer, Department department);
 
-    void theBuyerManagmentPayment (Buyer buyer);
+    void theBuyerManagmentPayment(Buyer buyer);
 
-    void theBuyerManagmentCheckSecurity (Buyer buyer);
+    void theBuyerManagmentCheckSecurity(Buyer buyer);
 
     void printListOfBuyers();
 

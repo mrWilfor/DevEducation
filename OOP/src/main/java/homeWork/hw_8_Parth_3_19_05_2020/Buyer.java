@@ -16,7 +16,7 @@ public class Buyer {
 
     }
 
-    public Buyer (String name, int money, boolean desireToTakeALoan) {
+    public Buyer(String name, int money, boolean desireToTakeALoan) {
         this.name = name;
         this.money = money;
         this.desireToTakeALoan = desireToTakeALoan;
@@ -61,7 +61,7 @@ public class Buyer {
             return false;
         }
         return this.money == ((Buyer) o).money &&
-               this.name.equals(((Buyer) o).name) &&
+                this.name.equals(((Buyer) o).name) &&
                 Arrays.equals(this.basket.toArray(), ((Buyer) o).basket.toArray()) &&
                 this.bankCredit == ((Buyer) o).bankCredit &&
                 this.desireToTakeALoan == ((Buyer) o).desireToTakeALoan;

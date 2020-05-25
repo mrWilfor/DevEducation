@@ -35,7 +35,7 @@ public class Administrator extends Staff {
             departmentThis.addConsultant(consultant);
             departmentFrom2.deleteConsultant(consultant);
         } else {
-            ((Consultant) departmentThis.getConsultant( false)).setStatus(true);
+            ((Consultant) departmentThis.getConsultant(false)).setStatus(true);
         }
     }
 

@@ -181,7 +181,7 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         }
     }
 
-    public void cashiersManagment(){
+    public void cashiersManagment() {
         System.out.print("---------------------------------------------------\n");
         System.out.print("Cashier:\n");
         System.out.print("1 - add cashier\n");
@@ -219,7 +219,7 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         }
     }
 
-    public void securityManagment(){
+    public void securityManagment() {
         System.out.print("---------------------------------------------------\n");
         System.out.print("Security:\n");
         System.out.print("1 - add security\n");
@@ -247,7 +247,7 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
             entered = scan.nextInt();
 
             deleteSecurityGuard(getSecurityGuard(entered - 1));
-           securityManagment();
+            securityManagment();
         } else if (entered == 4) {
             enteredIntoShop();
         } else {
@@ -559,7 +559,7 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
     }
 
     @Override
-    public void theBuyerManagmentPayment (Buyer buyer) {
+    public void theBuyerManagmentPayment(Buyer buyer) {
         for (int i = 0; i < listOfCashiers.size(); i++) {
             if (listOfCashiers.get(i).getBuyer().getName() == null) {
                 listOfCashiers.get(i).payment(buyer);
@@ -573,7 +573,7 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
     }
 
     @Override
-    public void theBuyerManagmentCheckSecurity (Buyer buyer) {
+    public void theBuyerManagmentCheckSecurity(Buyer buyer) {
         for (int i = 0; i < listOfSecurityGuards.size(); i++) {
             if (listOfSecurityGuards.get(i).getBuyer().getName() == null) {
                 listOfSecurityGuards.get(i).checkProduct(buyer);
