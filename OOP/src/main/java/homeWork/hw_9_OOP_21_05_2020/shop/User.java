@@ -5,14 +5,12 @@ import homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Product;
 public class User implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.User {
     private String login;
     private String password;
-    private Basket basket;
-    private boolean trigger;
+    private Basket basket = new Basket();
+    private boolean trigger = false;
 
     public User(String login, String password) {
         this.login = login;
         this.password = password;
-        this.trigger = false;
-        this.basket = new Basket();
     }
 
     @Override
@@ -26,13 +24,18 @@ public class User implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Use
     }
 
     @Override
+    public void outOfAccount() {
+        trigger = false;
+    }
+
+    @Override
     public Basket getBasket() {
         if (trigger) {
             return basket;
-        } else {
-            System.out.println("log in");
-            return null;
         }
+
+        System.out.println("log in");
+        return null;
     }
 
     @Override
@@ -56,10 +59,5 @@ public class User implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Use
         } else {
             System.out.println("log in");
         }
-    }
-
-    @Override
-    public void outOfAccount() {
-        trigger = false;
     }
 }
