@@ -16,6 +16,7 @@ public class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSho
 
     @Override
     public void addProduct(Product product) {
+        product.setNameOfDepartment(this);
         this.listOfProduct.add(product);
     }
 
@@ -30,25 +31,20 @@ public class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSho
     }
 
     @Override
-    public void printListOfProducts() {
-        StringBuilder result = new StringBuilder("Products:");
-
-        for (int i = 0; i < listOfProduct.size(); i++) {
-            result.append("\n")
-                    .append(i + 1)
-                    .append(" - ")
-                    .append(listOfProduct.get(i).toString());
-        }
-        System.out.println(result);
-    }
-
-    @Override
     public Product getProduct(int index) {
-        return this.listOfProduct.get(index);
+        if (index >= listOfProduct.size() || index < 0) {
+            System.out.println("Not correctly number of consultant");
+            return null;
+        }
+
+        Product product = listOfProduct.get(index);
+        deleteProduct(listOfProduct.get(index));
+        return product;
     }
 
     @Override
     public void addConsultant(Consultant consultant) {
+        consultant.setStatus(true);
         this.listOfConsultant.add(consultant);
     }
 
@@ -63,20 +59,12 @@ public class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSho
     }
 
     @Override
-    public void printListOfConsultants() {
-        StringBuilder result = new StringBuilder("Consultants:");
-
-        for (int i = 0; i < listOfConsultant.size(); i++) {
-            result.append("\n")
-                    .append(i + 1)
-                    .append(" - ")
-                    .append(listOfConsultant.get(i).toString());
-        }
-        System.out.println(result);
-    }
-
-    @Override
     public Consultant getConsultant(int index) {
+        if (index >= listOfConsultant.size() || index < 0) {
+            System.out.println("Not correctly number of consultant");
+            return null;
+        }
+
         return this.listOfConsultant.get(index);
     }
 
@@ -90,8 +78,8 @@ public class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSho
         return null;
     }
 
+    @Override
     public String getName() {
         return name;
     }
-
 }

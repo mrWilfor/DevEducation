@@ -90,8 +90,15 @@ class SportsEquipmentTest {
                 "dumbbell for power loads",
                 100
         );
-        String expected = "SportsEquipment{nameOfProduct='Dumbbell', category='Equipment', color='black', " +
-                "description='dumbbell for power loads', prise='100'}";
+        String expected = "SportsEquipment{" +
+                "nameOfProduct='Dumbbell', " +
+                "nameOfDepartment='null', " +
+                "category='Equipment', " +
+                "color='black', " +
+                "description='dumbbell for power loads', " +
+                "prise=100, " +
+                "status=false" +
+                "}";
 
         assertEquals(expected, sportsEquipment.toString());
     }
@@ -103,8 +110,15 @@ class SportsEquipmentTest {
                 "black",
                 "dumbbell for power loads",
                 100);
-        String expected = "SportsEquipment{nameOfProduct='Expander', category='Equipment', color='black', " +
-                "description='dumbbell for power loads', prise='100'}";
+        String expected = "SportsEquipment{" +
+                "nameOfProduct='Expander', " +
+                "nameOfDepartment='null', " +
+                "category='Equipment', " +
+                "color='black', " +
+                "description='dumbbell for power loads', " +
+                "prise=100, " +
+                "status=false" +
+                "}";
 
         assertNotEquals(expected, sportsEquipment.toString());
     }

@@ -1,15 +1,18 @@
 package homeWork.hw_8_Parth_3_19_05_2020.product;
 
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department;
+
 public abstract class Product implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Product {
-    private String nameOfProduct;
+    private String name;
+    private String nameOfDepartment;
     private String category;
     private String color;
     private String description;
     private int prise;
     private boolean status = false;
 
-    public Product(String nameOfProduct, String category, String color, String description, int prise) {
-        this.nameOfProduct = nameOfProduct;
+    public Product(String name, String category, String color, String description, int prise) {
+        this.name = name;
         this.category = category;
         this.color = color;
         this.description = description;
@@ -17,8 +20,18 @@ public abstract class Product implements homeWork.hw_8_Parth_3_19_05_2020.interf
     }
 
     @Override
-    public String getNameOfProduct() {
-        return nameOfProduct;
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getNameOfDepartment() {
+        return nameOfDepartment;
+    }
+
+    @Override
+    public void setNameOfDepartment(Department department) {
+        this.nameOfDepartment = department.getName();
     }
 
     @Override
@@ -61,7 +74,7 @@ public abstract class Product implements homeWork.hw_8_Parth_3_19_05_2020.interf
             return false;
         }
         return this.prise == ((Product) o).prise &&
-                this.nameOfProduct.equals(((Product) o).nameOfProduct) &&
+                this.name.equals(((Product) o).name) &&
                 this.category.equals(((Product) o).category) &&
                 this.color.equals(((Product) o).color) &&
                 this.description.equals(((Product) o).description);
@@ -69,17 +82,21 @@ public abstract class Product implements homeWork.hw_8_Parth_3_19_05_2020.interf
 
     @Override
     public int hashCode() {
-        return 31 * (nameOfProduct != null ? nameOfProduct.hashCode() : 0) +
+        return 31 * (name != null ? name.hashCode() : 0) +
                 (category != null ? category.hashCode() : 0) + (color != null ? color.hashCode() : 0) +
                 (description != null ? description.hashCode() : 0) + prise;
     }
 
     @Override
     public String toString() {
-        return "nameOfProduct='" + nameOfProduct + '\'' +
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", nameOfDepartment='" + nameOfDepartment + '\'' +
                 ", category='" + category + '\'' +
                 ", color='" + color + '\'' +
                 ", description='" + description + '\'' +
-                ", prise='" + prise + '\'';
+                ", prise=" + prise +
+                ", status=" + status +
+                '}';
     }
 }

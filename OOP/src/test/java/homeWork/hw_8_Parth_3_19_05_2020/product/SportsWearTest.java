@@ -107,8 +107,17 @@ class SportsWearTest {
                 "34",
                 "trousers"
         );
-        String expected = "SportsWear{nameOfProduct='sports trousers', category='Sports wear', color='blue', " +
-                "description='for sports and everyday wear', prise='200', size='34', typeOfWear='trousers'}";
+        String expected = "SportsWear{" +
+                "nameOfProduct='sports trousers', " +
+                "nameOfDepartment='null', " +
+                "category='Sports wear', " +
+                "color='blue', " +
+                "description='for sports and everyday wear', " +
+                "prise=200, " +
+                "status=false, " +
+                "size='34', " +
+                "typeOfWear='trousers" +
+                "'}";
 
         assertEquals(expected, sportsWear.toString());
     }
@@ -117,14 +126,23 @@ class SportsWearTest {
     void toStringFalse() {
         SportsWear sportsWear = new SportsWear(
                 "sports trousers",
-                "blue",
+                "red",
                 "for sports and everyday wear",
                 200,
                 "34",
                 "trousers"
         );
-        String expected = "SportsWear{nameOfProduct='sports trousers', category='Sports wear', color='black', " +
-                "description='for sports and everyday wear', prise='200', size='34', typeOfWear='trousers'}";
+        String expected ="SportsWear{" +
+                "nameOfProduct='sports trousers', " +
+                "nameOfDepartment='null', " +
+                "category='Sports wear', " +
+                "color='blue', " +
+                "description='for sports and everyday wear', " +
+                "prise=200, " +
+                "status=false, " +
+                "size='34', " +
+                "typeOfWear='trousers" +
+                "'}";
 
         assertNotEquals(expected, sportsWear.toString());
     }

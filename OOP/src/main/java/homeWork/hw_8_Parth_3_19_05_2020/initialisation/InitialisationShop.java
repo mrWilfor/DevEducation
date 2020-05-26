@@ -1,6 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020.initialisation;
 
-import homeWork.hw_8_Parth_3_19_05_2020.SportingGoodsStore;
+import homeWork.hw_8_Parth_3_19_05_2020.Shop;
 import homeWork.hw_8_Parth_3_19_05_2020.product.SportsEquipment;
 import homeWork.hw_8_Parth_3_19_05_2020.product.SportsWear;
 import homeWork.hw_8_Parth_3_19_05_2020.product.Tourism;
@@ -9,7 +9,7 @@ import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
 
 public class InitialisationShop {
-    public static void initialisation(SportingGoodsStore sportingGoodsStore) {
+    public static void initialisation(Shop Shop) {
         Cashier cashier1 = new Cashier("Dima");
         Cashier cashier2 = new Cashier("Artem");
         Cashier cashier3 = new Cashier("Masha");
@@ -17,12 +17,12 @@ public class InitialisationShop {
         SecurityGuard securityGuard2 = new SecurityGuard("Ilya");
         SecurityGuard securityGuard3 = new SecurityGuard("Mike");
 
-        sportingGoodsStore.addCashier(cashier1);
-        sportingGoodsStore.addCashier(cashier2);
-        sportingGoodsStore.addCashier(cashier3);
-        sportingGoodsStore.addSecurityGuard(securityGuard1);
-        sportingGoodsStore.addSecurityGuard(securityGuard2);
-        sportingGoodsStore.addSecurityGuard(securityGuard3);
+        Shop.addCashier(cashier1);
+        Shop.addCashier(cashier2);
+        Shop.addCashier(cashier3);
+        Shop.addSecurityGuard(securityGuard1);
+        Shop.addSecurityGuard(securityGuard2);
+        Shop.addSecurityGuard(securityGuard3);
 
         Consultant consultant1 = new Consultant("Denny", "Sport equipment department");
         SportsEquipment dumbbell = new SportsEquipment(
@@ -44,10 +44,10 @@ public class InitialisationShop {
                 50
         );
 
-        sportingGoodsStore.getSportEquipmentDepartment().addProduct(dumbbell);
-        sportingGoodsStore.getSportEquipmentDepartment().addProduct(punchingBag);
-        sportingGoodsStore.getSportEquipmentDepartment().addProduct(expander);
-        sportingGoodsStore.getSportEquipmentDepartment().addConsultant(consultant1);
+        Shop.getSportEquipmentDepartment().addProduct(dumbbell);
+        Shop.getSportEquipmentDepartment().addProduct(punchingBag);
+        Shop.getSportEquipmentDepartment().addProduct(expander);
+        Shop.getSportEquipmentDepartment().addConsultant(consultant1);
 
         Consultant consultant2 = new Consultant("Denny", "Sport wear department");
         SportsWear trousers = new SportsWear(
@@ -75,10 +75,10 @@ public class InitialisationShop {
                 "sneakers"
         );
 
-        sportingGoodsStore.getSportsWearDepartment().addProduct(trousers);
-        sportingGoodsStore.getSportsWearDepartment().addProduct(shirt);
-        sportingGoodsStore.getSportsWearDepartment().addProduct(sneakers);
-        sportingGoodsStore.getSportsWearDepartment().addConsultant(consultant2);
+        Shop.getSportsWearDepartment().addProduct(trousers);
+        Shop.getSportsWearDepartment().addProduct(shirt);
+        Shop.getSportsWearDepartment().addProduct(sneakers);
+        Shop.getSportsWearDepartment().addConsultant(consultant2);
 
         Consultant consultant3 = new Consultant("Denny", "Tourism department");
         Tourism tent = new Tourism(
@@ -103,9 +103,9 @@ public class InitialisationShop {
                 "put things tight and tighten the belts, in order to unpack, unfasten the tightening belts"
         );
 
-        sportingGoodsStore.getTourismDepartment().addProduct(tent);
-        sportingGoodsStore.getTourismDepartment().addProduct(knife);
-        sportingGoodsStore.getTourismDepartment().addProduct(backpack);
-        sportingGoodsStore.getTourismDepartment().addConsultant(consultant3);
+        Shop.getTourismDepartment().addProduct(tent);
+        Shop.getTourismDepartment().addProduct(knife);
+        Shop.getTourismDepartment().addProduct(backpack);
+        Shop.getTourismDepartment().addConsultant(consultant3);
     }
 }

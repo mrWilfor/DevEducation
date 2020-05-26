@@ -12,8 +12,6 @@ public interface Department {
 
     ArrayList<Product> getListOfProduct();
 
-    void printListOfProducts();
-
     Product getProduct(int index);
 
     void addConsultant(Consultant consultant);
@@ -21,8 +19,6 @@ public interface Department {
     void deleteConsultant(Consultant consultant);
 
     ArrayList<Consultant> getListOfConsultant();
-
-    void printListOfConsultants();
 
     Consultant getConsultant(int index);
 

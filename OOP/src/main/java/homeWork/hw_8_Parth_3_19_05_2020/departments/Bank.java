@@ -5,27 +5,28 @@ import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Banker;
 
 import java.util.ArrayList;
 
-public class Bank {
-    private ArrayList<Buyer> listOfDebtors;
-    public Banker banker;
+public class Bank implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Bank {
+    private ArrayList<Buyer> listOfDebtors = new ArrayList<>();
+    public Banker banker = new Banker("John");
 
     public Bank() {
-        this.listOfDebtors = new ArrayList<>();
-        this.banker = new Banker("John");
+
     }
 
+    @Override
     public ArrayList<Buyer> getListOfDebtors() {
         return this.listOfDebtors;
     }
 
-    public String printListOfDebtors() {
+    @Override
+    public void printListOfDebtors() {
         int number = 1;
         StringBuilder result = new StringBuilder();
 
         for (Buyer b : listOfDebtors) {
-            result.append(number).append(" - ").append(b.toString()).append("\n");
+            result.append(number).append(" - ").append(b.getName()).append(" - ").append(b.getBankCredit()).append("\n");
             number++;
         }
-        return result.toString();
+        System.out.println(result);
     }
 }

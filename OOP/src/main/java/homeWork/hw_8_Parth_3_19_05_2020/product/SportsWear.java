@@ -52,7 +52,14 @@ public class SportsWear extends Product {
 
     @Override
     public String toString() {
-        return "SportsWear{" + super.toString() +
+        return "SportsWear{" +
+                "nameOfProduct='" + super.getName() + '\'' +
+                ", nameOfDepartment='" + super.getNameOfDepartment() + '\'' +
+                ", category='" + super.getCategory() + '\'' +
+                ", color='" + super.getColor() + '\'' +
+                ", description='" + super.getDescription() + '\'' +
+                ", prise=" + super.getPrise() +
+                ", status=" + super.getStatus() +
                 ", size='" + size + '\'' +
                 ", typeOfWear='" + typeOfWear + '\'' +
                 '}';

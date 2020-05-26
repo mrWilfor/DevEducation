@@ -1,30 +1,20 @@
 package homeWork.hw_8_Parth_3_19_05_2020;
 
-import homeWork.hw_8_Parth_3_19_05_2020.departments.Bank;
 import homeWork.hw_8_Parth_3_19_05_2020.departments.Department;
 import homeWork.hw_8_Parth_3_19_05_2020.product.SportsEquipment;
 import homeWork.hw_8_Parth_3_19_05_2020.product.SportsWear;
 import homeWork.hw_8_Parth_3_19_05_2020.product.Tourism;
-import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Administrator;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Cashier;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.SportingGoodsStore {
-    private Department tourismDepartment = new Department("TourismDepartment");
-    private Department sportEquipmentDepartment = new Department("SportEquipmentDepartment");
-    private Department sportsWearDepartment = new Department("SportsWearDepartment");
-    private Bank bank = new Bank();
-    private Administrator administrator = new Administrator("Mike");
-    private ArrayList<SecurityGuard> listOfSecurityGuards = new ArrayList<>();
-    private ArrayList<Cashier> listOfCashiers = new ArrayList<>();
-    private ArrayList<Buyer> listOfBuyers = new ArrayList<>();
+public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.ControlFile {
+    private Shop shop;
 
-    public SportingGoodsStore() {
-
+    public ControlFile(Shop shop) {
+        this.shop = shop;
     }
 
     @Override
@@ -43,13 +33,13 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
 
         switch (entered) {
             case 1:
-                enteredIntoDepartment(sportEquipmentDepartment);
+                enteredIntoDepartment(shop.getSportEquipmentDepartment());
                 break;
             case 2:
-                enteredIntoDepartment(sportsWearDepartment);
+                enteredIntoDepartment(shop.getSportsWearDepartment());
                 break;
             case 3:
-                enteredIntoDepartment(tourismDepartment);
+                enteredIntoDepartment(shop.getTourismDepartment());
                 break;
             case 4:
                 cashiersManagment();
@@ -84,7 +74,6 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         System.out.print("2 - Consultants\n");
         System.out.print("3 - return\n");
         Scanner scan = new Scanner(System.in);
-        scan = new Scanner(System.in);
         int entered = scan.nextInt();
 
         switch (entered) {
@@ -114,7 +103,6 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         System.out.print("3 - delete a cashier\n");
         System.out.print("4 - return\n");
         Scanner scan = new Scanner(System.in);
-        scan = new Scanner(System.in);
         int entered = scan.nextInt();
 
         switch (entered) {
@@ -124,20 +112,20 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
                 String name = scan.next();
                 Cashier cashier = new Cashier(name);
 
-                addCashier(cashier);
+                shop.addCashier(cashier);
                 cashiersManagment();
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                printListOfCashier();
+                shop.printList(shop.getListOfCashier(), "Cashiers:");
                 cashiersManagment();
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                printListOfCashier();
+                shop.printList(shop.getListOfCashier(), "Cashiers:");
                 entered = scan.nextInt();
 
-                deleteCashier(getCashier(entered - 1));
+                shop.deleteCashier(shop.getCashier(entered - 1));
                 cashiersManagment();
                 break;
             case 4:
@@ -160,7 +148,6 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         System.out.print("3 - delete a security\n");
         System.out.print("4 - return\n");
         Scanner scan = new Scanner(System.in);
-        scan = new Scanner(System.in);
         int entered = scan.nextInt();
 
         switch (entered) {
@@ -170,20 +157,20 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
                 String name = scan.next();
                 SecurityGuard security = new SecurityGuard(name);
 
-                addSecurityGuard(security);
+                shop.addSecurityGuard(security);
                 securityManagment();
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                printListOfSecurity();
+                shop.printList(shop.getListOfSecurityGuard(), "Security guards:");
                 securityManagment();
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                printListOfSecurity();
+                shop.printList(shop.getListOfSecurityGuard(), "Security guards:");
                 entered = scan.nextInt();
 
-                deleteSecurityGuard(getSecurityGuard(entered - 1));
+                shop.deleteSecurityGuard(shop.getSecurityGuard(entered - 1));
                 securityManagment();
                 break;
             case 4:
@@ -204,14 +191,13 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         System.out.println("1 - list of debtors");
         System.out.println("2 - return");
         Scanner scan = new Scanner(System.in);
-        scan = new Scanner(System.in);
         int entered = scan.nextInt();
 
         switch (entered) {
             case 1:
                 System.out.print("---------------------------------------------------\n");
-                System.out.println(bank.getListOfDebtors());
-                bank.printListOfDebtors();
+                System.out.println(shop.getBank().getListOfDebtors());
+                shop.getBank().printListOfDebtors();
                 enteredIntoBank();
                 break;
             case 2:
@@ -235,7 +221,6 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         System.out.println("4 - delete a buyer");
         System.out.println("5 - return");
         Scanner scan = new Scanner(System.in);
-        scan = new Scanner(System.in);
         int entered = scan.nextInt();
 
         switch (entered) {
@@ -258,28 +243,26 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
 
                 Buyer buyer = new Buyer(name, money, desireBoolean);
 
-                addBuyer(buyer);
+                shop.addBuyer(buyer);
                 buyersManagment();
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                printListOfBuyers();
-
+                shop.printList(shop.getListOfBuyers(), "Buyers:");
                 buyersManagment();
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                printListOfBuyers();
+                shop.printList(shop.getListOfBuyers(), "Buyers:");
                 entered = scan.nextInt();
-
-                theBuyerChooseDepartment(getBuyer(entered - 1));
+                theBuyerChooseDepartment(shop.getBuyer(entered - 1));
                 break;
             case 4:
                 System.out.print("---------------------------------------------------\n");
-                printListOfBuyers();
+                shop.printList(shop.getListOfBuyers(), "Buyers:");
                 entered = scan.nextInt();
 
-                deleteBuyer(getBuyer(entered - 1));
+                shop.deleteBuyer(shop.getBuyer(entered - 1));
                 buyersManagment();
                 break;
             case 5:
@@ -302,7 +285,6 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         System.out.print("3 - delete a product\n");
         System.out.print("4 - return\n");
         Scanner scan = new Scanner(System.in);
-        scan = new Scanner(System.in);
         int entered = scan.nextInt();
 
         switch (entered) {
@@ -311,12 +293,12 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                department.printListOfProducts();
+                shop.printList(department.getListOfProduct(), "Products:");
                 productsManagment(department);
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                department.printListOfProducts();
+                shop.printList(department.getListOfProduct(), "Products:");
                 entered = scan.nextInt();
 
                 department.deleteProduct(department.getProduct(entered - 1));
@@ -382,7 +364,6 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         System.out.print("3 - delete a consultant\n");
         System.out.print("4 - return\n");
         Scanner scan = new Scanner(System.in);
-        scan = new Scanner(System.in);
         int entered = scan.nextInt();
 
         switch (entered) {
@@ -398,12 +379,12 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                department.printListOfConsultants();
+                shop.printList(department.getListOfConsultant(), "Consultants:");
                 consultantManagment(department);
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                department.printListOfConsultants();
+                shop.printList(department.getListOfConsultant(), "Consultants:");
                 entered = scan.nextInt();
 
                 department.deleteConsultant(department.getConsultant(entered - 1));
@@ -428,18 +409,17 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         System.out.print("2 - Sports wear department\n");
         System.out.print("3 - Tourism department\n");
         Scanner scan = new Scanner(System.in);
-        scan = new Scanner(System.in);
         int entered = scan.nextInt();
 
         switch (entered) {
             case 1:
-                theBuyerManagment(buyer, sportEquipmentDepartment);
+                theBuyerManagment(buyer, shop.getSportEquipmentDepartment());
                 break;
             case 2:
-                theBuyerManagment(buyer, sportsWearDepartment);
+                theBuyerManagment(buyer, shop.getSportsWearDepartment());
                 break;
             case 3:
-                theBuyerManagment(buyer, tourismDepartment);
+                theBuyerManagment(buyer, shop.getTourismDepartment());
                 break;
             default:
                 System.out.print("---------------------------------------------------\n");
@@ -461,29 +441,28 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
         System.out.println("6 - leave the store");
         System.out.println("7 - leave the buyer");
         Scanner scan = new Scanner(System.in);
-        scan = new Scanner(System.in);
         int entered = scan.nextInt();
 
         switch (entered) {
             case 1:
                 System.out.print("---------------------------------------------------\n");
                 System.out.println("Product:");
-                department.printListOfProducts();
+                shop.printList(department.getListOfProduct(), "Products:");
 
                 theBuyerManagment(buyer, department);
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                department.printListOfProducts();
+                shop.printList(department.getListOfProduct(), "Products:");
                 scan = new Scanner(System.in);
                 entered = scan.nextInt();
 
-                buyer.addProductToBasket(department.getProduct(entered - 1));
+                shop.takeAProduct(buyer, department, entered - 1);
                 theBuyerManagment(buyer, department);
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                theBuyerManagmentPayment(buyer);
+                shop.paymentOfBuyer(buyer);
                 theBuyerManagment(buyer, department);
                 break;
             case 4:
@@ -491,37 +470,21 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
                 break;
             case 5:
                 System.out.print("---------------------------------------------------\n");
-                department.printListOfProducts();
+                shop.printList(department.getListOfProduct(), "Products:");
                 scan = new Scanner(System.in);
                 System.out.println("Select product:");
                 entered = scan.nextInt();
-                Consultant consultant = department.getConsultant(true);
 
-                if (consultant == null) {
-                    switch (department.getName()) {
-                        case "SportEquipmentDepartment":
-                            administrator.referralConsultant(department, sportsWearDepartment, tourismDepartment);
-                            break;
-                        case "TourismDepartment":
-                            administrator.referralConsultant(department, sportsWearDepartment, sportEquipmentDepartment);
-                            break;
-                        default:
-                            administrator.referralConsultant(department, tourismDepartment, sportEquipmentDepartment);
-                            break;
-                    }
-
-                    consultant = department.getConsultant(true);
-                }
-
-                consultant.consultation(department.getProduct(entered - 1));
+                shop.consultation(department, department.getProduct(entered - 1));
                 theBuyerManagment(buyer, department);
                 break;
             case 6:
-                outOfShop();
+                if (shop.checkSecurity(buyer)) {
+                    shop.deleteBuyer(buyer);
+                }
                 break;
             case 7:
                 System.out.print("---------------------------------------------------\n");
-                theBuyerManagmentCheckSecurity(buyer);
                 enteredIntoShop();
                 break;
             default:
@@ -533,160 +496,13 @@ public class SportingGoodsStore implements homeWork.hw_8_Parth_3_19_05_2020.inte
     }
 
     @Override
-    public void theBuyerManagmentPayment(Buyer buyer) {
-        for (Cashier cashier : listOfCashiers) {
-            if (cashier.getBuyer().getName() == null) {
-                cashier.payment(buyer);
-                break;
-            }
-        }
-
-        int index = (int) (Math.random() * listOfCashiers.size());
-
-        listOfCashiers.get(index).payment(buyer);
-    }
-
-    @Override
-    public void theBuyerManagmentCheckSecurity(Buyer buyer) {
-        for (SecurityGuard securityGuard : listOfSecurityGuards) {
-            if (securityGuard.getBuyer().getName() == null) {
-                securityGuard.checkProduct(buyer);
-                break;
-            }
-        }
-
-        int index = (int) (Math.random() * listOfSecurityGuards.size());
-
-        listOfSecurityGuards.get(index).checkProduct(buyer);
-    }
-
-    @Override
-    public void printListOfBuyers() {
-        StringBuilder result = new StringBuilder("Products:");
-
-        for (int i = 0; i < listOfBuyers.size(); i++) {
-            result.append("\n")
-                    .append(i + 1)
-                    .append(" - ")
-                    .append(listOfBuyers.get(i).toString());
-        }
-        System.out.println(result);
-    }
-
-    @Override
-    public void printListOfCashier() {
-        StringBuilder result = new StringBuilder("Cashiers:");
-
-        for (int i = 0; i < listOfCashiers.size(); i++) {
-            result.append("\n")
-                    .append(i + 1)
-                    .append(" - ")
-                    .append(listOfCashiers.get(i).toString());
-        }
-        System.out.println(result);
-    }
-
-    @Override
-    public void printListOfSecurity() {
-        StringBuilder result = new StringBuilder("Cashiers:");
-
-        for (int i = 0; i < listOfSecurityGuards.size(); i++) {
-            result.append("\n")
-                    .append(i + 1)
-                    .append(" - ")
-                    .append(listOfSecurityGuards.get(i).toString());
-        }
-        System.out.println(result);
-    }
-
-    @Override
     public void outOfShop() {
         System.out.print("---------------------------------------------------\n");
         System.out.println("Buy))");
     }
 
     @Override
-    public void addSecurityGuard(SecurityGuard securityGuard) {
-        listOfSecurityGuards.add(securityGuard);
-    }
-
-    @Override
-    public void deleteSecurityGuard(SecurityGuard securityGuard) {
-        listOfSecurityGuards.remove(securityGuard);
-    }
-
-    @Override
-    public ArrayList<SecurityGuard> getListOfSecurityGuard() {
-        return listOfSecurityGuards;
-    }
-
-    @Override
-    public SecurityGuard getSecurityGuard(int index) {
-        return listOfSecurityGuards.get(index);
-    }
-
-    @Override
-    public void addCashier(Cashier cashier) {
-        listOfCashiers.add(cashier);
-    }
-
-    @Override
-    public void deleteCashier(Cashier cashier) {
-        listOfCashiers.remove(cashier);
-    }
-
-    @Override
-    public ArrayList<Cashier> getListOfCashier() {
-        return listOfCashiers;
-    }
-
-    @Override
-    public Cashier getCashier(int index) {
-        return listOfCashiers.get(index);
-    }
-
-    @Override
-    public void addBuyer(Buyer buyer) {
-        listOfBuyers.add(buyer);
-    }
-
-    @Override
-    public void deleteBuyer(Buyer buyer) {
-        listOfBuyers.remove(buyer);
-    }
-
-    @Override
-    public ArrayList<Buyer> getListOfBuyers() {
-        return listOfBuyers;
-    }
-
-    @Override
-    public Buyer getBuyer(int index) {
-        return listOfBuyers.get(index);
-    }
-
-    @Override
-    public Department getTourismDepartment() {
-        return tourismDepartment;
-    }
-
-    @Override
-    public Department getSportEquipmentDepartment() {
-        return sportEquipmentDepartment;
-    }
-
-    @Override
-    public Department getSportsWearDepartment() {
-        return sportsWearDepartment;
-    }
-
-    @Override
-    public Bank getBank() {
-        return bank;
-    }
-
-    @Override
-    public Administrator getAdministrator() {
-        return this.administrator;
+    public Shop getShop() {
+        return shop;
     }
 }

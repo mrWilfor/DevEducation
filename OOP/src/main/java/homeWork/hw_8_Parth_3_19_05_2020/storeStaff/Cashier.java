@@ -1,49 +1,39 @@
 package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
 import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
-import homeWork.hw_8_Parth_3_19_05_2020.Main;
 import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Cashier extends Staff {
-    Buyer buyer;
-
     public Cashier(String name) {
         super(name, "Cashier", "Shop");
-        this.buyer = new Buyer();
     }
 
-    public Buyer getBuyer() {
-        return buyer;
-    }
-
-    public void payment(Buyer buyer) {
-        if (this.buyer.getName() != null) {
-            ArrayList<Product> basket = this.buyer.getBasket();
+    public int payment(Buyer buyer) {
+        int task = 0;
+        if (buyer != null) {
+            ArrayList<Product> basket = buyer.getBasket();
             int cost = 0;
 
             for (Product product : basket) {
                 cost += product.getPrise();
             }
 
-            if (cost <= this.buyer.getMoney()) {
-                int task = this.buyer.getMoney() - cost;
-                this.buyer.setMoney(task);
+            task = buyer.getMoney() - cost;
+
+            if (task >= 0) {
+                buyer.setMoney(task);
 
                 for (int i = 0; i < basket.toArray().length; i++) {
                     basket.get(i).setStatus(true);
                 }
-                System.out.println("Thank you, for your purchase");
-
-            } else {
-                System.out.println(buyer.getName() + " does not have enough money directing to the administrator");
-                Main.shop.getAdministrator()
-                        .outOfOrTakeCredit(this.buyer, this.buyer.getMoney() - cost, this.buyer.getDesireToTakeALoan());
+                System.out.println(buyer.getName() + "Thank you, for your purchase");
+                return 0;
             }
         }
-        this.buyer = buyer;
+        System.out.println(buyer.getName() + " does not have enough money");
+        return task * (-1);
     }
 
     @Override

@@ -98,8 +98,16 @@ class TourismTest {
                 300,
                 "set on a flat surface and fasten"
         );
-        String expected = "Tourism{nameOfProduct='tent', category='Tourism', color='green', " +
-                "description='for camping', prise='300', instruction='set on a flat surface and fasten'}";
+        String expected = "Tourism{" +
+                "nameOfProduct='tent', " +
+                "nameOfDepartment='null', " +
+                "category='Tourism', " +
+                "color='green', " +
+                "description='for camping', " +
+                "prise=300, " +
+                "status=false, " +
+                "instruction='set on a flat surface and fasten'" +
+                "}";
 
         assertEquals(expected, tourism.toString());
     }
@@ -113,8 +121,16 @@ class TourismTest {
                 300,
                 "set on a flat surface and fasten"
         );
-        String expected = "Tourism{nameOfProduct='tent', category='Tourism', color='red', " +
-                "description='for camping', prise='300', instruction='set on a flat surface and fasten'}";
+        String expected = "Tourism{" +
+                "nameOfProduct='tent', " +
+                "nameOfDepartment='null', " +
+                "category='Tourism', " +
+                "color='red', " +
+                "description='for camping', " +
+                "prise=300, " +
+                "status=false, " +
+                "instruction='set on a flat surface and fasten'" +
+                "}";
 
         assertNotEquals(expected, tourism.toString());
     }

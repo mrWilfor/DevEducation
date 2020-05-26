@@ -8,6 +8,14 @@ public class SportsEquipment extends Product {
 
     @Override
     public String toString() {
-        return "SportsEquipment{" + super.toString() + '}';
+        return "SportsEquipment{" +
+                "nameOfProduct='" + super.getName() + '\'' +
+                ", nameOfDepartment='" + super.getNameOfDepartment() + '\'' +
+                ", category='" + super.getCategory() + '\'' +
+                ", color='" + super.getColor() + '\'' +
+                ", description='" + super.getDescription() + '\'' +
+                ", prise=" + super.getPrise() +
+                ", status=" + super.getStatus() +
+                '}';
     }
 }
