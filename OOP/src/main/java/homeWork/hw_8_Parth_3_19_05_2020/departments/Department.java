@@ -6,12 +6,12 @@ import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
 import java.util.ArrayList;
 
 public class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department {
-    private ArrayList<Product> listOfProduct;
-    private ArrayList<Consultant> listOfConsultant;
+    private String name;
+    private ArrayList<Product> listOfProduct = new ArrayList<>();
+    private ArrayList<Consultant> listOfConsultant = new ArrayList<>();
 
-    public Department() {
-        this.listOfProduct = new ArrayList<>();
-        this.listOfConsultant = new ArrayList<>();
+    public Department(String name) {
+        this.name = name;
     }
 
     @Override
@@ -89,4 +89,9 @@ public class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSho
         }
         return null;
     }
+
+    public String getName() {
+        return name;
+    }
+
 }

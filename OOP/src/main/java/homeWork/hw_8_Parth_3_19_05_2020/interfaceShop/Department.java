@@ -1,6 +1,5 @@
 package homeWork.hw_8_Parth_3_19_05_2020.interfaceShop;
 
-import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
 import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
 
@@ -28,4 +27,6 @@ public interface Department {
     Consultant getConsultant(int index);
 
     Consultant getConsultant(boolean status);
+
+    String getName();
 }

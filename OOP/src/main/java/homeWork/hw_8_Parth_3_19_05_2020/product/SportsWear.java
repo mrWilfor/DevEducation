@@ -52,8 +52,8 @@ public class SportsWear extends Product {
 
     @Override
     public String toString() {
-        return "sportsWear{" + super.toString() +
-                "size='" + size + '\'' +
+        return "SportsWear{" + super.toString() +
+                ", size='" + size + '\'' +
                 ", typeOfWear='" + typeOfWear + '\'' +
                 '}';
     }

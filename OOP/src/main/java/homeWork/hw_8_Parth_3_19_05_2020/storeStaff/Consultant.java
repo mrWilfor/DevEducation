@@ -38,10 +38,7 @@ public class Consultant extends Staff {
 
     @Override
     public String toString() {
-        return "Consultant{" +
-                super.toString() +
-                ", status='" + this.status + '\'' +
-                "}";
+        return "Consultant{" + super.toString() + "}";
     }
 
     public void consultation(Product product) {

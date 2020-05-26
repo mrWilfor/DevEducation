@@ -4,6 +4,8 @@ import homeWork.hw_8_Parth_3_19_05_2020.Main;
 import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
 import homeWork.hw_8_Parth_3_19_05_2020.departments.Department;
 
+import java.util.Scanner;
+
 public class Administrator extends Staff {
     public Administrator(String name) {
         super(name, "Administrator", "Shop");

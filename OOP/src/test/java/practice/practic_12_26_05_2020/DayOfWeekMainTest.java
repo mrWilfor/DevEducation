@@ -1,4 +1,4 @@
-package practice.practic_12_26_05_20;
+package practice.practic_12_26_05_2020;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

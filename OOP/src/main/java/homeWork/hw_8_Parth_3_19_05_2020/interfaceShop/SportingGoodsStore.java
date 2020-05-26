@@ -1,16 +1,14 @@
 package homeWork.hw_8_Parth_3_19_05_2020.interfaceShop;
 
-import homeWork.hw_8_Parth_3_19_05_2020.Bank;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.Bank;
 import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
 import homeWork.hw_8_Parth_3_19_05_2020.departments.Department;
-import homeWork.hw_8_Parth_3_19_05_2020.departments.SportEquipmentDepartment;
-import homeWork.hw_8_Parth_3_19_05_2020.departments.SportsWearDepartment;
-import homeWork.hw_8_Parth_3_19_05_2020.departments.TourismDepartment;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Administrator;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Cashier;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public interface SportingGoodsStore {
     void enteredIntoShop();
@@ -71,11 +69,11 @@ public interface SportingGoodsStore {
 
     Buyer getBuyer(int index);
 
-    TourismDepartment getTourismDepartment();
+    Department getTourismDepartment();
 
-    SportEquipmentDepartment getSportEquipmentDepartment();
+    Department getSportEquipmentDepartment();
 
-    SportsWearDepartment getSportsWearDepartment();
+    Department getSportsWearDepartment();
 
     Bank getBank();
 

@@ -6,12 +6,13 @@ import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class SecurityGuard extends Staff {
     Buyer buyer;
 
     public SecurityGuard(String name) {
-        super(name, "Security", "Shop");
+        super(name, "SecurityGuard", "Shop");
         this.buyer = new Buyer();
     }
 
@@ -35,32 +36,7 @@ public class SecurityGuard extends Staff {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        if (!super.equals(o)) {
-            return false;
-        }
-
-        SecurityGuard that = (SecurityGuard) o;
-
-        return Objects.equals(buyer, that.buyer);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), buyer);
-    }
-
-    @Override
     public String toString() {
-        return "Security{" + super.toString() + ", buyer='" +
-                (this.buyer != null ? this.buyer.getName() : "") + '\'' + "}";
+        return "SecurityGuard{" + super.toString() + "}";
     }
 }

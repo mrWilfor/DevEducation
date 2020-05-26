@@ -1,5 +1,6 @@
-package homeWork.hw_8_Parth_3_19_05_2020;
+package homeWork.hw_8_Parth_3_19_05_2020.departments;
 
+import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Banker;
 
 import java.util.ArrayList;

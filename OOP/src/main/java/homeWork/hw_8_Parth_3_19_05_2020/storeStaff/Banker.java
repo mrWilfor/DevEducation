@@ -24,4 +24,9 @@ public class Banker extends Staff {
         }
         System.out.println("you have a loan in the amount of" + credit);
     }
+
+    @Override
+    public String toString() {
+        return "Banker{" + super.toString() + "}";
+    }
 }
