@@ -13,9 +13,10 @@ public class PaymentAlgorithm {
             if (commissions.size() != 0) {
                 for (int j = 0; j < commissions.size(); j++) {
                     if (j == 0) {
+                        subscriber = coins.get(i) - commissions.get(j);
                         commission = commissions.get(j);
                         indexCommission = j;
-                    } else if (Math.abs(coins.get(i) - commissions.get(j)) < Math.abs(subscriber)) {
+                    } else if (Math.abs(coins.get(i) - commissions.get(j)) <= Math.abs(subscriber)) {
                         subscriber = coins.get(i) - commissions.get(j);
                         commission = commissions.get(j);
                         indexCommission = j;

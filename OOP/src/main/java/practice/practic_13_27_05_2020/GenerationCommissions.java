@@ -10,10 +10,10 @@ public class GenerationCommissions {
             int commission;
 
             if (i == 0) {
-                commission = (int) (Math.random() * 10);
+                commission = (int) (Math.random() * 11);
             } else {
                 do {
-                    commission = (int) (Math.random() * 10);
+                    commission = (int) (Math.random() * 11);
                 } while ((result.get(i - 1) + commission) < 11);
             }
             result.add(commission);
