@@ -6,7 +6,7 @@ public class PaymentAlgorithm {
     public int payment(ArrayList<Integer> coins, ArrayList<Integer> commissions) {
         int commission = -1;
         int indexCommission = -1;
-        int subscriber = 10;
+        int subscriber = 100;
         int debt = 0;
 
         for (int i = 0; i < coins.size(); i++) {
