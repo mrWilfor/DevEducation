@@ -22,16 +22,20 @@ public class PaymentAlgorithm {
                         indexCommission = j;
                     }
                 }
+
                 System.out.println("first checkpoint commission - " + commission + "\npaid with the coin - " + coins.get(i));
                 commissions.remove(indexCommission);
+
                 if (subscriber < 0) {
                     debt += subscriber;
                 }
+
                 subscriber = 10;
                 indexCommission = -1;
                 commission = -1;
             }
         }
+
         return debt;
     }
 }

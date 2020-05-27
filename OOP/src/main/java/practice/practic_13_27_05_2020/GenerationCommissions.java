@@ -18,6 +18,7 @@ public class GenerationCommissions {
             }
             result.add(commission);
         }
+
         return result;
     }
 }
