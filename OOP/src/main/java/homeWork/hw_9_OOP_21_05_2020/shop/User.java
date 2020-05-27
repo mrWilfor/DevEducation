@@ -15,11 +15,13 @@ public class User implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Use
 
     @Override
     public void authorisations(String login, String password) {
-        if (login.equals(this.login) && password.equals(this.password)) {
-            System.out.println("Confirmed");
-            trigger = true;
-        } else {
-            System.out.println("Incorrect login or password");
+        if (login != null && password != null) {
+            if (login.equals(this.login) && password.equals(this.password)) {
+                System.out.println("Confirmed");
+                trigger = true;
+            } else {
+                System.out.println("Incorrect login or password");
+            }
         }
     }
 
@@ -45,19 +47,23 @@ public class User implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Use
 
     @Override
     public void addProduct(Product product) {
-        if (trigger) {
-            basket.addProduct(product);
-        } else {
-            System.out.println("log in");
+        if(product != null) {
+            if (trigger) {
+                basket.addProduct(product);
+            } else {
+                System.out.println("log in");
+            }
         }
     }
 
     @Override
     public void deleteProduct(Product product) {
-        if (trigger) {
-            basket.deleteProduct(product);
-        } else {
-            System.out.println("log in");
+        if (product != null) {
+            if (trigger) {
+                basket.deleteProduct(product);
+            } else {
+                System.out.println("log in");
+            }
         }
     }
 }

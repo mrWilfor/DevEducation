@@ -1,4 +1,4 @@
-package homeWork.hw_10_Shop_Extend;
+package homeWork.hw_10_Shop_Extend.classes;
 
 import homeWork.hw_10_Shop_Extend.interfaceOfShop.Good;
 

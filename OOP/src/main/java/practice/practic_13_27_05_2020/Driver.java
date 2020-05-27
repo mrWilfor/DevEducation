@@ -9,7 +9,6 @@ public class Driver {
         for (int i = 1; i < 11; i++) {
             coins.add(i);
         }
-
         return coins;
     }
 

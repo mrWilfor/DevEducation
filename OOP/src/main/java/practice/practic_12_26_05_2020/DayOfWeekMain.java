@@ -4,18 +4,18 @@ public class DayOfWeekMain {
     public static void main(final String[] args) {
         System.out.println(getWorkingHours(DayOfWeek.THURSDAY));
     }
+
     public static int getWorkingHours(final DayOfWeek currentDay) {
         int index = DayOfWeek.valueOf(DayOfWeek.class, currentDay.name()).ordinal();
-        DayOfWeek[] hours = DayOfWeek.values();
+        DayOfWeek[] dayOfWeeks = DayOfWeek.values();
         int result = 0;
 
-        for(int i = index; i < hours.length; i++) {
-            result += hours[i].currentDay;
-            System.out.println(hours[i]);
+        for(int i = index; i < dayOfWeeks.length; i++) {
+            result += dayOfWeeks[i].currentDay;
         }
-
         return result;
     }
+
     public enum DayOfWeek {
         MONDAY(8),
         TUESDAY(8),
