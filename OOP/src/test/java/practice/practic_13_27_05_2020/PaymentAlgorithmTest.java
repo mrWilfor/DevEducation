@@ -26,9 +26,11 @@ class PaymentAlgorithmTest {
         commissions.add(5);
         commissions.add(6);
 
-        int actual = paymentAlgorithm.payment(coins, commissions);
+        int expectedDebt = -8;
+        int actualDebt = paymentAlgorithm.payment(coins, commissions);
 
-        assertEquals(-8, actual);
+
+        assertEquals(expectedDebt, actualDebt);
 
     }
 }
