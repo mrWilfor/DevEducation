@@ -1,9 +1,14 @@
 package homeWork.hw_10_Shop_Extend.interfaceOfShop.employee;
 
-import homeWork.hw_10_Shop_Extend.interfaceOfShop.Department;
+import homeWork.hw_10_Shop_Extend.classes.ImplDepartment;
+import homeWork.hw_10_Shop_Extend.classes.employee.ImplConsultant;
 
 public interface Administrator {
-    public void appointConsultant(Consultant consultant, Department department);
+    void appointConsultant(ImplConsultant consultant, ImplDepartment department);
 
-    public void redirectConsultant(Consultant consultant, Department department);
+    void redirectConsultant(
+            ImplDepartment departmentThis,
+            ImplDepartment departmentFrom1,
+            ImplDepartment departmentFrom2
+    );
 }

@@ -5,7 +5,7 @@ public enum Brand {
     REYVEL("Reyvel"),
     CAT("Cat");
 
-    public String brand;
+    public final String brand;
     Brand (String brand) {
         this.brand = brand;
     }

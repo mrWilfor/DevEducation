@@ -1,9 +1,9 @@
 package homeWork.hw_10_Shop_Extend.interfaceOfShop.employee;
 
-import homeWork.hw_10_Shop_Extend.classes.Customer;
+import homeWork.hw_10_Shop_Extend.classes.ImplCustomer;
 
 public interface Queue {
-    boolean setInTheEndOfTheQueue(Customer customer);
+    boolean setInTheEndOfTheQueue(ImplCustomer implCustomer);
 
-    Customer getFromTheBeginningOfTheQueue();
+    ImplCustomer getFromTheBeginningOfTheQueue();
 }

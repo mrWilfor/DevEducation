@@ -1,25 +1,32 @@
 package homeWork.hw_10_Shop_Extend.interfaceOfShop;
 
-import homeWork.hw_10_Shop_Extend.classes.employee.Consultant;
-import homeWork.hw_10_Shop_Extend.interfaceOfShop.employee.Employee;
+import homeWork.hw_10_Shop_Extend.classes.ImplGoods;
+import homeWork.hw_10_Shop_Extend.classes.employee.ImplConsultant;
+import homeWork.hw_10_Shop_Extend.classes.enums.Brand;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public interface Department {
+    void addGoods(ImplGoods goods);
+
+    void deleteGoods(ImplGoods goods);
+
     String getName();
 
-    String getBrand();
+    Brand getBrand();
 
-    void addGoods(Good good);
+    ImplGoods getGoods(int index);
 
-    void deleteGoods(Good good);
 
-    LinkedList<Good> getListOfGoods();
+    ImplConsultant getConsultant(boolean status);
 
-    void addConsultant(Consultant consultant);
+    ImplConsultant getConsultant(int index);
 
-    void deleteConsultant(Consultant consultant);
+    LinkedList<ImplGoods> getListOfGoods();
 
-    ArrayList<Consultant> getListOfConsultants();
+    void addConsultant(ImplConsultant consultant);
+
+    void deleteConsultant(ImplConsultant consultant);
+
+    LinkedList<ImplConsultant> getListOfConsultants();
 }

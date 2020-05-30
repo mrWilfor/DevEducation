@@ -7,7 +7,7 @@ public enum Role {
     SECURITY("Security"),
     STOREKEEPER("Store keeper");
 
-    public String role;
+    public final String role;
 
     Role(String role) {
         this.role = role;

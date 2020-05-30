@@ -2,11 +2,14 @@ package homeWork.hw_10_Shop_Extend.interfaceOfShop;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import homeWork.hw_10_Shop_Extend.classes.ImplGoods;
 
 public interface Customer {
     String getName();
 
     int getMoney();
+
+    void setMoney(int money);
 
     boolean getDiscount();
 
@@ -16,13 +19,13 @@ public interface Customer {
 
     void addTotalPurchases(int totalPurchases);
 
-    void addToCheque(long uid, boolean status);
+    void addToCheque(long uid);
 
     HashMap<Long, Boolean> getCheque();
 
-    void addGoodToCart(Good good);
+    void addGoodsToCart(ImplGoods implGoods);
 
-    void deleteGoodToCart(Good good);
+    void deleteGoodsToCart(ImplGoods implGoods);
 
-    LinkedList<Good> getCart();
+    LinkedList<ImplGoods> getCart();
 }

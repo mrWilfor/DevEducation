@@ -1,15 +1,18 @@
 package homeWork.hw_10_Shop_Extend.interfaceOfShop.employee;
 
-import homeWork.hw_10_Shop_Extend.classes.Customer;
+import homeWork.hw_10_Shop_Extend.classes.ImplCustomer;
+import homeWork.hw_10_Shop_Extend.classes.employee.ImplStoreKeeper;
 
 import java.util.HashMap;
 
 public interface Cashier extends Queue {
-    int calculatesPurchase(Customer customer);
+    int calculatesPurchase(ImplCustomer customer);
 
-    boolean checkDiscount(Customer customer);
+    void paymentCustomer(ImplCustomer customer, int purchase, ImplStoreKeeper storeKeeper);
 
-    void getDiscount(Customer customer);
+    java.util.Queue<ImplCustomer> getQueue();
 
-    HashMap<Long, Boolean> getCheque(Customer customer);
+    void getDiscount(ImplCustomer customer);
+
+    HashMap<Long, Boolean> getCheque(ImplCustomer customer);
 }
