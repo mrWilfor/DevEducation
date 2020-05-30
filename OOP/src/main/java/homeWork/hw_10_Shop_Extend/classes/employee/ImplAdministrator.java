@@ -25,16 +25,16 @@ public class ImplAdministrator extends ImplEmployee implements homeWork.hw_10_Sh
         if (consultant != null) {
             departmentThis.addConsultant(consultant);
             departmentFrom1.deleteConsultant(consultant);
-        }
-
-        consultant = departmentFrom2.getConsultant(true);
-
-        if (consultant != null) {
-            departmentThis.addConsultant(consultant);
-            departmentFrom2.deleteConsultant(consultant);
         } else {
-            consultant = departmentThis.getConsultant(false);
-            consultant.setStatus(true);
+            consultant = departmentFrom2.getConsultant(true);
+
+            if (consultant != null) {
+                departmentThis.addConsultant(consultant);
+                departmentFrom2.deleteConsultant(consultant);
+            } else {
+                consultant = departmentThis.getConsultant(false);
+                consultant.setStatus(true);
+            }
         }
     }
 

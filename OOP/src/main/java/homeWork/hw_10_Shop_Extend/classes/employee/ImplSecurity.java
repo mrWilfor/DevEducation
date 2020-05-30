@@ -19,6 +19,10 @@ public class ImplSecurity extends ImplEmployee implements homeWork.hw_10_Shop_Ex
             LinkedList<ImplGoods> cartOfCustomer = customer.getCart();
             HashMap<Long, Boolean> cheque = customer.getCheque();
 
+            if (cartOfCustomer.size() != 0 && cheque.size() == 0) {
+                return false;
+            }
+
             for (int i = 0; i < cheque.size(); i++) {
                 if (!cheque.get(cartOfCustomer.get(i).getUID())) {
                     return false;

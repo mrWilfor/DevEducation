@@ -50,6 +50,8 @@ public class ImplCashier extends ImplEmployee implements homeWork.hw_10_Shop_Ext
 
                 storeKeeper.moveGoodsToTheStore(goodsFromStorage);
                 storeKeeper.productCountingMinus(goodsFromStorage);
+
+                customer.getCheque().put(goods.getUID(), true);
             }
         } else {
             LinkedList<ImplGoods> cart = customer.getCart();

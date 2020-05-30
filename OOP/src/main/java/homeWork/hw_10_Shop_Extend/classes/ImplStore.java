@@ -1,8 +1,10 @@
 package homeWork.hw_10_Shop_Extend.classes;
 
-import homeWork.hw_10_Shop_Extend.classes.employee.*;
+import homeWork.hw_10_Shop_Extend.classes.employee.ImplAdministrator;
+import homeWork.hw_10_Shop_Extend.classes.employee.ImplCashier;
+import homeWork.hw_10_Shop_Extend.classes.employee.ImplSecurity;
+import homeWork.hw_10_Shop_Extend.classes.employee.ImplStoreKeeper;
 import homeWork.hw_10_Shop_Extend.classes.enums.Brand;
-import homeWork.hw_10_Shop_Extend.classes.initialisation.InitialisationStorage;
 
 import java.util.LinkedList;
 
@@ -76,6 +78,7 @@ public class ImplStore {
 
     public void consultation(ImplGoods goods) {
         ImplDepartment department = goods.getDepartment();
+
         if (department.getConsultant(true) == null) {
             if (department.getName().equals(sportEquipments.getName())) {
                 administrator.redirectConsultant(sportEquipments, sportWears, tourism);
@@ -91,6 +94,7 @@ public class ImplStore {
     public void securityCheckList(ImplCustomer customer) {
         int index = (int) (Math.random() * listOfCashiers.size());
         ImplSecurity security = listOfSecurity.get(index);
+
         if (security.checkListOfGoods(customer)) {
             customerOutFromStore(customer);
         }

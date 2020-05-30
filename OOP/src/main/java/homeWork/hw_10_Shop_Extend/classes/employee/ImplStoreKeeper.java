@@ -73,7 +73,7 @@ public class ImplStoreKeeper extends ImplEmployee implements homeWork.hw_10_Shop
 
     @Override
     public void moveGoodsToTheStore(ImplGoods goods) {
-        ImplDepartment department = storage.getDepartment(goods.getDepartment().getName());
+        ImplDepartment department = goods.getDepartment();
         department.addGoods(goods);
     }
 
