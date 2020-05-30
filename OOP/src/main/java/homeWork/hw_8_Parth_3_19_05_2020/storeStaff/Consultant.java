@@ -1,8 +1,8 @@
 package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
+import homeWork.hw_8_Parth_3_19_05_2020.product.ImplProduct;
 
-public class Consultant extends Staff {
+public class Consultant extends ImplStaff {
     private boolean status;
 
     public Consultant(String name, String department) {
@@ -41,8 +41,8 @@ public class Consultant extends Staff {
         return "Consultant{" + super.toString() + "}";
     }
 
-    public void consultation(Product product) {
-        System.out.println(product.getDescription());
+    public void consultation(ImplProduct implProduct) {
+        System.out.println(implProduct.getDescription());
         setStatus(false);
     }
 }

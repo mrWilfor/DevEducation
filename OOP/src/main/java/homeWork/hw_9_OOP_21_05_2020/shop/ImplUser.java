@@ -2,13 +2,13 @@ package homeWork.hw_9_OOP_21_05_2020.shop;
 
 import homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Product;
 
-public class User implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.User {
+public class ImplUser implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.User {
     private String login;
     private String password;
-    private Basket basket = new Basket();
+    private ImplBasket implBasket = new ImplBasket();
     private boolean trigger = false;
 
-    public User(String login, String password) {
+    public ImplUser(String login, String password) {
         this.login = login;
         this.password = password;
     }
@@ -31,9 +31,9 @@ public class User implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Use
     }
 
     @Override
-    public Basket getBasket() {
+    public ImplBasket getImplBasket() {
         if (trigger) {
-            return basket;
+            return implBasket;
         }
 
         System.out.println("log in");
@@ -49,7 +49,7 @@ public class User implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Use
     public void addProduct(Product product) {
         if(product != null) {
             if (trigger) {
-                basket.addProduct(product);
+                implBasket.addProduct(product);
             } else {
                 System.out.println("log in");
             }
@@ -60,7 +60,7 @@ public class User implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Use
     public void deleteProduct(Product product) {
         if (product != null) {
             if (trigger) {
-                basket.deleteProduct(product);
+                implBasket.deleteProduct(product);
             } else {
                 System.out.println("log in");
             }

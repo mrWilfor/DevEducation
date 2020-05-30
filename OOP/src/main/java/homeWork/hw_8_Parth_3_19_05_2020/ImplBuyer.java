@@ -1,22 +1,21 @@
 package homeWork.hw_8_Parth_3_19_05_2020;
 
-import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
+import homeWork.hw_8_Parth_3_19_05_2020.product.ImplProduct;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class Buyer implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Buyer {
+public class ImplBuyer implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Buyer {
     private String name;
     private int money;
     private int bankCredit = 0;
     private boolean desireToTakeALoan;
-    private ArrayList<Product> basket;
+    private ArrayList<ImplProduct> basket;
 
-    public Buyer() {
+    public ImplBuyer() {
 
     }
 
-    public Buyer(String name, int money, boolean desireToTakeALoan) {
+    public ImplBuyer(String name, int money, boolean desireToTakeALoan) {
         this.name = name;
         this.money = money;
         this.desireToTakeALoan = desireToTakeALoan;
@@ -24,17 +23,17 @@ public class Buyer implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Buy
     }
 
     @Override
-    public void addProductToBasket(Product product) {
-        basket.add(product);
+    public void addProductToBasket(ImplProduct implProduct) {
+        basket.add(implProduct);
     }
 
     @Override
-    public void deleteProductFromBasket(Product product) {
-        basket.remove(product);
+    public void deleteProductFromBasket(ImplProduct implProduct) {
+        basket.remove(implProduct);
     }
 
     @Override
-    public ArrayList<Product> getBasket() {
+    public ArrayList<ImplProduct> getBasket() {
         return basket;
     }
 
@@ -76,10 +75,10 @@ public class Buyer implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Buy
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return this.money == ((Buyer) o).money &&
-                this.name.equals(((Buyer) o).name) &&
-                this.bankCredit == ((Buyer) o).bankCredit &&
-                this.desireToTakeALoan == ((Buyer) o).desireToTakeALoan;
+        return this.money == ((ImplBuyer) o).money &&
+                this.name.equals(((ImplBuyer) o).name) &&
+                this.bankCredit == ((ImplBuyer) o).bankCredit &&
+                this.desireToTakeALoan == ((ImplBuyer) o).desireToTakeALoan;
     }
 
     @Override

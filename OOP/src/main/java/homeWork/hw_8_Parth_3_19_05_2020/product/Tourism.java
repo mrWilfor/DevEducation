@@ -1,6 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020.product;
 
-public class Tourism extends Product {
+public class Tourism extends ImplProduct {
     private String instruction;
 
     public Tourism(

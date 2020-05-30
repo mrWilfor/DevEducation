@@ -4,7 +4,7 @@ import homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Product;
 
 import java.util.Arrays;
 
-public class Basket implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Basket {
+public class ImplBasket implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Basket {
     private Product[] listOfProduct;
 
     @Override
@@ -68,9 +68,9 @@ public class Basket implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.B
             return false;
         }
 
-        Basket basket = (Basket) o;
+        ImplBasket implBasket = (ImplBasket) o;
 
-        return Arrays.equals(listOfProduct, basket.listOfProduct);
+        return Arrays.equals(listOfProduct, implBasket.listOfProduct);
     }
 
     @Override

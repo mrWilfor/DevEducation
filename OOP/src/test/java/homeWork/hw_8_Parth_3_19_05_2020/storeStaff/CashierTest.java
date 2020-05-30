@@ -1,6 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
+import homeWork.hw_8_Parth_3_19_05_2020.ImplBuyer;
 import homeWork.hw_8_Parth_3_19_05_2020.product.SportsEquipment;
 import org.junit.jupiter.api.Test;
 
@@ -31,14 +31,14 @@ class CashierTest {
                 "carpal muscle development simulator",
                 50
         );
-        Buyer buyer = new Buyer("Buyer", 500, true);
+        ImplBuyer implBuyer = new ImplBuyer("Buyer", 500, true);
         Cashier cashier = new Cashier("miky");
 
-        buyer.addProductToBasket(dumbbell);
-        buyer.addProductToBasket(punchingBag);
-        buyer.addProductToBasket(expander);
+        implBuyer.addProductToBasket(dumbbell);
+        implBuyer.addProductToBasket(punchingBag);
+        implBuyer.addProductToBasket(expander);
 
-        assertEquals(0, cashier.payment(buyer));
+        assertEquals(0, cashier.payment(implBuyer));
     }
 
     @Test
@@ -61,13 +61,13 @@ class CashierTest {
                 "carpal muscle development simulator",
                 50
         );
-        Buyer buyer = new Buyer("Buyer", 100, true);
+        ImplBuyer implBuyer = new ImplBuyer("Buyer", 100, true);
         Cashier cashier = new Cashier("miky");
 
-        buyer.addProductToBasket(dumbbell);
-        buyer.addProductToBasket(punchingBag);
-        buyer.addProductToBasket(expander);
+        implBuyer.addProductToBasket(dumbbell);
+        implBuyer.addProductToBasket(punchingBag);
+        implBuyer.addProductToBasket(expander);
 
-        assertEquals(200, cashier.payment(buyer));
+        assertEquals(200, cashier.payment(implBuyer));
     }
 }

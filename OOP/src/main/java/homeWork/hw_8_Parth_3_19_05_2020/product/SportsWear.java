@@ -2,7 +2,7 @@ package homeWork.hw_8_Parth_3_19_05_2020.product;
 
 import java.util.Objects;
 
-public class SportsWear extends Product {
+public class SportsWear extends ImplProduct {
     private String size;
     private String typeOfWear;
 

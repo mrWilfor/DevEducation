@@ -1,12 +1,12 @@
 package homeWork.hw_9_OOP_21_05_2020.animal;
 
-public class Animal implements homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnimal.Animal {
+public class ImplAnimal implements homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnimal.Animal {
     private String food;
     private String location;
     private boolean sleepStatus = false;
 
 
-    public Animal(String food, String location) {
+    public ImplAnimal(String food, String location) {
         this.food = food;
         this.location = location;
     }
@@ -73,9 +73,9 @@ public class Animal implements homeWork.hw_9_OOP_21_05_2020.animal.interfaceAnim
             return false;
         }
 
-        return this.food.equals(((Animal) o).food) &&
-                this.location.equals(((Animal) o).location) &&
-                this.sleepStatus == ((Animal) o).sleepStatus;
+        return this.food.equals(((ImplAnimal) o).food) &&
+                this.location.equals(((ImplAnimal) o).location) &&
+                this.sleepStatus == ((ImplAnimal) o).sleepStatus;
     }
 
     @Override

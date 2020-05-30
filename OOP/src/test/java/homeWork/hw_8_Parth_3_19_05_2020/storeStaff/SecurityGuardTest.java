@@ -1,6 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
+import homeWork.hw_8_Parth_3_19_05_2020.ImplBuyer;
 import homeWork.hw_8_Parth_3_19_05_2020.product.SportsEquipment;
 import org.junit.jupiter.api.Test;
 
@@ -31,16 +31,16 @@ class SecurityGuardTest {
                 "carpal muscle development simulator",
                 50
         );
-        Buyer buyer = new Buyer("Buyer", 500, true);
+        ImplBuyer implBuyer = new ImplBuyer("Buyer", 500, true);
         Cashier cashier = new Cashier("miky");
         SecurityGuard securityGuard = new SecurityGuard("Nick");
 
-        buyer.addProductToBasket(dumbbell);
-        buyer.addProductToBasket(punchingBag);
-        buyer.addProductToBasket(expander);
+        implBuyer.addProductToBasket(dumbbell);
+        implBuyer.addProductToBasket(punchingBag);
+        implBuyer.addProductToBasket(expander);
 
-        cashier.payment(buyer);
-        assertTrue(securityGuard.checkProduct(buyer));
+        cashier.payment(implBuyer);
+        assertTrue(securityGuard.checkProduct(implBuyer));
     }
 
     @Test
@@ -63,13 +63,13 @@ class SecurityGuardTest {
                 "carpal muscle development simulator",
                 50
         );
-        Buyer buyer = new Buyer("Buyer", 500, true);
+        ImplBuyer implBuyer = new ImplBuyer("Buyer", 500, true);
         SecurityGuard securityGuard = new SecurityGuard("Nick");
 
-        buyer.addProductToBasket(dumbbell);
-        buyer.addProductToBasket(punchingBag);
-        buyer.addProductToBasket(expander);
+        implBuyer.addProductToBasket(dumbbell);
+        implBuyer.addProductToBasket(punchingBag);
+        implBuyer.addProductToBasket(expander);
 
-        assertFalse(securityGuard.checkProduct(buyer));
+        assertFalse(securityGuard.checkProduct(implBuyer));
     }
 }

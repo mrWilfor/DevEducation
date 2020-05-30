@@ -2,12 +2,12 @@ package homeWork.hw_9_OOP_21_05_2020.shop;
 
 import java.util.Objects;
 
-public class Product implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Product {
+public class ImplProduct implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.Product {
     private String name;
     private int prise;
     private int rating;
 
-    public Product(String name, int prise, int rating) {
+    public ImplProduct(String name, int prise, int rating) {
         this.name = name;
         this.prise = prise;
         this.rating = rating;
@@ -38,11 +38,11 @@ public class Product implements homeWork.hw_9_OOP_21_05_2020.shop.interfaceShop.
             return false;
         }
 
-        Product product = (Product) o;
+        ImplProduct implProduct = (ImplProduct) o;
 
-        return prise == product.prise &&
-                rating == product.rating &&
-                Objects.equals(name, product.name);
+        return prise == implProduct.prise &&
+                rating == implProduct.rating &&
+                Objects.equals(name, implProduct.name);
     }
 
     @Override

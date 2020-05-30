@@ -1,7 +1,7 @@
 package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
-import homeWork.hw_8_Parth_3_19_05_2020.departments.Bank;
+import homeWork.hw_8_Parth_3_19_05_2020.ImplBuyer;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplBank;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,19 +13,19 @@ class BankerTest {
 
     @Test
     void issuanceOfCredit() {
-        Bank bank = new Bank();
-        Buyer buyer = new Buyer("Miky", 100, true);
-        bank.banker.issuanceOfCredit(buyer, bank, 200);
+        ImplBank implBank = new ImplBank();
+        ImplBuyer implBuyer = new ImplBuyer("Miky", 100, true);
+        implBank.banker.issuanceOfCredit(implBuyer, implBank, 200);
         int expected = 300;
-        assertEquals(expected, buyer.getMoney());
+        assertEquals(expected, implBuyer.getMoney());
     }
 
     @Test
     void issuanceOfCreditNoCredit() {
-        Bank bank = new Bank();
-        Buyer buyer = new Buyer("Miky", 100, false);
-        bank.banker.issuanceOfCredit(buyer, bank, 200);
+        ImplBank implBank = new ImplBank();
+        ImplBuyer implBuyer = new ImplBuyer("Miky", 100, false);
+        implBank.banker.issuanceOfCredit(implBuyer, implBank, 200);
         int expected = 100;
-        assertEquals(expected, buyer.getMoney());
+        assertEquals(expected, implBuyer.getMoney());
     }
 }

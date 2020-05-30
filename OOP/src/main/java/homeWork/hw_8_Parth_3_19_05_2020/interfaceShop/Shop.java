@@ -1,30 +1,30 @@
 package homeWork.hw_8_Parth_3_19_05_2020.interfaceShop;
 
-import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
-import homeWork.hw_8_Parth_3_19_05_2020.departments.Bank;
-import homeWork.hw_8_Parth_3_19_05_2020.departments.Department;
-import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
+import homeWork.hw_8_Parth_3_19_05_2020.ImplBuyer;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplBank;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplDepartment;
+import homeWork.hw_8_Parth_3_19_05_2020.product.ImplProduct;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Cashier;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
 
 import java.util.ArrayList;
 
 public interface Shop {
-    void paymentOfBuyer(Buyer buyer);
+    void paymentOfBuyer(ImplBuyer implBuyer);
 
-    void takeAProduct(Buyer buyer, Department department, int index);
+    void takeAProduct(ImplBuyer implBuyer, ImplDepartment implDepartment, int index);
 
-    void consultation(Department department, Product product);
+    void consultation(ImplDepartment implDepartment, ImplProduct implProduct);
 
-    boolean checkSecurity(Buyer buyer);
+    boolean checkSecurity(ImplBuyer implBuyer);
 
     void printList(ArrayList list, String name);
 
-    Department getTourismDepartment();
+    ImplDepartment getTourismImplDepartment();
 
-    Department getSportEquipmentDepartment();
+    ImplDepartment getSportEquipmentImplDepartment();
 
-    Department getSportsWearDepartment();
+    ImplDepartment getSportsWearImplDepartment();
 
     void addSecurityGuard(SecurityGuard securityGuard);
 
@@ -42,13 +42,13 @@ public interface Shop {
 
     Cashier getCashier(int index);
 
-    void addBuyer(Buyer buyer);
+    void addBuyer(ImplBuyer implBuyer);
 
-    void deleteBuyer(Buyer buyer);
+    void deleteBuyer(ImplBuyer implBuyer);
 
-    ArrayList<Buyer> getListOfBuyers();
+    ArrayList<ImplBuyer> getListOfImplBuyers();
 
-    Buyer getBuyer(int index);
+    ImplBuyer getBuyer(int index);
 
-    Bank getBank();
+    ImplBank getImplBank();
 }

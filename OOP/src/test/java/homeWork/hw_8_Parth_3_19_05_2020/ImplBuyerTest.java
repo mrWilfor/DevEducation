@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BuyerTest {
+class ImplBuyerTest {
 
     @Test
     void addProductToBasket() {
-        Buyer buyer = new Buyer("Mike", 100, true);
+        ImplBuyer implBuyer = new ImplBuyer("Mike", 100, true);
         SportsWear trousers = new SportsWear(
                 "sports trousers",
                 "blue",
@@ -19,13 +19,13 @@ class BuyerTest {
                 "trousers"
         );
 
-        buyer.addProductToBasket(trousers);
+        implBuyer.addProductToBasket(trousers);
 
-        assertEquals(trousers, buyer.getBasket().get(0));
+        assertEquals(trousers, implBuyer.getBasket().get(0));
     }
     @Test
     void deleteProductToBasket() {
-        Buyer buyer = new Buyer("Mike", 100, true);
+        ImplBuyer implBuyer = new ImplBuyer("Mike", 100, true);
         SportsWear trousers = new SportsWear(
                 "sports trousers",
                 "blue",
@@ -35,17 +35,17 @@ class BuyerTest {
                 "trousers"
         );
 
-        buyer.addProductToBasket(trousers);
+        implBuyer.addProductToBasket(trousers);
 
         int expectedBefore = 1;
-        int actualBefore = buyer.getBasket().size();
+        int actualBefore = implBuyer.getBasket().size();
 
         assertEquals(expectedBefore, actualBefore);
 
-        buyer.deleteProductFromBasket(trousers);
+        implBuyer.deleteProductFromBasket(trousers);
 
         int expectedAfter = 0;
-        int actualAfter = buyer.getBasket().size();
+        int actualAfter = implBuyer.getBasket().size();
 
         assertEquals(expectedAfter, actualAfter);
     }

@@ -2,7 +2,7 @@ package homeWork.hw_8_Parth_3_19_05_2020.product;
 
 import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department;
 
-public abstract class Product implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Product {
+public abstract class ImplProduct implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Product {
     private String name;
     private String nameOfDepartment;
     private String category;
@@ -11,7 +11,7 @@ public abstract class Product implements homeWork.hw_8_Parth_3_19_05_2020.interf
     private int prise;
     private boolean status = false;
 
-    public Product(String name, String category, String color, String description, int prise) {
+    public ImplProduct(String name, String category, String color, String description, int prise) {
         this.name = name;
         this.category = category;
         this.color = color;
@@ -73,11 +73,11 @@ public abstract class Product implements homeWork.hw_8_Parth_3_19_05_2020.interf
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return this.prise == ((Product) o).prise &&
-                this.name.equals(((Product) o).name) &&
-                this.category.equals(((Product) o).category) &&
-                this.color.equals(((Product) o).color) &&
-                this.description.equals(((Product) o).description);
+        return this.prise == ((ImplProduct) o).prise &&
+                this.name.equals(((ImplProduct) o).name) &&
+                this.category.equals(((ImplProduct) o).category) &&
+                this.color.equals(((ImplProduct) o).color) &&
+                this.description.equals(((ImplProduct) o).description);
     }
 
     @Override

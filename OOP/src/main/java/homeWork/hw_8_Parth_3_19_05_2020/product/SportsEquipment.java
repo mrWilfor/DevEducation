@@ -1,6 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020.product;
 
-public class SportsEquipment extends Product {
+public class SportsEquipment extends ImplProduct {
 
     public SportsEquipment(String nameOfProduct, String color, String description, int prise) {
         super(nameOfProduct, "Equipment", color, description, prise);

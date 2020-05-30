@@ -1,27 +1,27 @@
 package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-import homeWork.hw_8_Parth_3_19_05_2020.Buyer;
-import homeWork.hw_8_Parth_3_19_05_2020.departments.Bank;
+import homeWork.hw_8_Parth_3_19_05_2020.ImplBuyer;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplBank;
 
 import java.util.ArrayList;
 
-public class Banker extends Staff {
+public class Banker extends ImplStaff {
     public Banker(String name) {
         super(name, "Banker", "Bank");
     }
 
-    public void issuanceOfCredit(Buyer buyer, Bank bank, int lackOfMoney) {
-        if (buyer.getDesireToTakeALoan()) {
-            int credit = buyer.getMoney() + lackOfMoney;
-            buyer.setMoney(credit);
-            buyer.setBankCredit(lackOfMoney);
-            ArrayList<Buyer> listOfDebtors = bank.getListOfDebtors();
+    public void issuanceOfCredit(ImplBuyer implBuyer, ImplBank implBank, int lackOfMoney) {
+        if (implBuyer.getDesireToTakeALoan()) {
+            int credit = implBuyer.getMoney() + lackOfMoney;
+            implBuyer.setMoney(credit);
+            implBuyer.setBankCredit(lackOfMoney);
+            ArrayList<ImplBuyer> listOfDebtors = implBank.getListOfDebtors();
 
-            if (listOfDebtors.contains(buyer)) {
-                int index = listOfDebtors.indexOf(buyer);
-                listOfDebtors.set(index, buyer);
+            if (listOfDebtors.contains(implBuyer)) {
+                int index = listOfDebtors.indexOf(implBuyer);
+                listOfDebtors.set(index, implBuyer);
             } else {
-                listOfDebtors.add(buyer);
+                listOfDebtors.add(implBuyer);
             }
             System.out.println("you have a loan in the amount of" + lackOfMoney);
         }

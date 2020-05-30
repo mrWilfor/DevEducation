@@ -4,35 +4,35 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class VetTest {
+class ImplVetTest {
 
     @Test
     void treatAnimal() {
         Dog dog = new Dog("Meat", "Farm", true);
-        Vet vet = new Vet();
+        ImplVet implVet = new ImplVet();
         String expected = "Dog:\n" +
                 "\tfood = Meat" +
                 "\n\tlocation = Farm";
 
-        assertEquals(expected, vet.treatAnimal(dog));
+        assertEquals(expected, implVet.treatAnimal(dog));
     }
 
     @Test
     void treatAnimalFalse() {
         Dog dog = new Dog("Fish", "Farm", true);
-        Vet vet = new Vet();
+        ImplVet implVet = new ImplVet();
         String expected = "Dog:\n" +
                 "\tfood = Meat" +
                 "\n\tlocation = Farm";
 
-        assertNotEquals(expected, vet.treatAnimal(dog));
+        assertNotEquals(expected, implVet.treatAnimal(dog));
     }
 
     @Test
     void treatAnimalNull() {
-        Vet vet = new Vet();
+        ImplVet implVet = new ImplVet();
         String expected = null;
 
-        assertEquals(expected, vet.treatAnimal(null));
+        assertEquals(expected, implVet.treatAnimal(null));
     }
 }

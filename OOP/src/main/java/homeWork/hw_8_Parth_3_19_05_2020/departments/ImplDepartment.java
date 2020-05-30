@@ -1,45 +1,45 @@
 package homeWork.hw_8_Parth_3_19_05_2020.departments;
 
-import homeWork.hw_8_Parth_3_19_05_2020.product.Product;
+import homeWork.hw_8_Parth_3_19_05_2020.product.ImplProduct;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
 
 import java.util.ArrayList;
 
-public class Department implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department {
+public class ImplDepartment implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department {
     private String name;
-    private ArrayList<Product> listOfProduct = new ArrayList<>();
+    private ArrayList<ImplProduct> listOfImplProduct = new ArrayList<>();
     private ArrayList<Consultant> listOfConsultant = new ArrayList<>();
 
-    public Department(String name) {
+    public ImplDepartment(String name) {
         this.name = name;
     }
 
     @Override
-    public void addProduct(Product product) {
-        product.setNameOfDepartment(this);
-        this.listOfProduct.add(product);
+    public void addProduct(ImplProduct implProduct) {
+        implProduct.setNameOfDepartment(this);
+        this.listOfImplProduct.add(implProduct);
     }
 
     @Override
-    public void deleteProduct(Product product) {
-        this.listOfProduct.remove(product);
+    public void deleteProduct(ImplProduct implProduct) {
+        this.listOfImplProduct.remove(implProduct);
     }
 
     @Override
-    public ArrayList<Product> getListOfProduct() {
-        return this.listOfProduct;
+    public ArrayList<ImplProduct> getListOfImplProduct() {
+        return this.listOfImplProduct;
     }
 
     @Override
-    public Product getProduct(int index) {
-        if (index >= listOfProduct.size() || index < 0) {
+    public ImplProduct getProduct(int index) {
+        if (index >= listOfImplProduct.size() || index < 0) {
             System.out.println("Not correctly number of consultant");
             return null;
         }
 
-        Product product = listOfProduct.get(index);
-        deleteProduct(listOfProduct.get(index));
-        return product;
+        ImplProduct implProduct = listOfImplProduct.get(index);
+        deleteProduct(listOfImplProduct.get(index));
+        return implProduct;
     }
 
     @Override

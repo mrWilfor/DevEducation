@@ -1,6 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020;
 
-import homeWork.hw_8_Parth_3_19_05_2020.departments.Department;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplDepartment;
 import homeWork.hw_8_Parth_3_19_05_2020.product.SportsEquipment;
 import homeWork.hw_8_Parth_3_19_05_2020.product.SportsWear;
 import homeWork.hw_8_Parth_3_19_05_2020.product.Tourism;
@@ -10,11 +10,11 @@ import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
 
 import java.util.Scanner;
 
-public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.ControlFile {
-    private Shop shop;
+public class ImplControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.ControlFile {
+    private ImplShop implShop;
 
-    public ControlFile(Shop shop) {
-        this.shop = shop;
+    public ImplControlFile(ImplShop implShop) {
+        this.implShop = implShop;
     }
 
     @Override
@@ -33,13 +33,13 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
 
         switch (entered) {
             case 1:
-                enteredIntoDepartment(shop.getSportEquipmentDepartment());
+                enteredIntoDepartment(implShop.getSportEquipmentImplDepartment());
                 break;
             case 2:
-                enteredIntoDepartment(shop.getSportsWearDepartment());
+                enteredIntoDepartment(implShop.getSportsWearImplDepartment());
                 break;
             case 3:
-                enteredIntoDepartment(shop.getTourismDepartment());
+                enteredIntoDepartment(implShop.getTourismImplDepartment());
                 break;
             case 4:
                 cashiersManagment();
@@ -66,9 +66,9 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
     }
 
     @Override
-    public void enteredIntoDepartment(Department department) {
+    public void enteredIntoDepartment(ImplDepartment implDepartment) {
         System.out.print("---------------------------------------------------\n");
-        System.out.print(department.getClass().getSimpleName() + "\n");
+        System.out.print(implDepartment.getClass().getSimpleName() + "\n");
         System.out.print("Select:\n");
         System.out.print("1 - Product\n");
         System.out.print("2 - Consultants\n");
@@ -78,10 +78,10 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
 
         switch (entered) {
             case 1:
-                productsManagment(department);
+                productsManagment(implDepartment);
                 break;
             case 2:
-                consultantManagment(department);
+                consultantManagment(implDepartment);
                 break;
             case 3:
                 enteredIntoShop();
@@ -89,7 +89,7 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
             default:
                 System.out.print("---------------------------------------------------\n");
                 System.out.println("Invalid input");
-                enteredIntoDepartment(department);
+                enteredIntoDepartment(implDepartment);
                 break;
         }
     }
@@ -112,20 +112,20 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
                 String name = scan.next();
                 Cashier cashier = new Cashier(name);
 
-                shop.addCashier(cashier);
+                implShop.addCashier(cashier);
                 cashiersManagment();
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(shop.getListOfCashier(), "Cashiers:");
+                implShop.printList(implShop.getListOfCashier(), "Cashiers:");
                 cashiersManagment();
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(shop.getListOfCashier(), "Cashiers:");
+                implShop.printList(implShop.getListOfCashier(), "Cashiers:");
                 entered = scan.nextInt();
 
-                shop.deleteCashier(shop.getCashier(entered - 1));
+                implShop.deleteCashier(implShop.getCashier(entered - 1));
                 cashiersManagment();
                 break;
             case 4:
@@ -157,20 +157,20 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
                 String name = scan.next();
                 SecurityGuard security = new SecurityGuard(name);
 
-                shop.addSecurityGuard(security);
+                implShop.addSecurityGuard(security);
                 securityManagment();
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(shop.getListOfSecurityGuard(), "Security guards:");
+                implShop.printList(implShop.getListOfSecurityGuard(), "Security guards:");
                 securityManagment();
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(shop.getListOfSecurityGuard(), "Security guards:");
+                implShop.printList(implShop.getListOfSecurityGuard(), "Security guards:");
                 entered = scan.nextInt();
 
-                shop.deleteSecurityGuard(shop.getSecurityGuard(entered - 1));
+                implShop.deleteSecurityGuard(implShop.getSecurityGuard(entered - 1));
                 securityManagment();
                 break;
             case 4:
@@ -196,8 +196,8 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
         switch (entered) {
             case 1:
                 System.out.print("---------------------------------------------------\n");
-                System.out.println(shop.getBank().getListOfDebtors());
-                shop.getBank().printListOfDebtors();
+                System.out.println(implShop.getImplBank().getListOfDebtors());
+                implShop.getImplBank().printListOfDebtors();
                 enteredIntoBank();
                 break;
             case 2:
@@ -241,28 +241,28 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
                     desireBoolean = true;
                 }
 
-                Buyer buyer = new Buyer(name, money, desireBoolean);
+                ImplBuyer implBuyer = new ImplBuyer(name, money, desireBoolean);
 
-                shop.addBuyer(buyer);
+                implShop.addBuyer(implBuyer);
                 buyersManagment();
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(shop.getListOfBuyers(), "Buyers:");
+                implShop.printList(implShop.getListOfImplBuyers(), "Buyers:");
                 buyersManagment();
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(shop.getListOfBuyers(), "Buyers:");
+                implShop.printList(implShop.getListOfImplBuyers(), "Buyers:");
                 entered = scan.nextInt();
-                theBuyerChooseDepartment(shop.getBuyer(entered - 1));
+                theBuyerChooseDepartment(implShop.getBuyer(entered - 1));
                 break;
             case 4:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(shop.getListOfBuyers(), "Buyers:");
+                implShop.printList(implShop.getListOfImplBuyers(), "Buyers:");
                 entered = scan.nextInt();
 
-                shop.deleteBuyer(shop.getBuyer(entered - 1));
+                implShop.deleteBuyer(implShop.getBuyer(entered - 1));
                 buyersManagment();
                 break;
             case 5:
@@ -277,7 +277,7 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
     }
 
     @Override
-    public void productsManagment(Department department) {
+    public void productsManagment(ImplDepartment implDepartment) {
         System.out.print("---------------------------------------------------\n");
         System.out.print("Products:\n");
         System.out.print("1 - add product\n");
@@ -289,34 +289,34 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
 
         switch (entered) {
             case 1:
-                createProduct(department);
+                createProduct(implDepartment);
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(department.getListOfProduct(), "Products:");
-                productsManagment(department);
+                implShop.printList(implDepartment.getListOfImplProduct(), "Products:");
+                productsManagment(implDepartment);
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(department.getListOfProduct(), "Products:");
+                implShop.printList(implDepartment.getListOfImplProduct(), "Products:");
                 entered = scan.nextInt();
 
-                department.deleteProduct(department.getProduct(entered - 1));
-                productsManagment(department);
+                implDepartment.deleteProduct(implDepartment.getProduct(entered - 1));
+                productsManagment(implDepartment);
                 break;
             case 4:
-                enteredIntoDepartment(department);
+                enteredIntoDepartment(implDepartment);
                 break;
             default:
                 System.out.print("---------------------------------------------------\n");
                 System.out.println("Invalid input");
-                productsManagment(department);
+                productsManagment(implDepartment);
                 break;
         }
     }
 
     @Override
-    public void createProduct(Department department) {
+    public void createProduct(ImplDepartment implDepartment) {
         Scanner scan = new Scanner(System.in);
         System.out.print("---------------------------------------------------\n");
         System.out.print("Name: ");
@@ -328,11 +328,11 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
         System.out.println("\nPrice: ");
         int price = scan.nextInt();
 
-        switch (department.getName()) {
+        switch (implDepartment.getName()) {
             case "SportEquipmentDepartment":
                 SportsEquipment sportsEquipment = new SportsEquipment(name, color, description, price);
-                department.addProduct(sportsEquipment);
-                productsManagment(department);
+                implDepartment.addProduct(sportsEquipment);
+                productsManagment(implDepartment);
                 break;
             case "SportsWearDepartment":
                 System.out.println("\nZize: ");
@@ -341,22 +341,22 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
                 String typeOfWear = scan.next();
 
                 SportsWear sportsWear = new SportsWear(name, color, description, price, size, typeOfWear);
-                department.addProduct(sportsWear);
-                productsManagment(department);
+                implDepartment.addProduct(sportsWear);
+                productsManagment(implDepartment);
                 break;
             case "TourismDepartment":
                 System.out.println("\nInstruction: ");
                 String instruction = scan.next();
 
                 Tourism tourism = new Tourism(name, color, description, price, instruction);
-                department.addProduct(tourism);
-                productsManagment(department);
+                implDepartment.addProduct(tourism);
+                productsManagment(implDepartment);
                 break;
         }
     }
 
     @Override
-    public void consultantManagment(Department department) {
+    public void consultantManagment(ImplDepartment implDepartment) {
         System.out.print("---------------------------------------------------\n");
         System.out.print("Staffs:\n");
         System.out.print("1 - add consultant\n");
@@ -371,38 +371,38 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
                 System.out.print("---------------------------------------------------\n");
                 System.out.print("Name: ");
                 String name = scan.next();
-                String departmentName = department.getClass().getSimpleName();
+                String departmentName = implDepartment.getClass().getSimpleName();
                 Consultant consultant = new Consultant(name, departmentName);
 
-                department.addConsultant(consultant);
-                consultantManagment(department);
+                implDepartment.addConsultant(consultant);
+                consultantManagment(implDepartment);
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(department.getListOfConsultant(), "Consultants:");
-                consultantManagment(department);
+                implShop.printList(implDepartment.getListOfConsultant(), "Consultants:");
+                consultantManagment(implDepartment);
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(department.getListOfConsultant(), "Consultants:");
+                implShop.printList(implDepartment.getListOfConsultant(), "Consultants:");
                 entered = scan.nextInt();
 
-                department.deleteConsultant(department.getConsultant(entered - 1));
-                consultantManagment(department);
+                implDepartment.deleteConsultant(implDepartment.getConsultant(entered - 1));
+                consultantManagment(implDepartment);
                 break;
             case 4:
-                enteredIntoDepartment(department);
+                enteredIntoDepartment(implDepartment);
                 break;
             default:
                 System.out.print("---------------------------------------------------\n");
                 System.out.println("Invalid input");
-                consultantManagment(department);
+                consultantManagment(implDepartment);
                 break;
         }
     }
 
     @Override
-    public void theBuyerChooseDepartment(Buyer buyer) {
+    public void theBuyerChooseDepartment(ImplBuyer implBuyer) {
         System.out.print("---------------------------------------------------\n");
         System.out.print("Select department:\n");
         System.out.print("1 - Sport equipment department\n");
@@ -413,26 +413,26 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
 
         switch (entered) {
             case 1:
-                theBuyerManagment(buyer, shop.getSportEquipmentDepartment());
+                theBuyerManagment(implBuyer, implShop.getSportEquipmentImplDepartment());
                 break;
             case 2:
-                theBuyerManagment(buyer, shop.getSportsWearDepartment());
+                theBuyerManagment(implBuyer, implShop.getSportsWearImplDepartment());
                 break;
             case 3:
-                theBuyerManagment(buyer, shop.getTourismDepartment());
+                theBuyerManagment(implBuyer, implShop.getTourismImplDepartment());
                 break;
             default:
                 System.out.print("---------------------------------------------------\n");
                 System.out.println("Invalid input");
-                theBuyerChooseDepartment(buyer);
+                theBuyerChooseDepartment(implBuyer);
                 break;
         }
     }
 
     @Override
-    public void theBuyerManagment(Buyer buyer, Department department) {
+    public void theBuyerManagment(ImplBuyer implBuyer, ImplDepartment implDepartment) {
         System.out.print("---------------------------------------------------\n");
-        System.out.println(buyer.toString());
+        System.out.println(implBuyer.toString());
         System.out.println("1 - view products");
         System.out.println("2 - add products to basket");
         System.out.println("3 - pay of");
@@ -447,40 +447,40 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
             case 1:
                 System.out.print("---------------------------------------------------\n");
                 System.out.println("Product:");
-                shop.printList(department.getListOfProduct(), "Products:");
+                implShop.printList(implDepartment.getListOfImplProduct(), "Products:");
 
-                theBuyerManagment(buyer, department);
+                theBuyerManagment(implBuyer, implDepartment);
                 break;
             case 2:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(department.getListOfProduct(), "Products:");
+                implShop.printList(implDepartment.getListOfImplProduct(), "Products:");
                 scan = new Scanner(System.in);
                 entered = scan.nextInt();
 
-                shop.takeAProduct(buyer, department, entered - 1);
-                theBuyerManagment(buyer, department);
+                implShop.takeAProduct(implBuyer, implDepartment, entered - 1);
+                theBuyerManagment(implBuyer, implDepartment);
                 break;
             case 3:
                 System.out.print("---------------------------------------------------\n");
-                shop.paymentOfBuyer(buyer);
-                theBuyerManagment(buyer, department);
+                implShop.paymentOfBuyer(implBuyer);
+                theBuyerManagment(implBuyer, implDepartment);
                 break;
             case 4:
-                theBuyerChooseDepartment(buyer);
+                theBuyerChooseDepartment(implBuyer);
                 break;
             case 5:
                 System.out.print("---------------------------------------------------\n");
-                shop.printList(department.getListOfProduct(), "Products:");
+                implShop.printList(implDepartment.getListOfImplProduct(), "Products:");
                 scan = new Scanner(System.in);
                 System.out.println("Select product:");
                 entered = scan.nextInt();
 
-                shop.consultation(department, department.getProduct(entered - 1));
-                theBuyerManagment(buyer, department);
+                implShop.consultation(implDepartment, implDepartment.getProduct(entered - 1));
+                theBuyerManagment(implBuyer, implDepartment);
                 break;
             case 6:
-                if (shop.checkSecurity(buyer)) {
-                    shop.deleteBuyer(buyer);
+                if (implShop.checkSecurity(implBuyer)) {
+                    implShop.deleteBuyer(implBuyer);
                 }
                 break;
             case 7:
@@ -490,7 +490,7 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
             default:
                 System.out.print("---------------------------------------------------\n");
                 System.out.println("Invalid input");
-                theBuyerManagment(buyer, department);
+                theBuyerManagment(implBuyer, implDepartment);
                 break;
         }
     }
@@ -502,7 +502,7 @@ public class ControlFile implements homeWork.hw_8_Parth_3_19_05_2020.interfaceSh
     }
 
     @Override
-    public Shop getShop() {
-        return shop;
+    public ImplShop getImplShop() {
+        return implShop;
     }
 }

@@ -2,7 +2,7 @@ package homeWork.hw_9_OOP_21_05_2020.animal;
 
 import java.util.Objects;
 
-public class Cat extends Animal {
+public class Cat extends ImplAnimal {
     boolean mouseHunting;
 
     public Cat(String food, String location, boolean mouseHunting) {

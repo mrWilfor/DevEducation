@@ -5,7 +5,7 @@ public interface User {
 
     void outOfAccount();
 
-    Basket getBasket();
+    Basket getImplBasket();
 
     boolean getTrigger();
 
