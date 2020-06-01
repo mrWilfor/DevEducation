@@ -1,9 +1,6 @@
 package practice.practic_14_28_05_2020.interfaces;
 
-import practice.practic_14_28_05_2020.implInterfaces.ImplCar;
-import practice.practic_14_28_05_2020.implInterfaces.ImplManager;
-import practice.practic_14_28_05_2020.implInterfaces.ImplOrder;
-import practice.practic_14_28_05_2020.implInterfaces.ImplUser;
+import practice.practic_14_28_05_2020.implInterfaces.*;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -15,6 +12,8 @@ public interface CarRental {
 
     void deleteManager(ImplManager manager);
 
+    LinkedList<ImplManager> getListOfManager();
+
     HashMap<String, ImplUser> getListOfUsers();
 
     HashMap<String, ImplUser> getListOfBlockedUsers();
@@ -25,21 +24,23 @@ public interface CarRental {
 
     void deleteCar(ImplCar car);
 
+    LinkedList<ImplCar> getListOfCar();
+
     boolean authorisation(String login, String password);
 
     String checkAuto();
 
     void addOrder(ImplOrder order);
 
-    void orderAuto(ImplCar car, String name, long id, boolean withOrWithOutDriver, int termRental);
+    void orderAuto(ImplCar car, ImplUser user, boolean withOrWithOutDriver, int termRental);
 
     ImplCar getCar(ImplOrder order);
 
-    void OutOfCarRental(ImplUser user);
-
-    void printList(LinkedList list, String name);
+    void outOfCarRental(ImplUser user);
 
     LinkedList<ImplOrder> getListOfOrder();
 
     HashMap<ImplCar, ImplOrder> getAccessListOfOrder();
+
+    ImplAdministrator getAdministrator();
 }

@@ -5,6 +5,8 @@ import practice.practic_14_28_05_2020.enums.Mark;
 import practice.practic_14_28_05_2020.enums.QualityClass;
 import practice.practic_14_28_05_2020.interfaces.Car;
 
+import java.util.Objects;
+
 public class ImplCar implements Car {
     private String name;
     private long id;
@@ -32,6 +34,7 @@ public class ImplCar implements Car {
         return name;
     }
 
+    @Override
     public long getId() {
         return id;
     }
@@ -61,11 +64,48 @@ public class ImplCar implements Car {
         this.damaged = damaged;
     }
 
+    @Override
     public String getInfoAboutCar() {
         return infoAboutCar;
     }
 
+    @Override
     public void setInfoAboutCar(String infoAboutCar) {
         this.infoAboutCar = infoAboutCar;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        ImplCar car = (ImplCar) o;
+
+        return id == car.id &&
+                prise == car.prise &&
+                Objects.equals(name, car.name) &&
+                mark == car.mark &&
+                qualityClass == car.qualityClass;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id, mark, qualityClass, prise);
+    }
+
+    @Override
+    public String toString() {
+        return "ImplCar{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", mark=" + mark +
+                ", qualityClass=" + qualityClass +
+                ", prise=" + prise +
+                '}';
     }
 }

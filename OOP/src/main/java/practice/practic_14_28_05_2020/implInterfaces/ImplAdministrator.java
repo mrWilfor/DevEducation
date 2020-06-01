@@ -1,5 +1,6 @@
 package practice.practic_14_28_05_2020.implInterfaces;
 
+import homeWork.hw_10_Shop_Extend.classes.UIDGeneration;
 import practice.practic_14_28_05_2020.enums.Mark;
 import practice.practic_14_28_05_2020.enums.QualityClass;
 import practice.practic_14_28_05_2020.interfaces.Administrator;
@@ -9,15 +10,18 @@ public class ImplAdministrator implements Administrator {
     long id;
     ImplCarRental carRental;
 
-    public ImplAdministrator(String name, long id, ImplCarRental carRental) {
+    {
+        id = UIDGeneration.getUID();
+    }
+
+    public ImplAdministrator(String name, ImplCarRental carRental) {
         this.name = name;
-        this.id = id;
         this.carRental = carRental;
     }
 
     @Override
-    public void registerManager(String name, long id, ImplCarRental carRental) {
-        ImplManager manager = new ImplManager(name, id, carRental);
+    public void registerManager(String name) {
+        ImplManager manager = new ImplManager(name, carRental);
 
         carRental.addManager(manager);
     }
@@ -28,7 +32,7 @@ public class ImplAdministrator implements Administrator {
     }
 
     @Override
-    public void addCar(String name, long id, Mark mark, QualityClass qualityClass, int prise, String infoAboutCar) {
+    public void addCar(String name, Mark mark, QualityClass qualityClass, int prise, String infoAboutCar) {
         ImplCar car = new ImplCar(name, mark, qualityClass, prise, infoAboutCar);
 
         carRental.addCar(car);

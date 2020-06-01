@@ -1,6 +1,5 @@
 package practice.practic_14_28_05_2020.implInterfaces;
 
-import homeWork.hw_10_Shop_Extend.classes.UIDGeneration;
 import practice.practic_14_28_05_2020.interfaces.CarRental;
 
 import java.util.HashMap;
@@ -22,7 +21,9 @@ public class ImplCarRental implements CarRental {
         listOfManager = new LinkedList<>();
         listOfLoginAndPassword = new HashMap<>();
         listOfCar = new LinkedList<>();
-        administrator = new ImplAdministrator("Nick", UIDGeneration.getUID(), this);
+        listOfOrder = new LinkedList<>();
+        accessListOfOrder = new HashMap<>();
+        administrator = new ImplAdministrator("Nick", this);
     }
 
     @Override
@@ -38,6 +39,11 @@ public class ImplCarRental implements CarRental {
     @Override
     public void deleteManager(ImplManager manager) {
         listOfManager.remove(manager);
+    }
+
+    @Override
+    public LinkedList<ImplManager> getListOfManager() {
+        return listOfManager;
     }
 
     @Override
@@ -65,17 +71,18 @@ public class ImplCarRental implements CarRental {
 
     @Override
     public ImplCar getCar(ImplOrder order) {
-        if (order.getStatusOfOrder()) {
+        if (order.getStatusOfOrder() && order.getBill() == 0) {
             return order.getCar();
         }
         return null;
     }
 
     @Override
-    public void deleteCar(ImplCar car){
+    public void deleteCar(ImplCar car) {
         listOfCar.remove(car);
     }
 
+    @Override
     public LinkedList<ImplCar> getListOfCar() {
         return listOfCar;
     }
@@ -102,27 +109,14 @@ public class ImplCarRental implements CarRental {
     }
 
     @Override
-    public void orderAuto(ImplCar car, String name, long id, boolean withOrWithOutDriver, int termRental) {
-        ImplOrder order = new ImplOrder(car, name, id, withOrWithOutDriver, termRental);
+    public void orderAuto(ImplCar car, ImplUser user, boolean withOrWithOutDriver, int termRental) {
+        ImplOrder order = new ImplOrder(car, user, withOrWithOutDriver, termRental);
         addOrder(order);
     }
 
     @Override
-    public void OutOfCarRental(ImplUser user) {
+    public void outOfCarRental(ImplUser user) {
         user.setStatus(false);
-    }
-
-    @Override
-    public void printList(LinkedList list, String name) {
-        StringBuilder result = new StringBuilder(name);
-
-        for (int i = 0; i < list.size(); i++) {
-            result.append("\n")
-                    .append(i + 1)
-                    .append(" - ")
-                    .append(list.get(i).toString());
-        }
-        System.out.println(result);
     }
 
     @Override
@@ -135,6 +129,7 @@ public class ImplCarRental implements CarRental {
         return accessListOfOrder;
     }
 
+    @Override
     public ImplAdministrator getAdministrator() {
         return administrator;
     }
