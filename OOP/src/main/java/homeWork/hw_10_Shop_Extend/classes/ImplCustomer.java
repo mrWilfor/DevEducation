@@ -7,13 +7,13 @@ import java.util.Objects;
 public class ImplCustomer implements homeWork.hw_10_Shop_Extend.interfaceOfShop.Customer {
     private String name;
     private int money;
-    private boolean discount;
+    private boolean isDiscount;
     private int totalPurchases;
     private HashMap<Long, Boolean> cheque;
     private LinkedList<ImplGoods> cart;
 
     {
-        discount = false;
+        isDiscount = false;
         totalPurchases = 0;
         cheque = new HashMap<>();
         cart = new LinkedList<>();
@@ -78,12 +78,12 @@ public class ImplCustomer implements homeWork.hw_10_Shop_Extend.interfaceOfShop.
 
     @Override
     public boolean getDiscount() {
-        return discount;
+        return isDiscount;
     }
 
     @Override
     public void setDiscount(boolean discount) {
-        this.discount = discount;
+        this.isDiscount = discount;
     }
 
     @Override
@@ -99,14 +99,14 @@ public class ImplCustomer implements homeWork.hw_10_Shop_Extend.interfaceOfShop.
         ImplCustomer implCustomer = (ImplCustomer) o;
 
         return money == implCustomer.money &&
-                discount == implCustomer.discount &&
+                isDiscount == implCustomer.isDiscount &&
                 totalPurchases == implCustomer.totalPurchases &&
                 Objects.equals(name, implCustomer.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, money, discount, totalPurchases);
+        return Objects.hash(name, money, isDiscount, totalPurchases);
     }
 
     @Override
@@ -114,7 +114,7 @@ public class ImplCustomer implements homeWork.hw_10_Shop_Extend.interfaceOfShop.
         return "Customer{" +
                 "name='" + name + '\'' +
                 ", money=" + money +
-                ", discount=" + discount +
+                ", discount=" + isDiscount +
                 ", totalPurchases=" + totalPurchases +
                 '}';
     }
