@@ -2,7 +2,6 @@ package homeWork.hw_10_Shop_Extend.classes;
 
 import homeWork.hw_10_Shop_Extend.classes.employee.ImplConsultant;
 import homeWork.hw_10_Shop_Extend.classes.enums.Brand;
-import homeWork.hw_10_Shop_Extend.interfaceOfShop.Goods;
 
 import java.util.LinkedList;
 import java.util.Objects;

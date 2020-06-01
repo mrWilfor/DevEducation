@@ -5,11 +5,11 @@ import homeWork.hw_10_Shop_Extend.classes.ImplGoods;
 import homeWork.hw_10_Shop_Extend.classes.enums.Role;
 
 public class ImplConsultant extends ImplEmployee implements homeWork.hw_10_Shop_Extend.interfaceOfShop.employee.Consultant {
-    private boolean status;
+    private boolean isStatus;
     private ImplDepartment department;
 
     {
-        status = true;
+        isStatus = true;
     }
 
     public ImplConsultant(String name) {
@@ -18,18 +18,18 @@ public class ImplConsultant extends ImplEmployee implements homeWork.hw_10_Shop_
 
     @Override
     public String consultation(ImplGoods goods) {
-        this.status = false;
+        this.isStatus = false;
         return goods.getInfo();
     }
 
     @Override
     public boolean getStatus() {
-        return status;
+        return isStatus;
     }
 
     @Override
     public void setStatus(boolean status) {
-        this.status = status;
+        this.isStatus = status;
     }
 
     @Override
