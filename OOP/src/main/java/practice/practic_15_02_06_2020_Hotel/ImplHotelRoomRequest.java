@@ -4,6 +4,8 @@ import practice.practic_15_02_06_2020_Hotel.enums.ClassHotelRoom;
 import practice.practic_15_02_06_2020_Hotel.enums.StatusRequest;
 import practice.practic_15_02_06_2020_Hotel.interfaces.HotelRoomRequest;
 
+import java.util.Calendar;
+
 public class ImplHotelRoomRequest implements HotelRoomRequest {
     private ImplClient client;
     private ImplHotelRoom hotelRoom;
@@ -12,6 +14,7 @@ public class ImplHotelRoomRequest implements HotelRoomRequest {
     private int stayTime;
     private int bill;
     private StatusRequest status = StatusRequest.NOTREVIEWED;
+    private Calendar dateOfBookRoom;
 
     public ImplHotelRoomRequest(ImplClient client, int numberOfPlaces, ClassHotelRoom classHotelRoom, int stayTime) {
         this.client = client;
@@ -68,5 +71,15 @@ public class ImplHotelRoomRequest implements HotelRoomRequest {
     @Override
     public void setStatus(StatusRequest status) {
         this.status = status;
+    }
+
+    @Override
+    public Calendar getDateOfBookRoom() {
+        return dateOfBookRoom;
+    }
+
+    @Override
+    public void setDateOfBookRoom(Calendar dateOfBookRoom) {
+        this.dateOfBookRoom = dateOfBookRoom;
     }
 }

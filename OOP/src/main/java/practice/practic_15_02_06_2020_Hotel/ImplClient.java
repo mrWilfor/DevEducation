@@ -2,9 +2,12 @@ package practice.practic_15_02_06_2020_Hotel;
 
 import homeWork.hw_10_Shop_Extend.classes.UIDGeneration;
 import practice.practic_15_02_06_2020_Hotel.enums.ClassHotelRoom;
+import practice.practic_15_02_06_2020_Hotel.enums.StatusHotelRoom;
 import practice.practic_15_02_06_2020_Hotel.enums.StatusRequest;
 import practice.practic_15_02_06_2020_Hotel.interfaces.Client;
 import practice.practic_15_02_06_2020_Hotel.interfaces.Hotel;
+
+import java.util.GregorianCalendar;
 
 public class ImplClient implements Client {
     private String name;
@@ -31,13 +34,13 @@ public class ImplClient implements Client {
 
     @Override
     public void confirmReservation() {
-        if (request.getStatus().equals(StatusRequest.WAITINGFORCLIENTSCONFIMATION)) {
+        if (isStatus && request.getStatus().equals(StatusRequest.WAITINGFORCLIENTSCONFIMATION)) {
             int bill = request.getHotelRoom().getPrise() * request.getStayTime();
 
             request.setBill(bill);
             request.setStatus(StatusRequest.ROOMRESERVED);
-            hotel.getReservedRoom().put(this, request.getHotelRoom());
-            hotel.getFreeRoom().remove(request.getHotelRoom());
+            request.getHotelRoom().setStatus(StatusHotelRoom.RESERVED);
+            request.setDateOfBookRoom(new GregorianCalendar());
         }
     }
 
@@ -51,18 +54,20 @@ public class ImplClient implements Client {
             );
             int bill = hotelRoom.getPrise() * stayTime;
 
+            request.setHotelRoom(hotelRoom);
             request.setBill(bill);
             request.setStatus(StatusRequest.ROOMRESERVED);
-            hotel.getReservedRoom().put(this, hotelRoom);
-            hotel.getFreeRoom().remove(hotelRoom);
+            request.getHotelRoom().setStatus(StatusHotelRoom.RESERVED);
+            request.setDateOfBookRoom(new GregorianCalendar());
         }
     }
 
     @Override
     public boolean paid() {
-        if (money >= request.getBill()) {
+        if (isStatus && money >= request.getBill()) {
             money -= request.getBill();
             request.setBill(0);
+            request.setStatus(StatusRequest.PAID);
             return true;
         }
         return false;

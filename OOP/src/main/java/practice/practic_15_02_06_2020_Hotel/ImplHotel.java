@@ -1,19 +1,21 @@
 package practice.practic_15_02_06_2020_Hotel;
 
+import practice.practic_15_02_06_2020_Hotel.enums.StatusHotelRoom;
+import practice.practic_15_02_06_2020_Hotel.enums.StatusRequest;
 import practice.practic_15_02_06_2020_Hotel.interfaces.Hotel;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public class ImplHotel implements Hotel {
-    private LinkedList<ImplHotelRoom> freeRoom = new LinkedList<>();
-    private HashMap<ImplClient, ImplHotelRoom> busyRoom = new HashMap<>();
-    private HashMap<ImplClient, ImplHotelRoom> reservedRoom = new HashMap<>();
-    private LinkedList<ImplHotelRoom> unavailableRoom = new LinkedList<>();
+    private Calendar calendar = new GregorianCalendar();
+    private LinkedList<ImplHotelRoom> rooms = new LinkedList<>();
     private LinkedList<ImplHotelRoomRequest> requests = new LinkedList<>();
     private HashMap<String, ImplClient> listOfClients = new HashMap<>();
     private HashMap<String, String> listOfLoginAndPassword = new HashMap<>();
-    private ImplManager manager = new ImplManager();
+    private ImplManager manager = new ImplManager(this);
 
     @Override
     public boolean registration(String login, int money, String password) {
@@ -38,23 +40,61 @@ public class ImplHotel implements Hotel {
     }
 
     @Override
-    public LinkedList<ImplHotelRoom> getFreeRoom() {
-        return freeRoom;
+    public ImplHotelRoom searchRoomsByStatus(StatusHotelRoom statusHotelRoom) {
+        int firstIndex = 0;
+        int lastIndex = rooms.size() - 1;
+        boolean isTrigger = false;
+
+        do {
+            rooms.sort(ImplHotelRoom.hotelRoomStatusComparator);
+
+            isTrigger = false;
+
+            if (statusHotelRoom.compareTo(rooms.get((lastIndex + firstIndex) / 2).getStatus()) == 0) {
+                return rooms.get((lastIndex + firstIndex) / 2);
+            } else if (firstIndex == lastIndex && statusHotelRoom.compareTo(rooms.get(firstIndex).getStatus()) != 0) {
+                break;
+            } else if (lastIndex - firstIndex == 1 && statusHotelRoom.compareTo(rooms.get(firstIndex).getStatus()) != 0) {
+                firstIndex = lastIndex;
+                isTrigger = true;
+            } else if (statusHotelRoom.compareTo(rooms.get((lastIndex + firstIndex) / 2).getStatus()) < 0) {
+                lastIndex = ((lastIndex + firstIndex) / 2) - 1;
+                isTrigger = true;
+            } else if (statusHotelRoom.compareTo(rooms.get((lastIndex + firstIndex) / 2).getStatus()) > 0) {
+                firstIndex = ((lastIndex + firstIndex) / 2) + 1;
+                isTrigger = true;
+            }
+        } while (isTrigger);
+        return null;
     }
 
     @Override
-    public HashMap<ImplClient, ImplHotelRoom> getBusyRoom() {
-        return busyRoom;
+    public void verificationOfPaymentForBookedRooms() {
+        for (ImplHotelRoomRequest request : requests) {
+            if (
+                    request.getStatus().equals(StatusRequest.ROOMRESERVED) &&
+                            calendar.get(Calendar.DAY_OF_MONTH) - request.getDateOfBookRoom().get(Calendar.DAY_OF_MONTH) >= 2
+            ) {
+                request.getClients().setRequest(null);
+                request.getHotelRoom().setStatus(StatusHotelRoom.FREE);
+                requests.remove(request);
+            }
+        }
     }
 
     @Override
-    public HashMap<ImplClient, ImplHotelRoom> getReservedRoom() {
-        return reservedRoom;
+    public void addDayToCalendar(int day) {
+        calendar.add(Calendar.DAY_OF_MONTH, day);
     }
 
     @Override
-    public LinkedList<ImplHotelRoom> getUnavailableRoom() {
-        return unavailableRoom;
+    public void addRoom(ImplHotelRoom room) {
+        rooms.add(room);
+    }
+
+    @Override
+    public LinkedList<ImplHotelRoom> getRooms() {
+        return rooms;
     }
 
     @Override
@@ -68,12 +108,12 @@ public class ImplHotel implements Hotel {
     }
 
     @Override
-    public HashMap<String, String> getListOfLoginAndPassword() {
-        return listOfLoginAndPassword;
+    public ImplManager getManager() {
+        return manager;
     }
 
     @Override
-    public ImplManager getManager() {
-        return manager;
+    public Calendar getCalendar() {
+        return calendar;
     }
 }

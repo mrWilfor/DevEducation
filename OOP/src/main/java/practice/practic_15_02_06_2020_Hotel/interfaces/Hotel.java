@@ -4,7 +4,9 @@ import practice.practic_15_02_06_2020_Hotel.ImplClient;
 import practice.practic_15_02_06_2020_Hotel.ImplHotelRoom;
 import practice.practic_15_02_06_2020_Hotel.ImplHotelRoomRequest;
 import practice.practic_15_02_06_2020_Hotel.ImplManager;
+import practice.practic_15_02_06_2020_Hotel.enums.StatusHotelRoom;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -13,19 +15,21 @@ public interface Hotel {
 
     boolean authorisation(String login, String password);
 
-    LinkedList<ImplHotelRoom> getFreeRoom();
+    ImplHotelRoom searchRoomsByStatus(StatusHotelRoom statusHotelRoom);
 
-    HashMap<ImplClient, ImplHotelRoom> getBusyRoom();
+    void verificationOfPaymentForBookedRooms();
 
-    HashMap<ImplClient, ImplHotelRoom> getReservedRoom();
+    void addDayToCalendar(int day);
 
-    LinkedList<ImplHotelRoom> getUnavailableRoom();
+    void addRoom(ImplHotelRoom room);
+
+    LinkedList<ImplHotelRoom> getRooms();
 
     LinkedList<ImplHotelRoomRequest> getRequests();
 
     HashMap<String, ImplClient> getListOfClients();
 
-    HashMap<String, String> getListOfLoginAndPassword();
-
     ImplManager getManager();
+
+    Calendar getCalendar();
 }
