@@ -82,4 +82,6 @@ public class ImplHotelRoomRequest implements HotelRoomRequest {
     public void setDateOfBookRoom(Calendar dateOfBookRoom) {
         this.dateOfBookRoom = dateOfBookRoom;
     }
+
+
 }
