@@ -10,6 +10,7 @@ import practice.practic_16_03_06_2020.test.ImplTest;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ImplUser implements User {
@@ -133,5 +134,26 @@ public class ImplUser implements User {
     @Override
     public void setStatus(boolean status) {
         isStatus = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        ImplUser implUser = (ImplUser) o;
+
+        return id == implUser.id &&
+                Objects.equals(name, implUser.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id);
     }
 }

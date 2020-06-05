@@ -33,7 +33,11 @@ public class ImplTest implements Test {
 
         ImplTest implTest = (ImplTest) o;
 
-        return Objects.equals(name, implTest.name) &&
-                Objects.equals(questions, implTest.questions);
+        return Objects.equals(name, implTest.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

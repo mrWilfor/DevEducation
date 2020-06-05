@@ -3,6 +3,8 @@ package practice.practic_16_03_06_2020.test;
 import practice.practic_16_03_06_2020.interfaces.Question;
 import practice.practic_16_03_06_2020.interfaces.Test;
 
+import java.util.Objects;
+
 public class ImplQuestion implements Question {
     private String question;
     private String[] answers;
@@ -51,5 +53,28 @@ public class ImplQuestion implements Question {
 
     public void setTest(Test test) {
         this.test = test;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        ImplQuestion that = (ImplQuestion) o;
+
+        return indexRightAnswer == that.indexRightAnswer &&
+                Objects.equals(question, that.question);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(question, indexRightAnswer);
+        result = 31 * result;
+        return result;
     }
 }
