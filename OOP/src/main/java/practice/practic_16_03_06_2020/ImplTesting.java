@@ -1,6 +1,9 @@
 package practice.practic_16_03_06_2020;
 
 import practice.practic_16_03_06_2020.answers.ImplAnswersFinal;
+import practice.practic_16_03_06_2020.exeptions.UserIsNotLoggedIn;
+import practice.practic_16_03_06_2020.exeptions.UserWithThatUsernameExists;
+import practice.practic_16_03_06_2020.exeptions.WrongLoginOrPassword;
 import practice.practic_16_03_06_2020.interfaces.Testing;
 import practice.practic_16_03_06_2020.test.ImplTest;
 import practice.practic_16_03_06_2020.userAdmin.ImplAdministrator;
@@ -18,9 +21,9 @@ public class ImplTesting implements Testing {
     private HashMap<ImplUser, ArrayList<ImplAnswersFinal>> resultsOfTesting = new HashMap<>();
 
     @Override
-    public boolean registration(String login,  String password) {
+    public boolean registration(String login,  String password) throws UserWithThatUsernameExists {
         if (users.containsKey(login)) {
-            return false;
+            throw new UserWithThatUsernameExists("A user with that username exists");
         }
 
         users.put(login, new ImplUser(login,  this));
@@ -29,20 +32,25 @@ public class ImplTesting implements Testing {
     }
 
     @Override
-    public boolean logIn(String login, String password) {
+    public boolean logIn(String login, String password) throws WrongLoginOrPassword {
         if (users.containsKey(login)) {
             if (password.equals(loginsAndPasswords.get(login))) {
                 users.get(login).setStatus(true);
                 return true;
+            } else {
+                throw new WrongLoginOrPassword("Wrong password");
             }
+        } else {
+            throw new WrongLoginOrPassword("Wrong login");
         }
-        return false;
     }
 
     @Override
-    public void addResultOfTesting(ImplAnswersFinal answers, ImplUser user) {
+    public void addResultOfTesting(ImplAnswersFinal answers, ImplUser user) throws UserIsNotLoggedIn {
         if (!resultsOfTesting.containsKey(user)) {
             resultsOfTesting.put(user, new ArrayList<>());
+        } else {
+            throw new UserIsNotLoggedIn("You are not logged in");
         }
         resultsOfTesting.get(user).add(answers);
     }

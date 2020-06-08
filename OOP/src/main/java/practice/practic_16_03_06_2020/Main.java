@@ -1,5 +1,8 @@
 package practice.practic_16_03_06_2020;
 
+import practice.practic_16_03_06_2020.exeptions.UserIsNotLoggedIn;
+import practice.practic_16_03_06_2020.exeptions.UserWithThatUsernameExists;
+import practice.practic_16_03_06_2020.exeptions.WrongLoginOrPassword;
 import practice.practic_16_03_06_2020.test.ImplQuestion;
 import practice.practic_16_03_06_2020.test.ImplTest;
 import practice.practic_16_03_06_2020.userAdmin.ImplAdministrator;
@@ -10,8 +13,17 @@ public class Main {
         ImplTesting testing = new ImplTesting();
         ImplAdministrator administrator = testing.getAdministrator();
 
-        testing.registration("Nick", "12345");
-        testing.logIn("Nick", "12345");
+        try {
+            testing.registration("Nick", "12345");
+        } catch (UserWithThatUsernameExists e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            testing.logIn("Nick", "12345");
+        } catch (WrongLoginOrPassword e) {
+            System.out.println(e.getMessage());
+        }
 
         ImplUser user = testing.getUsers().get("Nick");
         ImplTest test = administrator.createTest("Computer science1");
@@ -48,7 +60,12 @@ public class Main {
         administrator.addQuestion(question5, test);
         administrator.addTest(test);
 
-        user.chooseTest(test);
+        try {
+            user.chooseTest(test);
+        } catch (UserIsNotLoggedIn e) {
+            System.out.println(e.getMessage());
+        }
+
         user.testing();
     }
 

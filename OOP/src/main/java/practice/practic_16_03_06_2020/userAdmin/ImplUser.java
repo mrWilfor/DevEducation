@@ -4,6 +4,7 @@ import homeWork.hw_10_Shop_Extend.classes.UIDGeneration;
 import practice.practic_16_03_06_2020.ImplTesting;
 import practice.practic_16_03_06_2020.answers.ImplAnswers;
 import practice.practic_16_03_06_2020.answers.ImplAnswersFinal;
+import practice.practic_16_03_06_2020.exeptions.UserIsNotLoggedIn;
 import practice.practic_16_03_06_2020.interfaces.User;
 import practice.practic_16_03_06_2020.test.ImplQuestion;
 import practice.practic_16_03_06_2020.test.ImplTest;
@@ -27,16 +28,23 @@ public class ImplUser implements User {
     }
 
     @Override
-    public void chooseTest(ImplTest test) {
+    public void chooseTest(ImplTest test) throws UserIsNotLoggedIn {
         int []j = {1, 2};
         if (isStatus) {
             this.test = test;
+        } else {
+            throw new UserIsNotLoggedIn("You are not logged in");
         }
     }
 
     @Override
     public void testing() {
-        startTesting();
+        try {
+            startTesting();
+        } catch (UserIsNotLoggedIn e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         ArrayList<ImplQuestion> questions = test.getQuestions();
         Scanner scan = new Scanner(System.in);
@@ -70,10 +78,12 @@ public class ImplUser implements User {
     }
 
     @Override
-    public void startTesting() {
+    public void startTesting() throws UserIsNotLoggedIn {
         if (isStatus) {
             answers.setTest(test);
             answers.setCalendar(new GregorianCalendar());
+        } else {
+            throw new UserIsNotLoggedIn("You are not logged in");
         }
     }
 
@@ -101,7 +111,12 @@ public class ImplUser implements User {
                     answers.getAssessment()
             );
 
-            testing.addResultOfTesting(answersFinal, this);
+            try {
+                testing.addResultOfTesting(answersFinal, this);
+            } catch (UserIsNotLoggedIn e) {
+                System.out.println(e.getMessage());
+            }
+
             answers.clear();
             test = null;
         }

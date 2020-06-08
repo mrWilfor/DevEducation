@@ -2,6 +2,9 @@ package practice.practic_16_03_06_2020;
 
 import org.junit.jupiter.api.Test;
 import practice.practic_16_03_06_2020.answers.ImplAnswersFinal;
+import practice.practic_16_03_06_2020.exeptions.UserIsNotLoggedIn;
+import practice.practic_16_03_06_2020.exeptions.UserWithThatUsernameExists;
+import practice.practic_16_03_06_2020.exeptions.WrongLoginOrPassword;
 import practice.practic_16_03_06_2020.test.ImplQuestion;
 import practice.practic_16_03_06_2020.test.ImplTest;
 import practice.practic_16_03_06_2020.userAdmin.ImplAdministrator;
@@ -18,8 +21,17 @@ class ImplUserTest {
         ImplTesting testing = new ImplTesting();
         ImplAdministrator administrator = testing.getAdministrator();
 
-        testing.registration("Nick", "12345");
-        testing.logIn("Nick", "12345");
+        try {
+            testing.registration("Nick", "12345");
+        } catch (UserWithThatUsernameExists e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            testing.logIn("Nick", "12345");
+        } catch (WrongLoginOrPassword e) {
+            System.out.println(e.getMessage());
+        }
 
         ImplUser user = testing.getUsers().get("Nick");
         ImplTest test = administrator.createTest("Computer science1");
@@ -56,8 +68,13 @@ class ImplUserTest {
         administrator.addQuestion(question5, test);
         administrator.addTest(test);
 
-        user.chooseTest(test);
-        user.startTesting();
+        try {
+            user.chooseTest(test);
+            user.startTesting();
+        } catch (UserIsNotLoggedIn e) {
+            System.out.println(e.getMessage());
+        }
+
         user.answerQuestion(0, 2);
         user.answerQuestion(1, 0);
         user.answerQuestion(2, 1);
@@ -76,8 +93,17 @@ class ImplUserTest {
         ImplTesting testing = new ImplTesting();
         ImplAdministrator administrator = testing.getAdministrator();
 
-        testing.registration("Nick", "12345");
-        testing.logIn("Nick", "12345");
+        try {
+            testing.registration("Nick", "12345");
+        } catch (UserWithThatUsernameExists e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            testing.logIn("Nick", "12345");
+        } catch (WrongLoginOrPassword e) {
+            System.out.println(e.getMessage());
+        }
 
         ImplUser user = testing.getUsers().get("Nick");
         ImplTest test = administrator.createTest("Computer science1");
@@ -114,8 +140,13 @@ class ImplUserTest {
         administrator.addQuestion(question5, test);
         administrator.addTest(test);
 
-        user.chooseTest(test);
-        user.startTesting();
+        try {
+            user.chooseTest(test);
+            user.startTesting();
+        } catch (UserIsNotLoggedIn e) {
+            System.out.println(e.getMessage());
+        }
+
         user.answerQuestion(0, 1);
         user.answerQuestion(1, 1);
         user.answerQuestion(2, 1);
@@ -169,8 +200,13 @@ class ImplUserTest {
         administrator.addQuestion(question5, test);
         administrator.addTest(test);
 
-        user.chooseTest(test);
-        user.startTesting();
+        try {
+            user.chooseTest(test);
+            user.startTesting();
+        } catch (UserIsNotLoggedIn e) {
+            System.out.println(e.getMessage());
+        }
+
         user.answerQuestion(0, 2);
         user.answerQuestion(1, 0);
         user.answerQuestion(2, 1);
@@ -189,7 +225,11 @@ class ImplUserTest {
         ImplTesting testing = new ImplTesting();
         ImplAdministrator administrator = testing.getAdministrator();
 
-        testing.registration("Nick", "12345");
+        try {
+            testing.registration("Nick", "12345");
+        } catch (UserWithThatUsernameExists e) {
+            System.out.println(e.getMessage());
+        }
 
         ImplUser user = testing.getUsers().get("Nick");
         ImplTest test = administrator.createTest("Computer science1");
@@ -226,8 +266,13 @@ class ImplUserTest {
         administrator.addQuestion(question5, test);
         administrator.addTest(test);
 
-        user.chooseTest(test);
-        user.startTesting();
+        try {
+            user.chooseTest(test);
+            user.startTesting();
+        } catch (UserIsNotLoggedIn e) {
+            System.out.println(e.getMessage());
+        }
+
         user.answerQuestion(0, 2);
         user.answerQuestion(1, 0);
         user.answerQuestion(2, 1);
