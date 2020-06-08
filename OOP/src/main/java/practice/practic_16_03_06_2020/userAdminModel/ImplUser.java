@@ -28,6 +28,7 @@ public class ImplUser implements User {
 
     @Override
     public void chooseTest(ImplTest test) {
+        int []j = {1, 2};
         if (isStatus) {
             this.test = test;
         }
