@@ -1,22 +1,22 @@
-package homeWork.hw_11_Lists.task_2;
+package homeWork.hw_11_Lists.task_3;
 
-import homeWork.hw_11_Lists.task_1.AList;
+import homeWork.hw_11_Lists.task_2.List;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ListTest {
+class RListTest {
 
     @Test
     void getWhenSizeListZero() {
-        List list = new AList();
+        List list = new RList();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
     }
 
     @Test
     void getWhenSizeListNotZero() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -32,7 +32,7 @@ class ListTest {
 
     @Test
     void getWhenIndexMoreThanSize() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -46,7 +46,7 @@ class ListTest {
 
     @Test
     void getWhenIndexLessThanZero() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -60,7 +60,7 @@ class ListTest {
 
     @Test
     void addWhenArrayOverFlow() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -104,7 +104,7 @@ class ListTest {
 
     @Test
     void addMany() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -130,7 +130,7 @@ class ListTest {
 
     @Test
     void addOne() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
 
         list.add(object1);
@@ -144,7 +144,7 @@ class ListTest {
 
     @Test
     void addNull() {
-        List list = new AList();
+        List list = new RList();
 
         list.add(null);
 
@@ -157,7 +157,7 @@ class ListTest {
 
     @Test
     void addFirstWhenArrayOverFlow() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -201,7 +201,7 @@ class ListTest {
 
     @Test
     void addFirstMany() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -227,7 +227,7 @@ class ListTest {
 
     @Test
     void addFirstOne() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
 
         list.addFirst(object1);
@@ -242,7 +242,7 @@ class ListTest {
 
     @Test
     void addFirstNull() {
-        List list = new AList();
+        List list = new RList();
 
         list.addFirst(null);
 
@@ -254,7 +254,7 @@ class ListTest {
 
     @Test
     void addByIndexWhenArrayOverFlow() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -298,7 +298,7 @@ class ListTest {
 
     @Test
     void addByIndex() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -324,7 +324,7 @@ class ListTest {
 
     @Test
     void addByIndexWhenIndexMoreThanSize() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -341,7 +341,7 @@ class ListTest {
 
     @Test
     void addByIndexWhenIndexLessThanZero() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -358,7 +358,7 @@ class ListTest {
 
     @Test
     void addByIndexNull() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -380,7 +380,7 @@ class ListTest {
 
     @Test
     void remove() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -424,7 +424,7 @@ class ListTest {
 
     @Test
     void removeWhenObjectNotExist() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -468,7 +468,7 @@ class ListTest {
 
     @Test
     void removeWhenSizeZero() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
 
         list.remove(object1);
@@ -481,7 +481,7 @@ class ListTest {
 
     @Test
     void removeNull() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -524,7 +524,7 @@ class ListTest {
 
     @Test
     void RemoveByIndexWhenIndexMoreThanSize() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -554,7 +554,7 @@ class ListTest {
 
     @Test
     void RemoveByIndexWhenIndexLessThanZero() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -584,14 +584,14 @@ class ListTest {
 
     @Test
     void RemoveByIndexWhenSizeZero() {
-        List list = new AList();
+        List list = new RList();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
     }
 
     @Test
     void containsTrue() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -605,7 +605,7 @@ class ListTest {
 
     @Test
     void containsFalse() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -618,7 +618,7 @@ class ListTest {
 
     @Test
     void containsWhenSizeZero() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
 
         assertFalse(list.contains(object1));
@@ -626,7 +626,7 @@ class ListTest {
 
     @Test
     void containsNull() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -641,14 +641,14 @@ class ListTest {
 
     @Test
     void isEmptyTrue() {
-        List list = new AList();
+        List list = new RList();
 
         assertTrue(list.isEmpty());
     }
 
     @Test
     void isEmptyFalse() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
 
         list.add(object1);
@@ -658,7 +658,7 @@ class ListTest {
 
     @Test
     void isEmptyWhenUsedClear() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -677,7 +677,7 @@ class ListTest {
 
     @Test
     void isEmptyWhenRemoveAll() {
-        List list = new AList();
+        List list = new RList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
