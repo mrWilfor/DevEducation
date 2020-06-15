@@ -1,22 +1,21 @@
-package homeWork.hw_11_Lists.task_4;
+package homeWork.hw_11_Lists.task_5;
 
-import homeWork.hw_11_Lists.task_2.List;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LListTest {
+class AListTest {
 
     @Test
     void getWhenSizeListZero() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
     }
 
     @Test
     void getWhenSizeListNotZero() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -32,7 +31,7 @@ class LListTest {
 
     @Test
     void getWhenIndexMoreThanSize() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -46,7 +45,7 @@ class LListTest {
 
     @Test
     void getWhenIndexLessThanZero() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -59,8 +58,52 @@ class LListTest {
     }
 
     @Test
+    void addWhenArrayOverFlow() {
+        AList<Object> list = new AList<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+        Object object5 = new Object();
+        Object object6 = new Object();
+        Object object7 = new Object();
+        Object object8 = new Object();
+        Object object9 = new Object();
+        Object object10 = new Object();
+        Object object11 = new Object();
+
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(object5);
+        list.add(object6);
+        list.add(object7);
+        list.add(object8);
+        list.add(object9);
+        list.add(object10);
+        list.add(object11);
+
+        int expectedSize = 11;
+        int actualSize = list.size();
+
+        assertEquals(expectedSize, actualSize);
+        assertEquals(object1, list.get(0));
+        assertEquals(object2, list.get(1));
+        assertEquals(object3, list.get(2));
+        assertEquals(object4, list.get(3));
+        assertEquals(object5, list.get(4));
+        assertEquals(object6, list.get(5));
+        assertEquals(object7, list.get(6));
+        assertEquals(object8, list.get(7));
+        assertEquals(object9, list.get(8));
+        assertEquals(object10, list.get(9));
+        assertEquals(object11, list.get(10));
+    }
+
+    @Test
     void addMany() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -85,25 +128,8 @@ class LListTest {
     }
 
     @Test
-    void addTwo() {
-        List list = new LList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-
-        int expectedSize = 2;
-        int actualSize = list.size();
-
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-    }
-
-    @Test
     void addOne() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -117,7 +143,7 @@ class LListTest {
 
     @Test
     void addNull() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
 
         list.add(null);
 
@@ -130,7 +156,7 @@ class LListTest {
 
     @Test
     void addFirstWhenArrayOverFlow() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -174,7 +200,7 @@ class LListTest {
 
     @Test
     void addFirstMany() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -199,26 +225,8 @@ class LListTest {
     }
 
     @Test
-    void addFirstTwo() {
-        List list = new LList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-
-        list.addFirst(object1);
-        list.addFirst(object2);
-
-        int expectedSize = 2;
-        int actualSize = list.size();
-
-
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object2, list.get(0));
-        assertEquals(object1, list.get(1));
-    }
-
-    @Test
     void addFirstOne() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
 
         list.addFirst(object1);
@@ -233,7 +241,7 @@ class LListTest {
 
     @Test
     void addFirstNull() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
 
         list.addFirst(null);
 
@@ -244,8 +252,52 @@ class LListTest {
     }
 
     @Test
+    void addByIndexWhenArrayOverFlow() {
+        AList<Object> list = new AList<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+        Object object5 = new Object();
+        Object object6 = new Object();
+        Object object7 = new Object();
+        Object object8 = new Object();
+        Object object9 = new Object();
+        Object object10 = new Object();
+        Object object11 = new Object();
+
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(object5);
+        list.add(object6);
+        list.add(object7);
+        list.add(object8);
+        list.add(object9);
+        list.add(object10);
+        list.add(5, object11);
+
+        int expectedSize = 11;
+        int actualSize = list.size();
+
+        assertEquals(expectedSize, actualSize);
+        assertEquals(object1, list.get(0));
+        assertEquals(object2, list.get(1));
+        assertEquals(object3, list.get(2));
+        assertEquals(object4, list.get(3));
+        assertEquals(object5, list.get(4));
+        assertEquals(object11, list.get(5));
+        assertEquals(object6, list.get(6));
+        assertEquals(object7, list.get(7));
+        assertEquals(object8, list.get(8));
+        assertEquals(object9, list.get(9));
+        assertEquals(object10, list.get(10));
+    }
+
+    @Test
     void addByIndex() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -271,7 +323,7 @@ class LListTest {
 
     @Test
     void addByIndexWhenIndexMoreThanSize() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -288,7 +340,7 @@ class LListTest {
 
     @Test
     void addByIndexWhenIndexLessThanZero() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -305,7 +357,7 @@ class LListTest {
 
     @Test
     void addByIndexNull() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -327,7 +379,7 @@ class LListTest {
 
     @Test
     void remove() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -371,7 +423,7 @@ class LListTest {
 
     @Test
     void removeWhenObjectNotExist() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -415,7 +467,7 @@ class LListTest {
 
     @Test
     void removeWhenSizeZero() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
 
         list.remove(object1);
@@ -428,7 +480,7 @@ class LListTest {
 
     @Test
     void removeNull() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -471,7 +523,7 @@ class LListTest {
 
     @Test
     void RemoveByIndexWhenIndexMoreThanSize() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -501,7 +553,7 @@ class LListTest {
 
     @Test
     void RemoveByIndexWhenIndexLessThanZero() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -531,14 +583,14 @@ class LListTest {
 
     @Test
     void RemoveByIndexWhenSizeZero() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
     }
 
     @Test
     void containsTrue() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -552,7 +604,7 @@ class LListTest {
 
     @Test
     void containsFalse() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -565,7 +617,7 @@ class LListTest {
 
     @Test
     void containsWhenSizeZero() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
 
         assertFalse(list.contains(object1));
@@ -573,7 +625,7 @@ class LListTest {
 
     @Test
     void containsNull() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -588,14 +640,14 @@ class LListTest {
 
     @Test
     void isEmptyTrue() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
 
         assertTrue(list.isEmpty());
     }
 
     @Test
     void isEmptyFalse() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -605,7 +657,7 @@ class LListTest {
 
     @Test
     void isEmptyWhenUsedClear() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -624,7 +676,7 @@ class LListTest {
 
     @Test
     void isEmptyWhenRemoveAll() {
-        List list = new LList();
+        AList<Object> list = new AList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -644,4 +696,5 @@ class LListTest {
 
         assertTrue(list.isEmpty());
     }
+
 }

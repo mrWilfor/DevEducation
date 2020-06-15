@@ -1,6 +1,5 @@
-package homeWork.hw_11_Lists.task_4;
+package homeWork.hw_11_Lists.task_5;
 
-import homeWork.hw_11_Lists.task_2.List;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,14 +8,14 @@ class LListTest {
 
     @Test
     void getWhenSizeListZero() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
     }
 
     @Test
     void getWhenSizeListNotZero() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -32,7 +31,7 @@ class LListTest {
 
     @Test
     void getWhenIndexMoreThanSize() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -46,7 +45,7 @@ class LListTest {
 
     @Test
     void getWhenIndexLessThanZero() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -60,7 +59,7 @@ class LListTest {
 
     @Test
     void addMany() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -86,7 +85,7 @@ class LListTest {
 
     @Test
     void addTwo() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
 
@@ -103,7 +102,7 @@ class LListTest {
 
     @Test
     void addOne() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
 
         list.add(object1);
@@ -117,7 +116,7 @@ class LListTest {
 
     @Test
     void addNull() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
 
         list.add(null);
 
@@ -130,7 +129,7 @@ class LListTest {
 
     @Test
     void addFirstWhenArrayOverFlow() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -174,7 +173,7 @@ class LListTest {
 
     @Test
     void addFirstMany() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -200,7 +199,7 @@ class LListTest {
 
     @Test
     void addFirstTwo() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
 
@@ -218,7 +217,7 @@ class LListTest {
 
     @Test
     void addFirstOne() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
 
         list.addFirst(object1);
@@ -233,7 +232,7 @@ class LListTest {
 
     @Test
     void addFirstNull() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
 
         list.addFirst(null);
 
@@ -245,7 +244,7 @@ class LListTest {
 
     @Test
     void addByIndex() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -271,7 +270,7 @@ class LListTest {
 
     @Test
     void addByIndexWhenIndexMoreThanSize() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -288,7 +287,7 @@ class LListTest {
 
     @Test
     void addByIndexWhenIndexLessThanZero() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -305,7 +304,7 @@ class LListTest {
 
     @Test
     void addByIndexNull() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -327,7 +326,7 @@ class LListTest {
 
     @Test
     void remove() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -371,7 +370,7 @@ class LListTest {
 
     @Test
     void removeWhenObjectNotExist() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -415,7 +414,7 @@ class LListTest {
 
     @Test
     void removeWhenSizeZero() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
 
         list.remove(object1);
@@ -428,7 +427,7 @@ class LListTest {
 
     @Test
     void removeNull() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -471,7 +470,7 @@ class LListTest {
 
     @Test
     void RemoveByIndexWhenIndexMoreThanSize() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -501,7 +500,7 @@ class LListTest {
 
     @Test
     void RemoveByIndexWhenIndexLessThanZero() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -531,14 +530,14 @@ class LListTest {
 
     @Test
     void RemoveByIndexWhenSizeZero() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
     }
 
     @Test
     void containsTrue() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -552,7 +551,7 @@ class LListTest {
 
     @Test
     void containsFalse() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -565,7 +564,7 @@ class LListTest {
 
     @Test
     void containsWhenSizeZero() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
 
         assertFalse(list.contains(object1));
@@ -573,7 +572,7 @@ class LListTest {
 
     @Test
     void containsNull() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -588,14 +587,14 @@ class LListTest {
 
     @Test
     void isEmptyTrue() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
 
         assertTrue(list.isEmpty());
     }
 
     @Test
     void isEmptyFalse() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
 
         list.add(object1);
@@ -605,7 +604,7 @@ class LListTest {
 
     @Test
     void isEmptyWhenUsedClear() {
-        List list = new LList();
+        homeWork.hw_11_Lists.task_2.List list = new homeWork.hw_11_Lists.task_4.LList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -624,7 +623,7 @@ class LListTest {
 
     @Test
     void isEmptyWhenRemoveAll() {
-        List list = new LList();
+        List<Object> list = new LList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
