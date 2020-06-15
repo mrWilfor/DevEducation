@@ -696,5 +696,4 @@ class AListTest {
 
         assertTrue(list.isEmpty());
     }
-
 }
