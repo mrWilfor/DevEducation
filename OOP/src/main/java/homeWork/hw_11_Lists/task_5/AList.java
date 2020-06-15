@@ -1,7 +1,7 @@
 package homeWork.hw_11_Lists.task_5;
 
 public class AList<T> implements List<T> {
-    private T[] objects =  (T[])new Object[10];
+    private T[] objects = (T[]) new Object[10];
     private int size = 0;
 
     public AList() {
@@ -19,7 +19,7 @@ public class AList<T> implements List<T> {
     @Override
     public boolean add(T item) {
         if (size == objects.length) {
-            T[] newObjects = (T[])new Object[size * 3 / 2 + 1];
+            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
 
             System.arraycopy(objects, 0, newObjects, 0, size);
 
@@ -36,7 +36,7 @@ public class AList<T> implements List<T> {
     @Override
     public boolean addFirst(T item) {
         if (size == objects.length) {
-            T[] newObjects = (T[])new Object[size * 3 / 2 + 1];
+            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
 
             System.arraycopy(objects, 0, newObjects, 1, size);
 
@@ -57,7 +57,7 @@ public class AList<T> implements List<T> {
         if (size == 0 || index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
         } else if (size == objects.length) {
-            T[] newObjects = (T[])new Object[size * 3 / 2 + 1];
+            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
 
             System.arraycopy(objects, 0, newObjects, 0, index);
             System.arraycopy(objects, index, newObjects, index + 1, size - (index));
@@ -118,7 +118,7 @@ public class AList<T> implements List<T> {
 
     @Override
     public void clear() {
-        objects = (T[])new Object[10];
+        objects = (T[]) new Object[10];
         size = 0;
     }
 

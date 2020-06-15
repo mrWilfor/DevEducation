@@ -1,7 +1,7 @@
 package homeWork.hw_11_Lists.task_5;
 
 public class RList<T> implements List<T> {
-    private T[] objects = (T[])new Object[10];
+    private T[] objects = (T[]) new Object[10];
     private int size = 0;
     private int headOfList = -1;
     private int tailOfList = 0;
@@ -19,7 +19,7 @@ public class RList<T> implements List<T> {
     @Override
     public boolean add(T item) throws IndexOutOfBoundsException {
         if (size == objects.length) {
-            T[] newObjects = (T[])new Object[size * 3 / 2 + 1];
+            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
 
             if (tailOfList > headOfList) {
                 if (headOfList + 1 >= 0) {
@@ -56,7 +56,7 @@ public class RList<T> implements List<T> {
     @Override
     public boolean addFirst(T item) throws IndexOutOfBoundsException {
         if (size == objects.length) {
-            T[] newObjects = (T[])new Object[size * 3 / 2 + 1];
+            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
 
             if (tailOfList > headOfList) {
                 if (headOfList + 1 >= 0) {
@@ -91,7 +91,7 @@ public class RList<T> implements List<T> {
         if (size == 0 || index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
         } else if (size == objects.length) {
-            T[] newObjects = (T[])new Object[size * 3 / 2 + 1];
+            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
 
             if (tailOfList > headOfList) {
                 if (headOfList + 1 >= 0) {
@@ -192,7 +192,7 @@ public class RList<T> implements List<T> {
 
     @Override
     public void clear() {
-        objects = (T[])new Object[10];
+        objects = (T[]) new Object[10];
         size = 0;
     }
 
