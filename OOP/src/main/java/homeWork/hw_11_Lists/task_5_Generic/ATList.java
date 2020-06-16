@@ -1,10 +1,10 @@
 package homeWork.hw_11_Lists.task_5_Generic;
 
-public class GenericAList<T> implements GenericList<T> {
+public class ATList<T> implements TList<T> {
     private T[] objects = (T[]) new Object[10];
     private int size = 0;
 
-    public GenericAList() {
+    public ATList() {
     }
 
 

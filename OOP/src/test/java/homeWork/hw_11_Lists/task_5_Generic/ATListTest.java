@@ -4,18 +4,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GenericRGenericListTest {
+class ATListTest {
 
     @Test
     void getWhenSizeListZero() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
     }
 
     @Test
     void getWhenSizeListNotZero() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -31,7 +31,7 @@ class GenericRGenericListTest {
 
     @Test
     void getWhenIndexMoreThanSize() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -45,7 +45,7 @@ class GenericRGenericListTest {
 
     @Test
     void getWhenIndexLessThanZero() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -59,7 +59,7 @@ class GenericRGenericListTest {
 
     @Test
     void addWhenArrayOverFlow() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -103,7 +103,7 @@ class GenericRGenericListTest {
 
     @Test
     void addMany() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -129,7 +129,7 @@ class GenericRGenericListTest {
 
     @Test
     void addOne() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -143,7 +143,7 @@ class GenericRGenericListTest {
 
     @Test
     void addNull() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
 
         list.add(null);
 
@@ -156,7 +156,7 @@ class GenericRGenericListTest {
 
     @Test
     void addFirstWhenArrayOverFlow() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -200,7 +200,7 @@ class GenericRGenericListTest {
 
     @Test
     void addFirstMany() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -226,7 +226,7 @@ class GenericRGenericListTest {
 
     @Test
     void addFirstOne() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
 
         list.addFirst(object1);
@@ -241,7 +241,7 @@ class GenericRGenericListTest {
 
     @Test
     void addFirstNull() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
 
         list.addFirst(null);
 
@@ -253,7 +253,7 @@ class GenericRGenericListTest {
 
     @Test
     void addByIndexWhenArrayOverFlow() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -297,7 +297,7 @@ class GenericRGenericListTest {
 
     @Test
     void addByIndex() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -323,7 +323,7 @@ class GenericRGenericListTest {
 
     @Test
     void addByIndexWhenIndexMoreThanSize() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -340,7 +340,7 @@ class GenericRGenericListTest {
 
     @Test
     void addByIndexWhenIndexLessThanZero() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -357,7 +357,7 @@ class GenericRGenericListTest {
 
     @Test
     void addByIndexNull() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -379,7 +379,7 @@ class GenericRGenericListTest {
 
     @Test
     void remove() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -423,7 +423,7 @@ class GenericRGenericListTest {
 
     @Test
     void removeWhenObjectNotExist() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -467,7 +467,7 @@ class GenericRGenericListTest {
 
     @Test
     void removeWhenSizeZero() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
 
         list.remove(object1);
@@ -480,7 +480,7 @@ class GenericRGenericListTest {
 
     @Test
     void removeNull() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -523,7 +523,7 @@ class GenericRGenericListTest {
 
     @Test
     void RemoveByIndexWhenIndexMoreThanSize() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -553,7 +553,7 @@ class GenericRGenericListTest {
 
     @Test
     void RemoveByIndexWhenIndexLessThanZero() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -583,14 +583,14 @@ class GenericRGenericListTest {
 
     @Test
     void RemoveByIndexWhenSizeZero() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
     }
 
     @Test
     void containsTrue() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -604,7 +604,7 @@ class GenericRGenericListTest {
 
     @Test
     void containsFalse() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -617,7 +617,7 @@ class GenericRGenericListTest {
 
     @Test
     void containsWhenSizeZero() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
 
         assertFalse(list.contains(object1));
@@ -625,7 +625,7 @@ class GenericRGenericListTest {
 
     @Test
     void containsNull() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -640,14 +640,14 @@ class GenericRGenericListTest {
 
     @Test
     void isEmptyTrue() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
 
         assertTrue(list.isEmpty());
     }
 
     @Test
     void isEmptyFalse() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -657,7 +657,7 @@ class GenericRGenericListTest {
 
     @Test
     void isEmptyWhenUsedClear() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -676,7 +676,7 @@ class GenericRGenericListTest {
 
     @Test
     void isEmptyWhenRemoveAll() {
-        GenericList<Object> list = new GenericRList<>();
+        TList<Object> list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();

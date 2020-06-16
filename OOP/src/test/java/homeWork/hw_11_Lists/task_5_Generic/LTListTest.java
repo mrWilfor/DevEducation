@@ -4,18 +4,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GenericAGenericListTest {
+class LTListTest {
 
     @Test
     void getWhenSizeListZero() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
     }
 
     @Test
     void getWhenSizeListNotZero() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -31,7 +31,7 @@ class GenericAGenericListTest {
 
     @Test
     void getWhenIndexMoreThanSize() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -45,7 +45,7 @@ class GenericAGenericListTest {
 
     @Test
     void getWhenIndexLessThanZero() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -58,52 +58,8 @@ class GenericAGenericListTest {
     }
 
     @Test
-    void addWhenArrayOverFlow() {
-        GenericAList<Object> list = new GenericAList<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
-        list.add(object11);
-
-        int expectedSize = 11;
-        int actualSize = list.size();
-
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object7, list.get(6));
-        assertEquals(object8, list.get(7));
-        assertEquals(object9, list.get(8));
-        assertEquals(object10, list.get(9));
-        assertEquals(object11, list.get(10));
-    }
-
-    @Test
     void addMany() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -128,8 +84,25 @@ class GenericAGenericListTest {
     }
 
     @Test
+    void addTwo() {
+       TList<Object> list = new LTList<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+
+        list.add(object1);
+        list.add(object2);
+
+        int expectedSize = 2;
+        int actualSize = list.size();
+
+        assertEquals(expectedSize, actualSize);
+        assertEquals(object1, list.get(0));
+        assertEquals(object2, list.get(1));
+    }
+
+    @Test
     void addOne() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -143,7 +116,7 @@ class GenericAGenericListTest {
 
     @Test
     void addNull() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
 
         list.add(null);
 
@@ -155,52 +128,8 @@ class GenericAGenericListTest {
     }
 
     @Test
-    void addFirstWhenArrayOverFlow() {
-        GenericAList<Object> list = new GenericAList<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
-
-        list.addFirst(object1);
-        list.addFirst(object2);
-        list.addFirst(object3);
-        list.addFirst(object4);
-        list.addFirst(object5);
-        list.addFirst(object6);
-        list.addFirst(object7);
-        list.addFirst(object8);
-        list.addFirst(object9);
-        list.addFirst(object10);
-        list.addFirst(object11);
-
-        int expectedSize = 11;
-        int actualSize = list.size();
-
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object11, list.get(0));
-        assertEquals(object10, list.get(1));
-        assertEquals(object9, list.get(2));
-        assertEquals(object8, list.get(3));
-        assertEquals(object7, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object5, list.get(6));
-        assertEquals(object4, list.get(7));
-        assertEquals(object3, list.get(8));
-        assertEquals(object2, list.get(9));
-        assertEquals(object1, list.get(10));
-    }
-
-    @Test
     void addFirstMany() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -225,8 +154,26 @@ class GenericAGenericListTest {
     }
 
     @Test
+    void addFirstTwo() {
+       TList<Object> list = new LTList<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+
+        list.addFirst(object1);
+        list.addFirst(object2);
+
+        int expectedSize = 2;
+        int actualSize = list.size();
+
+
+        assertEquals(expectedSize, actualSize);
+        assertEquals(object2, list.get(0));
+        assertEquals(object1, list.get(1));
+    }
+
+    @Test
     void addFirstOne() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
 
         list.addFirst(object1);
@@ -241,7 +188,7 @@ class GenericAGenericListTest {
 
     @Test
     void addFirstNull() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
 
         list.addFirst(null);
 
@@ -252,52 +199,8 @@ class GenericAGenericListTest {
     }
 
     @Test
-    void addByIndexWhenArrayOverFlow() {
-        GenericAList<Object> list = new GenericAList<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
-        list.add(5, object11);
-
-        int expectedSize = 11;
-        int actualSize = list.size();
-
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
-        assertEquals(object11, list.get(5));
-        assertEquals(object6, list.get(6));
-        assertEquals(object7, list.get(7));
-        assertEquals(object8, list.get(8));
-        assertEquals(object9, list.get(9));
-        assertEquals(object10, list.get(10));
-    }
-
-    @Test
     void addByIndex() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -323,7 +226,7 @@ class GenericAGenericListTest {
 
     @Test
     void addByIndexWhenIndexMoreThanSize() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -340,7 +243,7 @@ class GenericAGenericListTest {
 
     @Test
     void addByIndexWhenIndexLessThanZero() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -357,7 +260,7 @@ class GenericAGenericListTest {
 
     @Test
     void addByIndexNull() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -379,7 +282,7 @@ class GenericAGenericListTest {
 
     @Test
     void remove() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -423,7 +326,7 @@ class GenericAGenericListTest {
 
     @Test
     void removeWhenObjectNotExist() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -467,7 +370,7 @@ class GenericAGenericListTest {
 
     @Test
     void removeWhenSizeZero() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
 
         list.remove(object1);
@@ -480,7 +383,7 @@ class GenericAGenericListTest {
 
     @Test
     void removeNull() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -523,7 +426,7 @@ class GenericAGenericListTest {
 
     @Test
     void RemoveByIndexWhenIndexMoreThanSize() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -553,7 +456,7 @@ class GenericAGenericListTest {
 
     @Test
     void RemoveByIndexWhenIndexLessThanZero() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -583,14 +486,14 @@ class GenericAGenericListTest {
 
     @Test
     void RemoveByIndexWhenSizeZero() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
     }
 
     @Test
     void containsTrue() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -604,7 +507,7 @@ class GenericAGenericListTest {
 
     @Test
     void containsFalse() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -617,7 +520,7 @@ class GenericAGenericListTest {
 
     @Test
     void containsWhenSizeZero() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
 
         assertFalse(list.contains(object1));
@@ -625,7 +528,7 @@ class GenericAGenericListTest {
 
     @Test
     void containsNull() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -640,14 +543,14 @@ class GenericAGenericListTest {
 
     @Test
     void isEmptyTrue() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
 
         assertTrue(list.isEmpty());
     }
 
     @Test
     void isEmptyFalse() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -657,7 +560,7 @@ class GenericAGenericListTest {
 
     @Test
     void isEmptyWhenUsedClear() {
-        GenericAList<Object> list = new GenericAList<>();
+       TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -676,7 +579,7 @@ class GenericAGenericListTest {
 
     @Test
     void isEmptyWhenRemoveAll() {
-        GenericAList<Object> list = new GenericAList<>();
+        TList<Object> list = new LTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();

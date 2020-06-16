@@ -4,18 +4,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GenericLGenericListTest {
+class RTListTest {
 
     @Test
     void getWhenSizeListZero() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
     }
 
     @Test
     void getWhenSizeListNotZero() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -31,7 +31,7 @@ class GenericLGenericListTest {
 
     @Test
     void getWhenIndexMoreThanSize() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -45,7 +45,7 @@ class GenericLGenericListTest {
 
     @Test
     void getWhenIndexLessThanZero() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -58,8 +58,52 @@ class GenericLGenericListTest {
     }
 
     @Test
+    void addWhenArrayOverFlow() {
+        TList<Object> list = new RTList<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+        Object object5 = new Object();
+        Object object6 = new Object();
+        Object object7 = new Object();
+        Object object8 = new Object();
+        Object object9 = new Object();
+        Object object10 = new Object();
+        Object object11 = new Object();
+
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(object5);
+        list.add(object6);
+        list.add(object7);
+        list.add(object8);
+        list.add(object9);
+        list.add(object10);
+        list.add(object11);
+
+        int expectedSize = 11;
+        int actualSize = list.size();
+
+        assertEquals(expectedSize, actualSize);
+        assertEquals(object1, list.get(0));
+        assertEquals(object2, list.get(1));
+        assertEquals(object3, list.get(2));
+        assertEquals(object4, list.get(3));
+        assertEquals(object5, list.get(4));
+        assertEquals(object6, list.get(5));
+        assertEquals(object7, list.get(6));
+        assertEquals(object8, list.get(7));
+        assertEquals(object9, list.get(8));
+        assertEquals(object10, list.get(9));
+        assertEquals(object11, list.get(10));
+    }
+
+    @Test
     void addMany() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -84,25 +128,8 @@ class GenericLGenericListTest {
     }
 
     @Test
-    void addTwo() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-
-        int expectedSize = 2;
-        int actualSize = list.size();
-
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-    }
-
-    @Test
     void addOne() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -116,7 +143,7 @@ class GenericLGenericListTest {
 
     @Test
     void addNull() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
 
         list.add(null);
 
@@ -129,7 +156,7 @@ class GenericLGenericListTest {
 
     @Test
     void addFirstWhenArrayOverFlow() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -173,7 +200,7 @@ class GenericLGenericListTest {
 
     @Test
     void addFirstMany() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -198,26 +225,8 @@ class GenericLGenericListTest {
     }
 
     @Test
-    void addFirstTwo() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-
-        list.addFirst(object1);
-        list.addFirst(object2);
-
-        int expectedSize = 2;
-        int actualSize = list.size();
-
-
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object2, list.get(0));
-        assertEquals(object1, list.get(1));
-    }
-
-    @Test
     void addFirstOne() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
 
         list.addFirst(object1);
@@ -232,7 +241,7 @@ class GenericLGenericListTest {
 
     @Test
     void addFirstNull() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
 
         list.addFirst(null);
 
@@ -243,8 +252,52 @@ class GenericLGenericListTest {
     }
 
     @Test
+    void addByIndexWhenArrayOverFlow() {
+        TList<Object> list = new RTList<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+        Object object5 = new Object();
+        Object object6 = new Object();
+        Object object7 = new Object();
+        Object object8 = new Object();
+        Object object9 = new Object();
+        Object object10 = new Object();
+        Object object11 = new Object();
+
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(object5);
+        list.add(object6);
+        list.add(object7);
+        list.add(object8);
+        list.add(object9);
+        list.add(object10);
+        list.add(5, object11);
+
+        int expectedSize = 11;
+        int actualSize = list.size();
+
+        assertEquals(expectedSize, actualSize);
+        assertEquals(object1, list.get(0));
+        assertEquals(object2, list.get(1));
+        assertEquals(object3, list.get(2));
+        assertEquals(object4, list.get(3));
+        assertEquals(object5, list.get(4));
+        assertEquals(object11, list.get(5));
+        assertEquals(object6, list.get(6));
+        assertEquals(object7, list.get(7));
+        assertEquals(object8, list.get(8));
+        assertEquals(object9, list.get(9));
+        assertEquals(object10, list.get(10));
+    }
+
+    @Test
     void addByIndex() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -270,7 +323,7 @@ class GenericLGenericListTest {
 
     @Test
     void addByIndexWhenIndexMoreThanSize() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -287,7 +340,7 @@ class GenericLGenericListTest {
 
     @Test
     void addByIndexWhenIndexLessThanZero() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -304,7 +357,7 @@ class GenericLGenericListTest {
 
     @Test
     void addByIndexNull() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -326,7 +379,7 @@ class GenericLGenericListTest {
 
     @Test
     void remove() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -370,7 +423,7 @@ class GenericLGenericListTest {
 
     @Test
     void removeWhenObjectNotExist() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -414,7 +467,7 @@ class GenericLGenericListTest {
 
     @Test
     void removeWhenSizeZero() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
 
         list.remove(object1);
@@ -427,7 +480,7 @@ class GenericLGenericListTest {
 
     @Test
     void removeNull() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -470,7 +523,7 @@ class GenericLGenericListTest {
 
     @Test
     void RemoveByIndexWhenIndexMoreThanSize() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -500,7 +553,7 @@ class GenericLGenericListTest {
 
     @Test
     void RemoveByIndexWhenIndexLessThanZero() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -530,14 +583,14 @@ class GenericLGenericListTest {
 
     @Test
     void RemoveByIndexWhenSizeZero() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
     }
 
     @Test
     void containsTrue() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -551,7 +604,7 @@ class GenericLGenericListTest {
 
     @Test
     void containsFalse() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -564,7 +617,7 @@ class GenericLGenericListTest {
 
     @Test
     void containsWhenSizeZero() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
 
         assertFalse(list.contains(object1));
@@ -572,7 +625,7 @@ class GenericLGenericListTest {
 
     @Test
     void containsNull() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -587,14 +640,14 @@ class GenericLGenericListTest {
 
     @Test
     void isEmptyTrue() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
 
         assertTrue(list.isEmpty());
     }
 
     @Test
     void isEmptyFalse() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -604,7 +657,7 @@ class GenericLGenericListTest {
 
     @Test
     void isEmptyWhenUsedClear() {
-        homeWork.hw_11_Lists.task_2_Interface_List.List list = new homeWork.hw_11_Lists.task_4_Linked_List.LList();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -623,7 +676,7 @@ class GenericLGenericListTest {
 
     @Test
     void isEmptyWhenRemoveAll() {
-        GenericList<Object> list = new GenericLList<>();
+        TList<Object> list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();

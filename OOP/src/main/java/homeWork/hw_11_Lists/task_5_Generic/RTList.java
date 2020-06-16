@@ -1,6 +1,6 @@
 package homeWork.hw_11_Lists.task_5_Generic;
 
-public class GenericRList<T> implements GenericList<T> {
+public class RTList<T> implements TList<T> {
     private T[] objects = (T[]) new Object[10];
     private int size = 0;
     private int headOfList = -1;

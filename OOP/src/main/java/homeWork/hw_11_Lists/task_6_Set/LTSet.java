@@ -1,6 +1,6 @@
-package homeWork.hw_11_Lists.task_5_Generic;
+package homeWork.hw_11_Lists.task_6_Set;
 
-public class GenericLList<T> implements GenericList<T> {
+public class LTSet<T> implements Set<T> {
     private Node<T> firstNode;
     private Node<T> lastNode;
     private int size = 0;
@@ -26,60 +26,69 @@ public class GenericLList<T> implements GenericList<T> {
 
     @Override
     public boolean add(T item) {
-        if (size == 0) {
-            firstNode = new Node<>(null, item, null);
-            lastNode = firstNode;
-            size++;
-        } else if (size == 1) {
-            lastNode = new Node<>(firstNode, item, null);
-            firstNode.next = lastNode;
-            size++;
-        } else {
-            lastNode.next = new Node<>(lastNode, item, null);
-            lastNode = lastNode.next;
-            size++;
+        if (!contains(item)) {
+            if (size == 0) {
+                firstNode = new Node<>(null, item, null);
+                lastNode = firstNode;
+                size++;
+            } else if (size == 1) {
+                lastNode = new Node<>(firstNode, item, null);
+                firstNode.next = lastNode;
+                size++;
+            } else {
+                lastNode.next = new Node<>(lastNode, item, null);
+                lastNode = lastNode.next;
+                size++;
+            }
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
     public boolean addFirst(T item) {
-        if (size == 0) {
-            firstNode = new Node<>(null, item, null);
-            lastNode = firstNode;
-            size++;
-        } else {
-            firstNode.prev = new Node<>(null, item, firstNode);
-            firstNode = firstNode.prev;
-            size++;
+        if (!contains(item)) {
+            if (size == 0) {
+                firstNode = new Node<>(null, item, null);
+                lastNode = firstNode;
+                size++;
+            } else {
+                firstNode.prev = new Node<>(null, item, firstNode);
+                firstNode = firstNode.prev;
+                size++;
+            }
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
     public boolean add(int index, T item) throws IndexOutOfBoundsException {
-        if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
-        }
-        Node<T> oldNode = firstNode;
+        if (!contains(item)) {
+            if (size == 0 || index >= size || index < 0) {
+                throw new IndexOutOfBoundsException();
+            }
+            Node<T> oldNode = firstNode;
 
-        if (index == 0) {
-            Node<T> newNode = new Node<>(oldNode.prev, item, oldNode);
-            firstNode = newNode;
-        } else {
-            for (int i = 1; i < size; i++) {
-                oldNode = oldNode.next;
+            if (index == 0) {
+                Node<T> newNode = new Node<>(oldNode.prev, item, oldNode);
+                firstNode = newNode;
+            } else {
+                for (int i = 1; i < size; i++) {
+                    oldNode = oldNode.next;
 
-                if (index == i) {
-                    Node<T> newNode = new Node<>(oldNode.prev, item, oldNode);
-                    oldNode.prev.next = newNode;
-                    oldNode.prev = newNode;
-                    size++;
-                    break;
+                    if (index == i) {
+                        Node<T> newNode = new Node<>(oldNode.prev, item, oldNode);
+                        oldNode.prev.next = newNode;
+                        oldNode.prev = newNode;
+                        size++;
+                        break;
+                    }
                 }
             }
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -121,33 +130,9 @@ public class GenericLList<T> implements GenericList<T> {
     }
 
     @Override
-    public T remove(int index) throws IndexOutOfBoundsException {
-        T result = null;
-
-        if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
-        } else if (index == 0) {
-            result = firstNode.item;
-            firstNode = firstNode.next;
-            firstNode.prev = null;
-        } else if (index == size - 1) {
-            result = lastNode.item;
-            lastNode = lastNode.prev;
-            lastNode.next = null;
-        } else {
-            Node<T> deleteNoda = firstNode;
-
-            for (int i = 1; i < size; i++) {
-                deleteNoda = deleteNoda.next;
-
-                if (index == i) {
-                    deleteNoda.prev.next = deleteNoda.next;
-                    deleteNoda.next.prev = deleteNoda.prev;
-                    break;
-                }
-            }
-        }
-        size--;
+    public T remove(int index) {
+        T result = get(index);
+        remove(result);
         return result;
     }
 
@@ -187,6 +172,7 @@ public class GenericLList<T> implements GenericList<T> {
     public boolean isEmpty() {
         return size == 0;
     }
+
 
     private static class Node<T> {
         T item;

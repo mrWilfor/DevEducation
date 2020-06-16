@@ -1,6 +1,6 @@
 package homeWork.hw_11_Lists.task_5_Generic;
 
-public interface GenericList<T> {
+public interface TList<T> {
 
     /**
      * return object by index
