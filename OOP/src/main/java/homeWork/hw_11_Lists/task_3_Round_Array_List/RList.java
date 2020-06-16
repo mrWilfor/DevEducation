@@ -1,6 +1,6 @@
-package homeWork.hw_11_Lists.task_3;
+package homeWork.hw_11_Lists.task_3_Round_Array_List;
 
-import homeWork.hw_11_Lists.task_2.List;
+import homeWork.hw_11_Lists.task_2_Interface_List.List;
 
 public class RList implements List {
     private Object[] objects = new Object[10];

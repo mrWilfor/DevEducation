@@ -1,6 +1,6 @@
-package homeWork.hw_11_Lists.task_3;
+package homeWork.hw_11_Lists.task_3_Round_Array_List;
 
-import homeWork.hw_11_Lists.task_2.List;
+import homeWork.hw_11_Lists.task_2_Interface_List.List;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

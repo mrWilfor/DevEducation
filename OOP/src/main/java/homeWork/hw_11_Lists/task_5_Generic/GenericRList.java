@@ -1,6 +1,6 @@
-package homeWork.hw_11_Lists.task_5;
+package homeWork.hw_11_Lists.task_5_Generic;
 
-public class RList<T> implements List<T> {
+public class GenericRList<T> implements GenericList<T> {
     private T[] objects = (T[]) new Object[10];
     private int size = 0;
     private int headOfList = -1;

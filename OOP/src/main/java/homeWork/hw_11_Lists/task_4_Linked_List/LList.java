@@ -1,18 +1,20 @@
-package homeWork.hw_11_Lists.task_5;
+package homeWork.hw_11_Lists.task_4_Linked_List;
 
-public class LList<T> implements List<T> {
-    private Node<T> firstNode;
-    private Node<T> lastNode;
+import homeWork.hw_11_Lists.task_2_Interface_List.List;
+
+public class LList implements List {
+    private Node firstNode;
+    private Node lastNode;
     private int size = 0;
 
     @Override
-    public T get(int index) throws IndexOutOfBoundsException {
+    public Object get(int index) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
         } else if (index == 0) {
             return firstNode.item;
         }
-        Node<T> result = firstNode;
+        Node result = firstNode;
 
         for (int i = 1; i < size; i++) {
             result = result.next;
@@ -25,17 +27,17 @@ public class LList<T> implements List<T> {
     }
 
     @Override
-    public boolean add(T item) {
+    public boolean add(Object item) {
         if (size == 0) {
-            firstNode = new Node<>(null, item, null);
+            firstNode = new Node(null, item, null);
             lastNode = firstNode;
             size++;
         } else if (size == 1) {
-            lastNode = new Node<>(firstNode, item, null);
+            lastNode = new Node(firstNode, item, null);
             firstNode.next = lastNode;
             size++;
         } else {
-            lastNode.next = new Node<>(lastNode, item, null);
+            lastNode.next = new Node(lastNode, item, null);
             lastNode = lastNode.next;
             size++;
         }
@@ -43,13 +45,13 @@ public class LList<T> implements List<T> {
     }
 
     @Override
-    public boolean addFirst(T item) {
+    public boolean addFirst(Object item) {
         if (size == 0) {
-            firstNode = new Node<>(null, item, null);
+            firstNode = new Node(null, item, null);
             lastNode = firstNode;
             size++;
         } else {
-            firstNode.prev = new Node<>(null, item, firstNode);
+            firstNode.prev = new Node(null, item, firstNode);
             firstNode = firstNode.prev;
             size++;
         }
@@ -57,21 +59,21 @@ public class LList<T> implements List<T> {
     }
 
     @Override
-    public boolean add(int index, T item) throws IndexOutOfBoundsException {
+    public boolean add(int index, Object item) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
-        Node<T> oldNode = firstNode;
+        Node oldNode = firstNode;
 
         if (index == 0) {
-            Node<T> newNode = new Node<>(oldNode.prev, item, oldNode);
+            Node newNode = new Node(oldNode.prev, item, oldNode);
             firstNode = newNode;
         } else {
             for (int i = 1; i < size; i++) {
                 oldNode = oldNode.next;
 
                 if (index == i) {
-                    Node<T> newNode = new Node<>(oldNode.prev, item, oldNode);
+                    Node newNode = new Node(oldNode.prev, item, oldNode);
                     oldNode.prev.next = newNode;
                     oldNode.prev = newNode;
                     size++;
@@ -83,12 +85,12 @@ public class LList<T> implements List<T> {
     }
 
     @Override
-    public boolean remove(T item) {
+    public boolean remove(Object item) {
         if (size == 0) {
             return false;
         }
 
-        Node<T> deleteNoda = firstNode;
+        Node deleteNoda = firstNode;
 
         if (deleteNoda.item == item || deleteNoda.item.equals(item)) {
             firstNode = firstNode.next;
@@ -121,8 +123,8 @@ public class LList<T> implements List<T> {
     }
 
     @Override
-    public T remove(int index) throws IndexOutOfBoundsException {
-        T result = null;
+    public Object remove(int index) throws IndexOutOfBoundsException {
+        Object result = null;
 
         if (size == 0 || index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
@@ -135,7 +137,7 @@ public class LList<T> implements List<T> {
             lastNode = lastNode.prev;
             lastNode.next = null;
         } else {
-            Node<T> deleteNoda = firstNode;
+            Node deleteNoda = firstNode;
 
             for (int i = 1; i < size; i++) {
                 deleteNoda = deleteNoda.next;
@@ -159,8 +161,8 @@ public class LList<T> implements List<T> {
     }
 
     @Override
-    public boolean contains(T item) {
-        Node<T> findingNoda = firstNode;
+    public boolean contains(Object item) {
+        Node findingNoda = firstNode;
 
         if (firstNode == null) {
             return false;
@@ -188,12 +190,12 @@ public class LList<T> implements List<T> {
         return size == 0;
     }
 
-    private static class Node<T> {
-        T item;
-        Node<T> next;
-        Node<T> prev;
+    private static class Node {
+        Object item;
+        Node next;
+        Node prev;
 
-        Node(Node<T> prev, T element, Node<T> next) {
+        Node(Node prev, Object element, Node next) {
             this.item = element;
             this.next = next;
             this.prev = prev;

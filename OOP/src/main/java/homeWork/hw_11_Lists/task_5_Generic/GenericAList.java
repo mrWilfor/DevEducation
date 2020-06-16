@@ -1,10 +1,10 @@
-package homeWork.hw_11_Lists.task_5;
+package homeWork.hw_11_Lists.task_5_Generic;
 
-public class AList<T> implements List<T> {
+public class GenericAList<T> implements GenericList<T> {
     private T[] objects = (T[]) new Object[10];
     private int size = 0;
 
-    public AList() {
+    public GenericAList() {
     }
 
 
