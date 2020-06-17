@@ -13,7 +13,10 @@ public class AList implements List {
     @Override
     public Object get(int index) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         }
         return objects[index];
     }
@@ -57,7 +60,10 @@ public class AList implements List {
     @Override
     public boolean add(int index, Object item) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (size == objects.length) {
             Object[] newObjects = new Object[size * 3 / 2 + 1];
 

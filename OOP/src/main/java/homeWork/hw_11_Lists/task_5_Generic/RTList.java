@@ -9,7 +9,10 @@ public class RTList<T> implements TList<T> {
     @Override
     public T get(int index) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (index + tailOfList > objects.length) {
             return objects[index + tailOfList - objects.length];
         }
@@ -89,7 +92,10 @@ public class RTList<T> implements TList<T> {
     @Override
     public boolean add(int index, T item) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (size == objects.length) {
             T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
 
@@ -170,7 +176,10 @@ public class RTList<T> implements TList<T> {
         T result;
 
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (index == size - 1) {
             result = objects[index];
         } else {

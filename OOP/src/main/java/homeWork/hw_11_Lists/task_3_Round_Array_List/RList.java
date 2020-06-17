@@ -11,7 +11,10 @@ public class RList implements List {
     @Override
     public Object get(int index) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (index + tailOfList > objects.length) {
             return objects[index + tailOfList - objects.length];
         }
@@ -91,7 +94,10 @@ public class RList implements List {
     @Override
     public boolean add(int index, Object item) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (size == objects.length) {
             Object[] newObjects = new Object[size * 3 / 2 + 1];
 
@@ -172,7 +178,10 @@ public class RList implements List {
         Object result;
 
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (index == size - 1) {
             result = objects[index];
         } else {

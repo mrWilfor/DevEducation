@@ -11,7 +11,10 @@ public class ATList<T> implements TList<T> {
     @Override
     public T get(int index) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         }
         return objects[index];
     }
@@ -55,7 +58,10 @@ public class ATList<T> implements TList<T> {
     @Override
     public boolean add(int index, T item) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (size == objects.length) {
             T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
 

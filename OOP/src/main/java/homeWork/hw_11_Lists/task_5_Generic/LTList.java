@@ -8,7 +8,10 @@ public class LTList<T> implements TList<T> {
     @Override
     public T get(int index) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (index == 0) {
             return firstNode.item;
         }
@@ -59,7 +62,10 @@ public class LTList<T> implements TList<T> {
     @Override
     public boolean add(int index, T item) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
+            if (size == 0) {
+                throw new IndexOutOfBoundsException("List is empty");
+            }
+            throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         }
         Node<T> oldNode = firstNode;
 
