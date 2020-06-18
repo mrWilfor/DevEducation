@@ -7,7 +7,7 @@ import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplDepartment;
 public interface ControlFile {
     void enteredIntoShop();
 
-    void enteredIntoDepartment(ImplDepartment implDepartment);
+    void enteredIntoDepartment(Department department);
 
     void cashiersManagment();
 
@@ -17,17 +17,17 @@ public interface ControlFile {
 
     void buyersManagment();
 
-    void productsManagment(ImplDepartment implDepartment);
+    void productsManagment(Department department);
 
-    void createProduct(ImplDepartment implDepartment);
+    void createProduct(Department department);
 
-    void consultantManagment(ImplDepartment implDepartment);
+    void consultantManagment(Department department);
 
-    void theBuyerChooseDepartment(ImplBuyer implBuyer);
+    void theBuyerChooseDepartment(Buyer buyer);
 
-    void theBuyerManagment(ImplBuyer implBuyer, ImplDepartment implDepartment);
+    void theBuyerManagment(Buyer buyer, Department department);
 
     void outOfShop();
 
-    ImplShop getImplShop();
+    Shop getImplShop();
 }

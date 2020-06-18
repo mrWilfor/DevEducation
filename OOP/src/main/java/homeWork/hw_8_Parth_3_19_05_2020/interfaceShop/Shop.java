@@ -1,30 +1,26 @@
 package homeWork.hw_8_Parth_3_19_05_2020.interfaceShop;
 
-import homeWork.hw_8_Parth_3_19_05_2020.ImplBuyer;
-import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplBank;
-import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplDepartment;
-import homeWork.hw_8_Parth_3_19_05_2020.product.ImplProduct;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Cashier;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
 
 import java.util.ArrayList;
 
 public interface Shop {
-    void paymentOfBuyer(ImplBuyer implBuyer);
+    void paymentOfBuyer(Buyer buyer);
 
-    void takeAProduct(ImplBuyer implBuyer, ImplDepartment implDepartment, int index);
+    void takeAProduct(Buyer buyer, Department department, int index);
 
-    void consultation(ImplDepartment implDepartment, ImplProduct implProduct);
+    void consultation(Department department, Product product);
 
-    boolean checkSecurity(ImplBuyer implBuyer);
+    boolean checkSecurity(Buyer buyer);
 
     void printList(ArrayList list, String name);
 
-    ImplDepartment getTourismImplDepartment();
+    Department getTourismDepartment();
 
-    ImplDepartment getSportEquipmentImplDepartment();
+    Department getSportEquipmentDepartment();
 
-    ImplDepartment getSportsWearImplDepartment();
+    Department getSportsWearDepartment();
 
     void addSecurityGuard(SecurityGuard securityGuard);
 
@@ -42,13 +38,13 @@ public interface Shop {
 
     Cashier getCashier(int index);
 
-    void addBuyer(ImplBuyer implBuyer);
+    void addBuyer(Buyer buyer);
 
-    void deleteBuyer(ImplBuyer implBuyer);
+    void deleteBuyer(Buyer buyer);
 
-    ArrayList<ImplBuyer> getListOfImplBuyers();
+    ArrayList<Buyer> getListOfBuyers();
 
-    ImplBuyer getBuyer(int index);
+    Buyer getBuyer(int index);
 
-    ImplBank getImplBank();
+    Bank getImplBank();
 }

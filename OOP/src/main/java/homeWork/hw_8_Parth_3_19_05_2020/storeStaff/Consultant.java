@@ -1,6 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-import homeWork.hw_8_Parth_3_19_05_2020.product.ImplProduct;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Product;
 
 public class Consultant extends ImplStaff {
     private boolean status;
@@ -41,8 +41,8 @@ public class Consultant extends ImplStaff {
         return "Consultant{" + super.toString() + "}";
     }
 
-    public void consultation(ImplProduct implProduct) {
-        System.out.println(implProduct.getDescription());
+    public void consultation(Product product) {
+        System.out.println(product.getDescription());
         setStatus(false);
     }
 }
