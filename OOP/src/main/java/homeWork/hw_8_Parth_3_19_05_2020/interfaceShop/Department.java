@@ -1,18 +1,17 @@
 package homeWork.hw_8_Parth_3_19_05_2020.interfaceShop;
 
-import homeWork.hw_8_Parth_3_19_05_2020.product.ImplProduct;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
 
 import java.util.ArrayList;
 
 public interface Department {
-    void addProduct(ImplProduct implProduct);
+    void addProduct(Product product);
 
-    void deleteProduct(ImplProduct implProduct);
+    void deleteProduct(Product product);
 
-    ArrayList<ImplProduct> getListOfImplProduct();
+    ArrayList<Product> getListOfProduct();
 
-    ImplProduct getProduct(int index);
+    Product getProduct(int index);
 
     void addConsultant(Consultant consultant);
 

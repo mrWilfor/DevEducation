@@ -1,20 +1,20 @@
 package homeWork.hw_8_Parth_3_19_05_2020.departments;
 
-import homeWork.hw_8_Parth_3_19_05_2020.ImplBuyer;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Buyer;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Banker;
 
 import java.util.ArrayList;
 
 public class ImplBank implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Bank {
-    private ArrayList<ImplBuyer> listOfDebtors = new ArrayList<>();
-    public Banker banker = new Banker("John");
+    private ArrayList<Buyer> listOfDebtors = new ArrayList<>();
+    private Banker banker = new Banker("John");
 
     public ImplBank() {
 
     }
 
     @Override
-    public ArrayList<ImplBuyer> getListOfDebtors() {
+    public ArrayList<Buyer> getListOfDebtors() {
         return this.listOfDebtors;
     }
 
@@ -23,10 +23,15 @@ public class ImplBank implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.
         int number = 1;
         StringBuilder result = new StringBuilder();
 
-        for (ImplBuyer b : listOfDebtors) {
+        for (Buyer b : listOfDebtors) {
             result.append(number).append(" - ").append(b.getName()).append(" - ").append(b.getBankCredit()).append("\n");
             number++;
         }
         System.out.println(result);
+    }
+
+    @Override
+    public Banker getBanker() {
+        return banker;
     }
 }

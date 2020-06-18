@@ -2,6 +2,7 @@ package homeWork.hw_8_Parth_3_19_05_2020.product;
 
 import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department;
 
+
 public abstract class ImplProduct implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Product {
     private String name;
     private String nameOfDepartment;

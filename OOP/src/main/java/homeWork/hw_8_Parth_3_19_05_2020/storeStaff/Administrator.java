@@ -1,26 +1,26 @@
 package homeWork.hw_8_Parth_3_19_05_2020.storeStaff;
 
-import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplDepartment;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department;
 
 public class Administrator extends ImplStaff {
     public Administrator(String name) {
         super(name, "Administrator", "Shop");
     }
 
-    public void referralConsultant(ImplDepartment implDepartmentThis, ImplDepartment implDepartmentFrom1, ImplDepartment implDepartmentFrom2) {
+    public void referralConsultant(Department department, Department DepartmentFrom1, Department DepartmentFrom2) {
         Consultant consultant1;
         Consultant consultant2;
-        consultant1 = implDepartmentFrom1.getConsultant(true);
-        consultant2 = implDepartmentFrom2.getConsultant(true);
+        consultant1 = DepartmentFrom1.getConsultant(true);
+        consultant2 = DepartmentFrom2.getConsultant(true);
 
         if (consultant1 != null) {
-            implDepartmentThis.addConsultant(consultant1);
-            implDepartmentFrom1.deleteConsultant(consultant1);
+            department.addConsultant(consultant1);
+            DepartmentFrom1.deleteConsultant(consultant1);
         } else if (consultant2 != null) {
-            implDepartmentThis.addConsultant(consultant2);
-            implDepartmentFrom2.deleteConsultant(consultant2);
+            department.addConsultant(consultant2);
+            DepartmentFrom2.deleteConsultant(consultant2);
         } else {
-            consultant1 = implDepartmentThis.getConsultant(false);
+            consultant1 = department.getConsultant(false);
             consultant1.setStatus(true);
         }
     }

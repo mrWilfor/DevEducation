@@ -1,6 +1,6 @@
 package homeWork.hw_8_Parth_3_19_05_2020;
 
-import homeWork.hw_8_Parth_3_19_05_2020.product.ImplProduct;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Product;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ public class ImplBuyer implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop
     private int money;
     private int bankCredit = 0;
     private boolean desireToTakeALoan;
-    private ArrayList<ImplProduct> basket;
+    private ArrayList<Product> basket;
 
     public ImplBuyer() {
 
@@ -23,17 +23,17 @@ public class ImplBuyer implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop
     }
 
     @Override
-    public void addProductToBasket(ImplProduct implProduct) {
-        basket.add(implProduct);
+    public void addProductToBasket(Product product) {
+        basket.add(product);
     }
 
     @Override
-    public void deleteProductFromBasket(ImplProduct implProduct) {
-        basket.remove(implProduct);
+    public void deleteProductFromBasket(Product product) {
+        basket.remove(product);
     }
 
     @Override
-    public ArrayList<ImplProduct> getBasket() {
+    public ArrayList<Product> getBasket() {
         return basket;
     }
 

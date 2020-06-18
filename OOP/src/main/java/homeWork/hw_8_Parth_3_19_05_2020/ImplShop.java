@@ -1,8 +1,11 @@
 package homeWork.hw_8_Parth_3_19_05_2020;
 
-import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplBank;
 import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplDepartment;
-import homeWork.hw_8_Parth_3_19_05_2020.product.ImplProduct;
+import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplBank;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Bank;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Buyer;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Product;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Administrator;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Cashier;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.Consultant;
@@ -11,71 +14,71 @@ import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
 import java.util.ArrayList;
 
 public class ImplShop implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Shop {
-    private ImplDepartment tourismImplDepartment = new ImplDepartment("TourismDepartment");
-    private ImplDepartment sportEquipmentImplDepartment = new ImplDepartment("SportEquipmentDepartment");
-    private ImplDepartment sportsWearImplDepartment = new ImplDepartment("SportsWearDepartment");
-    private ImplBank implBank = new ImplBank();
+    private Department tourismDepartment = new ImplDepartment("TourismDepartment");
+    private Department sportEquipmentDepartment = new ImplDepartment("SportEquipmentDepartment");
+    private Department sportsWearDepartment = new ImplDepartment("SportsWearDepartment");
+    private Bank bank = new ImplBank();
     private Administrator administrator = new Administrator("Mike");
     private ArrayList<SecurityGuard> listOfSecurityGuards = new ArrayList<>();
     private ArrayList<Cashier> listOfCashiers = new ArrayList<>();
-    private ArrayList<ImplBuyer> listOfImplBuyers = new ArrayList<>();
+    private ArrayList<Buyer> listOfBuyers = new ArrayList<>();
 
     public ImplShop() {
     }
 
     @Override
-    public void paymentOfBuyer(ImplBuyer implBuyer) {
+    public void paymentOfBuyer(Buyer buyer) {
         int index = (int) (Math.random() * listOfCashiers.size());
 
-        int task = listOfCashiers.get(index).payment(implBuyer);
+        int task = listOfCashiers.get(index).payment(buyer);
 
         if (task != 0) {
-            if (implBuyer.getDesireToTakeALoan()) {
-                implBank.banker.issuanceOfCredit(implBuyer, implBank, task);
+            if (buyer.getDesireToTakeALoan()) {
+                bank.getBanker().issuanceOfCredit(buyer, bank, task);
             } else {
-                ArrayList<ImplProduct> basket = implBuyer.getBasket();
+                ArrayList<Product> basket = buyer.getBasket();
 
-                for (int i = 0; i < implBuyer.getBasket().size(); i++) {
-                    if (basket.get(i).getNameOfDepartment().equals(sportEquipmentImplDepartment.getName())) {
-                        sportEquipmentImplDepartment.addProduct(basket.get(i));
-                    } else if (basket.get(i).getNameOfDepartment().equals(sportsWearImplDepartment.getName())) {
-                        sportsWearImplDepartment.addProduct(basket.get(i));
-                    } else if (basket.get(i).getNameOfDepartment().equals(tourismImplDepartment.getName())) {
-                        tourismImplDepartment.addProduct(basket.get(i));
+                for (int i = 0; i < buyer.getBasket().size(); i++) {
+                    if (basket.get(i).getNameOfDepartment().equals(sportEquipmentDepartment.getName())) {
+                        sportEquipmentDepartment.addProduct(basket.get(i));
+                    } else if (basket.get(i).getNameOfDepartment().equals(sportsWearDepartment.getName())) {
+                        sportsWearDepartment.addProduct(basket.get(i));
+                    } else if (basket.get(i).getNameOfDepartment().equals(tourismDepartment.getName())) {
+                        tourismDepartment.addProduct(basket.get(i));
                     }
-                    implBuyer.deleteProductFromBasket(basket.get(i));
+                    buyer.deleteProductFromBasket(basket.get(i));
                 }
             }
         }
     }
 
     @Override
-    public void takeAProduct(ImplBuyer implBuyer, ImplDepartment implDepartment, int index) {
-        if (implBuyer != null && implDepartment != null && index >= 0 && index < implDepartment.getListOfImplProduct().size()) {
-            ImplProduct implProduct = implDepartment.getProduct(index);
-            implBuyer.addProductToBasket(implProduct);
+    public void takeAProduct(Buyer buyer, Department department, int index) {
+        if (buyer != null && department != null && index >= 0 && index < department.getListOfProduct().size()) {
+            Product implProduct = department.getProduct(index);
+            buyer.addProductToBasket(implProduct);
         }
     }
 
     @Override
-    public void consultation(ImplDepartment implDepartment, ImplProduct implProduct) {
-        if (implDepartment != null && implProduct != null) {
-            Consultant consultant = implDepartment.getConsultant(true);
+    public void consultation(Department department, Product implProduct) {
+        if (department != null && implProduct != null) {
+            Consultant consultant = department.getConsultant(true);
 
             if (consultant == null) {
                 switch (implProduct.getNameOfDepartment()) {
                     case "SportEquipmentDepartment":
-                        administrator.referralConsultant(implDepartment, sportsWearImplDepartment, tourismImplDepartment);
+                        administrator.referralConsultant(department, sportsWearDepartment, tourismDepartment);
                         break;
                     case "TourismDepartment":
-                        administrator.referralConsultant(implDepartment, sportsWearImplDepartment, sportEquipmentImplDepartment);
+                        administrator.referralConsultant(department, sportsWearDepartment, sportEquipmentDepartment);
                         break;
                     default:
-                        administrator.referralConsultant(implDepartment, tourismImplDepartment, sportEquipmentImplDepartment);
+                        administrator.referralConsultant(department, tourismDepartment, sportEquipmentDepartment);
                         break;
                 }
 
-                consultant = implDepartment.getConsultant(true);
+                consultant = department.getConsultant(true);
             }
 
             consultant.consultation(implProduct);
@@ -83,10 +86,10 @@ public class ImplShop implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.
     }
 
     @Override
-    public boolean checkSecurity(ImplBuyer implBuyer) {
+    public boolean checkSecurity(Buyer buyer) {
         int index = (int) (Math.random() * listOfSecurityGuards.size());
 
-        return listOfSecurityGuards.get(index).checkProduct(implBuyer);
+        return listOfSecurityGuards.get(index).checkProduct(buyer);
     }
 
     @Override
@@ -103,18 +106,18 @@ public class ImplShop implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.
     }
 
     @Override
-    public ImplDepartment getTourismImplDepartment() {
-        return tourismImplDepartment;
+    public Department getTourismDepartment() {
+        return tourismDepartment;
     }
 
     @Override
-    public ImplDepartment getSportEquipmentImplDepartment() {
-        return sportEquipmentImplDepartment;
+    public Department getSportEquipmentDepartment() {
+        return sportEquipmentDepartment;
     }
 
     @Override
-    public ImplDepartment getSportsWearImplDepartment() {
-        return sportsWearImplDepartment;
+    public Department getSportsWearDepartment() {
+        return sportsWearDepartment;
     }
 
     @Override
@@ -158,27 +161,27 @@ public class ImplShop implements homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.
     }
 
     @Override
-    public void addBuyer(ImplBuyer implBuyer) {
-        listOfImplBuyers.add(implBuyer);
+    public void addBuyer(Buyer buyer) {
+        listOfBuyers.add(buyer);
     }
 
     @Override
-    public void deleteBuyer(ImplBuyer implBuyer) {
-        listOfImplBuyers.remove(implBuyer);
+    public void deleteBuyer(Buyer buyer) {
+        listOfBuyers.remove(buyer);
     }
 
     @Override
-    public ArrayList<ImplBuyer> getListOfImplBuyers() {
-        return listOfImplBuyers;
+    public ArrayList<Buyer> getListOfBuyers() {
+        return listOfBuyers;
     }
 
     @Override
-    public ImplBuyer getBuyer(int index) {
-        return listOfImplBuyers.get(index);
+    public Buyer getBuyer(int index) {
+        return listOfBuyers.get(index);
     }
 
     @Override
-    public ImplBank getImplBank() {
-        return implBank;
+    public Bank getImplBank() {
+        return bank;
     }
 }
