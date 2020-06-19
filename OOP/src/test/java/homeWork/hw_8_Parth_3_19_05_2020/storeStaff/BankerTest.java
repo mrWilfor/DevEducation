@@ -15,7 +15,7 @@ class BankerTest {
     void issuanceOfCredit() {
         ImplBank implBank = new ImplBank();
         ImplBuyer implBuyer = new ImplBuyer("Miky", 100, true);
-        implBank.banker.issuanceOfCredit(implBuyer, implBank, 200);
+        implBank.getBanker().issuanceOfCredit(implBuyer, implBank, 200);
         int expected = 300;
         assertEquals(expected, implBuyer.getMoney());
     }
@@ -24,7 +24,7 @@ class BankerTest {
     void issuanceOfCreditNoCredit() {
         ImplBank implBank = new ImplBank();
         ImplBuyer implBuyer = new ImplBuyer("Miky", 100, false);
-        implBank.banker.issuanceOfCredit(implBuyer, implBank, 200);
+        implBank.getBanker().issuanceOfCredit(implBuyer, implBank, 200);
         int expected = 100;
         assertEquals(expected, implBuyer.getMoney());
     }

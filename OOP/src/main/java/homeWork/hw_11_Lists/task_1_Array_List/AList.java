@@ -87,7 +87,7 @@ public class AList implements List {
         int index = -1;
 
         for (int i = 0; i < size; i++) {
-            if (item == objects[i] || (item == null ? objects[i].equals(item) : item.equals(objects[i]))) {
+            if (item == null ? item == objects[i] : item.equals(objects[i])) {
                 index = i;
                 break;
             }
@@ -133,7 +133,7 @@ public class AList implements List {
     @Override
     public boolean contains(Object item) {
         for (int i = 0; i < size; i++) {
-            if ((item == objects[i]) || (item == null ? objects[i].equals(item) : item.equals(objects[i]))) {
+            if (item == null ? item == objects[i] : item.equals(objects[i])) {
                 return true;
             }
         }

@@ -152,7 +152,7 @@ public class RList implements List {
     public boolean remove(Object item) throws IndexOutOfBoundsException {
         for (int i = 0, j = tailOfList; i < size; i++, j++) {
             try {
-                if (item == objects[j] || (item == null ? objects[j].equals(item) : item.equals(objects[j]))) {
+                if (item == null ? item == objects[i] : item.equals(objects[i])) {
                     for (int k = i, l = j; k < size; k++, l++) {
                         try {
                             objects[l] = objects[l + 1];
@@ -211,7 +211,7 @@ public class RList implements List {
     public boolean contains(Object item) throws IndexOutOfBoundsException {
         for (int i = 0, j = tailOfList; i < size; i++, j++) {
             try {
-                if (item == objects[j] || (item == null ? objects[j].equals(item) : item.equals(objects[j]))) {
+                if (item == null ? item == objects[i] : item.equals(objects[i])) {
                     return true;
                 }
             } catch (IndexOutOfBoundsException e) {

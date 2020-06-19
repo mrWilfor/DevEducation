@@ -98,7 +98,7 @@ public class LList implements List {
 
         Node deleteNoda = firstNode;
 
-        if (deleteNoda.item == item || deleteNoda.item.equals(item)) {
+        if (item == null ? deleteNoda.item == item : deleteNoda.item.equals(item)) {
             firstNode = firstNode.next;
 
             if (size == 1) {
@@ -113,7 +113,7 @@ public class LList implements List {
         for (int i = 1; i < size; i++) {
             deleteNoda = deleteNoda.next;
 
-            if (deleteNoda.item == item || deleteNoda.item.equals(item)) {
+            if (item == null ? deleteNoda.item == item : deleteNoda.item.equals(item)) {
                 if (deleteNoda.equals(lastNode)) {
                     lastNode = lastNode.prev;
                     lastNode.next = null;
@@ -148,14 +148,14 @@ public class LList implements List {
 
         if (firstNode == null) {
             return false;
-        } else if (findingNoda.item == item || findingNoda.item.equals(item)) {
+        } else if (item == null ? findingNoda.item == item : findingNoda.item.equals(item)) {
             return true;
         }
 
         for (int i = 1; i < size; i++) {
             findingNoda = findingNoda.next;
 
-            if (findingNoda.item == item || findingNoda.item.equals(item)) {
+            if (item == null ? findingNoda.item == item : findingNoda.item.equals(item)) {
                 return true;
             }
         }
