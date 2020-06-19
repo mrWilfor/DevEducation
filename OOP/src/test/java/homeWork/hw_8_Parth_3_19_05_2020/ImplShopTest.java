@@ -1,42 +1,44 @@
 package homeWork.hw_8_Parth_3_19_05_2020;
 
-import homeWork.hw_8_Parth_3_19_05_2020.departments.ImplDepartment;
 import homeWork.hw_8_Parth_3_19_05_2020.initialisation.InitialisationShop;
-import homeWork.hw_8_Parth_3_19_05_2020.product.ImplProduct;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Buyer;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Department;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Product;
+import homeWork.hw_8_Parth_3_19_05_2020.interfaceShop.Shop;
 import homeWork.hw_8_Parth_3_19_05_2020.product.SportsEquipment;
 import homeWork.hw_8_Parth_3_19_05_2020.storeStaff.SecurityGuard;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ImplShopTest {
+class ShopTest {
 
     @Test
     void takeAProduct() {
-        ImplShop implShop = new ImplShop();
-        InitialisationShop.initialisation(implShop);
-        ImplBuyer implBuyer = new ImplBuyer("Nick", 200, true);
+        Shop shop = new ImplShop();
+        InitialisationShop.initialisation(shop);
+        Buyer buyer = new ImplBuyer("Nick", 200, true);
 
-        implShop.addBuyer(implBuyer);
+        shop.addBuyer(buyer);
 
         int expectedBefore = 3;
-        int actualBefore = implShop.getSportEquipmentImplDepartment().getListOfImplProduct().size();
+        int actualBefore = shop.getSportEquipmentDepartment().getListOfProduct().size();
 
         assertEquals(expectedBefore, actualBefore);
 
-        implShop.takeAProduct(implBuyer, implShop.getSportEquipmentImplDepartment(), 0);
+        shop.takeAProduct(buyer, shop.getSportEquipmentDepartment(), 0);
 
         int expected = 2;
-        int actual = implShop.getSportEquipmentImplDepartment().getListOfImplProduct().size();
+        int actual = shop.getSportEquipmentDepartment().getListOfProduct().size();
 
         assertEquals(expected, actual);
     }
 
     @Test
     void paymentOfBuyer() {
-        ImplShop implShop = new ImplShop();
-        InitialisationShop.initialisation(implShop);
-        ImplBuyer implBuyer = new ImplBuyer("Nick", 200, true);
+        Shop shop = new ImplShop();
+        InitialisationShop.initialisation(shop);
+        Buyer buyer = new ImplBuyer("Nick", 200, true);
         SportsEquipment dumbbell = new SportsEquipment(
                 "Dumbbell",
                 "black",
@@ -44,20 +46,20 @@ class ImplShopTest {
                 100
         );
 
-        implBuyer.addProductToBasket(dumbbell);
-        implShop.paymentOfBuyer(implBuyer);
+        buyer.addProductToBasket(dumbbell);
+        shop.paymentOfBuyer(buyer);
 
         boolean expected = true;
-        boolean actual = implBuyer.getBasket().get(0).getStatus();
+        boolean actual = buyer.getBasket().get(0).getStatus();
 
         assertEquals(expected, actual);
     }
 
     @Test
     void paymentOfBuyerCredit() {
-        ImplShop implShop = new ImplShop();
-        InitialisationShop.initialisation(implShop);
-        ImplBuyer implBuyer = new ImplBuyer("Nick", 20, true);
+        Shop shop = new ImplShop();
+        InitialisationShop.initialisation(shop);
+        Buyer buyer = new ImplBuyer("Nick", 20, true);
         SportsEquipment dumbbell = new SportsEquipment(
                 "Dumbbell",
                 "black",
@@ -65,89 +67,89 @@ class ImplShopTest {
                 100
         );
 
-        implBuyer.addProductToBasket(dumbbell);
+        buyer.addProductToBasket(dumbbell);
 
         int expectedBefore = 0;
-        int actualBefore = implBuyer.getBankCredit();
+        int actualBefore = buyer.getBankCredit();
 
         assertEquals(expectedBefore, actualBefore);
 
-        implShop.paymentOfBuyer(implBuyer);
+        shop.paymentOfBuyer(buyer);
 
         int expectedAfter = 80;
-        int actualAfter = implBuyer.getBankCredit();
+        int actualAfter = buyer.getBankCredit();
 
         assertEquals(expectedAfter, actualAfter);
     }
 
     @Test
     void paymentOfBuyerNoBuy() {
-        ImplShop implShop = new ImplShop();
-        InitialisationShop.initialisation(implShop);
-        ImplBuyer implBuyer = new ImplBuyer("Nick", 20, false);
-        ImplDepartment implDepartment = implShop.getSportEquipmentImplDepartment();
+        Shop shop = new ImplShop();
+        InitialisationShop.initialisation(shop);
+        Buyer buyer = new ImplBuyer("Nick", 20, false);
+        Department department = shop.getSportEquipmentDepartment();
 
-        implShop.addBuyer(implBuyer);
-        implShop.takeAProduct(implBuyer, implDepartment, 0);
+        shop.addBuyer(buyer);
+        shop.takeAProduct(buyer, department, 0);
         int expectedBefore = 2;
-        int actualBefore = implDepartment.getListOfImplProduct().size();
+        int actualBefore = department.getListOfProduct().size();
 
         assertEquals(expectedBefore, actualBefore);
 
-        implShop.paymentOfBuyer(implBuyer);
+        shop.paymentOfBuyer(buyer);
 
         int expectedAfter = 3;
-        int actualAfter = implDepartment.getListOfImplProduct().size();
+        int actualAfter = department.getListOfProduct().size();
 
         assertEquals(expectedAfter, actualAfter);
     }
 
     @Test
     void consultation() {
-        ImplShop implShop = new ImplShop();
-        InitialisationShop.initialisation(implShop);
-        ImplProduct implProduct = implShop.getSportEquipmentImplDepartment().getProduct(0);
-        ImplDepartment implDepartment = implShop.getSportEquipmentImplDepartment();
+        Shop shop = new ImplShop();
+        InitialisationShop.initialisation(shop);
+        Product product = shop.getSportEquipmentDepartment().getProduct(0);
+        Department department = shop.getSportEquipmentDepartment();
 
         int expectedBefore = 1;
-        int actualBefore = implDepartment.getListOfConsultant().size();
+        int actualBefore = department.getListOfConsultant().size();
 
         assertEquals(expectedBefore, actualBefore);
 
-        implShop.consultation(implDepartment, implProduct);
-        implShop.consultation(implDepartment, implProduct);
-        implShop.consultation(implDepartment, implProduct);
+        shop.consultation(department, product);
+        shop.consultation(department, product);
+        shop.consultation(department, product);
 
         int expected = 3;
-        int actual = implDepartment.getListOfConsultant().size();
+        int actual = department.getListOfConsultant().size();
 
         assertEquals(expected, actual);
     }
 
     @Test
     void checkSecurity() {
-        ImplShop implShop = new ImplShop();
-        InitialisationShop.initialisation(implShop);
-        ImplBuyer implBuyer = new ImplBuyer("Nick", 200, true);
+        Shop shop = new ImplShop();
+        InitialisationShop.initialisation(shop);
+        Buyer buyer = new ImplBuyer("Nick", 200, true);
         SecurityGuard securityGuard = new SecurityGuard("Mike");
 
-        implShop.addBuyer(implBuyer);
-        implShop.takeAProduct(implBuyer, implShop.getSportEquipmentImplDepartment(), 0);
-        implShop.paymentOfBuyer(implBuyer);
+        shop.addBuyer(buyer);
+        shop.takeAProduct(buyer, shop.getSportEquipmentDepartment(), 0);
+        shop.paymentOfBuyer(buyer);
 
-        assertTrue(securityGuard.checkProduct(implBuyer));
+        assertTrue(securityGuard.checkProduct(buyer));
     }
 
     @Test
     void checkSecurityFail() {
-        ImplShop implShop = new ImplShop();
-        InitialisationShop.initialisation(implShop);
-        ImplBuyer implBuyer = new ImplBuyer("Nick", 200, true);
+        Shop shop = new ImplShop();
+        InitialisationShop.initialisation(shop);
+        Buyer buyer = new ImplBuyer("Nick", 200, true);
         SecurityGuard securityGuard = new SecurityGuard("Mike");
 
-        implShop.addBuyer(implBuyer);
-        implShop.takeAProduct(implBuyer, implShop.getSportEquipmentImplDepartment(), 0);
+        shop.addBuyer(buyer);
+        shop.takeAProduct(buyer, shop.getSportEquipmentDepartment(), 0);
 
-        assertFalse(securityGuard.checkProduct(implBuyer));
+        assertFalse(securityGuard.checkProduct(buyer));
     }
 }
