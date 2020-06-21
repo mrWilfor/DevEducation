@@ -1,4 +1,7 @@
-package homeWork.hw_11_Lists.task_5_Generic;
+package homeWork.hw_12_Lists_Replace_of_loops_for_Streams.task_5_Generic;
+
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class ATList<T> implements TList<T> {
     private T[] objects = (T[]) new Object[10];
@@ -21,12 +24,9 @@ public class ATList<T> implements TList<T> {
     @Override
     public boolean add(T item) {
         if (size == objects.length) {
-            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
-
-            System.arraycopy(objects, 0, newObjects, 0, size);
-
-            newObjects[size] = item;
-            objects = newObjects;
+            objects = (T[]) Stream.concat(Stream.concat(Arrays.stream(objects), Stream.of(item)),
+                    Stream.of((T[]) new Object[(size * 3 / 2 + 1) - size - 1]))
+                    .toArray();
             size++;
             return true;
         }
@@ -38,18 +38,14 @@ public class ATList<T> implements TList<T> {
     @Override
     public boolean addFirst(T item) {
         if (size == objects.length) {
-            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
-
-            System.arraycopy(objects, 0, newObjects, 1, size);
-
-            newObjects[0] = item;
-            objects = newObjects;
+            objects = (T[]) Stream.concat(Stream.concat(Stream.of(item), Arrays.stream(objects)),
+                    Stream.of((T[]) new Object[(size * 3 / 2 + 1) - size - 1]))
+                    .toArray();
             size++;
             return true;
         }
-        System.arraycopy(objects, 0, objects, 1, size);
-
-        objects[0] = item;
+        objects = (T[]) Stream.concat(Stream.of(item), Arrays.stream(objects).limit(objects.length - 1))
+                .toArray();
         size++;
         return true;
     }
@@ -62,41 +58,30 @@ public class ATList<T> implements TList<T> {
             }
             throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (size == objects.length) {
-            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
-
-            System.arraycopy(objects, 0, newObjects, 0, index);
-            System.arraycopy(objects, index, newObjects, index + 1, size - (index));
-
-            newObjects[index] = item;
-            objects = newObjects;
+            objects = (T[]) Stream.concat(
+                    Stream.concat(Stream.concat(Arrays.stream(objects).limit(index), Stream.of(item)),
+                            Arrays.stream(objects).skip(index)),
+                    Stream.of((T[]) new Object[(size * 3 / 2 + 1) - size - 1])
+            ).toArray();
             size++;
             return true;
         }
-        System.arraycopy(objects, index, objects, index + 1, size - (index));
-
-        objects[index] = item;
+        objects = (T[]) Stream.concat(Stream.concat(Arrays.stream(objects).limit(index), Stream.of(item)),
+                Arrays.stream(objects).skip(index))
+                .toArray();
         size++;
         return true;
     }
 
     @Override
     public boolean remove(T item) {
-        int index = -1;
+        boolean checkItem = Arrays.stream(objects)
+                .anyMatch(x -> (item == null ? item == x : item.equals(x)));
 
-        for (int i = 0; i < size; i++) {
-            if (item == null ? item == objects[i] : item.equals(objects[i])) {
-                index = i;
-                break;
-            }
-        }
-
-        if (index != -1) {
-            if (index == size - 1) {
-                objects[index] = null;
-            } else {
-                System.arraycopy(objects, index + 1, objects, index, size - (index));
-                objects[size - 1] = null;
-            }
+        if (checkItem) {
+            objects = (T[]) Arrays.stream(objects)
+                    .filter(x -> !(item == null ? item == x : item.equals(x)))
+                    .toArray();
             size--;
             return true;
         }
@@ -109,15 +94,13 @@ public class ATList<T> implements TList<T> {
 
         if (size == 0 || index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
-        } else if (index == size - 1) {
-            result = objects[index];
-            objects[index] = null;
         } else {
             result = objects[index];
-            System.arraycopy(objects, index + 1, objects, index, size - (index));
-            objects[size - 1] = null;
+            objects = (T[]) Arrays.stream(objects)
+                    .filter(x -> !(result == null ? result == x : result.equals(x)))
+                    .toArray();
+            size--;
         }
-        size--;
         return result;
     }
 
@@ -129,12 +112,8 @@ public class ATList<T> implements TList<T> {
 
     @Override
     public boolean contains(T item) {
-        for (int i = 0; i < size; i++) {
-            if (item == null ? item == objects[i] : item.equals(objects[i])) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(objects)
+                .anyMatch(x -> (item == null ? item == x : item.equals(x)));
     }
 
     @Override
