@@ -3,13 +3,7 @@ package homeWork.hw_8_Parth_3_19_05_2020.product;
 public class Tourism extends ImplProduct {
     private String instruction;
 
-    public Tourism(
-            String nameOfProduct,
-            String color,
-            String description,
-            int prise,
-            String instruction
-    ) {
+    public Tourism(String nameOfProduct, String color, String description, int prise, String instruction) {
         super(nameOfProduct, "Tourism", color, description, prise);
         this.instruction = instruction;
     }

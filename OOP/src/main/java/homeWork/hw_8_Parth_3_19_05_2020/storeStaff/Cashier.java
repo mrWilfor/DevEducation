@@ -11,7 +11,7 @@ public class Cashier extends ImplStaff {
     }
 
     public int payment(Buyer buyer) {
-        int task = 0;
+        int balanceAfterPayment = 0;
         if (buyer != null) {
             ArrayList<Product> basket = buyer.getBasket();
             int cost = 0;
@@ -20,10 +20,10 @@ public class Cashier extends ImplStaff {
                 cost += implProduct.getPrise();
             }
 
-            task = buyer.getMoney() - cost;
+            balanceAfterPayment = buyer.getMoney() - cost;
 
-            if (task >= 0) {
-                buyer.setMoney(task);
+            if (balanceAfterPayment >= 0) {
+                buyer.setMoney(balanceAfterPayment);
 
                 for (int i = 0; i < basket.toArray().length; i++) {
                     basket.get(i).setStatus(true);
@@ -33,7 +33,7 @@ public class Cashier extends ImplStaff {
             }
         }
         System.out.println(buyer.getName() + " does not have enough money");
-        return task * (-1);
+        return balanceAfterPayment * (-1);
     }
 
     @Override

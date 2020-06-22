@@ -6,14 +6,8 @@ public class SportsWear extends ImplProduct {
     private String size;
     private String typeOfWear;
 
-    public SportsWear(
-            String nameOfProduct,
-            String color,
-            String description,
-            int prise,
-            String size,
-            String typeOfWear
-    ) {
+    public SportsWear(String nameOfProduct, String color, String description,
+                      int prise, String size, String typeOfWear) {
         super(nameOfProduct, "Sports wear", color, description, prise);
         this.size = size;
         this.typeOfWear = typeOfWear;
