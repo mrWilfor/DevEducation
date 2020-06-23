@@ -1,21 +1,51 @@
 package homeWork.hw_12_Lists_Replace_of_loops_for_Streams.task_5_Generic;
 
+import homeWork.hw_11_Lists.task_5_Generic.ATList;
+import homeWork.hw_11_Lists.task_5_Generic.TList;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ATListTest {
+    private TList<Object> list;
+
+    @BeforeEach
+    public void initialisationOfList() {
+        list = new ATList<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+        Object object5 = new Object();
+        Object object6 = new Object();
+        Object object7 = new Object();
+        Object object8 = new Object();
+        Object object9 = new Object();
+        Object object10 = new Object();
+
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(object5);
+        list.add(object6);
+        list.add(object7);
+        list.add(object8);
+        list.add(object9);
+        list.add(object10);
+    }
 
     @Test
-    void getWhenSizeListZero() {
-        TList<Object> list = new ATList<>();
+    void emptyList_getElement_IndexOfBoundException() {
+        list = new ATList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
     }
 
     @Test
-    void getWhenSizeListNotZero() {
-        TList<Object> list = new ATList<>();
+    void fillingList_getElement_Element() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -30,8 +60,8 @@ class ATListTest {
     }
 
     @Test
-    void getWhenIndexMoreThanSize() {
-        TList<Object> list = new ATList<>();
+    void fillingList_getElement_IndexMoreThanSizeOfList() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -44,8 +74,8 @@ class ATListTest {
     }
 
     @Test
-    void getWhenIndexLessThanZero() {
-        TList<Object> list = new ATList<>();
+    void fillingList_getElement_IndexLessThanZero() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -58,52 +88,21 @@ class ATListTest {
     }
 
     @Test
-    void addWhenArrayOverFlow() {
-        TList<Object> list = new ATList<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
+    void listOf10Items_addElement_ListOf11Items() {
         Object object11 = new Object();
 
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
         list.add(object11);
 
         int expectedSize = 11;
         int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object7, list.get(6));
-        assertEquals(object8, list.get(7));
-        assertEquals(object9, list.get(8));
-        assertEquals(object10, list.get(9));
         assertEquals(object11, list.get(10));
     }
 
     @Test
-    void addMany() {
-        TList<Object> list = new ATList<>();
+    void emptyList_add5Elements_ListOf5Items() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -128,8 +127,8 @@ class ATListTest {
     }
 
     @Test
-    void addOne() {
-        TList<Object> list = new ATList<>();
+    void emptyList_addOneElements_ListOfOneItems() {
+        list = new ATList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -142,8 +141,8 @@ class ATListTest {
     }
 
     @Test
-    void addNull() {
-        TList<Object> list = new ATList<>();
+    void emptyList_addNull_ListOfOneItems() {
+        list = new ATList<>();
 
         list.add(null);
 
@@ -155,8 +154,8 @@ class ATListTest {
     }
 
     @Test
-    void addFirstWhenArrayOverFlow() {
-        TList<Object> list = new ATList<>();
+    void listOf10Items_addFirst_ListOf11Items() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -199,8 +198,8 @@ class ATListTest {
     }
 
     @Test
-    void addFirstMany() {
-        TList<Object> list = new ATList<>();
+    void emptyList_addFirst5Items_ListOf5Items() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -225,8 +224,8 @@ class ATListTest {
     }
 
     @Test
-    void addFirstOne() {
-        TList<Object> list = new ATList<>();
+    void emptyList_addFirst_ListOfOneItems() {
+        list = new ATList<>();
         Object object1 = new Object();
 
         list.addFirst(object1);
@@ -240,8 +239,8 @@ class ATListTest {
     }
 
     @Test
-    void addFirstNull() {
-        TList<Object> list = new ATList<>();
+    void emptyList_addFirstNull_ListOfOneItems() {
+        list = new ATList<>();
 
         list.addFirst(null);
 
@@ -252,52 +251,21 @@ class ATListTest {
     }
 
     @Test
-    void addByIndexWhenArrayOverFlow() {
-        TList<Object> list = new ATList<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
+    void listOf10Items_addByIndexOneItem_ListOf11Items() {
         Object object11 = new Object();
 
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
         list.add(5, object11);
 
         int expectedSize = 11;
         int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
         assertEquals(object11, list.get(5));
-        assertEquals(object6, list.get(6));
-        assertEquals(object7, list.get(7));
-        assertEquals(object8, list.get(8));
-        assertEquals(object9, list.get(9));
-        assertEquals(object10, list.get(10));
     }
 
     @Test
-    void addByIndex() {
-        TList<Object> list = new ATList<>();
+    void listOf4Items_addByIndexOneItem_ListOf5Items() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -322,8 +290,8 @@ class ATListTest {
     }
 
     @Test
-    void addByIndexWhenIndexMoreThanSize() {
-        TList<Object> list = new ATList<>();
+    void listOf4Items_addByIndex_IndexMoreThanSize() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -339,8 +307,8 @@ class ATListTest {
     }
 
     @Test
-    void addByIndexWhenIndexLessThanZero() {
-        TList<Object> list = new ATList<>();
+    void listOf4Items_addByIndex_IndexLessThanZero() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -356,8 +324,8 @@ class ATListTest {
     }
 
     @Test
-    void addByIndexNull() {
-        TList<Object> list = new ATList<>();
+    void listOf4Items_addByIndexNull_ListOf5Items() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -378,96 +346,31 @@ class ATListTest {
     }
 
     @Test
-    void remove() {
-        TList<Object> list = new ATList<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
+    void listOf10Items_RemoveOneItem_ListOf9Items() {
+        Object o = list.get(2);
+        list.remove(o);
 
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
-        list.add(object11);
-        list.remove(object7);
-
-        int expectedSize = 10;
+        int expectedSize = 9;
         int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object8, list.get(6));
-        assertEquals(object9, list.get(7));
-        assertEquals(object10, list.get(8));
-        assertEquals(object11, list.get(9));
+        assertFalse(list.contains(o));
     }
 
     @Test
-    void removeWhenObjectNotExist() {
-        TList<Object> list = new ATList<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
+    void listOf10Items_RemoveOneItem_ObjectNotExist() {
         Object object11 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
         list.remove(object11);
 
         int expectedSize = 10;
         int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object7, list.get(6));
-        assertEquals(object8, list.get(7));
-        assertEquals(object9, list.get(8));
-        assertEquals(object10, list.get(9));
-
     }
 
     @Test
-    void removeWhenSizeZero() {
-        TList<Object> list = new ATList<>();
+    void emptyList_RemoveOneItem_True() {
+        list = new ATList<>();
         Object object1 = new Object();
 
         list.remove(object1);
@@ -479,29 +382,7 @@ class ATListTest {
     }
 
     @Test
-    void removeNull() {
-        TList<Object> list = new ATList<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
+    void listOf11Items_RemoveNull_ListOf10Items() {
         list.add(null);
         list.remove(null);
 
@@ -509,88 +390,28 @@ class ATListTest {
         int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object7, list.get(6));
-        assertEquals(object8, list.get(7));
-        assertEquals(object9, list.get(8));
-        assertEquals(object10, list.get(9));
     }
 
     @Test
-    void RemoveByIndexWhenIndexMoreThanSize() {
-        TList<Object> list = new ATList<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
-        list.add(object11);
-
+    void listOf11Items_RemoveByIndex_IndexMoreThanSize() {
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(11));
     }
 
     @Test
-    void RemoveByIndexWhenIndexLessThanZero() {
-        TList<Object> list = new ATList<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
-        list.add(object11);
-
+    void listOf11Items_RemoveByIndex_IndexLessThanZero() {
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1));
     }
 
     @Test
-    void RemoveByIndexWhenSizeZero() {
-        TList<Object> list = new ATList<>();
+    void emptyList_RemoveByIndex_IndexOfBoundException() {
+        list = new ATList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
     }
 
     @Test
-    void containsTrue() {
-        TList<Object> list = new ATList<>();
+    void listOf3Items_Contains_True() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -603,8 +424,8 @@ class ATListTest {
     }
 
     @Test
-    void containsFalse() {
-        TList<Object> list = new ATList<>();
+    void listOf3Items_Contains_False() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -616,16 +437,16 @@ class ATListTest {
     }
 
     @Test
-    void containsWhenSizeZero() {
-        TList<Object> list = new ATList<>();
+    void emptyList_Contains_False() {
+        list = new ATList<>();
         Object object1 = new Object();
 
         assertFalse(list.contains(object1));
     }
 
     @Test
-    void containsNull() {
-        TList<Object> list = new ATList<>();
+    void listOf3Items_ContainsNull_True() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -639,15 +460,15 @@ class ATListTest {
     }
 
     @Test
-    void isEmptyTrue() {
-        TList<Object> list = new ATList<>();
+    void emptyList_isEmpty_True() {
+        list = new ATList<>();
 
         assertTrue(list.isEmpty());
     }
 
     @Test
-    void isEmptyFalse() {
-        TList<Object> list = new ATList<>();
+    void listOfOneItem_isEmpty_False() {
+        list = new ATList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -656,8 +477,8 @@ class ATListTest {
     }
 
     @Test
-    void isEmptyWhenUsedClear() {
-        TList<Object> list = new ATList<>();
+    void listOfClean_isEmpty_True() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -675,8 +496,8 @@ class ATListTest {
     }
 
     @Test
-    void isEmptyWhenRemoveAll() {
-        TList<Object> list = new ATList<>();
+    void removeAllFromList_isEmpty_True() {
+        list = new ATList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -695,5 +516,5 @@ class ATListTest {
         list.remove(object5);
 
         assertTrue(list.isEmpty());
-    }    
+    }
 }

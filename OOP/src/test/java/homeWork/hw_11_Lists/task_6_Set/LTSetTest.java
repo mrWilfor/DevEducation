@@ -1,66 +1,92 @@
 package homeWork.hw_11_Lists.task_6_Set;
 
-import homeWork.hw_11_Lists.task_5_Generic.LTList;
-import homeWork.hw_11_Lists.task_5_Generic.TList;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class LTSetTest {
+    private Set<Object> list;
 
-    @Test
-    void getWhenSizeListZero() {
-        Set<Object> set = new LTSet<>();
+    @BeforeEach
+    public void initialisationOfList() {
+        list = new LTSet<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+        Object object5 = new Object();
+        Object object6 = new Object();
+        Object object7 = new Object();
+        Object object8 = new Object();
+        Object object9 = new Object();
+        Object object10 = new Object();
 
-        assertThrows(IndexOutOfBoundsException.class, () -> set.get(1));
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(object5);
+        list.add(object6);
+        list.add(object7);
+        list.add(object8);
+        list.add(object9);
+        list.add(object10);
     }
 
     @Test
-    void getWhenSizeListNotZero() {
-        Set<Object> set = new LTSet<>();
+    void emptyList_getElement_IndexOfBoundException() {
+        list = new LTSet<>();
+
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
+    }
+
+    @Test
+    void fillingList_getElement_Element() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
 
-        Object actual = set.get(1);
+        Object actual = list.get(1);
 
         assertEquals(object2, actual);
     }
 
     @Test
-    void getWhenIndexMoreThanSize() {
-        Set<Object> set = new LTSet<>();
+    void fillingList_getElement_IndexMoreThanSizeOfList() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
 
-        assertThrows(IndexOutOfBoundsException.class, () -> set.get(3));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(3));
     }
 
     @Test
-    void getWhenIndexLessThanZero() {
-        Set<Object> set = new LTSet<>();
+    void fillingList_getElement_IndexLessThanZero() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
 
-        assertThrows(IndexOutOfBoundsException.class, () -> set.get(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(-1));
     }
 
     @Test
-    void addIdenticalObjects() {
+    void listOfOneItems_addIdenticalItem_ListOf10Items() {
         Set<Object> set = new LTSet<>();
         Object object1 = new Object();
 
@@ -70,77 +96,73 @@ class LTSetTest {
     }
 
     @Test
-    void addMany() {
-        Set<Object> set = new LTSet<>();
+    void listOf10Items_addElement_ListOf11Items() {
+        Object object11 = new Object();
+
+        list.add(object11);
+
+        int expectedSize = 11;
+        int actualSize = list.size();
+
+        assertEquals(expectedSize, actualSize);
+        assertEquals(object11, list.get(10));
+    }
+
+    @Test
+    void emptyList_add5Elements_ListOf5Items() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
         Object object4 = new Object();
         Object object5 = new Object();
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-        set.add(object5);
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(object5);
 
         int expectedSize = 5;
-        int actualSize = set.size();
+        int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, set.get(0));
-        assertEquals(object2, set.get(1));
-        assertEquals(object3, set.get(2));
-        assertEquals(object4, set.get(3));
-        assertEquals(object5, set.get(4));
+        assertEquals(object1, list.get(0));
+        assertEquals(object2, list.get(1));
+        assertEquals(object3, list.get(2));
+        assertEquals(object4, list.get(3));
+        assertEquals(object5, list.get(4));
     }
 
     @Test
-    void addTwo() {
-        Set<Object> set = new LTSet<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-
-        set.add(object1);
-        set.add(object2);
-
-        int expectedSize = 2;
-        int actualSize = set.size();
-
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object1, set.get(0));
-        assertEquals(object2, set.get(1));
-    }
-
-    @Test
-    void addOne() {
-        Set<Object> set = new LTSet<>();
+    void emptyList_addOneElements_ListOfOneItems() {
+        list = new LTSet<>();
         Object object1 = new Object();
 
-        set.add(object1);
+        list.add(object1);
 
         int expectedSize = 1;
-        int actualSize = set.size();
+        int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, set.get(0));
+        assertEquals(object1, list.get(0));
     }
 
     @Test
-    void addNull() {
-        Set<Object> set = new LTSet<>();
+    void emptyList_addNull_ListOfOneItems() {
+        list = new LTSet<>();
 
-        set.add(null);
+        list.add(null);
 
         int expectedSize = 1;
-        int actualSize = set.size();
+        int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertNull(set.get(0));
+        assertNull(list.get(0));
     }
 
     @Test
-    void addFirstIdenticalObjects() {
+    void listOfOneItems_addFirstIdenticalItem_ListOf10Items() {
         Set<Object> set = new LTSet<>();
         Object object1 = new Object();
 
@@ -150,72 +172,98 @@ class LTSetTest {
     }
 
     @Test
-    void addFirstMany() {
-        Set<Object> set = new LTSet<>();
+    void listOf10Items_addFirst_ListOf11Items() {
+        list = new LTSet<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+        Object object5 = new Object();
+        Object object6 = new Object();
+        Object object7 = new Object();
+        Object object8 = new Object();
+        Object object9 = new Object();
+        Object object10 = new Object();
+        Object object11 = new Object();
+
+        list.addFirst(object1);
+        list.addFirst(object2);
+        list.addFirst(object3);
+        list.addFirst(object4);
+        list.addFirst(object5);
+        list.addFirst(object6);
+        list.addFirst(object7);
+        list.addFirst(object8);
+        list.addFirst(object9);
+        list.addFirst(object10);
+        list.addFirst(object11);
+
+        int expectedSize = 11;
+        int actualSize = list.size();
+
+        assertEquals(expectedSize, actualSize);
+        assertEquals(object11, list.get(0));
+        assertEquals(object10, list.get(1));
+        assertEquals(object9, list.get(2));
+        assertEquals(object8, list.get(3));
+        assertEquals(object7, list.get(4));
+        assertEquals(object6, list.get(5));
+        assertEquals(object5, list.get(6));
+        assertEquals(object4, list.get(7));
+        assertEquals(object3, list.get(8));
+        assertEquals(object2, list.get(9));
+        assertEquals(object1, list.get(10));
+    }
+
+    @Test
+    void emptyList_addFirst5Items_ListOf5Items() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
         Object object4 = new Object();
         Object object5 = new Object();
 
-        set.addFirst(object1);
-        set.addFirst(object2);
-        set.addFirst(object3);
-        set.addFirst(object4);
-        set.addFirst(object5);
+        list.addFirst(object1);
+        list.addFirst(object2);
+        list.addFirst(object3);
+        list.addFirst(object4);
+        list.addFirst(object5);
 
         int expectedSize = 5;
-        int actualSize = set.size();
+        int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object5, set.get(0));
-        assertEquals(object4, set.get(1));
-        assertEquals(object3, set.get(2));
-        assertEquals(object2, set.get(3));
-        assertEquals(object1, set.get(4));
+        assertEquals(object5, list.get(0));
+        assertEquals(object4, list.get(1));
+        assertEquals(object3, list.get(2));
+        assertEquals(object2, list.get(3));
+        assertEquals(object1, list.get(4));
     }
 
     @Test
-    void addFirstTwo() {
-        Set<Object> set = new LTSet<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-
-        set.addFirst(object1);
-        set.addFirst(object2);
-
-        int expectedSize = 2;
-        int actualSize = set.size();
-
-
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object2, set.get(0));
-        assertEquals(object1, set.get(1));
-    }
-
-    @Test
-    void addFirstOne() {
-        Set<Object> set = new LTSet<>();
+    void emptyList_addFirst_ListOfOneItems() {
+        list = new LTSet<>();
         Object object1 = new Object();
 
-        set.addFirst(object1);
+        list.addFirst(object1);
 
         int expectedSize = 1;
-        int actualSize = set.size();
-        Object actualFirst = set.get(0);
+        int actualSize = list.size();
+        Object actualFirst = list.get(0);
 
         assertEquals(expectedSize, actualSize);
         assertEquals(object1, actualFirst);
     }
 
     @Test
-    void addFirstNull() {
-        Set<Object> set = new LTSet<>();
+    void emptyList_addFirstNull_ListOfOneItems() {
+        list = new LTSet<>();
 
-        set.addFirst(null);
+        list.addFirst(null);
 
         int expectedSize = 1;
-        int actualSize = set.size();
+        int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
     }
@@ -237,404 +285,270 @@ class LTSetTest {
     }
 
     @Test
-    void addByIndex() {
-        Set<Object> set = new LTSet<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
+    void listOf10Items_addByIndexOneItem_ListOf11Items() {
+        Object object11 = new Object();
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-        set.add(2, object5);
+        list.add(5, object11);
 
-        int expectedSize = 5;
-        int actualSize = set.size();
+        int expectedSize = 11;
+        int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, set.get(0));
-        assertEquals(object2, set.get(1));
-        assertEquals(object5, set.get(2));
-        assertEquals(object3, set.get(3));
-        assertEquals(object4, set.get(4));
+        assertEquals(object11, list.get(5));
     }
 
     @Test
-    void addByIndexWhenIndexMoreThanSize() {
-        Set<Object> set = new LTSet<>();
+    void listOf4Items_addByIndexOneItem_ListOf5Items() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
         Object object4 = new Object();
         Object object5 = new Object();
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-
-        assertThrows(IndexOutOfBoundsException.class, () -> set.add(5, object5));
-    }
-
-    @Test
-    void addByIndexWhenIndexLessThanZero() {
-        Set<Object> set = new LTSet<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-
-        assertThrows(IndexOutOfBoundsException.class, () -> set.add(-1, object5));
-    }
-
-    @Test
-    void addByIndexNull() {
-        Set<Object> set = new LTSet<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-        set.add(2, null);
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(2, object5);
 
         int expectedSize = 5;
-        int actualSize = set.size();
-        Object actualObject = set.get(2);
+        int actualSize = list.size();
+
+        assertEquals(expectedSize, actualSize);
+        assertEquals(object1, list.get(0));
+        assertEquals(object2, list.get(1));
+        assertEquals(object5, list.get(2));
+        assertEquals(object3, list.get(3));
+        assertEquals(object4, list.get(4));
+    }
+
+    @Test
+    void listOf4Items_addByIndex_IndexMoreThanSize() {
+        list = new LTSet<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+        Object object5 = new Object();
+
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add(5, object5));
+    }
+
+    @Test
+    void listOf4Items_addByIndex_IndexLessThanZero() {
+        list = new LTSet<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+        Object object5 = new Object();
+
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add(-1, object5));
+    }
+
+    @Test
+    void listOf4Items_addByIndexNull_ListOf5Items() {
+        list = new LTSet<>();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(2, null);
+
+        int expectedSize = 5;
+        int actualSize = list.size();
+        Object actualObject = list.get(2);
 
         assertEquals(expectedSize, actualSize);
         assertNull(actualObject);
     }
 
     @Test
-    void remove() {
-        Set<Object> set = new LTSet<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
+    void listOf10Items_RemoveOneItem_ListOf9Items() {
+        Object o = list.get(2);
+        list.remove(o);
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-        set.add(object5);
-        set.add(object6);
-        set.add(object7);
-        set.add(object8);
-        set.add(object9);
-        set.add(object10);
-        set.add(object11);
-        set.remove(object7);
-
-        int expectedSize = 10;
-        int actualSize = set.size();
+        int expectedSize = 9;
+        int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, set.get(0));
-        assertEquals(object2, set.get(1));
-        assertEquals(object3, set.get(2));
-        assertEquals(object4, set.get(3));
-        assertEquals(object5, set.get(4));
-        assertEquals(object6, set.get(5));
-        assertEquals(object8, set.get(6));
-        assertEquals(object9, set.get(7));
-        assertEquals(object10, set.get(8));
-        assertEquals(object11, set.get(9));
+        assertFalse(list.contains(o));
     }
 
     @Test
-    void removeWhenObjectNotExist() {
-        Set<Object> set = new LTSet<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
+    void listOf10Items_RemoveOneItem_ObjectNotExist() {
         Object object11 = new Object();
-
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-        set.add(object5);
-        set.add(object6);
-        set.add(object7);
-        set.add(object8);
-        set.add(object9);
-        set.add(object10);
-        set.remove(object11);
+        list.remove(object11);
 
         int expectedSize = 10;
-        int actualSize = set.size();
+        int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, set.get(0));
-        assertEquals(object2, set.get(1));
-        assertEquals(object3, set.get(2));
-        assertEquals(object4, set.get(3));
-        assertEquals(object5, set.get(4));
-        assertEquals(object6, set.get(5));
-        assertEquals(object7, set.get(6));
-        assertEquals(object8, set.get(7));
-        assertEquals(object9, set.get(8));
-        assertEquals(object10, set.get(9));
-
     }
 
     @Test
-    void removeWhenSizeZero() {
-        Set<Object> set = new LTSet<>();
+    void emptyList_RemoveOneItem_True() {
+        list = new LTSet<>();
         Object object1 = new Object();
 
-        set.remove(object1);
+        list.remove(object1);
 
         int expectedSize = 0;
-        int actualSize = set.size();
+        int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
     }
 
     @Test
-    void removeNull() {
-        Set<Object> set = new LTSet<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-        set.add(object5);
-        set.add(object6);
-        set.add(object7);
-        set.add(object8);
-        set.add(object9);
-        set.add(object10);
-        set.add(null);
-        set.remove(null);
+    void listOf11Items_RemoveNull_ListOf10Items() {
+        list.add(null);
+        list.remove(null);
 
         int expectedSize = 10;
-        int actualSize = set.size();
+        int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, set.get(0));
-        assertEquals(object2, set.get(1));
-        assertEquals(object3, set.get(2));
-        assertEquals(object4, set.get(3));
-        assertEquals(object5, set.get(4));
-        assertEquals(object6, set.get(5));
-        assertEquals(object7, set.get(6));
-        assertEquals(object8, set.get(7));
-        assertEquals(object9, set.get(8));
-        assertEquals(object10, set.get(9));
     }
 
     @Test
-    void RemoveByIndexWhenIndexMoreThanSize() {
-        Set<Object> set = new LTSet<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
-
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-        set.add(object5);
-        set.add(object6);
-        set.add(object7);
-        set.add(object8);
-        set.add(object9);
-        set.add(object10);
-        set.add(object11);
-
-        assertThrows(IndexOutOfBoundsException.class, () -> set.remove(11));
+    void listOf11Items_RemoveByIndex_IndexMoreThanSize() {
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(11));
     }
 
     @Test
-    void RemoveByIndexWhenIndexLessThanZero() {
-        Set<Object> set = new LTSet<>();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
-
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-        set.add(object5);
-        set.add(object6);
-        set.add(object7);
-        set.add(object8);
-        set.add(object9);
-        set.add(object10);
-        set.add(object11);
-
-        assertThrows(IndexOutOfBoundsException.class, () -> set.remove(-1));
+    void listOf11Items_RemoveByIndex_IndexLessThanZero() {
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1));
     }
 
     @Test
-    void RemoveByIndexWhenSizeZero() {
-        Set<Object> set = new LTSet<>();
+    void emptyList_RemoveByIndex_IndexOfBoundException() {
+        list = new LTSet<>();
 
-        assertThrows(IndexOutOfBoundsException.class, () -> set.remove(6));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
     }
 
     @Test
-    void containsTrue() {
-        Set<Object> set = new LTSet<>();
+    void listOf3Items_Contains_True() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
 
-        assertTrue(set.contains(object1));
+        assertTrue(list.contains(object1));
     }
 
     @Test
-    void containsFalse() {
-        Set<Object> set = new LTSet<>();
+    void listOf3Items_Contains_False() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
 
-        set.add(object2);
-        set.add(object3);
+        list.add(object2);
+        list.add(object3);
 
-        assertFalse(set.contains(object1));
+        assertFalse(list.contains(object1));
     }
 
     @Test
-    void containsWhenSizeZero() {
-        Set<Object> set = new LTSet<>();
+    void emptyList_Contains_False() {
+        list = new LTSet<>();
         Object object1 = new Object();
 
-        assertFalse(set.contains(object1));
+        assertFalse(list.contains(object1));
     }
 
     @Test
-    void containsNull() {
-        Set<Object> set = new LTSet<>();
+    void listOf3Items_ContainsNull_True() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(null);
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(null);
 
-        assertTrue(set.contains(null));
+        assertTrue(list.contains(null));
     }
 
     @Test
-    void isEmptyTrue() {
-        Set<Object> set = new LTSet<>();
+    void emptyList_isEmpty_True() {
+        list = new LTSet<>();
 
-        assertTrue(set.isEmpty());
+        assertTrue(list.isEmpty());
     }
 
     @Test
-    void isEmptyFalse() {
-        Set<Object> set = new LTSet<>();
+    void listOfOneItem_isEmpty_False() {
+        list = new LTSet<>();
         Object object1 = new Object();
 
-        set.add(object1);
+        list.add(object1);
 
-        assertFalse(set.isEmpty());
+        assertFalse(list.isEmpty());
     }
 
     @Test
-    void isEmptyWhenUsedClear() {
-        Set<Object> set = new LTSet<>();
+    void listOfClean_isEmpty_True() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
         Object object4 = new Object();
         Object object5 = new Object();
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-        set.add(object5);
-        set.clear();
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(object5);
+        list.clear();
 
-        assertTrue(set.isEmpty());
+        assertTrue(list.isEmpty());
     }
 
     @Test
-    void isEmptyWhenRemoveAll() {
-        Set<Object> set = new LTSet<>();
+    void removeAllFromList_isEmpty_True() {
+        list = new LTSet<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
         Object object4 = new Object();
         Object object5 = new Object();
 
-        set.add(object1);
-        set.add(object2);
-        set.add(object3);
-        set.add(object4);
-        set.add(object5);
-        set.remove(object1);
-        set.remove(object2);
-        set.remove(object3);
-        set.remove(object4);
-        set.remove(object5);
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(object5);
+        list.remove(object1);
+        list.remove(object2);
+        list.remove(object3);
+        list.remove(object4);
+        list.remove(object5);
 
-        assertTrue(set.isEmpty());
+        assertTrue(list.isEmpty());
     }
 }

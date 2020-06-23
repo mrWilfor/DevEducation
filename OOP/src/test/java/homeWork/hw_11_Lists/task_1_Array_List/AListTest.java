@@ -1,21 +1,49 @@
 package homeWork.hw_11_Lists.task_1_Array_List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AListTest {
+    private AList list;
+    
+    @BeforeEach
+    public void initialisationOfList() {
+        list = new AList();
+        Object object1 = new Object();
+        Object object2 = new Object();
+        Object object3 = new Object();
+        Object object4 = new Object();
+        Object object5 = new Object();
+        Object object6 = new Object();
+        Object object7 = new Object();
+        Object object8 = new Object();
+        Object object9 = new Object();
+        Object object10 = new Object();
+
+        list.add(object1);
+        list.add(object2);
+        list.add(object3);
+        list.add(object4);
+        list.add(object5);
+        list.add(object6);
+        list.add(object7);
+        list.add(object8);
+        list.add(object9);
+        list.add(object10);
+    }
 
     @Test
-    void getWhenSizeListZero() {
-        AList list = new AList();
+    void emptyList_getElement_IndexOfBoundException() {
+        list = new AList();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
     }
 
     @Test
-    void getWhenSizeListNotZero() {
-        AList list = new AList();
+    void fillingList_getElement_Element() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -30,8 +58,8 @@ class AListTest {
     }
 
     @Test
-    void getWhenIndexMoreThanSize() {
-        AList list = new AList();
+    void fillingList_getElement_IndexMoreThanSizeOfList() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -44,8 +72,8 @@ class AListTest {
     }
 
     @Test
-    void getWhenIndexLessThanZero() {
-        AList list = new AList();
+    void fillingList_getElement_IndexLessThanZero() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -58,52 +86,21 @@ class AListTest {
     }
 
     @Test
-    void addWhenArrayOverFlow() {
-        AList list = new AList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
+    void listOf10Items_addElement_ListOf11Items() {
         Object object11 = new Object();
 
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
         list.add(object11);
 
         int expectedSize = 11;
         int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object7, list.get(6));
-        assertEquals(object8, list.get(7));
-        assertEquals(object9, list.get(8));
-        assertEquals(object10, list.get(9));
         assertEquals(object11, list.get(10));
     }
 
     @Test
-    void addMany() {
-        AList list = new AList();
+    void emptyList_add5Elements_ListOf5Items() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -128,8 +125,8 @@ class AListTest {
     }
 
     @Test
-    void addOne() {
-        AList list = new AList();
+    void emptyList_addOneElements_ListOfOneItems() {
+        list = new AList();
         Object object1 = new Object();
 
         list.add(object1);
@@ -142,8 +139,8 @@ class AListTest {
     }
 
     @Test
-    void addNull() {
-        AList list = new AList();
+    void emptyList_addNull_ListOfOneItems() {
+        list = new AList();
 
         list.add(null);
 
@@ -155,8 +152,8 @@ class AListTest {
     }
 
     @Test
-    void addFirstWhenArrayOverFlow() {
-        AList list = new AList();
+    void listOf10Items_addFirst_ListOf11Items() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -199,8 +196,8 @@ class AListTest {
     }
 
     @Test
-    void addFirstMany() {
-        AList list = new AList();
+    void emptyList_addFirst5Items_ListOf5Items() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -225,8 +222,8 @@ class AListTest {
     }
 
     @Test
-    void addFirstOne() {
-        AList list = new AList();
+    void emptyList_addFirst_ListOfOneItems() {
+        list = new AList();
         Object object1 = new Object();
 
         list.addFirst(object1);
@@ -240,8 +237,8 @@ class AListTest {
     }
 
     @Test
-    void addFirstNull() {
-        AList list = new AList();
+    void emptyList_addFirstNull_ListOfOneItems() {
+        list = new AList();
 
         list.addFirst(null);
 
@@ -252,52 +249,21 @@ class AListTest {
     }
 
     @Test
-    void addByIndexWhenArrayOverFlow() {
-        AList list = new AList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
+    void listOf10Items_addByIndexOneItem_ListOf11Items() {
         Object object11 = new Object();
 
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
         list.add(5, object11);
 
         int expectedSize = 11;
         int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
         assertEquals(object11, list.get(5));
-        assertEquals(object6, list.get(6));
-        assertEquals(object7, list.get(7));
-        assertEquals(object8, list.get(8));
-        assertEquals(object9, list.get(9));
-        assertEquals(object10, list.get(10));
     }
 
     @Test
-    void addByIndex() {
-        AList list = new AList();
+    void listOf4Items_addByIndexOneItem_ListOf5Items() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -322,8 +288,8 @@ class AListTest {
     }
 
     @Test
-    void addByIndexWhenIndexMoreThanSize() {
-        AList list = new AList();
+    void listOf4Items_addByIndex_IndexMoreThanSize() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -339,8 +305,8 @@ class AListTest {
     }
 
     @Test
-    void addByIndexWhenIndexLessThanZero() {
-        AList list = new AList();
+    void listOf4Items_addByIndex_IndexLessThanZero() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -356,8 +322,8 @@ class AListTest {
     }
 
     @Test
-    void addByIndexNull() {
-        AList list = new AList();
+    void listOf4Items_addByIndexNull_ListOf5Items() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -378,96 +344,31 @@ class AListTest {
     }
 
     @Test
-    void remove() {
-        AList list = new AList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
+    void listOf10Items_RemoveOneItem_ListOf9Items() {
+        Object o = list.get(2);
+        list.remove(o);
 
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
-        list.add(object11);
-        list.remove(object7);
-
-        int expectedSize = 10;
+        int expectedSize = 9;
         int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object8, list.get(6));
-        assertEquals(object9, list.get(7));
-        assertEquals(object10, list.get(8));
-        assertEquals(object11, list.get(9));
+        assertFalse(list.contains(o));
     }
 
     @Test
-    void removeWhenObjectNotExist() {
-        AList list = new AList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
+    void listOf10Items_RemoveOneItem_ObjectNotExist() {
         Object object11 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
         list.remove(object11);
 
         int expectedSize = 10;
         int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object7, list.get(6));
-        assertEquals(object8, list.get(7));
-        assertEquals(object9, list.get(8));
-        assertEquals(object10, list.get(9));
-
     }
 
     @Test
-    void removeWhenSizeZero() {
-        AList list = new AList();
+    void emptyList_RemoveOneItem_True() {
+        list = new AList();
         Object object1 = new Object();
 
         list.remove(object1);
@@ -479,29 +380,7 @@ class AListTest {
     }
 
     @Test
-    void removeNull() {
-        AList list = new AList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
+    void listOf11Items_RemoveNull_ListOf10Items() {
         list.add(null);
         list.remove(null);
 
@@ -509,88 +388,28 @@ class AListTest {
         int actualSize = list.size();
 
         assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object7, list.get(6));
-        assertEquals(object8, list.get(7));
-        assertEquals(object9, list.get(8));
-        assertEquals(object10, list.get(9));
     }
 
     @Test
-    void RemoveByIndexWhenIndexMoreThanSize() {
-        AList list = new AList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
-        list.add(object11);
-
+    void listOf11Items_RemoveByIndex_IndexMoreThanSize() {
        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(11));
     }
 
     @Test
-    void RemoveByIndexWhenIndexLessThanZero() {
-        AList list = new AList();
-        Object object1 = new Object();
-        Object object2 = new Object();
-        Object object3 = new Object();
-        Object object4 = new Object();
-        Object object5 = new Object();
-        Object object6 = new Object();
-        Object object7 = new Object();
-        Object object8 = new Object();
-        Object object9 = new Object();
-        Object object10 = new Object();
-        Object object11 = new Object();
-
-        list.add(object1);
-        list.add(object2);
-        list.add(object3);
-        list.add(object4);
-        list.add(object5);
-        list.add(object6);
-        list.add(object7);
-        list.add(object8);
-        list.add(object9);
-        list.add(object10);
-        list.add(object11);
-
+    void listOf11Items_RemoveByIndex_IndexLessThanZero() {
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1));
     }
 
     @Test
-    void RemoveByIndexWhenSizeZero() {
-        AList list = new AList();
+    void emptyList_RemoveByIndex_IndexOfBoundException() {
+        list = new AList();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
     }
 
     @Test
-    void containsTrue() {
-        AList list = new AList();
+    void listOf3Items_Contains_True() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -603,8 +422,8 @@ class AListTest {
     }
 
     @Test
-    void containsFalse() {
-        AList list = new AList();
+    void listOf3Items_Contains_False() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -616,16 +435,16 @@ class AListTest {
     }
 
     @Test
-    void containsWhenSizeZero() {
-        AList list = new AList();
+    void emptyList_Contains_False() {
+        list = new AList();
         Object object1 = new Object();
 
         assertFalse(list.contains(object1));
     }
 
     @Test
-    void containsNull() {
-        AList list = new AList();
+    void listOf3Items_ContainsNull_True() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -639,15 +458,15 @@ class AListTest {
     }
 
     @Test
-    void isEmptyTrue() {
-        AList list = new AList();
+    void emptyList_isEmpty_True() {
+        list = new AList();
 
         assertTrue(list.isEmpty());
     }
 
     @Test
-    void isEmptyFalse() {
-        AList list = new AList();
+    void listOfOneItem_isEmpty_False() {
+        list = new AList();
         Object object1 = new Object();
 
         list.add(object1);
@@ -656,8 +475,8 @@ class AListTest {
     }
 
     @Test
-    void isEmptyWhenUsedClear() {
-        AList list = new AList();
+    void listOfClean_isEmpty_True() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -675,8 +494,8 @@ class AListTest {
     }
 
     @Test
-    void isEmptyWhenRemoveAll() {
-        AList list = new AList();
+    void removeAllFromList_isEmpty_True() {
+        list = new AList();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
