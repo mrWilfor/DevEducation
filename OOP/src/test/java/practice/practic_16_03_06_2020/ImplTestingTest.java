@@ -3,17 +3,19 @@ package practice.practic_16_03_06_2020;
 import org.junit.jupiter.api.Test;
 import practice.practic_16_03_06_2020.exeptions.UserWithThatUsernameExists;
 import practice.practic_16_03_06_2020.exeptions.WrongLoginOrPassword;
-import practice.practic_16_03_06_2020.userAdmin.ImplAdministrator;
-import practice.practic_16_03_06_2020.userAdmin.ImplUser;
+import practice.practic_16_03_06_2020.interfaces.Administrator;
+import practice.practic_16_03_06_2020.interfaces.Testing;
+import practice.practic_16_03_06_2020.interfaces.User;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ImplTestingTest {
 
     @Test
     void registration() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
         try {
             testing.registration("Nick", "12345");
@@ -21,7 +23,7 @@ class ImplTestingTest {
             System.out.println(e.getMessage());
         }
 
-        ImplUser user = testing.getUsers().get("Nick");
+        User user = testing.getUsers().get("Nick");
 
         assertTrue(testing.getUsers().containsKey("Nick"));
         assertFalse(user.isStatus());
@@ -29,8 +31,8 @@ class ImplTestingTest {
 
     @Test
     void registrationException() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
         try {
             testing.registration("Nick", "12345");
@@ -39,7 +41,7 @@ class ImplTestingTest {
             System.out.println(e.getMessage());
         }
 
-        ImplUser user = testing.getUsers().get("Nick");
+        User user = testing.getUsers().get("Nick");
 
         assertTrue(testing.getUsers().containsKey("Nick"));
         assertFalse(user.isStatus());
@@ -47,8 +49,8 @@ class ImplTestingTest {
 
     @Test
     void logIn() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
         try {
             testing.registration("Nick", "12345");
@@ -62,15 +64,15 @@ class ImplTestingTest {
             System.out.println(e.getMessage());
         }
 
-        ImplUser user = testing.getUsers().get("Nick");
+        User user = testing.getUsers().get("Nick");
 
         assertTrue(user.isStatus());
     }
 
     @Test
     void logInWrongLogin() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
         try {
             testing.registration("Nick", "12345");
@@ -84,15 +86,15 @@ class ImplTestingTest {
             System.out.println(e.getMessage());
         }
 
-        ImplUser user = testing.getUsers().get("Nick");
+        User user = testing.getUsers().get("Nick");
 
         assertFalse(user.isStatus());
     }
 
     @Test
     void logInWrongPassword() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
         try {
             testing.registration("Nick", "12345");
@@ -106,7 +108,7 @@ class ImplTestingTest {
             System.out.println(e.getMessage());
         }
 
-        ImplUser user = testing.getUsers().get("Nick");
+        User user = testing.getUsers().get("Nick");
 
         assertFalse(user.isStatus());
     }

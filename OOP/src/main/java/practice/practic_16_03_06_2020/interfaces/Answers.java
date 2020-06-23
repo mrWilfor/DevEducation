@@ -1,14 +1,10 @@
 package practice.practic_16_03_06_2020.interfaces;
 
-import practice.practic_16_03_06_2020.test.ImplQuestion;
-import practice.practic_16_03_06_2020.test.ImplTest;
-import practice.practic_16_03_06_2020.userAdmin.ImplUser;
-
 import java.util.Calendar;
-import java.util.HashMap;
+import java.util.Map;
 
 public interface Answers {
-    void addAnswer(ImplQuestion question, int numberAnswer);
+    void addAnswer(Question question, int numberAnswer);
 
     void toRate();
 
@@ -16,15 +12,15 @@ public interface Answers {
 
     Calendar getCalendar();
 
-    ImplTest getTest();
+    Test getTest();
 
-    ImplUser getUser();
+    User getUser();
 
-    HashMap<ImplQuestion, String> getAnswers();
+    Map<Question, String> getAnswers();
 
     int getAssessment();
 
     void setCalendar(Calendar calendar);
 
-    void setTest(ImplTest test);
+    void setTest(Test test);
 }

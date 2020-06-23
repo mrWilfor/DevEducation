@@ -1,11 +1,9 @@
 package practice.practic_16_03_06_2020.interfaces;
 
 import practice.practic_16_03_06_2020.exeptions.UserIsNotLoggedIn;
-import practice.practic_16_03_06_2020.test.ImplTest;
-import practice.practic_16_03_06_2020.ImplTesting;
 
 public interface User {
-    void chooseTest(ImplTest test) throws UserIsNotLoggedIn;
+    void chooseTest(Test test) throws UserIsNotLoggedIn;
 
     void testing();
 
@@ -21,7 +19,7 @@ public interface User {
 
     long getId();
 
-    ImplTesting getTesting();
+    Testing getTesting();
 
     boolean isStatus();
 

@@ -1,20 +1,16 @@
 package practice.practic_16_03_06_2020.interfaces;
 
-import practice.practic_16_03_06_2020.test.ImplQuestion;
-import practice.practic_16_03_06_2020.test.ImplTest;
-import practice.practic_16_03_06_2020.userAdmin.ImplUser;
-
 import java.util.Calendar;
-import java.util.HashMap;
+import java.util.Map;
 
 public interface AnswersFinal {
     Calendar getCalendar();
 
-    ImplTest getTest();
+    Test getTest();
 
-    ImplUser getUser();
+    User getUser();
 
-    HashMap<ImplQuestion, String> getAnswers();
+    Map<Question, String> getAnswers();
 
     int getAssessment();
 }

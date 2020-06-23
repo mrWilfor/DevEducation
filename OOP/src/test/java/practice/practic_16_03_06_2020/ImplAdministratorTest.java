@@ -1,24 +1,25 @@
 package practice.practic_16_03_06_2020;
 
 import org.junit.jupiter.api.Test;
-import practice.practic_16_03_06_2020.test.ImplQuestion;
-import practice.practic_16_03_06_2020.test.ImplTest;
-import practice.practic_16_03_06_2020.userAdmin.ImplAdministrator;
+import practice.practic_16_03_06_2020.interfaces.Administrator;
+import practice.practic_16_03_06_2020.interfaces.Question;
+import practice.practic_16_03_06_2020.interfaces.Testing;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ImplAdministratorTest {
 
     @Test
     void addTestMany() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
-        ImplTest test1 = administrator.createTest("Computer science1");
-        ImplTest test2 = administrator.createTest("Computer science2");
-        ImplTest test3 = administrator.createTest("Computer science3");
-        ImplTest test4 = administrator.createTest("Computer science4");
-        ImplTest test5 = administrator.createTest("Computer science5");
+        practice.practic_16_03_06_2020.interfaces.Test test1 = administrator.createTest("Computer science1");
+        practice.practic_16_03_06_2020.interfaces.Test test2 = administrator.createTest("Computer science2");
+        practice.practic_16_03_06_2020.interfaces.Test test3 = administrator.createTest("Computer science3");
+        practice.practic_16_03_06_2020.interfaces.Test test4 = administrator.createTest("Computer science4");
+        practice.practic_16_03_06_2020.interfaces.Test test5 = administrator.createTest("Computer science5");
 
         administrator.addTest(test1);
         administrator.addTest(test2);
@@ -35,11 +36,11 @@ class ImplAdministratorTest {
 
     @Test
     void addTestTwo() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
-        ImplTest test1 = administrator.createTest("Computer science1");
-        ImplTest test2 = administrator.createTest("Computer science2");
+        practice.practic_16_03_06_2020.interfaces.Test test1 = administrator.createTest("Computer science1");
+        practice.practic_16_03_06_2020.interfaces.Test test2 = administrator.createTest("Computer science2");
 
         administrator.addTest(test1);
         administrator.addTest(test2);
@@ -50,10 +51,10 @@ class ImplAdministratorTest {
 
     @Test
     void addTestOne() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
-        ImplTest test = administrator.createTest("Computer science1");
+        practice.practic_16_03_06_2020.interfaces.Test test = administrator.createTest("Computer science1");
 
         administrator.addTest(test);
 
@@ -62,8 +63,8 @@ class ImplAdministratorTest {
 
     @Test
     void addTestNull() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
         administrator.addTest(null);
 
@@ -72,31 +73,31 @@ class ImplAdministratorTest {
 
     @Test
     void addQuestionMany() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
-        ImplTest test = administrator.createTest("Computer science1");
-        ImplQuestion question1 = administrator.createQuestion(
+        practice.practic_16_03_06_2020.interfaces.Test test = administrator.createTest("Computer science1");
+        Question question1 = administrator.createQuestion(
                 "What is processor?",
                 2,
                 "Auto", "Phone", "Computer part", "Apple"
         );
-        ImplQuestion question2 = administrator.createQuestion(
+        Question question2 = administrator.createQuestion(
                 "What is processor?",
                 0,
                 "Computer part", "Car", "Phone", "Cake"
         );
-        ImplQuestion question3 = administrator.createQuestion(
+        Question question3 = administrator.createQuestion(
                 "What is processor?",
                 1,
                 "Money", "Computer part", "Note", "Apple"
         );
-        ImplQuestion question4 = administrator.createQuestion(
+        Question question4 = administrator.createQuestion(
                 "What is processor?",
                 4,
                 "Laptop", "Scotch", "Riki Martin", "Apple", "Computer part"
                 );
-        ImplQuestion question5 = administrator.createQuestion(
+        Question question5 = administrator.createQuestion(
                 "What is processor?",
                 3,
                 "Pen", "Sticky", "Apple", "Computer part"
@@ -117,16 +118,16 @@ class ImplAdministratorTest {
 
     @Test
     void addQuestionTwo() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
-        ImplTest test = administrator.createTest("Computer science1");
-        ImplQuestion question1 = administrator.createQuestion(
+        practice.practic_16_03_06_2020.interfaces.Test test = administrator.createTest("Computer science1");
+        Question question1 = administrator.createQuestion(
                 "What is processor?",
                 2,
                 "Auto", "Phone", "Computer part", "Apple"
         );
-        ImplQuestion question2 = administrator.createQuestion(
+        Question question2 = administrator.createQuestion(
                 "What is processor?",
                 0,
                 "Computer part", "Car", "Phone", "Cake"
@@ -141,11 +142,11 @@ class ImplAdministratorTest {
 
     @Test
     void addQuestionOne() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
-        ImplTest test = administrator.createTest("Computer science1");
-        ImplQuestion question1 = administrator.createQuestion(
+        practice.practic_16_03_06_2020.interfaces.Test test = administrator.createTest("Computer science1");
+        Question question1 = administrator.createQuestion(
                 "What is processor?",
                 2,
                 "Auto", "Phone", "Computer part", "Apple"
@@ -158,10 +159,10 @@ class ImplAdministratorTest {
 
     @Test
     void addQuestionNull() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
-        ImplTest test = administrator.createTest("Computer science1");
+        practice.practic_16_03_06_2020.interfaces.Test test = administrator.createTest("Computer science1");
 
         administrator.addQuestion(null, test);
 

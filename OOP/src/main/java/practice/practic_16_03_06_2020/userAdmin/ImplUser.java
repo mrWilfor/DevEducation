@@ -1,34 +1,31 @@
 package practice.practic_16_03_06_2020.userAdmin;
 
 import homeWork.hw_10_Shop_Extend.classes.UIDGeneration;
-import practice.practic_16_03_06_2020.ImplTesting;
 import practice.practic_16_03_06_2020.answers.ImplAnswers;
 import practice.practic_16_03_06_2020.answers.ImplAnswersFinal;
 import practice.practic_16_03_06_2020.exeptions.UserIsNotLoggedIn;
-import practice.practic_16_03_06_2020.interfaces.User;
-import practice.practic_16_03_06_2020.test.ImplQuestion;
-import practice.practic_16_03_06_2020.test.ImplTest;
+import practice.practic_16_03_06_2020.interfaces.*;
 
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class ImplUser implements User {
     private String name;
     private long id = UIDGeneration.getUID();
-    private ImplTesting testing;
+    private Testing testing;
     private boolean isStatus = false;
-    private ImplTest test;
-    private ImplAnswers answers = new ImplAnswers(this);
+    private Test test;
+    private Answers answers = new ImplAnswers(this);
 
-    public ImplUser(String name, ImplTesting testing) {
+    public ImplUser(String name, Testing testing) {
         this.name = name;
         this.testing = testing;
     }
 
     @Override
-    public void chooseTest(ImplTest test) throws UserIsNotLoggedIn {
+    public void chooseTest(Test test) throws UserIsNotLoggedIn {
         int []j = {1, 2};
         if (isStatus) {
             this.test = test;
@@ -46,7 +43,7 @@ public class ImplUser implements User {
             return;
         }
 
-        ArrayList<ImplQuestion> questions = test.getQuestions();
+        List<Question> questions = test.getQuestions();
         Scanner scan = new Scanner(System.in);
 
         for (int i = 0; i < test.getQuestions().size(); i++) {
@@ -90,7 +87,7 @@ public class ImplUser implements User {
     @Override
     public void answerQuestion(int indexQuestion, int indexAnswer) {
         if (isStatus) {
-            ImplQuestion question = test.getQuestions().get(indexQuestion);
+            Question question = test.getQuestions().get(indexQuestion);
 
             answers.addAnswer(question, indexAnswer);
         }
@@ -103,7 +100,7 @@ public class ImplUser implements User {
 
             System.out.println("Your assessment - " + answers.getAssessment() + " out of 100");
 
-            ImplAnswersFinal answersFinal = new ImplAnswersFinal(
+            AnswersFinal answersFinal = new ImplAnswersFinal(
                     answers.getCalendar(),
                     answers.getTest(),
                     answers.getUser(),
@@ -138,7 +135,7 @@ public class ImplUser implements User {
     }
 
     @Override
-    public ImplTesting getTesting() {
+    public Testing getTesting() {
         return testing;
     }
 
@@ -162,10 +159,10 @@ public class ImplUser implements User {
             return false;
         }
 
-        ImplUser implUser = (ImplUser) o;
+        User user = (User) o;
 
-        return id == implUser.id &&
-                Objects.equals(name, implUser.name);
+        return id == user.getId() &&
+                Objects.equals(name, user.getName());
     }
 
     @Override

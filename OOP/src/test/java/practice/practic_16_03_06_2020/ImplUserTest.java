@@ -1,16 +1,13 @@
 package practice.practic_16_03_06_2020;
 
 import org.junit.jupiter.api.Test;
-import practice.practic_16_03_06_2020.answers.ImplAnswersFinal;
 import practice.practic_16_03_06_2020.exeptions.UserIsNotLoggedIn;
 import practice.practic_16_03_06_2020.exeptions.UserWithThatUsernameExists;
 import practice.practic_16_03_06_2020.exeptions.WrongLoginOrPassword;
-import practice.practic_16_03_06_2020.test.ImplQuestion;
-import practice.practic_16_03_06_2020.test.ImplTest;
-import practice.practic_16_03_06_2020.userAdmin.ImplAdministrator;
+import practice.practic_16_03_06_2020.interfaces.*;
 import practice.practic_16_03_06_2020.userAdmin.ImplUser;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,8 +15,8 @@ class ImplUserTest {
 
     @Test
     void testingFiveOutOfFive() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
         try {
             testing.registration("Nick", "12345");
@@ -33,29 +30,29 @@ class ImplUserTest {
             System.out.println(e.getMessage());
         }
 
-        ImplUser user = testing.getUsers().get("Nick");
-        ImplTest test = administrator.createTest("Computer science1");
-        ImplQuestion question1 = administrator.createQuestion(
+        User user = testing.getUsers().get("Nick");
+        practice.practic_16_03_06_2020.interfaces.Test test = administrator.createTest("Computer science1");
+        Question question1 = administrator.createQuestion(
                 "What is processor?",
                 2,
                 "Auto", "Phone", "Computer part", "Apple"
         );
-        ImplQuestion question2 = administrator.createQuestion(
+        Question question2 = administrator.createQuestion(
                 "What is processor?",
                 0,
                 "Computer part", "Car", "Phone", "Cake"
         );
-        ImplQuestion question3 = administrator.createQuestion(
+        Question question3 = administrator.createQuestion(
                 "What is processor?",
                 1,
                 "Money", "Computer part", "Note", "Apple"
         );
-        ImplQuestion question4 = administrator.createQuestion(
+        Question question4 = administrator.createQuestion(
                 "What is processor?",
                 4,
                 "Laptop", "Scotch", "Riki Martin", "Apple", "Computer part"
         );
-        ImplQuestion question5 = administrator.createQuestion(
+        Question question5 = administrator.createQuestion(
                 "What is processor?",
                 3,
                 "Pen", "Sticky", "Apple", "Computer part"
@@ -90,8 +87,8 @@ class ImplUserTest {
 
     @Test
     void testingThreeOutOfFive() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
         try {
             testing.registration("Nick", "12345");
@@ -105,29 +102,29 @@ class ImplUserTest {
             System.out.println(e.getMessage());
         }
 
-        ImplUser user = testing.getUsers().get("Nick");
-        ImplTest test = administrator.createTest("Computer science1");
-        ImplQuestion question1 = administrator.createQuestion(
+        User user = testing.getUsers().get("Nick");
+        practice.practic_16_03_06_2020.interfaces.Test test = administrator.createTest("Computer science1");
+        Question question1 = administrator.createQuestion(
                 "What is processor?",
                 2,
                 "Auto", "Phone", "Computer part", "Apple"
         );
-        ImplQuestion question2 = administrator.createQuestion(
+        Question question2 = administrator.createQuestion(
                 "What is processor?",
                 0,
                 "Computer part", "Car", "Phone", "Cake"
         );
-        ImplQuestion question3 = administrator.createQuestion(
+        Question question3 = administrator.createQuestion(
                 "What is processor?",
                 1,
                 "Money", "Computer part", "Note", "Apple"
         );
-        ImplQuestion question4 = administrator.createQuestion(
+        Question question4 = administrator.createQuestion(
                 "What is processor?",
                 4,
                 "Laptop", "Scotch", "Riki Martin", "Apple", "Computer part"
         );
-        ImplQuestion question5 = administrator.createQuestion(
+        Question question5 = administrator.createQuestion(
                 "What is processor?",
                 3,
                 "Pen", "Sticky", "Apple", "Computer part"
@@ -162,32 +159,32 @@ class ImplUserTest {
 
     @Test
     void testingNotRegistration() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
-        ImplUser user = new ImplUser("Nick", testing);
-        ImplTest test = administrator.createTest("Computer science1");
-        ImplQuestion question1 = administrator.createQuestion(
+        User user = new ImplUser("Nick", testing);
+        practice.practic_16_03_06_2020.interfaces.Test test = administrator.createTest("Computer science1");
+        Question question1 = administrator.createQuestion(
                 "What is processor?",
                 2,
                 "Auto", "Phone", "Computer part", "Apple"
         );
-        ImplQuestion question2 = administrator.createQuestion(
+        Question question2 = administrator.createQuestion(
                 "What is processor?",
                 0,
                 "Computer part", "Car", "Phone", "Cake"
         );
-        ImplQuestion question3 = administrator.createQuestion(
+        Question question3 = administrator.createQuestion(
                 "What is processor?",
                 1,
                 "Money", "Computer part", "Note", "Apple"
         );
-        ImplQuestion question4 = administrator.createQuestion(
+        Question question4 = administrator.createQuestion(
                 "What is processor?",
                 4,
                 "Laptop", "Scotch", "Riki Martin", "Apple", "Computer part"
         );
-        ImplQuestion question5 = administrator.createQuestion(
+        Question question5 = administrator.createQuestion(
                 "What is processor?",
                 3,
                 "Pen", "Sticky", "Apple", "Computer part"
@@ -214,16 +211,16 @@ class ImplUserTest {
         user.answerQuestion(4, 3);
         user.finishTesting();
 
-        ArrayList<ImplAnswersFinal> expectedAnswers = null;
-        ArrayList<ImplAnswersFinal> actualAnswers = testing.getResultsOfTesting().get(user);
+        List<AnswersFinal> expectedAnswers = null;
+        List<AnswersFinal> actualAnswers = testing.getResultsOfTesting().get(user);
 
         assertEquals(expectedAnswers, actualAnswers);
     }
 
     @Test
     void testingNotAuthorisation() {
-        ImplTesting testing = new ImplTesting();
-        ImplAdministrator administrator = testing.getAdministrator();
+        Testing testing = new ImplTesting();
+        Administrator administrator = testing.getAdministrator();
 
         try {
             testing.registration("Nick", "12345");
@@ -231,29 +228,29 @@ class ImplUserTest {
             System.out.println(e.getMessage());
         }
 
-        ImplUser user = testing.getUsers().get("Nick");
-        ImplTest test = administrator.createTest("Computer science1");
-        ImplQuestion question1 = administrator.createQuestion(
+        User user = testing.getUsers().get("Nick");
+        practice.practic_16_03_06_2020.interfaces.Test test = administrator.createTest("Computer science1");
+        Question question1 = administrator.createQuestion(
                 "What is processor?",
                 2,
                 "Auto", "Phone", "Computer part", "Apple"
         );
-        ImplQuestion question2 = administrator.createQuestion(
+        Question question2 = administrator.createQuestion(
                 "What is processor?",
                 0,
                 "Computer part", "Car", "Phone", "Cake"
         );
-        ImplQuestion question3 = administrator.createQuestion(
+        Question question3 = administrator.createQuestion(
                 "What is processor?",
                 1,
                 "Money", "Computer part", "Note", "Apple"
         );
-        ImplQuestion question4 = administrator.createQuestion(
+        Question question4 = administrator.createQuestion(
                 "What is processor?",
                 4,
                 "Laptop", "Scotch", "Riki Martin", "Apple", "Computer part"
         );
-        ImplQuestion question5 = administrator.createQuestion(
+        Question question5 = administrator.createQuestion(
                 "What is processor?",
                 3,
                 "Pen", "Sticky", "Apple", "Computer part"
@@ -280,8 +277,8 @@ class ImplUserTest {
         user.answerQuestion(4, 3);
         user.finishTesting();
 
-        ArrayList<ImplAnswersFinal> expectedAnswers = null;
-        ArrayList<ImplAnswersFinal> actualAnswers = testing.getResultsOfTesting().get(user);
+        List<AnswersFinal> expectedAnswers = null;
+        List<AnswersFinal> actualAnswers = testing.getResultsOfTesting().get(user);
 
         assertEquals(expectedAnswers, actualAnswers);
     }

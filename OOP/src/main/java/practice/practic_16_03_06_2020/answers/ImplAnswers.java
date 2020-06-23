@@ -1,35 +1,36 @@
 package practice.practic_16_03_06_2020.answers;
 
-import practice.practic_16_03_06_2020.test.ImplQuestion;
-import practice.practic_16_03_06_2020.test.ImplTest;
-import practice.practic_16_03_06_2020.userAdmin.ImplUser;
 import practice.practic_16_03_06_2020.interfaces.Answers;
+import practice.practic_16_03_06_2020.interfaces.Question;
+import practice.practic_16_03_06_2020.interfaces.Test;
+import practice.practic_16_03_06_2020.interfaces.User;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ImplAnswers implements Answers {
     private Calendar calendar;
-    private ImplTest test;
-    private ImplUser user;
-    private HashMap<ImplQuestion, String> answers = new HashMap<>();
+    private Test test;
+    private User user;
+    private Map<Question, String> answers = new HashMap<>();
     private int assessment;
 
-    public ImplAnswers(ImplUser user) {
+    public ImplAnswers(User user) {
         this.user = user;
     }
 
     @Override
-    public void addAnswer(ImplQuestion question, int indexAnswer) {
+    public void addAnswer(Question question, int indexAnswer) {
         String answer = question.getAnswers()[indexAnswer];
-                answers.put(question, answer);
+        answers.put(question, answer);
     }
 
     @Override
     public void toRate() {
         int rate = 0;
 
-        for (ImplQuestion question : test.getQuestions()) {
+        for (Question question : test.getQuestions()) {
             if (question.getAnswers()[question.getIndexRightAnswer()].equals(answers.get(question))) {
                 rate++;
             }
@@ -58,17 +59,17 @@ public class ImplAnswers implements Answers {
     }
 
     @Override
-    public ImplTest getTest() {
+    public Test getTest() {
         return test;
     }
 
     @Override
-    public ImplUser getUser() {
+    public User getUser() {
         return user;
     }
 
     @Override
-    public HashMap<ImplQuestion, String> getAnswers() {
+    public Map<Question, String> getAnswers() {
         return answers;
     }
 
@@ -83,7 +84,7 @@ public class ImplAnswers implements Answers {
     }
 
     @Override
-    public void setTest(ImplTest test) {
+    public void setTest(Test test) {
         this.test = test;
     }
 }

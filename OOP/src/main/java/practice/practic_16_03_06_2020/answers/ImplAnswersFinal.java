@@ -1,25 +1,25 @@
 package practice.practic_16_03_06_2020.answers;
 
-import practice.practic_16_03_06_2020.test.ImplQuestion;
-import practice.practic_16_03_06_2020.test.ImplTest;
-import practice.practic_16_03_06_2020.userAdmin.ImplUser;
 import practice.practic_16_03_06_2020.interfaces.AnswersFinal;
+import practice.practic_16_03_06_2020.interfaces.Question;
+import practice.practic_16_03_06_2020.interfaces.Test;
+import practice.practic_16_03_06_2020.interfaces.User;
 
 import java.util.Calendar;
-import java.util.HashMap;
+import java.util.Map;
 
 public final class ImplAnswersFinal implements AnswersFinal {
     private final Calendar calendar;
-    private final ImplTest test;
-    private final ImplUser user;
-    private final HashMap<ImplQuestion, String> answers;
+    private final Test test;
+    private final User user;
+    private final Map<Question, String> answers;
     private final int assessment;
 
     public ImplAnswersFinal(
             Calendar calendar,
-            ImplTest test,
-            ImplUser user,
-            HashMap<ImplQuestion, String> answers,
+            Test test,
+            User user,
+            Map<Question, String> answers,
             int assessment
     ) {
         this.calendar = calendar;
@@ -35,17 +35,17 @@ public final class ImplAnswersFinal implements AnswersFinal {
     }
 
     @Override
-    public ImplTest getTest() {
+    public Test getTest() {
         return test;
     }
 
     @Override
-    public ImplUser getUser() {
+    public User getUser() {
         return user;
     }
 
     @Override
-    public HashMap<ImplQuestion, String> getAnswers() {
+    public Map<Question, String> getAnswers() {
         return answers;
     }
 

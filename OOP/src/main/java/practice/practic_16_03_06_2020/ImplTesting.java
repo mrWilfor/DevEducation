@@ -1,24 +1,24 @@
 package practice.practic_16_03_06_2020;
 
-import practice.practic_16_03_06_2020.answers.ImplAnswersFinal;
 import practice.practic_16_03_06_2020.exeptions.UserIsNotLoggedIn;
 import practice.practic_16_03_06_2020.exeptions.UserWithThatUsernameExists;
 import practice.practic_16_03_06_2020.exeptions.WrongLoginOrPassword;
-import practice.practic_16_03_06_2020.interfaces.Testing;
-import practice.practic_16_03_06_2020.test.ImplTest;
+import practice.practic_16_03_06_2020.interfaces.*;
 import practice.practic_16_03_06_2020.userAdmin.ImplAdministrator;
 import practice.practic_16_03_06_2020.userAdmin.ImplUser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ImplTesting implements Testing {
 
-    private ArrayList<ImplTest> tests = new ArrayList<>();
-    private HashMap<String, ImplUser> users = new HashMap<>();
-    private HashMap<String, String> loginsAndPasswords = new HashMap<>();
-    private ImplAdministrator administrator = new ImplAdministrator(this);
-    private HashMap<ImplUser, ArrayList<ImplAnswersFinal>> resultsOfTesting = new HashMap<>();
+    private List<Test> tests = new ArrayList<>();
+    private Map<String, User> users = new HashMap<>();
+    private Map<String, String> loginsAndPasswords = new HashMap<>();
+    private Administrator administrator = new ImplAdministrator(this);
+    private Map<User, List<AnswersFinal>> resultsOfTesting = new HashMap<>();
 
     @Override
     public boolean registration(String login,  String password) throws UserWithThatUsernameExists {
@@ -46,7 +46,7 @@ public class ImplTesting implements Testing {
     }
 
     @Override
-    public void addResultOfTesting(ImplAnswersFinal answers, ImplUser user) throws UserIsNotLoggedIn {
+    public void addResultOfTesting(AnswersFinal answers, User user) throws UserIsNotLoggedIn {
         if (!resultsOfTesting.containsKey(user)) {
             resultsOfTesting.put(user, new ArrayList<>());
         } else {
@@ -56,22 +56,22 @@ public class ImplTesting implements Testing {
     }
 
     @Override
-    public ImplAdministrator getAdministrator() {
+    public Administrator getAdministrator() {
         return administrator;
     }
 
     @Override
-    public ArrayList<ImplTest> getTests() {
+    public List<Test> getTests() {
         return tests;
     }
 
     @Override
-    public HashMap<String, ImplUser> getUsers() {
+    public Map<String, User> getUsers() {
         return users;
     }
 
     @Override
-    public HashMap<ImplUser, ArrayList<ImplAnswersFinal>> getResultsOfTesting() {
+    public Map<User, List<AnswersFinal>> getResultsOfTesting() {
         return resultsOfTesting;
     }
 }

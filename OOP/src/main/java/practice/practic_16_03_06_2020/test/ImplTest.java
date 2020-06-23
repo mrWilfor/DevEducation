@@ -1,13 +1,15 @@
 package practice.practic_16_03_06_2020.test;
 
+import practice.practic_16_03_06_2020.interfaces.Question;
 import practice.practic_16_03_06_2020.interfaces.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class ImplTest implements Test {
     private String name;
-    private ArrayList<ImplQuestion> questions = new ArrayList<>();
+    private List<Question> questions = new ArrayList<>();
 
     public ImplTest(String name) {
         this.name = name;
@@ -17,7 +19,7 @@ public class ImplTest implements Test {
         return name;
     }
 
-    public ArrayList<ImplQuestion> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
@@ -31,9 +33,9 @@ public class ImplTest implements Test {
             return false;
         }
 
-        ImplTest implTest = (ImplTest) o;
+        Test test = (Test) o;
 
-        return Objects.equals(name, implTest.name);
+        return Objects.equals(name, test.getName());
     }
 
     @Override

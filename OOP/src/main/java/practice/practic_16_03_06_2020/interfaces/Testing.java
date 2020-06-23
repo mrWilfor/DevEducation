@@ -1,22 +1,18 @@
 package practice.practic_16_03_06_2020.interfaces;
 
-import practice.practic_16_03_06_2020.answers.ImplAnswersFinal;
 import practice.practic_16_03_06_2020.exeptions.UserIsNotLoggedIn;
-import practice.practic_16_03_06_2020.test.ImplTest;
-import practice.practic_16_03_06_2020.userAdmin.ImplAdministrator;
-import practice.practic_16_03_06_2020.userAdmin.ImplUser;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public interface Testing extends Registration, LogIn {
-    void addResultOfTesting(ImplAnswersFinal answers, ImplUser user) throws UserIsNotLoggedIn;
+    void addResultOfTesting(AnswersFinal answers, User user) throws UserIsNotLoggedIn;
 
-    ImplAdministrator getAdministrator();
+    Administrator getAdministrator();
 
-    ArrayList<ImplTest> getTests();
+    List<Test> getTests();
 
-    HashMap<String, ImplUser> getUsers();
+    Map<String, User> getUsers();
 
-    HashMap<ImplUser, ArrayList<ImplAnswersFinal>> getResultsOfTesting();
+    Map<User, List<AnswersFinal>> getResultsOfTesting();
 }

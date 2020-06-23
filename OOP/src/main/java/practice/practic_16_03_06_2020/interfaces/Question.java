@@ -10,4 +10,6 @@ public interface Question {
     int getIndexRightAnswer();
 
     Test getTest();
+
+    void setTest(Test test);
 }

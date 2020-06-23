@@ -51,6 +51,7 @@ public class ImplQuestion implements Question {
         return test;
     }
 
+    @Override
     public void setTest(Test test) {
         this.test = test;
     }
@@ -65,10 +66,10 @@ public class ImplQuestion implements Question {
             return false;
         }
 
-        ImplQuestion that = (ImplQuestion) o;
+        Question that = (Question) o;
 
-        return indexRightAnswer == that.indexRightAnswer &&
-                Objects.equals(question, that.question);
+        return indexRightAnswer == that.getIndexRightAnswer() &&
+                Objects.equals(question, that.getQuestion());
     }
 
     @Override
