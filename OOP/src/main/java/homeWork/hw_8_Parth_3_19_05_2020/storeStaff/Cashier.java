@@ -12,6 +12,7 @@ public class Cashier extends ImplStaff {
 
     public int payment(Buyer buyer) {
         int balanceAfterPayment = 0;
+
         if (buyer != null) {
             ArrayList<Product> basket = buyer.getBasket();
             int cost = 0;
