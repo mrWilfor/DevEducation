@@ -8,13 +8,13 @@ import java.util.stream.Stream;
 
 public class ReadWriteTextFile {
     public static void readSortByLengthWrite(String fileFrom, String fileTo, SequenceComparable sc)
-            throws IOException, ClassNotFoundException {
+            throws IOException {
         String bufferString;
         String[] arrayForSort;
 
         bufferString = deSerializing(fileFrom);
 
-        arrayForSort = bufferString.replaceAll(" ", "").split("\n");
+        arrayForSort = bufferString.split("\n");
 
         compareStringByLength(arrayForSort, sc);
 
@@ -27,7 +27,9 @@ public class ReadWriteTextFile {
         String[] arrayForSort;
 
         bufferString = deSerializing(fileFrom);
-        arrayForSort = bufferString.replaceAll("[.,\\n]", "").split(separator);
+        arrayForSort = bufferString.replaceAll("[.,!?]", "")
+                .replace("\n", " ")
+                .split(separator);
 
         compareStringByFirstChar(arrayForSort, sc);
 
@@ -39,7 +41,7 @@ public class ReadWriteTextFile {
                         serializing(destination + x + ".txt",
                                 Arrays.stream(arrayForSort)
                                         .filter(y -> x == y.toLowerCase().charAt(0))
-                                        .reduce("\n", (f, i) -> f + " " + i));
+                                        .reduce("", (f, i) -> f + i + " "));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -65,30 +67,22 @@ public class ReadWriteTextFile {
     }
 
     public static void serializing(String fileName, String fileValue) throws IOException {
-        try {
-            FileOutputStream fileOut = new FileOutputStream(fileName);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeUTF(fileValue);
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved in %s", fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileOutputStream fileOut = new FileOutputStream(fileName);
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeUTF(fileValue);
+        out.close();
+        fileOut.close();
+        System.out.printf("Serialized data is saved in %s", fileName);
     }
 
     public static String deSerializing(String fileName) throws IOException {
-        String result = null;
+        String result;
+        FileInputStream fileInput = new FileInputStream(fileName);
+        ObjectInputStream in = new ObjectInputStream(fileInput);
+        result = in.readUTF();
+        in.close();
+        fileInput.close();
 
-        try {
-            FileInputStream fileInput = new FileInputStream(fileName);
-            ObjectInputStream in = new ObjectInputStream(fileInput);
-            result = in.readUTF();
-            in.close();
-            fileInput.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return result;
     }
 
