@@ -1,5 +1,8 @@
 package homeWork.hw_12_Lists_Replace_of_loops_for_Streams.task_5_Generic;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 public class RTList<T> implements TList<T> {
     private T[] objects = (T[]) new Object[10];
     private int size = 0;
@@ -22,36 +25,29 @@ public class RTList<T> implements TList<T> {
     @Override
     public boolean add(T item) throws IndexOutOfBoundsException {
         if (size == objects.length) {
-            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
-
             if (tailOfList > headOfList) {
-                if (headOfList + 1 >= 0) {
-                    System.arraycopy(objects, 0, newObjects, 0, headOfList + 1);
-                }
-
-                for (int j = newObjects.length - 1, k = objects.length - 1; k >= tailOfList; j--, k--) {
-                    if (k == tailOfList) {
-                        tailOfList = j;
-                    }
-                    newObjects[j] = objects[k];
-                }
+                objects = (T[]) Stream.concat(Stream.concat(Arrays.stream(objects).limit(headOfList + 1), Stream.of(item)),
+                        Stream.concat(
+                                Stream.of(new Object[(size * 3 / 2 + 1) - size - 1]),
+                                Arrays.stream(objects).skip(headOfList)))
+                        .toArray();
+                tailOfList += (size * 3 / 2 + 1) - size;
             } else {
-                System.arraycopy(objects, tailOfList, newObjects, tailOfList, size);
+                objects = (T[]) (Stream.concat(Stream.concat(Arrays.stream(objects), Stream.of(item)),
+                        Stream.of(new Object[(size * 3 / 2 + 1) - size - 1])))
+                        .toArray();
             }
 
-            try {
-                newObjects[headOfList + 1] = item;
-                headOfList += 1;
-            } catch (IndexOutOfBoundsException e) {
+            if (headOfList + 1 < objects.length) {
+                headOfList++;
+            } else {
                 headOfList = 0;
-                newObjects[headOfList] = item;
             }
-            objects = newObjects;
             size++;
             return true;
         }
         objects[headOfList + 1] = item;
-        headOfList += 1;
+        headOfList++;
         size++;
         return true;
     }
@@ -59,29 +55,33 @@ public class RTList<T> implements TList<T> {
     @Override
     public boolean addFirst(T item) throws IndexOutOfBoundsException {
         if (size == objects.length) {
-            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
-
             if (tailOfList > headOfList) {
-                if (headOfList + 1 >= 0) {
-                    System.arraycopy(objects, 0, newObjects, 0, headOfList + 1);
-                }
-
-                for (int j = newObjects.length - 1, k = objects.length - 1; k >= tailOfList; j--, k--) {
-                    if (k == tailOfList) {
-                        tailOfList = j;
-                    }
-                    newObjects[j] = objects[k];
-                }
+                objects = (T[]) Stream.concat(Stream.concat(Arrays.stream(objects).limit(tailOfList),
+                        Stream.of(new Object[(size * 3 / 2 + 1) - size - 1])),
+                        Stream.concat(
+                                Stream.of(item),
+                                Arrays.stream(objects).skip(tailOfList)))
+                        .toArray();
+                tailOfList += (size * 3 / 2 + 1) - size;
             } else {
-                System.arraycopy(objects, tailOfList, newObjects, tailOfList, size);
+                objects = (T[]) (Stream.concat(Stream.concat(Stream.of(item), Arrays.stream(objects)),
+                        Stream.of(new Object[(size * 3 / 2 + 1) - size - 1])))
+                        .toArray();
             }
-            objects = newObjects;
+
+            if (tailOfList - 1 > 0) {
+                tailOfList--;
+            } else {
+                tailOfList = objects.length - 1;
+            }
+            size++;
+            return true;
         }
 
-        try {
-            objects[tailOfList - 1] = item;
-            tailOfList -= 1;
-        } catch (IndexOutOfBoundsException e) {
+        if (tailOfList - 1 >= 0) {
+            tailOfList--;
+            objects[tailOfList] = item;
+        } else {
             tailOfList = objects.length - 1;
             objects[tailOfList] = item;
         }
@@ -97,76 +97,61 @@ public class RTList<T> implements TList<T> {
             }
             throw new IndexOutOfBoundsException("Out of range index, enter index from 0 to " + (size - 1));
         } else if (size == objects.length) {
-            T[] newObjects = (T[]) new Object[size * 3 / 2 + 1];
-
             if (tailOfList > headOfList) {
-                if (headOfList + 1 >= 0) {
-                    System.arraycopy(objects, 0, newObjects, 0, headOfList + 1);
-                }
-
-                for (int j = newObjects.length - 1, k = objects.length - 1; k >= tailOfList; j--, k--) {
-                    if (k == tailOfList) {
-                        tailOfList = j;
-                    }
-                    newObjects[j] = objects[k];
-                }
+                objects = (T[]) Stream.concat(Arrays.stream(objects).limit(tailOfList + 1),
+                        Stream.concat(
+                                Stream.of(new Object[(size * 3 / 2 + 1) - size - 2]),
+                                Arrays.stream(objects).skip(tailOfList)))
+                        .toArray();
+                tailOfList += (size * 3 / 2 + 1) - size;
             } else {
-                System.arraycopy(objects, tailOfList, newObjects, tailOfList, size);
-            }
-            objects = newObjects;
-        }
-
-        T bufferObject1 = null;
-        T bufferObject2;
-
-        for (int i = index, j = index + tailOfList; i < size; i++, j++) {
-            try {
-                if (bufferObject1 == null) {
-                    bufferObject1 = objects[j + 1];
-                    objects[j + 1] = objects[j];
-                } else {
-                    bufferObject2 = objects[j + 1];
-                    objects[j + 1] = bufferObject1;
-                    bufferObject1 = bufferObject2;
-                }
-            } catch (IndexOutOfBoundsException e) {
-                if (bufferObject1 == null) {
-                    bufferObject1 = objects[0];
-                    objects[0] = objects[j];
-                } else {
-                    bufferObject2 = objects[0];
-                    objects[0] = bufferObject1;
-                    bufferObject1 = bufferObject2;
-                }
-                j = -1;
+                objects = (T[]) (Stream.concat(Arrays.stream(objects), Stream.of(new Object[(size * 3 / 2 + 1) - size - 2])))
+                        .toArray();
             }
         }
-        objects[index + tailOfList] = item;
+
+        if (index > headOfList && index > tailOfList) {
+            objects = (T[]) Stream.concat(Stream.concat(Stream.concat(
+                    Stream.of(objects).skip(objects.length - 1), Stream.of(objects).limit(index)),
+                    Stream.of(item)), Stream.of(objects).skip(index).limit(objects.length - index - 2))
+                    .toArray();
+        } else {
+            objects = (T[]) Stream.concat(
+                    Stream.concat(Stream.of(objects).limit(index), Stream.of(item)), Stream.of(objects).skip(index))
+                    .toArray();
+        }
+
+        if (headOfList + 1 < objects.length) {
+            headOfList++;
+        } else {
+            headOfList = 0;
+        }
         size++;
         return true;
     }
 
     @Override
     public boolean remove(T item) throws IndexOutOfBoundsException {
-        for (int i = 0, j = tailOfList; i < size; i++, j++) {
-            try {
-                if (item == null ? item == objects[i] : item.equals(objects[i])) {
-                    for (int k = i, l = j; k < size; k++, l++) {
-                        try {
-                            objects[l] = objects[l + 1];
-                        } catch (IndexOutOfBoundsException e) {
-                            objects[l] = objects[0];
-                            l = 0;
-                        }
-                    }
-                    size--;
-                    objects[size] = null;
-                    return true;
-                }
-            } catch (IndexOutOfBoundsException e) {
-                j = -1;
-                i--;
+        if (contains(item)) {
+            if (tailOfList > headOfList) {
+                objects = (T[]) Stream.concat(Stream.concat(Stream.concat(
+                        Stream.of(objects).skip(objects.length - 1),
+                        Stream.of(objects).filter(x -> !(item == null ? item == x : item.equals(x))).limit(headOfList)),
+                        Stream.of(new Object[1])), Stream.of(objects).skip(headOfList + 1))
+                        .toArray();
+            } else {
+                objects = (T[]) Stream.concat(Stream.of(objects)
+                        .filter(x -> !(item == null ? item == x : item.equals(x))), Stream.of(new Object[1]))
+                        .toArray();
             }
+
+            if (headOfList - 1 > 0) {
+                headOfList--;
+            } else {
+                headOfList = objects.length - 1;
+            }
+            size--;
+            return true;
         }
         return false;
     }
@@ -185,17 +170,32 @@ public class RTList<T> implements TList<T> {
         } else {
             result = objects[index];
 
-            for (int i = index, j = index + tailOfList; i < size; i++, j++) {
-                try {
-                    objects[j] = objects[j + 1];
-                } catch (IndexOutOfBoundsException e) {
-                    objects[j] = objects[0];
-                    j = 0;
-                }
+            if (index > headOfList && index > tailOfList) {
+                objects = (T[]) Stream.concat(Stream.concat(Stream.concat(Stream.concat(
+                        Stream.of(objects).skip(objects.length - 1), Stream.of(objects).limit(headOfList + 1)),
+                        Stream.of((T) new Object[1])), Stream.of(objects).skip(headOfList + 1).limit(index - headOfList)),
+                        Stream.of(objects).skip(index + 1).limit(objects.length - index - 2))
+                        .toArray();
+            } else if (tailOfList > headOfList) {
+                objects = (T[]) Stream.concat(Stream.concat(Stream.concat(Stream.concat(
+                        Stream.of(objects).skip(objects.length - 1), Stream.of(objects).limit(index)),
+                        Stream.of(objects).skip(index + 1).limit(headOfList - (index + 1))),
+                        Stream.of((T) new Object[1])), Stream.of(objects).skip(headOfList + 1))
+                        .toArray();
+            } else {
+                objects = (T[]) Stream.concat(
+                        Stream.concat(Stream.of(objects).limit(index), Stream.of(objects).skip(index + 1)),
+                        Stream.of((T) new Object[1]))
+                        .toArray();
+            }
+
+            if (headOfList - 1 > 0) {
+                headOfList--;
+            } else {
+                headOfList = objects.length - 1;
             }
         }
         size--;
-        objects[size] = null;
         return result;
     }
 
@@ -207,17 +207,8 @@ public class RTList<T> implements TList<T> {
 
     @Override
     public boolean contains(T item) throws IndexOutOfBoundsException {
-        for (int i = 0, j = tailOfList; i < size; i++, j++) {
-            try {
-                if (item == null ? item == objects[i] : item.equals(objects[i])) {
-                    return true;
-                }
-            } catch (IndexOutOfBoundsException e) {
-                j = -1;
-                i--;
-            }
-        }
-        return false;
+        return Arrays.stream(objects)
+                .anyMatch(x -> (item == null ? item == x : item.equals(x)));
     }
 
     @Override

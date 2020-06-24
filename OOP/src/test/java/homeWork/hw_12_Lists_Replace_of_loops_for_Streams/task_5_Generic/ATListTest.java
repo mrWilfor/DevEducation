@@ -1,7 +1,5 @@
 package homeWork.hw_12_Lists_Replace_of_loops_for_Streams.task_5_Generic;
 
-import homeWork.hw_11_Lists.task_5_Generic.ATList;
-import homeWork.hw_11_Lists.task_5_Generic.TList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -40,7 +38,7 @@ class ATListTest {
     void emptyList_getElement_IndexOfBoundException() {
         list = new ATList<>();
 
-        assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(1), "List is not empty");
     }
 
     @Test
@@ -56,7 +54,7 @@ class ATListTest {
 
         Object actual = list.get(1);
 
-        assertEquals(object2, actual);
+        assertEquals(object2, actual, "Not found element");
     }
 
     @Test
@@ -70,7 +68,7 @@ class ATListTest {
         list.add(object2);
         list.add(object3);
 
-        assertThrows(IndexOutOfBoundsException.class, () -> list.get(3));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(3), "entered index <= list.length");
     }
 
     @Test
@@ -84,7 +82,7 @@ class ATListTest {
         list.add(object2);
         list.add(object3);
 
-        assertThrows(IndexOutOfBoundsException.class, () -> list.get(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(-1), "entered index >= 0");
     }
 
     @Test
@@ -96,8 +94,8 @@ class ATListTest {
         int expectedSize = 11;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object11, list.get(10));
+        assertEquals(expectedSize, actualSize, "all elements had not adding");
+        assertEquals(object11, list.get(10), "last element had not adding");
     }
 
     @Test
@@ -118,12 +116,12 @@ class ATListTest {
         int expectedSize = 5;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object4, list.get(3));
-        assertEquals(object5, list.get(4));
+        assertEquals(expectedSize, actualSize, "all elements had not adding");
+        assertEquals(object1, list.get(0), "element had not adding ".concat(object1.toString()));
+        assertEquals(object2, list.get(1), "element had not adding ".concat(object2.toString()));
+        assertEquals(object3, list.get(2), "element had not adding ".concat(object3.toString()));
+        assertEquals(object4, list.get(3), "element had not adding ".concat(object4.toString()));
+        assertEquals(object5, list.get(4), "element had not adding ".concat(object5.toString()));
     }
 
     @Test
@@ -136,8 +134,8 @@ class ATListTest {
         int expectedSize = 1;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
+        assertEquals(expectedSize, actualSize, "all elements had not adding");
+        assertEquals(object1, list.get(0), "element had not adding ".concat(object1.toString()));
     }
 
     @Test
@@ -149,8 +147,8 @@ class ATListTest {
         int expectedSize = 1;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
-        assertNull(list.get(0));
+        assertEquals(expectedSize, actualSize, "all elements had not adding");
+        assertNull(list.get(0), "Null element had not adding");
     }
 
     @Test
@@ -183,18 +181,18 @@ class ATListTest {
         int expectedSize = 11;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object11, list.get(0));
-        assertEquals(object10, list.get(1));
-        assertEquals(object9, list.get(2));
-        assertEquals(object8, list.get(3));
-        assertEquals(object7, list.get(4));
-        assertEquals(object6, list.get(5));
-        assertEquals(object5, list.get(6));
-        assertEquals(object4, list.get(7));
-        assertEquals(object3, list.get(8));
-        assertEquals(object2, list.get(9));
-        assertEquals(object1, list.get(10));
+        assertEquals(expectedSize, actualSize, "all elements had not adding");
+        assertEquals(object11, list.get(0), "element had not adding ".concat(object11.toString()));
+        assertEquals(object10, list.get(1), "element had not adding ".concat(object10.toString()));
+        assertEquals(object9, list.get(2), "element had not adding ".concat(object9.toString()));
+        assertEquals(object8, list.get(3), "element had not adding ".concat(object8.toString()));
+        assertEquals(object7, list.get(4), "element had not adding ".concat(object7.toString()));
+        assertEquals(object6, list.get(5), "element had not adding ".concat(object6.toString()));
+        assertEquals(object5, list.get(6), "element had not adding ".concat(object5.toString()));
+        assertEquals(object4, list.get(7), "element had not adding ".concat(object4.toString()));
+        assertEquals(object3, list.get(8), "element had not adding ".concat(object3.toString()));
+        assertEquals(object2, list.get(9), "element had not adding ".concat(object2.toString()));
+        assertEquals(object1, list.get(10), "element had not adding ".concat(object1.toString()));
     }
 
     @Test
@@ -215,12 +213,12 @@ class ATListTest {
         int expectedSize = 5;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object5, list.get(0));
-        assertEquals(object4, list.get(1));
-        assertEquals(object3, list.get(2));
-        assertEquals(object2, list.get(3));
-        assertEquals(object1, list.get(4));
+        assertEquals(expectedSize, actualSize, "all elements had not adding");
+        assertEquals(object5, list.get(0), "element had not adding ".concat(object5.toString()));
+        assertEquals(object4, list.get(1), "element had not adding ".concat(object4.toString()));
+        assertEquals(object3, list.get(2), "element had not adding ".concat(object3.toString()));
+        assertEquals(object2, list.get(3), "element had not adding ".concat(object2.toString()));
+        assertEquals(object1, list.get(4), "element had not adding ".concat(object1.toString()));
     }
 
     @Test
@@ -234,8 +232,8 @@ class ATListTest {
         int actualSize = list.size();
         Object actualFirst = list.get(0);
 
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object1, actualFirst);
+        assertEquals(expectedSize, actualSize, "all elements had not adding");
+        assertEquals(object1, actualFirst, "element had not adding ".concat(object1.toString()));
     }
 
     @Test
@@ -247,7 +245,7 @@ class ATListTest {
         int expectedSize = 1;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
+        assertEquals(expectedSize, actualSize, "Null elements had not adding");
     }
 
     @Test
@@ -259,8 +257,8 @@ class ATListTest {
         int expectedSize = 11;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object11, list.get(5));
+        assertEquals(expectedSize, actualSize, "all elements had not adding");
+        assertEquals(object11, list.get(5), "element had not adding ".concat(object11.toString()));
     }
 
     @Test
@@ -281,12 +279,12 @@ class ATListTest {
         int expectedSize = 5;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
-        assertEquals(object1, list.get(0));
-        assertEquals(object2, list.get(1));
-        assertEquals(object5, list.get(2));
-        assertEquals(object3, list.get(3));
-        assertEquals(object4, list.get(4));
+        assertEquals(expectedSize, actualSize, "all elements had not adding");
+        assertEquals(object1, list.get(0), "element had not adding ".concat(object1.toString()));
+        assertEquals(object2, list.get(1), "element had not adding ".concat(object2.toString()));
+        assertEquals(object5, list.get(2), "element had not adding ".concat(object5.toString()));
+        assertEquals(object3, list.get(3), "element had not adding ".concat(object3.toString()));
+        assertEquals(object4, list.get(4), "element had not adding ".concat(object4.toString()));
     }
 
     @Test
@@ -303,7 +301,7 @@ class ATListTest {
         list.add(object3);
         list.add(object4);
 
-        assertThrows(IndexOutOfBoundsException.class, () -> list.add(5, object5));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add(5, object5), "invalid index");
     }
 
     @Test
@@ -320,7 +318,7 @@ class ATListTest {
         list.add(object3);
         list.add(object4);
 
-        assertThrows(IndexOutOfBoundsException.class, () -> list.add(-1, object5));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add(-1, object5), "invalid index");
     }
 
     @Test
@@ -341,8 +339,8 @@ class ATListTest {
         int actualSize = list.size();
         Object actualObject = list.get(2);
 
-        assertEquals(expectedSize, actualSize);
-        assertNull(actualObject);
+        assertEquals(expectedSize, actualSize, "all elements had not adding");
+        assertNull(actualObject, "Null elements had not adding");
     }
 
     @Test
@@ -353,8 +351,8 @@ class ATListTest {
         int expectedSize = 9;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
-        assertFalse(list.contains(o));
+        assertEquals(expectedSize, actualSize, "element had not deleting");
+        assertFalse(list.contains(o), "element had not deleting".concat(o.toString()));
     }
 
     @Test
@@ -365,7 +363,7 @@ class ATListTest {
         int expectedSize = 10;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
+        assertEquals(expectedSize, actualSize, "element had not deleting");
     }
 
     @Test
@@ -378,7 +376,7 @@ class ATListTest {
         int expectedSize = 0;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
+        assertEquals(expectedSize, actualSize, "element had not deleting");
     }
 
     @Test
@@ -389,24 +387,24 @@ class ATListTest {
         int expectedSize = 10;
         int actualSize = list.size();
 
-        assertEquals(expectedSize, actualSize);
+        assertEquals(expectedSize, actualSize, "Null element had not deleting");
     }
 
     @Test
     void listOf11Items_RemoveByIndex_IndexMoreThanSize() {
-        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(11));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(11), "index is valid");
     }
 
     @Test
     void listOf11Items_RemoveByIndex_IndexLessThanZero() {
-        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1), "index is valid");
     }
 
     @Test
     void emptyList_RemoveByIndex_IndexOfBoundException() {
         list = new ATList<>();
 
-        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6), "index is valid");
     }
 
     @Test
@@ -420,7 +418,7 @@ class ATListTest {
         list.add(object2);
         list.add(object3);
 
-        assertTrue(list.contains(object1));
+        assertTrue(list.contains(object1), "list is not containing item");
     }
 
     @Test
@@ -433,7 +431,7 @@ class ATListTest {
         list.add(object2);
         list.add(object3);
 
-        assertFalse(list.contains(object1));
+        assertFalse(list.contains(object1), "list is containing item");
     }
 
     @Test
@@ -456,14 +454,14 @@ class ATListTest {
         list.add(object3);
         list.add(null);
 
-        assertTrue(list.contains(null));
+        assertTrue(list.contains(null), "list is not contains null");
     }
 
     @Test
     void emptyList_isEmpty_True() {
         list = new ATList<>();
 
-        assertTrue(list.isEmpty());
+        assertTrue(list.isEmpty(), "list is empty");
     }
 
     @Test
@@ -473,7 +471,7 @@ class ATListTest {
 
         list.add(object1);
 
-        assertFalse(list.isEmpty());
+        assertFalse(list.isEmpty(), "list is not empty");
     }
 
     @Test
@@ -492,7 +490,7 @@ class ATListTest {
         list.add(object5);
         list.clear();
 
-        assertTrue(list.isEmpty());
+        assertTrue(list.isEmpty(), "list is empty");
     }
 
     @Test
@@ -515,6 +513,6 @@ class ATListTest {
         list.remove(object4);
         list.remove(object5);
 
-        assertTrue(list.isEmpty());
+        assertTrue(list.isEmpty(), "list is empty");
     }
 }

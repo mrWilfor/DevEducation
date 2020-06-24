@@ -1,16 +1,16 @@
-package homeWork.hw_12_Lists_Replace_of_loops_for_Streams.task_1_Array_List;
+package homeWork.hw_12_Lists_Replace_of_loops_for_Streams.task_5_Generic;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AListTest {
-    private AList list;
+class RTListTest {
+    private TList<Object> list;
 
     @BeforeEach
     public void initialisationOfList() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -36,14 +36,14 @@ class AListTest {
 
     @Test
     void emptyList_getElement_IndexOfBoundException() {
-        list = new AList();
+        list = new RTList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(1), "List is not empty");
     }
 
     @Test
     void fillingList_getElement_Element() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -59,7 +59,7 @@ class AListTest {
 
     @Test
     void fillingList_getElement_IndexMoreThanSizeOfList() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -73,7 +73,7 @@ class AListTest {
 
     @Test
     void fillingList_getElement_IndexLessThanZero() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -100,7 +100,7 @@ class AListTest {
 
     @Test
     void emptyList_add5Elements_ListOf5Items() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -126,7 +126,7 @@ class AListTest {
 
     @Test
     void emptyList_addOneElements_ListOfOneItems() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -140,7 +140,7 @@ class AListTest {
 
     @Test
     void emptyList_addNull_ListOfOneItems() {
-        list = new AList();
+        list = new RTList<>();
 
         list.add(null);
 
@@ -153,7 +153,7 @@ class AListTest {
 
     @Test
     void listOf10Items_addFirst_ListOf11Items() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -197,7 +197,7 @@ class AListTest {
 
     @Test
     void emptyList_addFirst5Items_ListOf5Items() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -223,7 +223,7 @@ class AListTest {
 
     @Test
     void emptyList_addFirst_ListOfOneItems() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
 
         list.addFirst(object1);
@@ -238,7 +238,7 @@ class AListTest {
 
     @Test
     void emptyList_addFirstNull_ListOfOneItems() {
-        list = new AList();
+        list = new RTList<>();
 
         list.addFirst(null);
 
@@ -263,7 +263,7 @@ class AListTest {
 
     @Test
     void listOf4Items_addByIndexOneItem_ListOf5Items() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -289,7 +289,7 @@ class AListTest {
 
     @Test
     void listOf4Items_addByIndex_IndexMoreThanSize() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -306,7 +306,7 @@ class AListTest {
 
     @Test
     void listOf4Items_addByIndex_IndexLessThanZero() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -323,7 +323,7 @@ class AListTest {
 
     @Test
     void listOf4Items_addByIndexNull_ListOf5Items() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -368,7 +368,7 @@ class AListTest {
 
     @Test
     void emptyList_RemoveOneItem_True() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
 
         list.remove(object1);
@@ -402,14 +402,14 @@ class AListTest {
 
     @Test
     void emptyList_RemoveByIndex_IndexOfBoundException() {
-        list = new AList();
+        list = new RTList<>();
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6), "index is valid");
     }
 
     @Test
     void listOf3Items_Contains_True() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -423,7 +423,7 @@ class AListTest {
 
     @Test
     void listOf3Items_Contains_False() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -436,7 +436,7 @@ class AListTest {
 
     @Test
     void emptyList_Contains_False() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
 
         assertFalse(list.contains(object1));
@@ -444,7 +444,7 @@ class AListTest {
 
     @Test
     void listOf3Items_ContainsNull_True() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -459,14 +459,14 @@ class AListTest {
 
     @Test
     void emptyList_isEmpty_True() {
-        list = new AList();
+        list = new RTList<>();
 
         assertTrue(list.isEmpty(), "list is empty");
     }
 
     @Test
     void listOfOneItem_isEmpty_False() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
 
         list.add(object1);
@@ -476,7 +476,7 @@ class AListTest {
 
     @Test
     void listOfClean_isEmpty_True() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
@@ -495,7 +495,7 @@ class AListTest {
 
     @Test
     void removeAllFromList_isEmpty_True() {
-        list = new AList();
+        list = new RTList<>();
         Object object1 = new Object();
         Object object2 = new Object();
         Object object3 = new Object();
