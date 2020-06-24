@@ -9,7 +9,6 @@ public class AList implements List {
     public AList() {
     }
 
-
     @Override
     public Object get(int index) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
@@ -97,7 +96,7 @@ public class AList implements List {
             if (index == size - 1) {
                 objects[index] = null;
             } else {
-                System.arraycopy(objects, index + 1, objects, index, size - (index));
+                System.arraycopy(objects, index + 1, objects, index, size - (index) - 1);
                 objects[size - 1] = null;
             }
             size--;

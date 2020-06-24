@@ -7,7 +7,6 @@ public class ATList<T> implements TList<T> {
     public ATList() {
     }
 
-
     @Override
     public T get(int index) throws IndexOutOfBoundsException {
         if (size == 0 || index >= size || index < 0) {
@@ -95,7 +94,7 @@ public class ATList<T> implements TList<T> {
             if (index == size - 1) {
                 objects[index] = null;
             } else {
-                System.arraycopy(objects, index + 1, objects, index, size - (index));
+                System.arraycopy(objects, index + 1, objects, index, size - (index) - 1);
                 objects[size - 1] = null;
             }
             size--;
