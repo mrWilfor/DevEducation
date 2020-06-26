@@ -17,10 +17,11 @@ public class Read_Write_Impl implements Read_Write {
             throws IOException {
         File[] files = new File(filesFromDirectory).listFiles();
         File txtFile = new File(txtFileToDirectory, fileName);
+        FileWriter fw;
 
         txtFile.createNewFile();
 
-        FileWriter fw = new FileWriter(txtFile, false);
+        fw = new FileWriter(txtFile, false);
 
         try {
             Stream.of(files).forEach(x -> {
@@ -59,10 +60,11 @@ public class Read_Write_Impl implements Read_Write {
             throws IOException {
         File[] files = new File(filesFromDirectory).listFiles();
         File txtFile = new File(txtFileToDirectory, fileName);
+        FileWriter fw;
 
         txtFile.createNewFile();
 
-        FileWriter fw = new FileWriter(txtFile, false);
+        fw = new FileWriter(txtFile, false);
 
         try {
             Stream.of(files).forEach(x -> {
@@ -70,16 +72,18 @@ public class Read_Write_Impl implements Read_Write {
                     int c;
                     ArrayList<Character> arrayChar = new ArrayList<>();
                     FileReader fr = new FileReader(x);
+                    char[] newArrayChar;
+                    String result;
 
                     while ((c = fr.read()) != -1) {
                         arrayChar.add((char) c);
                     }
-                    char[] newArrayChar = new char[arrayChar.size()];
+                    newArrayChar = new char[arrayChar.size()];
 
                     for (int i = 0; i < newArrayChar.length; i++) {
                         newArrayChar[i] = arrayChar.get(i);
                     }
-                    String result = new String(newArrayChar);
+                    result = new String(newArrayChar);
 
                     fw.write(result);
                     fr.close();
