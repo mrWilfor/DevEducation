@@ -4,10 +4,11 @@ import java.io.File;
 import java.io.IOException;
 
 public interface Read_Write {
-    File listOfFilesFromDirToTxtFile(String filesFromDirectory, String txtFileToDirectory,
-                                     String fileName) throws IOException;
+    File listOfFilesFromDirToTxtFile(String filesFromDirectory, String txtFileToDirectory, String fileName)
+            throws IOException;
 
     void copyAllFilesFromDirToDir(String filesFromDirectory, String filesToDirectory);
 
-    File copyFewFilesIntoOneFile(String filesFromDirectory, String txtFileToDirectory, String fileName) throws IOException;
+    File copyFewFilesIntoOneFile(String filesFromDirectory, String txtFileToDirectory, String fileName)
+            throws IOException;
 }
