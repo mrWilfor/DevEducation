@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class Read_Write_Impl implements Read_Write {
@@ -70,9 +71,9 @@ public class Read_Write_Impl implements Read_Write {
             Stream.of(files).forEach(x -> {
                 try {
                     int c;
-                    ArrayList<Character> arrayChar = new ArrayList<>();
-                    FileReader fr = new FileReader(x);
                     char[] newArrayChar;
+                    List<Character> arrayChar = new ArrayList<>();
+                    FileReader fr = new FileReader(x);
                     String result;
 
                     while ((c = fr.read()) != -1) {
