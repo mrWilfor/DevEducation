@@ -75,7 +75,7 @@ class Read_WriteTest {
     public void fewTxtFiles_copyFewFilesIntoOneFile_CreatedTxtFile() throws IOException {
         File txtFile = rw.copyFewFilesIntoOneFile(COPIED_TXT_PATH, COPIED_TXT_PATH, "shortHistoryOfGroup");
 
-        assertTrue(txtFile.exists());
+        assertTrue(txtFile.exists(), "File have not been created");
     }
 
     @Test
@@ -83,6 +83,6 @@ class Read_WriteTest {
         File txtFile = rw.copyFewFilesIntoOneFile(COPIED_TXT_PATH.concat("\\files"), COPIED_TXT_PATH,
                 "shortHistoryOfGroup_2");
 
-        assertFalse(txtFile.exists());
+        assertFalse(txtFile.exists(),"File have been created");
     }
 }
