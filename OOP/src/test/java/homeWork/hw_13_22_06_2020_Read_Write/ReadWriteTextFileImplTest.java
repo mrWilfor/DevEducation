@@ -1,5 +1,6 @@
 package homeWork.hw_13_22_06_2020_Read_Write;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -9,19 +10,26 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReadWriteTextFileImplTest {
-    ReadWriteTextFile readWriteTextFile = new ReadWriteTextFileImpl();
+    private ReadWriteTextFile readWriteTextFile = new ReadWriteTextFileImpl();
+    private static ConfigReader configReader;
+
+    @BeforeAll
+    static void init() throws IOException {
+        configReader =
+                new ConfigReader("src/test/java/homeWork/hw_13_22_06_2020_Read_Write/config.properties");
+    }
 
     @Test
     void textFile_ReadSortDSCSaveIntoNewFile_NewFile() throws IOException {
         readWriteTextFile.readSortByLengthWrite(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/Begining.txt",
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/NewFile.txt",
+                configReader.getSource(),
+                configReader.getProps("props.toNewFile"),
                 SequenceComparable.DSC
         );
 
         String expected = "How do you do?\nWhats up man?\nHello!";
         String actual = readWriteTextFile.readFile(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/NewFile.txt");
+                configReader.getProps("props.toNewFile"));
 
         assertEquals(expected, actual);
     }
@@ -29,32 +37,32 @@ class ReadWriteTextFileImplTest {
     @Test
     void textFile_ReadSortASCSaveIntoNewFile_NewFile() throws IOException {
         readWriteTextFile.readSortByLengthWrite(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/Begining.txt",
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/NewFile.txt",
+                configReader.getSource(),
+                configReader.getProps("props.toNewFile"),
                 SequenceComparable.ASC
         );
 
         String expected = "Hello!\nWhats up man?\nHow do you do?";
         String actual = readWriteTextFile.readFile(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/NewFile.txt");
+                configReader.getProps("props.toNewFile"));
 
         assertEquals(expected, actual, "NewFile.txt not contain expecting text");
     }
 
     @Test
     void nothing_ReadSortSaveIntoNewFile_FileNotFoundException(){
-        assertThrows(FileNotFoundException.class, () -> readWriteTextFile.readSortByLengthWrite(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/Begining.txt",
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/NewFile.txt",
-                SequenceComparable.DSC),
-                "original file is had not found");
+        assertThrows(
+                FileNotFoundException.class,
+                () -> readWriteTextFile.readSortByLengthWrite(configReader.getSource().concat("/text/"),
+                        configReader.getProps("props.toNewFile"), SequenceComparable.DSC),
+                "original file is had not found"
+        );
     }
 
     @Test
     void textFile_DivisionTextByFileByFirstChar_NewFiles() throws IOException {
-        readWriteTextFile.divisionTextByFileByFirstChar(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/Begining.txt",
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/", SequenceComparable.ASC);
+        readWriteTextFile.divisionTextByFileByFirstChar(configReader.getSource(), configReader.getDestination(),
+                SequenceComparable.ASC);
 
         String expected_d = "do do";
         String expected_h = "How Hello";
@@ -62,19 +70,19 @@ class ReadWriteTextFileImplTest {
         String expected_u = "up";
         String expected_w = "Whats";
         String expected_y = "you";
-//
+
         String actual_d = readWriteTextFile.readFile(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/d.txt");
+                configReader.getDestination().concat("d.txt"));
         String actual_h = readWriteTextFile.readFile(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/h.txt");
+                configReader.getDestination().concat("h.txt"));
         String actual_m = readWriteTextFile.readFile(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/m.txt");
+                configReader.getDestination().concat("m.txt"));
         String actual_u = readWriteTextFile.readFile(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/u.txt");
+                configReader.getDestination().concat("u.txt"));
         String actual_w = readWriteTextFile.readFile(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/w.txt");
+                configReader.getDestination().concat("w.txt"));
         String actual_y = readWriteTextFile.readFile(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/y.txt");
+                configReader.getDestination().concat("y.txt"));
 
         assertEquals(expected_d, actual_d, "File not contain expected text");
         assertEquals(expected_h, actual_h, "File not contain expected text");
@@ -88,24 +96,23 @@ class ReadWriteTextFileImplTest {
     void nothing_DivisionTextByFileByFirstChar_FileNotFoundException(){
         assertThrows(
                 FileNotFoundException.class,
-                () -> readWriteTextFile.divisionTextByFileByFirstChar(
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/Begining.txt",
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/", SequenceComparable.ASC),
+                () -> readWriteTextFile.divisionTextByFileByFirstChar(configReader.getSource().concat("/text/"),
+                        configReader.getDestination(), SequenceComparable.ASC),
                 "original file is had not found"
                 );
     }
 
     @Test
     void fewFiles_copyFewFiles_CreateCopyingOfFiles() {
-        readWriteTextFile.copyFewFiles("src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/",
-                "src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/copyFiles/");
+        readWriteTextFile.copyFewFiles(configReader.getProps("path.fromForCopyFiles"),
+                configReader.getProps("path.toForCopyFiles"));
 
-        File file1 = new File("src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/copyFiles/1.txt");
-        File file2 = new File("src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/copyFiles/2.txt");
-        File file3 = new File("src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/copyFiles/3.txt");
-        File file4 = new File("src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/copyFiles/4.txt");
-        File file5 = new File("src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/copyFiles/5.txt");
-        File file6 = new File("src/test/java/homeWork/hw_13_22_06_2020_Read_Write/txtFiles/copyFiles/6.txt");
+        File file1 = new File(configReader.getProps("path.toForCopyFiles").concat("1.txt"));
+        File file2 = new File(configReader.getProps("path.toForCopyFiles").concat("2.txt"));
+        File file3 = new File(configReader.getProps("path.toForCopyFiles").concat("3.txt"));
+        File file4 = new File(configReader.getProps("path.toForCopyFiles").concat("4.txt"));
+        File file5 = new File(configReader.getProps("path.toForCopyFiles").concat("5.txt"));
+        File file6 = new File(configReader.getProps("path.toForCopyFiles").concat("6.txt"));
 
         assertTrue(file1.isFile());
         assertTrue(file2.isFile());

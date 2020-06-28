@@ -1,4 +1,4 @@
-package homeWork.hw_13_22_06_2020_Read_Write;
+package homeWork.hw_14_24_06_2020_Read_Write_Part_2;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class ConfigReader {
     }
 
     public String getDestination() {
-        return properties.getProperty("path.toNewFiles");
+        return properties.getProperty("path.toForCopyFiles");
     }
 
     public String getProps(String propsName) {

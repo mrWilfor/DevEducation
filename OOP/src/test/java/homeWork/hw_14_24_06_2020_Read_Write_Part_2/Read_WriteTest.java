@@ -1,8 +1,7 @@
 package homeWork.hw_14_24_06_2020_Read_Write_Part_2;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,14 +9,24 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class Read_WriteTest {
-    String ABSOLUTE_PATH = "C:\\Users\\HP 1406945\\IdeaProjects\\DevEducation\\OOP\\src\\test\\java\\" +
-            "homeWork\\hw_14_24_06_2020_Read_Write_Part_2\\files";
-    String COPIED_PATH = "C:\\Users\\HP 1406945\\IdeaProjects\\DevEducation\\OOP\\src\\test\\java\\" +
-            "homeWork\\hw_14_24_06_2020_Read_Write_Part_2\\copyFiles";
-    String COPIED_TXT_PATH = "C:\\Users\\HP 1406945\\IdeaProjects\\DevEducation\\OOP\\src\\test\\java\\" +
-            "homeWork\\hw_14_24_06_2020_Read_Write_Part_2\\txtFiles";
     Read_Write rw = new Read_Write_Impl();
+    private static ConfigReader configReader;
+    private static String ABSOLUTE_PATH;
+    private static String COPIED_PATH;
+    private static String COPIED_TXT_PATH;
+
+    @BeforeAll
+    static void init() throws IOException {
+        configReader = new ConfigReader("C:\\Users\\HP 1406945\\IdeaProjects\\DevEducation\\OOP\\" +
+                "src\\test\\java\\homeWork\\hw_14_24_06_2020_Read_Write_Part_2\\config.properties");
+        ABSOLUTE_PATH = configReader.getSource();
+        COPIED_PATH = configReader.getDestination();
+        COPIED_TXT_PATH = configReader.getProps("props.toTxtFiles");
+    }
+
 
     @Test
     public void fewFiles_InfoAboutFilesFromDirToTxtFile_FileIsExist() throws IOException {
@@ -81,15 +90,7 @@ class Read_WriteTest {
 
         try (FileReader fr = new FileReader(txtFile); BufferedReader reader = new BufferedReader(fr)) {
             String result = reader.readLine();
-//            assertEquals("AaBbCc", result);
-
-            char[] one = result.toCharArray();
-            char[] two = "AaBbCc".toCharArray();
-
-            for (int i = 0; i < one.length; i++) {
-                System.out.println(one[i] + (int) one[i]);
-//                System.out.println(two[i] + (int) two[i]);
-            }
+            assertEquals("AaBbCc", result);
         }
     }
 
