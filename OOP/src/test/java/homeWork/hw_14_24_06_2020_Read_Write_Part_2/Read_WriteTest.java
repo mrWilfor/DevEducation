@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.stream.Stream;
 
@@ -18,31 +20,31 @@ class Read_WriteTest {
     Read_Write rw = new Read_Write_Impl();
 
     @Test
-    public void fewFiles_ListOfFilesFromDirToTxtFile_FileIsExist() throws IOException {
-        File result = rw.listOfFilesFromDirToTxtFile(ABSOLUTE_PATH, ABSOLUTE_PATH, "text1.txt");
+    public void fewFiles_InfoAboutFilesFromDirToTxtFile_FileIsExist() throws IOException {
+        File result = rw.infoAboutFilesFromDirToTxtFile(ABSOLUTE_PATH, "text1.txt");
 
-        assertTrue(result.exists(), "Txt file is not exist");
+        assertTrue(result.isFile(), "Txt file is not exist");
     }
 
     @Test
-    public void fewFilesAndNotExistDir_ListOfFilesFromDirToTxtFile_IOException() {
+    public void fewFilesAndNotExistDir_InfoAboutFilesFromDirToTxtFile_IOException() {
         assertThrows(IOException.class,
-                () -> rw.listOfFilesFromDirToTxtFile(ABSOLUTE_PATH, ABSOLUTE_PATH.concat("\\txtFile"),
+                () -> rw.infoAboutFilesFromDirToTxtFile(ABSOLUTE_PATH, ABSOLUTE_PATH.concat("\\txtFile"),
                         "text2.txt"),
                 "Folder of destination is exist!");
     }
 
     @Test
-    public void notExistDir_ListOfFilesFromDirToTxtFile_TxtFileNotCreated() throws IOException {
-        File result = rw.listOfFilesFromDirToTxtFile(ABSOLUTE_PATH.concat("\\txtFile"), ABSOLUTE_PATH,
+    public void notExistDir_InfoAboutFilesFromDirToTxtFile_TxtFileNotCreated() throws IOException {
+        File result = rw.infoAboutFilesFromDirToTxtFile(ABSOLUTE_PATH.concat("\\txtFile"), ABSOLUTE_PATH,
                 "text3.txt");
 
-        assertFalse(result.exists(), "Txt file was creating");
+        assertFalse(result.isFile(), "Txt file was creating");
     }
 
     @Test
     public void fewFiles_copyAllFilesFromDirToDir_FilesCopied() {
-        rw.copyAllFilesFromDirToDir(ABSOLUTE_PATH, COPIED_PATH);
+        rw.copyAllFilesPathFromPathTo(ABSOLUTE_PATH, COPIED_PATH);
 
         File[] copiedFiles = new File(COPIED_PATH).listFiles();
 
@@ -53,7 +55,7 @@ class Read_WriteTest {
 
     @Test
     public void notExistDirDestination_copyAllFilesFromDirToDir_FilesCopied() {
-        rw.copyAllFilesFromDirToDir(ABSOLUTE_PATH, COPIED_PATH.concat("\\copyFiles"));
+        rw.copyAllFilesPathFromPathTo(ABSOLUTE_PATH, COPIED_PATH.concat("\\copyFiles"));
 
         File[] copiedFiles = new File(COPIED_PATH.concat("\\copyFiles")).listFiles();
 
@@ -66,23 +68,36 @@ class Read_WriteTest {
     public void notExistDir_copyAllFilesFromDirToDir_NullPointerException() {
         assertThrows(
                 NullPointerException.class,
-                () -> rw.copyAllFilesFromDirToDir(ABSOLUTE_PATH.concat("\\files"), COPIED_PATH),
+                () -> rw.copyAllFilesPathFromPathTo(ABSOLUTE_PATH.concat("\\files"), COPIED_PATH),
                 "This dir is exist"
         );
     }
 
     @Test
-    public void fewTxtFiles_copyFewFilesIntoOneFile_CreatedTxtFile() throws IOException {
-        File txtFile = rw.copyFewFilesIntoOneFile(COPIED_TXT_PATH, COPIED_TXT_PATH, "shortHistoryOfGroup");
+    public void fewTxtFiles_copyFewTxtFilesIntoOneTxtFile_CreatedTxtFile() throws IOException {
+        File txtFile = rw.copyFewTxtFilesIntoOneTxtFile(COPIED_TXT_PATH, "AaBbCc.txt");
 
-        assertTrue(txtFile.exists(), "File have not been created");
+        assertTrue(txtFile.isFile(), "File have not been created");
+
+        try (FileReader fr = new FileReader(txtFile); BufferedReader reader = new BufferedReader(fr)) {
+            String result = reader.readLine();
+//            assertEquals("AaBbCc", result);
+
+            char[] one = result.toCharArray();
+            char[] two = "AaBbCc".toCharArray();
+
+            for (int i = 0; i < one.length; i++) {
+                System.out.println(one[i] + (int) one[i]);
+//                System.out.println(two[i] + (int) two[i]);
+            }
+        }
     }
 
     @Test
-    public void notExistDir_copyFewFilesIntoOneFile_NotCreatedTxtFile() throws IOException {
-        File txtFile = rw.copyFewFilesIntoOneFile(COPIED_TXT_PATH.concat("\\files"), COPIED_TXT_PATH,
+    public void notExistDir_copyFewTxtFilesIntoOneTxtFile_NotCreatedTxtFile() throws IOException {
+        File txtFile = rw.copyFewTxtFilesIntoOneTxtFile(COPIED_TXT_PATH.concat("\\files"), COPIED_TXT_PATH,
                 "shortHistoryOfGroup_2");
 
-        assertFalse(txtFile.exists(),"File have been created");
+        assertFalse(txtFile.isFile(), "File have been created");
     }
 }

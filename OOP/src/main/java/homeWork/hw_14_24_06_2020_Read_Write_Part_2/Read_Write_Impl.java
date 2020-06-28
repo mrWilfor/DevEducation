@@ -1,33 +1,22 @@
 package homeWork.hw_14_24_06_2020_Read_Write_Part_2;
 
-import org.apache.commons.io.FileUtils;
-
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.*;
 import java.util.Date;
-import java.util.List;
 import java.util.stream.Stream;
 
 public class Read_Write_Impl implements Read_Write {
 
     @Override
-    public File listOfFilesFromDirToTxtFile(String filesFromDirectory, String txtFileToDirectory, String fileName)
+    public File infoAboutFilesFromDirToTxtFile(String pathFrom, String pathTo, String fileName)
             throws IOException {
-        File[] files = new File(filesFromDirectory).listFiles();
-        File txtFile = new File(txtFileToDirectory, fileName);
-        FileWriter fw;
+        File[] files = new File(pathFrom).listFiles();
+        File txtFile = new File(pathTo, fileName);
 
-        txtFile.createNewFile();
-
-        fw = new FileWriter(txtFile, false);
-
-        try {
+        try (FileWriter fw = new FileWriter(txtFile, false)) {
             Stream.of(files).forEach(x -> {
                 try {
-                    fw.write(x.getAbsolutePath().concat(" | ").concat(x.getName()).concat(" | ")
+                    fw.write(x.getAbsolutePath().concat(" | ")
+                            .concat(x.getName()).concat(" | ")
                             .concat(new Date(x.lastModified()).toString()).concat("\n"));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -35,21 +24,27 @@ public class Read_Write_Impl implements Read_Write {
             });
         } catch (NullPointerException e) {
             System.out.println("Folder is empty");
-            fw.close();
             txtFile.delete();
         }
-
-        fw.close();
         return txtFile;
     }
 
     @Override
-    public void copyAllFilesFromDirToDir(String filesFromDirectory, String filesToDirectory) {
-        File[] files = new File(filesFromDirectory).listFiles();
+    public File infoAboutFilesFromDirToTxtFile(String path, String fileName) throws IOException {
+        return infoAboutFilesFromDirToTxtFile(path, path, fileName);
+    }
+
+    @Override
+    public void copyAllFilesPathFromPathTo(String pathFrom, String pathTo) {
+        File[] files = new File(pathFrom).listFiles();
 
         Stream.of(files).forEach(x -> {
-            try {
-                FileUtils.copyFile(x, new File(filesToDirectory.concat("\\").concat(x.getName())));
+            try (FileInputStream fileInputStream = new FileInputStream(x);
+                 FileOutputStream fileOutputStream = new FileOutputStream(pathTo.concat("\\").concat(x.getName()))) {
+                byte[] bufferArray = new byte[fileInputStream.available()];
+
+                fileInputStream.read(bufferArray, 0, bufferArray.length);
+                fileOutputStream.write(bufferArray, 0, bufferArray.length);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -57,48 +52,35 @@ public class Read_Write_Impl implements Read_Write {
     }
 
     @Override
-    public File copyFewFilesIntoOneFile(String filesFromDirectory, String txtFileToDirectory, String fileName)
-            throws IOException {
-        File[] files = new File(filesFromDirectory).listFiles();
-        File txtFile = new File(txtFileToDirectory, fileName);
-        FileWriter fw;
+    public File copyFewTxtFilesIntoOneTxtFile(String pathFrom, String pathTo, String fileName) throws IOException {
+        File[] files = new File(pathFrom).listFiles();
+        File txtFile = new File(pathTo, fileName);
 
-        txtFile.createNewFile();
-
-        fw = new FileWriter(txtFile, false);
-
-        try {
+        try (FileWriter fw = new FileWriter(txtFile, false)) {
             Stream.of(files).forEach(x -> {
-                try {
-                    int c;
-                    char[] newArrayChar;
-                    List<Character> arrayChar = new ArrayList<>();
-                    FileReader fr = new FileReader(x);
-                    String result;
+                try (FileReader fr = new FileReader(x);
+                     BufferedReader br = new BufferedReader(fr)) {
+                    String bufferString;
+                    StringBuilder result = new StringBuilder();
 
-                    while ((c = fr.read()) != -1) {
-                        arrayChar.add((char) c);
+                    while ((bufferString = br.readLine()) != null) {
+                        result.append(bufferString);
                     }
-                    newArrayChar = new char[arrayChar.size()];
-
-                    for (int i = 0; i < newArrayChar.length; i++) {
-                        newArrayChar[i] = arrayChar.get(i);
-                    }
-                    result = new String(newArrayChar);
-
-                    fw.write(result);
-                    fr.close();
+                    fw.write(result.toString());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             });
         } catch (NullPointerException e) {
             System.out.println("Folder is empty");
-            fw.close();
             txtFile.delete();
         }
 
-        fw.close();
         return txtFile;
+    }
+
+    @Override
+    public File copyFewTxtFilesIntoOneTxtFile(String path, String fileName) throws IOException {
+        return copyFewTxtFilesIntoOneTxtFile(path, path, fileName);
     }
 }

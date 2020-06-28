@@ -1,104 +1,19 @@
 package homeWork.hw_13_22_06_2020_Read_Write;
 
-import java.io.*;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.stream.Stream;
+import java.io.FileNotFoundException;
+import java.util.List;
 
-public class ReadWriteTextFile {
-    public static void readSortByLengthWrite(String fileFrom, String fileTo, SequenceComparable sc)
-            throws IOException {
-        String bufferString;
-        String[] arrayForSort;
+public interface ReadWriteTextFile {
+    void readSortByLengthWrite(String pathFrom, String pathTo, SequenceComparable sc) throws FileNotFoundException;
 
-        bufferString = deSerializing(fileFrom);
+    void divisionTextByFileByFirstChar(String pathFrom, String pathTo, SequenceComparable sc)
+            throws FileNotFoundException;
 
-        arrayForSort = bufferString.split("\n");
+    void copyFewFiles(String pathFrom, String pathTo);
 
-        compareStringByLength(arrayForSort, sc);
+    void compareStringByLength(List<String> listForSort, SequenceComparable sc);
 
-        serializing(fileTo, String.join("\n", arrayForSort));
-    }
+    void compareStringByFirstChar(List<String> listForSort, SequenceComparable sc);
 
-    public static void divisionTextByFileByFirstChar(String fileFrom, String destination, String separator,
-                                                     SequenceComparable sc) throws IOException {
-        String bufferString;
-        String[] arrayForSort;
-
-        bufferString = deSerializing(fileFrom);
-        arrayForSort = bufferString.replaceAll("[.,!?]", "")
-                .replace("\n", " ")
-                .split(separator);
-
-        compareStringByFirstChar(arrayForSort, sc);
-
-        Arrays.stream(arrayForSort)
-                .map(x -> x.toLowerCase().charAt(0))
-                .distinct()
-                .forEach(x -> {
-                    try {
-                        serializing(destination + x + ".txt",
-                                Arrays.stream(arrayForSort)
-                                        .filter(y -> x == y.toLowerCase().charAt(0))
-                                        .reduce("", (f, i) -> f + i + " "));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
-    }
-
-    public static void copyFewFiles(String destination, String... fileNames) {
-        Queue<Integer> names = new LinkedList<>();
-
-        Stream.generate(() -> (int) (Math.random() * (fileNames.length + 1) + 1))
-                .distinct()
-                .limit(fileNames.length)
-                .forEach(names::add);
-
-        Arrays.stream(fileNames)
-                .forEach(x -> {
-                    try {
-                        serializing(destination + names.poll() + ".txt", deSerializing(x));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
-    }
-
-    public static void serializing(String fileName, String fileValue) throws IOException {
-        FileOutputStream fileOut = new FileOutputStream(fileName);
-        ObjectOutputStream out = new ObjectOutputStream(fileOut);
-        out.writeUTF(fileValue);
-        out.close();
-        fileOut.close();
-        System.out.printf("Serialized data is saved in %s", fileName);
-    }
-
-    public static String deSerializing(String fileName) throws IOException {
-        String result;
-        FileInputStream fileInput = new FileInputStream(fileName);
-        ObjectInputStream in = new ObjectInputStream(fileInput);
-        result = in.readUTF();
-        in.close();
-        fileInput.close();
-
-        return result;
-    }
-
-    public static void compareStringByLength(String[] arrayForSort, SequenceComparable sc) {
-        if (sc == SequenceComparable.ASC) {
-            Arrays.sort(arrayForSort, (x, y) -> Integer.compare(x.length(), y.length()));
-        } else if (sc == SequenceComparable.DSC) {
-            Arrays.sort(arrayForSort, (x, y) -> Integer.compare(y.length(), x.length()));
-        }
-    }
-
-    public static void compareStringByFirstChar(String[] arrayForSort, SequenceComparable sc) {
-        if (sc == SequenceComparable.ASC) {
-            Arrays.sort(arrayForSort, (x, y) -> x.compareTo(y));
-        } else if (sc == SequenceComparable.DSC) {
-            Arrays.sort(arrayForSort, (x, y) -> y.compareTo(x));
-        }
-    }
+    String readFile(String pathFrom) throws FileNotFoundException;
 }

@@ -1,4 +1,4 @@
-C:\Users\HP 1406945\IdeaProjects\DevEducation\OOP\src\test\java\homeWork\hw_14_24_06_2020_Read_Write_Part_2\files\13-linkin_park-numb_(zvukoff.ru).mp3 | 13-linkin_park-numb_(zvukoff.ru).mp3 | Thu Jun 25 20:36:42 EEST 2020
-C:\Users\HP 1406945\IdeaProjects\DevEducation\OOP\src\test\java\homeWork\hw_14_24_06_2020_Read_Write_Part_2\files\LPLogo-black.svg.png | LPLogo-black.svg.png | Thu Jun 25 20:37:17 EEST 2020
-C:\Users\HP 1406945\IdeaProjects\DevEducation\OOP\src\test\java\homeWork\hw_14_24_06_2020_Read_Write_Part_2\files\LP_History_of_Group.txt | LP_History_of_Group.txt | Thu Jun 25 20:41:07 EEST 2020
-C:\Users\HP 1406945\IdeaProjects\DevEducation\OOP\src\test\java\homeWork\hw_14_24_06_2020_Read_Write_Part_2\files\text1.txt | text1.txt | Fri Jun 26 09:05:04 EEST 2020
+C:\Users\HP 1406945\IdeaProjects\DevEducation\OOP\src\test\java\homeWork\hw_14_24_06_2020_Read_Write_Part_2\files\13-linkin_park-numb_(zvukoff.ru).mp3 | 13-linkin_park-numb_(zvukoff.ru).mp3 | Sat Jun 27 08:58:57 EEST 2020
+C:\Users\HP 1406945\IdeaProjects\DevEducation\OOP\src\test\java\homeWork\hw_14_24_06_2020_Read_Write_Part_2\files\LPLogo-black.svg.png | LPLogo-black.svg.png | Sat Jun 27 08:58:57 EEST 2020
+C:\Users\HP 1406945\IdeaProjects\DevEducation\OOP\src\test\java\homeWork\hw_14_24_06_2020_Read_Write_Part_2\files\LP_History_of_Group.txt | LP_History_of_Group.txt | Sat Jun 27 08:58:57 EEST 2020
+C:\Users\HP 1406945\IdeaProjects\DevEducation\OOP\src\test\java\homeWork\hw_14_24_06_2020_Read_Write_Part_2\files\text1.txt | text1.txt | Sat Jun 27 15:40:56 EEST 2020
