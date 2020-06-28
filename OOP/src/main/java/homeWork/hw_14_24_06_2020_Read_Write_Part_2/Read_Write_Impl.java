@@ -1,7 +1,10 @@
 package homeWork.hw_14_24_06_2020_Read_Write_Part_2;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class Read_Write_Impl implements Read_Write {
@@ -13,15 +16,22 @@ public class Read_Write_Impl implements Read_Write {
         File txtFile = new File(pathTo, fileName);
 
         try (FileWriter fw = new FileWriter(txtFile, false)) {
+            List<StringBuilder> paths = new ArrayList<>();
+            List<StringBuilder> names = new ArrayList<>();
+            List<String> date = new ArrayList<>();
+
             Stream.of(files).forEach(x -> {
-                try {
-                    fw.write(x.getAbsolutePath().concat(" | ")
-                            .concat(x.getName()).concat(" | ")
-                            .concat(new Date(x.lastModified()).toString()).concat("\n"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                paths.add(new StringBuilder(x.getAbsolutePath()));
+                names.add(new StringBuilder(x.getName()));
+                date.add(new Date(x.lastModified()).toString());
             });
+            String result = verticalTab(paths, names, date);
+
+            try {
+                fw.write(result);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } catch (NullPointerException e) {
             System.out.println("Folder is empty");
             txtFile.delete();
@@ -82,5 +92,31 @@ public class Read_Write_Impl implements Read_Write {
     @Override
     public File copyFewTxtFilesIntoOneTxtFile(String path, String fileName) throws IOException {
         return copyFewTxtFilesIntoOneTxtFile(path, path, fileName);
+    }
+
+    @Override
+    public String verticalTab(List<StringBuilder> paths, List<StringBuilder> names, List<String> date) {
+        int lengthMaxPath = paths.stream().max(Comparator.comparingInt(x -> x.length())).get().length();
+        paths.stream().forEach(x -> {
+            while (x.length() != lengthMaxPath) {
+                x.append(" ");
+            }
+        });
+
+        int lengthMaxName = names.stream().max(Comparator.comparingInt(x -> x.length())).get().length();
+        names.stream().forEach(x -> {
+            while (x.length() != lengthMaxName) {
+                x.append(" ");
+            }
+        });
+
+        StringBuilder result = new StringBuilder();
+
+        Stream.iterate(0, x -> x + 1).limit(paths.size()).forEach(x -> {
+            result.append(paths.get(x)).append(" | ")
+                    .append(names.get(x)).append(" | ")
+                    .append(date.get(x)).append("\n");
+        });
+        return result.toString();
     }
 }
