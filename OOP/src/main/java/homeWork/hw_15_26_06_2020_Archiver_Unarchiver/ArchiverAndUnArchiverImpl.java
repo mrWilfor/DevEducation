@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -16,6 +17,8 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
         }
 
         try (ZipOutputStream zout = new ZipOutputStream(new FileOutputStream(pathTo.concat("\\").concat(name)))) {
+            zout.setLevel(Deflater.BEST_COMPRESSION);
+
             File file = new File(pathFrom);
 
             if (file.isDirectory()) {
