@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import homeWork.hw_15_26_06_2020_Part_2_Config_Reader.ConfigReader;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,20 +17,22 @@ class ReadWriteTextFileImplTest {
     @BeforeAll
     static void init() throws IOException {
         configReader =
-                new ConfigReader("src/test/java/homeWork/hw_13_22_06_2020_Read_Write/config.properties");
+                new ConfigReader("C:\\Users\\HP 1406945\\IdeaProjects\\DevEducation\\OOP\\src\\main\\" +
+                        "java\\homeWork\\hw_15_26_06_2020_Part_2_Config_Reader\\config.properties",
+                        "path.from_hw_13", "path.toNewFiles_hw_13");
     }
 
     @Test
     void textFile_ReadSortDSCSaveIntoNewFile_NewFile() throws IOException {
         readWriteTextFile.readSortByLengthWrite(
                 configReader.getSource(),
-                configReader.getProps("props.toNewFile"),
+                configReader.getProps("props.toNewFile_hw_13"),
                 SequenceComparable.DSC
         );
 
         String expected = "How do you do?\nWhats up man?\nHello!";
         String actual = readWriteTextFile.readFile(
-                configReader.getProps("props.toNewFile"));
+                configReader.getProps("props.toNewFile_hw_13"));
 
         assertEquals(expected, actual);
     }
@@ -38,13 +41,13 @@ class ReadWriteTextFileImplTest {
     void textFile_ReadSortASCSaveIntoNewFile_NewFile() throws IOException {
         readWriteTextFile.readSortByLengthWrite(
                 configReader.getSource(),
-                configReader.getProps("props.toNewFile"),
+                configReader.getProps("props.toNewFile_hw_13"),
                 SequenceComparable.ASC
         );
 
         String expected = "Hello!\nWhats up man?\nHow do you do?";
         String actual = readWriteTextFile.readFile(
-                configReader.getProps("props.toNewFile"));
+                configReader.getProps("props.toNewFile_hw_13"));
 
         assertEquals(expected, actual, "NewFile.txt not contain expecting text");
     }
@@ -54,7 +57,7 @@ class ReadWriteTextFileImplTest {
         assertThrows(
                 FileNotFoundException.class,
                 () -> readWriteTextFile.readSortByLengthWrite(configReader.getSource().concat("/text/"),
-                        configReader.getProps("props.toNewFile"), SequenceComparable.DSC),
+                        configReader.getProps("props.toNewFile_hw_13"), SequenceComparable.DSC),
                 "original file is had not found"
         );
     }
@@ -103,16 +106,20 @@ class ReadWriteTextFileImplTest {
     }
 
     @Test
-    void fewFiles_copyFewFiles_CreateCopyingOfFiles() {
-        readWriteTextFile.copyFewFiles(configReader.getProps("path.fromForCopyFiles"),
-                configReader.getProps("path.toForCopyFiles"));
+    void fewFiles_copyFewFiles_CreateCopyingOfFiles() throws FileNotFoundException {
+        readWriteTextFile.divisionTextByFileByFirstChar(configReader.getSource(), configReader.getDestination(),
+                SequenceComparable.ASC);
+        readWriteTextFile.copyFewFiles(configReader.getProps("path.fromForCopyFiles_hw_13"),
+                configReader.getProps("path.toForCopyFiles_hw_13"));
 
-        File file1 = new File(configReader.getProps("path.toForCopyFiles").concat("1.txt"));
-        File file2 = new File(configReader.getProps("path.toForCopyFiles").concat("2.txt"));
-        File file3 = new File(configReader.getProps("path.toForCopyFiles").concat("3.txt"));
-        File file4 = new File(configReader.getProps("path.toForCopyFiles").concat("4.txt"));
-        File file5 = new File(configReader.getProps("path.toForCopyFiles").concat("5.txt"));
-        File file6 = new File(configReader.getProps("path.toForCopyFiles").concat("6.txt"));
+        File file1 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("1.txt"));
+        File file2 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("2.txt"));
+        File file3 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("3.txt"));
+        File file4 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("4.txt"));
+        File file5 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("5.txt"));
+        File file6 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("6.txt"));
+        File file7 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("7.txt"));
+        File file8 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("8.txt"));
 
         assertTrue(file1.isFile());
         assertTrue(file2.isFile());
@@ -120,5 +127,7 @@ class ReadWriteTextFileImplTest {
         assertTrue(file4.isFile());
         assertTrue(file5.isFile());
         assertTrue(file6.isFile());
+        assertTrue(file7.isFile());
+        assertTrue(file8.isFile());
     }
 }
