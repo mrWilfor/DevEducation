@@ -1,45 +1,47 @@
 package homeWork.hw_15_26_06_2020_Part_2_Config_Reader;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.stream.Stream;
 
 public class ConfigReader {
-    private String pathToConfigFile;
-    private String source;
-    private String destination;
+    private String textOfConfigFile;
 
-    public ConfigReader(String pathToConfigFile, String source, String destination) {
-        this.pathToConfigFile = pathToConfigFile;
-        this.source = source;
-        this.destination = destination;
+    public ConfigReader(String resourceName) {
+        initialisation("/".concat(resourceName));
     }
 
     public String getSource() {
-        return getProps(source);
+        return getProps("path.from");
     }
 
     public String getDestination() {
-        return getProps(destination);
+        return getProps("path.to");
     }
 
     public String getProps(String propsName) {
-        File configFile = new File(pathToConfigFile);
-        String result = null;
+        String[] arrayStrings = textOfConfigFile.split("\r\n");
 
-        try (FileReader fr = new FileReader(configFile); BufferedReader reader = new BufferedReader(fr)) {
-            String bufferString;
+        String result = Stream.of(arrayStrings)
+                .filter(stringLine -> stringLine.contains(propsName))
+                .findFirst().get();
 
-            while ((bufferString = reader.readLine()) != null) {
-                if (bufferString.contains(propsName)) {
-                    result = bufferString.substring(bufferString.indexOf("=") + 2);
-                    break;
-                }
+        result = result.substring(result.indexOf("=") + 1).trim();
+        return result;
+    }
+
+    private void initialisation(String resourceName) {
+        StringBuilder sb = new StringBuilder();
+
+        try (InputStream fin = this.getClass().getResourceAsStream((resourceName))) {
+            int ch;
+
+            while ((ch = fin.read()) != -1) {
+                sb.append((char) ch);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return result;
+        textOfConfigFile = sb.toString();
     }
 }

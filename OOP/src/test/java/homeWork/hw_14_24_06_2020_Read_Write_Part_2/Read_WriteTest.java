@@ -14,62 +14,50 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Read_WriteTest {
     Read_Write rw = new Read_Write_Impl();
-    private static ConfigReader configReader;
-    private static String ABSOLUTE_PATH;
-    private static String COPIED_PATH;
-    private static String COPIED_TXT_PATH;
-
-    @BeforeAll
-    static void init() throws IOException {
-        configReader = new ConfigReader("C:\\Users\\HP 1406945\\IdeaProjects\\DevEducation\\OOP\\src\\" +
-                "main\\java\\homeWork\\hw_15_26_06_2020_Part_2_Config_Reader\\config.properties",
-                "path.from_hw_14", "path.toForCopyFiles_hw_14");
-        ABSOLUTE_PATH = configReader.getSource();
-        COPIED_PATH = configReader.getDestination();
-        COPIED_TXT_PATH = configReader.getProps("props.toTxtFiles_hw_14");
-    }
-
+    ConfigReader configReader = new ConfigReader("config_hw_14.properties");
 
     @Test
-    public void fewFiles_InfoAboutFilesFromDirToTxtFile_FileIsExist() throws IOException {
-        File result = rw.infoAboutFilesFromDirToTxtFile(ABSOLUTE_PATH, "text1.txt");
+    public void fewFiles_infoAboutFilesFromDirToTxtFile_fileIsExist() throws IOException {
+        File result = rw.infoAboutFilesFromDirToTxtFile(configReader.getSource(), "text1.txt");
 
         assertTrue(result.isFile(), "Txt file is not exist");
     }
 
     @Test
-    public void fewFilesAndNotExistDir_InfoAboutFilesFromDirToTxtFile_IOException() {
+    public void fewFilesAndNotExistDir_infoAboutFilesFromDirToTxtFile_IOException() {
         assertThrows(IOException.class,
-                () -> rw.infoAboutFilesFromDirToTxtFile(ABSOLUTE_PATH, ABSOLUTE_PATH.concat("\\txtFile"),
+                () -> rw.infoAboutFilesFromDirToTxtFile(configReader.getSource(), configReader.getSource().concat("\\txtFile"),
                         "text2.txt"),
                 "Folder of destination is exist!");
     }
 
     @Test
-    public void notExistDir_InfoAboutFilesFromDirToTxtFile_TxtFileNotCreated() throws IOException {
-        File result = rw.infoAboutFilesFromDirToTxtFile(ABSOLUTE_PATH.concat("\\txtFile"), ABSOLUTE_PATH,
+    public void notExistDir_infoAboutFilesFromDirToTxtFile_txtFileNotCreated() throws IOException {
+        File result = rw.infoAboutFilesFromDirToTxtFile(configReader.getSource().concat("\\txtFile"), configReader.getSource(),
                 "text3.txt");
 
         assertFalse(result.isFile(), "Txt file was creating");
     }
 
     @Test
-    public void fewFiles_copyAllFilesFromDirToDir_FilesCopied() {
-        rw.copyAllFilesPathFromPathTo(ABSOLUTE_PATH, COPIED_PATH);
+    public void fewFiles_copyAllFilesFromDirToDir_filesCopied() {
+        rw.copyAllFilesPathFromPathTo(configReader.getSource(), configReader.getDestination());
 
-        File[] copiedFiles = new File(COPIED_PATH).listFiles();
+        File[] copiedFiles = new File(configReader.getDestination()).listFiles();
 
+        assert copiedFiles != null;
         Stream.of(copiedFiles).forEach(x -> {
             assertTrue(x.exists(), "Files have not been copied");
         });
     }
 
     @Test
-    public void notExistDirDestination_copyAllFilesFromDirToDir_FilesCopied() {
-        rw.copyAllFilesPathFromPathTo(ABSOLUTE_PATH, COPIED_PATH.concat("\\copyFiles"));
+    public void notExistDirDestination_copyAllFilesFromDirToDir_filesCopied() {
+        rw.copyAllFilesPathFromPathTo(configReader.getSource(), configReader.getDestination().concat("\\copyFiles"));
 
-        File[] copiedFiles = new File(COPIED_PATH.concat("\\copyFiles")).listFiles();
+        File[] copiedFiles = new File(configReader.getDestination().concat("\\copyFiles")).listFiles();
 
+        assert copiedFiles != null;
         Stream.of(copiedFiles).forEach(x -> {
             assertTrue(x.exists(), "Files have not been copied");
         });
@@ -79,26 +67,26 @@ class Read_WriteTest {
     public void notExistDir_copyAllFilesFromDirToDir_NullPointerException() {
         assertThrows(
                 NullPointerException.class,
-                () -> rw.copyAllFilesPathFromPathTo(ABSOLUTE_PATH.concat("\\files"), COPIED_PATH),
+                () -> rw.copyAllFilesPathFromPathTo(configReader.getSource().concat("\\files"), configReader.getDestination()),
                 "This dir is exist"
         );
     }
 
     @Test
-    public void fewTxtFiles_copyFewTxtFilesIntoOneTxtFile_CreatedTxtFile() throws IOException {
-        File txtFile = rw.copyFewTxtFilesIntoOneTxtFile(COPIED_TXT_PATH, "AaBbCc.txt");
+    public void fewTxtFiles_copyFewTxtFilesIntoOneTxtFile_createdTxtFile() throws IOException {
+        File txtFile = rw.copyFewTxtFilesIntoOneTxtFile(configReader.getProps("props.toTxtFiles"), "AaBbCc.txt");
 
         assertTrue(txtFile.isFile(), "File have not been created");
 
         try (FileReader fr = new FileReader(txtFile); BufferedReader reader = new BufferedReader(fr)) {
             String result = reader.readLine();
-            assertEquals("AaBbCc", result);
+            assertEquals("AaBbCc", result, "File is not contains text which we are expected");
         }
     }
 
     @Test
-    public void notExistDir_copyFewTxtFilesIntoOneTxtFile_NotCreatedTxtFile() throws IOException {
-        File txtFile = rw.copyFewTxtFilesIntoOneTxtFile(COPIED_TXT_PATH.concat("\\files"), COPIED_TXT_PATH,
+    public void notExistDir_copyFewTxtFilesIntoOneTxtFile_notCreatedTxtFile() throws IOException {
+        File txtFile = rw.copyFewTxtFilesIntoOneTxtFile(configReader.getProps("props.toTxtFiles").concat("\\files"), configReader.getProps("props.toTxtFiles"),
                 "shortHistoryOfGroup_2");
 
         assertFalse(txtFile.isFile(), "File have been created");

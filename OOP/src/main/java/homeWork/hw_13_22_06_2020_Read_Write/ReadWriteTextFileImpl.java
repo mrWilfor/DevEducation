@@ -6,11 +6,7 @@ import java.util.stream.Stream;
 
 public class ReadWriteTextFileImpl implements ReadWriteTextFile {
     @Override
-    public void readSortByLengthWrite(String pathFrom, String pathTo, SequenceComparable sc) throws FileNotFoundException {
-        String bufferString;
-        List<String> listForSort = new ArrayList<>();
-        StringJoiner stringResult = new StringJoiner("\n");
-
+    public void readSortByLengthWrite(String pathFrom, String pathTo, SequenceComparable direction) throws FileNotFoundException {
         if (!new File(pathFrom).isFile()) {
             throw new FileNotFoundException("file not found");
         }
@@ -18,12 +14,15 @@ public class ReadWriteTextFileImpl implements ReadWriteTextFile {
         try (FileReader fr = new FileReader(pathFrom);
              BufferedReader br = new BufferedReader(fr);
              FileWriter fw = new FileWriter(pathTo)) {
+            List<String> listForSort = new ArrayList<>();
+            StringJoiner stringResult = new StringJoiner("\n");
+            String bufferString;
 
             while ((bufferString = br.readLine()) != null) {
                 listForSort.add(bufferString);
             }
 
-            compareStringByLength(listForSort, sc);
+            compareStringByLength(listForSort, direction);
             Stream.iterate(0, x -> x + 1)
                     .limit(listForSort.size())
                     .forEach(x -> stringResult.add(listForSort.get(x)));
@@ -35,16 +34,15 @@ public class ReadWriteTextFileImpl implements ReadWriteTextFile {
 
     @Override
     public void divisionTextByFileByFirstChar(String pathFrom, String pathTo,
-                                              SequenceComparable sc) throws FileNotFoundException {
-        String bufferString;
-        List<String> listForSort = new ArrayList<>();
-
+                                              SequenceComparable direction) throws FileNotFoundException {
         if (!new File(pathFrom).isFile()) {
             throw new FileNotFoundException("file not found");
         }
 
         try (FileReader fr = new FileReader(pathFrom);
              BufferedReader br = new BufferedReader(fr)) {
+            List<String> listForSort = new ArrayList<>();
+            String bufferString;
 
             while ((bufferString = br.readLine()) != null) {
                 String[] bufferArrayStrings = bufferString.replaceAll("[.,!?]", "").split(" ");
@@ -52,24 +50,23 @@ public class ReadWriteTextFileImpl implements ReadWriteTextFile {
                 listForSort.addAll(Arrays.asList(bufferArrayStrings));
             }
 
-            compareStringByFirstChar(listForSort, sc);
+            compareStringByFirstChar(listForSort, direction);
 
-            listForSort.stream().map(x -> x.toLowerCase().charAt(0))
+            listForSort.stream().map(word -> word.toLowerCase().charAt(0))
                     .distinct()
-                    .forEach(x -> {
-                        File file = new File(pathTo + x + ".txt");
+                    .forEach(firstChar -> {
+                        File file = new File(pathTo + firstChar + ".txt");
 
                         try (FileWriter fw = new FileWriter(file)) {
                             List<String> listForSortByLength = new ArrayList<>();
                             StringJoiner stringResult = new StringJoiner(" ");
 
-                            listForSort.stream().filter(y -> x == y.toLowerCase().charAt(0))
+                            listForSort.stream().filter(word -> firstChar == word.toLowerCase().charAt(0))
                                     .forEach(listForSortByLength::add);
 
-                            compareStringByLength(listForSortByLength, sc);
+                            compareStringByLength(listForSortByLength, direction);
 
-                            listForSortByLength.stream().forEach(stringResult::add);
-
+                            listForSortByLength.forEach(stringResult::add);
                             fw.write(stringResult.toString());
                         } catch (IOException ioe) {
                             ioe.printStackTrace();
@@ -85,15 +82,17 @@ public class ReadWriteTextFileImpl implements ReadWriteTextFile {
         File[] files = new File(pathFrom).listFiles();
         Queue<Integer> names = new LinkedList<>();
 
+        assert files != null;
         Stream.generate(() -> (int) (Math.random() * (files.length) + 1))
                 .distinct()
                 .limit(files.length)
                 .forEach(names::add);
 
         Stream.of(files)
-                .forEach(x -> {
+                .forEach(file -> {
                     File copyFile = new File(pathTo + names.poll() + ".txt");
-                    try (FileInputStream fileInputStream = new FileInputStream(x);
+
+                    try (FileInputStream fileInputStream = new FileInputStream(file);
                          FileOutputStream fileOutputStream = new FileOutputStream(copyFile)) {
                         byte[] bufferArray = new byte[fileInputStream.available()];
 
@@ -106,37 +105,20 @@ public class ReadWriteTextFileImpl implements ReadWriteTextFile {
     }
 
     @Override
-    public void compareStringByLength(List<String> listForSort, SequenceComparable sc) {
-        if (sc == SequenceComparable.ASC) {
+    public void compareStringByLength(List<String> listForSort, SequenceComparable direction) {
+        if (direction == SequenceComparable.ASC) {
             listForSort.sort((x, y) -> Integer.compare(x.length(), y.length()));
-        } else if (sc == SequenceComparable.DSC) {
+        } else if (direction == SequenceComparable.DSC) {
             listForSort.sort((x, y) -> Integer.compare(y.length(), x.length()));
         }
     }
 
     @Override
-    public void compareStringByFirstChar(List<String> listForSort, SequenceComparable sc) {
-        if (sc == SequenceComparable.ASC) {
+    public void compareStringByFirstChar(List<String> listForSort, SequenceComparable direction) {
+        if (direction == SequenceComparable.ASC) {
             listForSort.sort((x, y) -> x.compareTo(y));
-        } else if (sc == SequenceComparable.DSC) {
+        } else if (direction == SequenceComparable.DSC) {
             listForSort.sort((x, y) -> y.compareTo(x));
         }
-    }
-
-    @Override
-    public String readFile(String pathFrom) throws FileNotFoundException {
-        File txtFile = new File(pathFrom);
-        StringJoiner result = new StringJoiner("\n");
-
-        try (FileReader fr = new FileReader(txtFile); BufferedReader reader = new BufferedReader(fr)) {
-            String bufferString;
-
-            while ((bufferString = reader.readLine()) != null) {
-                result.add(bufferString);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return result.toString();
     }
 }

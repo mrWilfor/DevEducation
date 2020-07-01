@@ -3,9 +3,9 @@ package homeWork.hw_13_22_06_2020_Read_Write;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.util.StringJoiner;
+
 import homeWork.hw_15_26_06_2020_Part_2_Config_Reader.ConfigReader;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,54 +16,57 @@ class ReadWriteTextFileImplTest {
 
     @BeforeAll
     static void init() throws IOException {
-        configReader =
-                new ConfigReader("C:\\Users\\HP 1406945\\IdeaProjects\\DevEducation\\OOP\\src\\main\\" +
-                        "java\\homeWork\\hw_15_26_06_2020_Part_2_Config_Reader\\config.properties",
-                        "path.from_hw_13", "path.toNewFiles_hw_13");
+        configReader = new ConfigReader("config_hw_13.properties");
     }
 
     @Test
-    void textFile_ReadSortDSCSaveIntoNewFile_NewFile() throws IOException {
+    void textFile_readSortDSCSaveIntoNewFile_newFile() throws IOException {
         readWriteTextFile.readSortByLengthWrite(
                 configReader.getSource(),
-                configReader.getProps("props.toNewFile_hw_13"),
+                configReader.getProps("props.toNewFile"),
                 SequenceComparable.DSC
         );
 
         String expected = "How do you do?\nWhats up man?\nHello!";
-        String actual = readWriteTextFile.readFile(
-                configReader.getProps("props.toNewFile_hw_13"));
+        String actual = readFile(
+                configReader.getProps("props.toNewFile"));
 
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, "file is not contains text which we are expected!");
     }
 
     @Test
-    void textFile_ReadSortASCSaveIntoNewFile_NewFile() throws IOException {
+    void textFile_readSortASCSaveIntoNewFile_newFile() throws IOException {
         readWriteTextFile.readSortByLengthWrite(
                 configReader.getSource(),
-                configReader.getProps("props.toNewFile_hw_13"),
+                configReader.getProps("props.toNewFile"),
                 SequenceComparable.ASC
         );
 
         String expected = "Hello!\nWhats up man?\nHow do you do?";
-        String actual = readWriteTextFile.readFile(
-                configReader.getProps("props.toNewFile_hw_13"));
+        String actual = readFile(
+                configReader.getProps("props.toNewFile"));
 
         assertEquals(expected, actual, "NewFile.txt not contain expecting text");
     }
 
     @Test
-    void nothing_ReadSortSaveIntoNewFile_FileNotFoundException(){
+    void nothing_readSortSaveIntoNewFile_FileNotFoundException(){
         assertThrows(
                 FileNotFoundException.class,
                 () -> readWriteTextFile.readSortByLengthWrite(configReader.getSource().concat("/text/"),
-                        configReader.getProps("props.toNewFile_hw_13"), SequenceComparable.DSC),
+                        configReader.getProps("props.toNewFile"), SequenceComparable.DSC),
                 "original file is had not found"
         );
     }
 
     @Test
-    void textFile_DivisionTextByFileByFirstChar_NewFiles() throws IOException {
+    void textFile_divisionTextByFileByFirstChar_newFiles() throws IOException {
+        System.out.println("1");
+        File file = new File(configReader.getSource().replace("\r", ""));
+        System.out.println(file.isFile());
+        System.out.println(file.getPath());
+        System.out.println(configReader.getSource());
+        System.out.println("1");
         readWriteTextFile.divisionTextByFileByFirstChar(configReader.getSource(), configReader.getDestination(),
                 SequenceComparable.ASC);
 
@@ -74,17 +77,17 @@ class ReadWriteTextFileImplTest {
         String expected_w = "Whats";
         String expected_y = "you";
 
-        String actual_d = readWriteTextFile.readFile(
+        String actual_d = readFile(
                 configReader.getDestination().concat("d.txt"));
-        String actual_h = readWriteTextFile.readFile(
+        String actual_h = readFile(
                 configReader.getDestination().concat("h.txt"));
-        String actual_m = readWriteTextFile.readFile(
+        String actual_m = readFile(
                 configReader.getDestination().concat("m.txt"));
-        String actual_u = readWriteTextFile.readFile(
+        String actual_u = readFile(
                 configReader.getDestination().concat("u.txt"));
-        String actual_w = readWriteTextFile.readFile(
+        String actual_w = readFile(
                 configReader.getDestination().concat("w.txt"));
-        String actual_y = readWriteTextFile.readFile(
+        String actual_y = readFile(
                 configReader.getDestination().concat("y.txt"));
 
         assertEquals(expected_d, actual_d, "File not contain expected text");
@@ -96,7 +99,7 @@ class ReadWriteTextFileImplTest {
     }
 
     @Test
-    void nothing_DivisionTextByFileByFirstChar_FileNotFoundException(){
+    void nothing_divisionTextByFileByFirstChar_FileNotFoundException(){
         assertThrows(
                 FileNotFoundException.class,
                 () -> readWriteTextFile.divisionTextByFileByFirstChar(configReader.getSource().concat("/text/"),
@@ -106,20 +109,19 @@ class ReadWriteTextFileImplTest {
     }
 
     @Test
-    void fewFiles_copyFewFiles_CreateCopyingOfFiles() throws FileNotFoundException {
+    void fewFiles_copyFewFiles_createCopyingOfFiles() throws FileNotFoundException {
         readWriteTextFile.divisionTextByFileByFirstChar(configReader.getSource(), configReader.getDestination(),
                 SequenceComparable.ASC);
-        readWriteTextFile.copyFewFiles(configReader.getProps("path.fromForCopyFiles_hw_13"),
-                configReader.getProps("path.toForCopyFiles_hw_13"));
+        readWriteTextFile.copyFewFiles(configReader.getProps("path.fromForCopyFiles"),
+                configReader.getProps("path.toForCopyFiles"));
 
-        File file1 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("1.txt"));
-        File file2 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("2.txt"));
-        File file3 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("3.txt"));
-        File file4 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("4.txt"));
-        File file5 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("5.txt"));
-        File file6 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("6.txt"));
-        File file7 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("7.txt"));
-        File file8 = new File(configReader.getProps("path.toForCopyFiles_hw_13").concat("8.txt"));
+        File file1 = new File(configReader.getProps("path.toForCopyFiles").concat("1.txt"));
+        File file2 = new File(configReader.getProps("path.toForCopyFiles").concat("2.txt"));
+        File file3 = new File(configReader.getProps("path.toForCopyFiles").concat("3.txt"));
+        File file4 = new File(configReader.getProps("path.toForCopyFiles").concat("4.txt"));
+        File file5 = new File(configReader.getProps("path.toForCopyFiles").concat("5.txt"));
+        File file6 = new File(configReader.getProps("path.toForCopyFiles").concat("6.txt"));
+        File file7 = new File(configReader.getProps("path.toForCopyFiles").concat("7.txt"));
 
         assertTrue(file1.isFile());
         assertTrue(file2.isFile());
@@ -128,6 +130,22 @@ class ReadWriteTextFileImplTest {
         assertTrue(file5.isFile());
         assertTrue(file6.isFile());
         assertTrue(file7.isFile());
-        assertTrue(file8.isFile());
+    }
+    
+    public String readFile(String pathFrom) {
+        File txtFile = new File(pathFrom);
+        StringJoiner result = new StringJoiner("\n");
+
+        try (FileReader fr = new FileReader(txtFile);
+             BufferedReader reader = new BufferedReader(fr)) {
+            String bufferString;
+
+            while ((bufferString = reader.readLine()) != null) {
+                result.add(bufferString);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result.toString();
     }
 }

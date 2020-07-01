@@ -33,19 +33,17 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
 
     @Override
     public void unArchiving(String pathFrom, String pathTo) throws FileNotFoundException {
-        ZipEntry entry;
-        String name;
-        File newFile;
-        int bufferCharCastedToInt;
-
         if (!new File(pathFrom).isFile()) {
             throw new FileNotFoundException("Archive is not exist!");
         }
 
-        try (FileInputStream fis = new FileInputStream(new File(pathFrom)); ZipInputStream zin = new ZipInputStream(fis)) {
+        try (FileInputStream fis = new FileInputStream(new File(pathFrom));
+             ZipInputStream zin = new ZipInputStream(fis)) {
+            ZipEntry entry;
+            
             while ((entry = zin.getNextEntry()) != null) {
-                name = entry.getName();
-                newFile = new File(pathTo.concat("\\").concat(name));
+                String name = entry.getName();
+                File newFile = new File(pathTo.concat("\\").concat(name));
                 newFile = checkFilesIsExist(newFile);
 
                 if (entry.isDirectory()) {
@@ -55,11 +53,10 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
                 }
 
                 try (FileOutputStream fout = new FileOutputStream(newFile)) {
-                    bufferCharCastedToInt = zin.read();
+                    int bufferCharCastedToInt;
 
-                    while (bufferCharCastedToInt != -1) {
+                    while ((bufferCharCastedToInt = zin.read()) != -1) {
                         fout.write(bufferCharCastedToInt);
-                        bufferCharCastedToInt = zin.read();
                     }
                     zin.closeEntry();
                 }
@@ -81,12 +78,13 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
 
     @Override
     public void addFolderIntoArchive(ZipOutputStream zout, String pathFrom, String zipEntry) {
-        File[] arrayOfFile = new File(pathFrom).listFiles();
+        File[] arrayOfFiles = new File(pathFrom).listFiles();
 
-        Stream.of(arrayOfFile).forEach(x -> {
-            if (x.isFile()) {
-                try (FileInputStream fis = new FileInputStream(x.getAbsolutePath())) {
-                    ZipEntry entry = new ZipEntry(zipEntry.concat("\\").concat(x.getName()));
+        assert arrayOfFiles != null;
+        Stream.of(arrayOfFiles).forEach(file -> {
+            if (file.isFile()) {
+                try (FileInputStream fis = new FileInputStream(file.getAbsolutePath())) {
+                    ZipEntry entry = new ZipEntry(zipEntry.concat("\\").concat(file.getName()));
 
                     zout.putNextEntry(entry);
 
@@ -99,7 +97,7 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
                     e.printStackTrace();
                 }
             } else {
-                addFolderIntoArchive(zout, x.getAbsolutePath(), zipEntry.concat("\\").concat(x.getName()));
+                addFolderIntoArchive(zout, file.getAbsolutePath(), zipEntry.concat("\\").concat(file.getName()));
             }
         });
     }
@@ -125,24 +123,19 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
 
     @Override
     public File checkFilesIsExist(File file) {
-        Pattern pattern = Pattern.compile("\\(\\d\\)");
-        Matcher matcher = pattern.matcher(file.getName());
-        int numberCastToInt;
-        int index;
-        String result;
-
         if (file.isFile()) {
-            System.out.println(file.getName());
+            Pattern pattern = Pattern.compile("\\(\\d\\)");
+            Matcher matcher = pattern.matcher(file.getName());
 
             if (matcher.find()) {
                 String numberOfCopyOfFile = file.getName()
                         .substring(file.getName().lastIndexOf('(') + 1, file.getName().lastIndexOf(')'));
-                numberCastToInt = Integer.parseInt(numberOfCopyOfFile);
+                int numberCastToInt = Integer.parseInt(numberOfCopyOfFile);
                 numberCastToInt++;
-                result = matcher.replaceAll("(" + numberCastToInt + ")");
+                String result = matcher.replaceAll("(" + numberCastToInt + ")");
                 file = new File(file.getParent().concat("\\").concat(result));
             } else {
-                index = file.getAbsolutePath().lastIndexOf('.');
+                int index = file.getAbsolutePath().lastIndexOf('.');
                 file = new File(file.getAbsolutePath().substring(0, index).concat("(1)").concat(file.getAbsolutePath().substring(index)));
             }
             return checkFilesIsExist(file);

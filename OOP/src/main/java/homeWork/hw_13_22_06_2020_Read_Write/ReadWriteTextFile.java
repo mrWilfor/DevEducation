@@ -49,13 +49,4 @@ public interface ReadWriteTextFile {
      * @param sc ascending sort sequence or descending sort sequence
      */
     void compareStringByFirstChar(List<String> listForSort, SequenceComparable sc);
-
-    /**
-     * reads txt file and return text from it
-     *
-     * @param pathFrom path to the original file
-     * @return String
-     * @throws FileNotFoundException
-     */
-    String readFile(String pathFrom) throws FileNotFoundException;
 }

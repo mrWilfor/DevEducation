@@ -12,18 +12,18 @@ public class Read_Write_Impl implements Read_Write {
     @Override
     public File infoAboutFilesFromDirToTxtFile(String pathFrom, String pathTo, String fileName)
             throws IOException {
-        File[] files = new File(pathFrom).listFiles();
         File txtFile = new File(pathTo, fileName);
 
         try (FileWriter fw = new FileWriter(txtFile, false)) {
+            File[] files = new File(pathFrom).listFiles();
             List<StringBuilder> paths = new ArrayList<>();
             List<StringBuilder> names = new ArrayList<>();
             List<String> date = new ArrayList<>();
 
-            Stream.of(files).forEach(x -> {
-                paths.add(new StringBuilder(x.getAbsolutePath()));
-                names.add(new StringBuilder(x.getName()));
-                date.add(new Date(x.lastModified()).toString());
+            Stream.of(files).forEach(file -> {
+                paths.add(new StringBuilder(file.getAbsolutePath()));
+                names.add(new StringBuilder(file.getName()));
+                date.add(new Date(file.lastModified()).toString());
             });
             String result = verticalTab(paths, names, date);
 
@@ -48,9 +48,9 @@ public class Read_Write_Impl implements Read_Write {
     public void copyAllFilesPathFromPathTo(String pathFrom, String pathTo) {
         File[] files = new File(pathFrom).listFiles();
 
-        Stream.of(files).forEach(x -> {
-            try (FileInputStream fileInputStream = new FileInputStream(x);
-                 FileOutputStream fileOutputStream = new FileOutputStream(pathTo.concat("\\").concat(x.getName()))) {
+        Stream.of(files).forEach(file -> {
+            try (FileInputStream fileInputStream = new FileInputStream(file);
+                 FileOutputStream fileOutputStream = new FileOutputStream(pathTo.concat("\\").concat(file.getName()))) {
                 byte[] bufferArray = new byte[fileInputStream.available()];
 
                 fileInputStream.read(bufferArray, 0, bufferArray.length);
@@ -63,12 +63,13 @@ public class Read_Write_Impl implements Read_Write {
 
     @Override
     public File copyFewTxtFilesIntoOneTxtFile(String pathFrom, String pathTo, String fileName) throws IOException {
-        File[] files = new File(pathFrom).listFiles();
         File txtFile = new File(pathTo, fileName);
 
         try (FileWriter fw = new FileWriter(txtFile, false)) {
-            Stream.of(files).forEach(x -> {
-                try (FileReader fr = new FileReader(x);
+            File[] files = new File(pathFrom).listFiles();
+
+            Stream.of(files).forEach(file -> {
+                try (FileReader fr = new FileReader(file);
                      BufferedReader br = new BufferedReader(fr)) {
                     String bufferString;
                     StringBuilder result = new StringBuilder();
@@ -96,17 +97,19 @@ public class Read_Write_Impl implements Read_Write {
 
     @Override
     public String verticalTab(List<StringBuilder> paths, List<StringBuilder> names, List<String> date) {
-        int lengthMaxPath = paths.stream().max(Comparator.comparingInt(x -> x.length())).get().length();
-        paths.stream().forEach(x -> {
-            while (x.length() != lengthMaxPath) {
-                x.append(" ");
+        int lengthMaxPath = paths.stream().max(Comparator.comparingInt(path -> path.length())).get().length();
+
+        paths.stream().forEach(path -> {
+            while (path.length() != lengthMaxPath) {
+                path.append(" ");
             }
         });
 
-        int lengthMaxName = names.stream().max(Comparator.comparingInt(x -> x.length())).get().length();
-        names.stream().forEach(x -> {
-            while (x.length() != lengthMaxName) {
-                x.append(" ");
+        int lengthMaxName = names.stream().max(Comparator.comparingInt(name -> name.length())).get().length();
+
+        names.stream().forEach(name -> {
+            while (name.length() != lengthMaxName) {
+                name.append(" ");
             }
         });
 
