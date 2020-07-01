@@ -72,23 +72,11 @@ class ArchiverAndUnArchiverImplTest {
                 "File of folder is not exist"
         );
         assertTrue(
-                new File(cr.getDestination().concat("\\test1").concat("\\filesWithoutFolder").concat("\\13-linkin_park-numb_(zvukoff.ru)(1).mp3")).exists(),
-                "File of folder is not exist"
-        );
-        assertTrue(
                 new File(cr.getDestination().concat("\\test1").concat("\\filesWithoutFolder").concat("\\LP_History_of_Group.txt")).exists(),
                 "File of folder is not exist"
         );
         assertTrue(
-                new File(cr.getDestination().concat("\\test1").concat("\\filesWithoutFolder").concat("\\LP_History_of_Group(1).txt")).exists(),
-                "File of folder is not exist"
-        );
-        assertTrue(
                 new File(cr.getDestination().concat("\\test1").concat("\\filesWithoutFolder").concat("\\LPLogo-black.svg.png")).exists(),
-                "File of folder is not exist"
-        );
-        assertTrue(
-                new File(cr.getDestination().concat("\\test1").concat("\\filesWithoutFolder").concat("\\LPLogo-black.svg(1).png")).exists(),
                 "File of folder is not exist"
         );
     }

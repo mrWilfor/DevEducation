@@ -32,6 +32,16 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
     }
 
     @Override
+    public void unArchiving(String pathFrom) throws FileNotFoundException {
+        if (!new File(pathFrom).isFile()) {
+            throw new FileNotFoundException("Archive is not exist!");
+        }
+        String pathTo = new File(pathFrom).getParent();
+
+        unArchiving(pathFrom, pathTo);
+    }
+
+    @Override
     public void unArchiving(String pathFrom, String pathTo) throws FileNotFoundException {
         if (!new File(pathFrom).isFile()) {
             throw new FileNotFoundException("Archive is not exist!");
@@ -40,7 +50,7 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
         try (FileInputStream fis = new FileInputStream(new File(pathFrom));
              ZipInputStream zin = new ZipInputStream(fis)) {
             ZipEntry entry;
-            
+
             while ((entry = zin.getNextEntry()) != null) {
                 String name = entry.getName();
                 File newFile = new File(pathTo.concat("\\").concat(name));
@@ -53,10 +63,12 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
                 }
 
                 try (FileOutputStream fout = new FileOutputStream(newFile)) {
-                    int bufferCharCastedToInt;
+                    byte[] buffer = new byte[1024];
+                    int count;
 
-                    while ((bufferCharCastedToInt = zin.read()) != -1) {
-                        fout.write(bufferCharCastedToInt);
+                    while ((count = zin.read(buffer)) != -1) {
+                        fout.write(buffer, 0 , count);
+                        System.out.println("*");
                     }
                     zin.closeEntry();
                 }
@@ -64,16 +76,6 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void unArchiving(String pathFrom) throws FileNotFoundException {
-        if (!new File(pathFrom).isFile()) {
-            throw new FileNotFoundException("Archive is not exist!");
-        }
-        String pathTo = new File(pathFrom).getParent();
-
-        unArchiving(pathFrom, pathTo);
     }
 
     @Override
