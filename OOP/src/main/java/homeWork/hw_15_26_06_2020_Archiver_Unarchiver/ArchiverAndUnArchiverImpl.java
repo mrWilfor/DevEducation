@@ -68,7 +68,6 @@ public class ArchiverAndUnArchiverImpl implements ArchiverAndUnArchiver {
 
                     while ((count = zin.read(buffer)) != -1) {
                         fout.write(buffer, 0 , count);
-                        System.out.println("*");
                     }
                     zin.closeEntry();
                 }
