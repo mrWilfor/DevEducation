@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.stream.Stream;
+import homeWork.hw_15_26_06_2020_Part_2_Config_Reader.ConfigReader;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,11 +21,12 @@ class Read_WriteTest {
 
     @BeforeAll
     static void init() throws IOException {
-        configReader = new ConfigReader("C:\\Users\\HP 1406945\\IdeaProjects\\DevEducation\\OOP\\" +
-                "src\\test\\java\\homeWork\\hw_14_24_06_2020_Read_Write_Part_2\\config.properties");
+        configReader = new ConfigReader("C:\\Users\\HP 1406945\\IdeaProjects\\DevEducation\\OOP\\src\\" +
+                "main\\java\\homeWork\\hw_15_26_06_2020_Part_2_Config_Reader\\config.properties",
+                "path.from_hw_14", "path.toForCopyFiles_hw_14");
         ABSOLUTE_PATH = configReader.getSource();
         COPIED_PATH = configReader.getDestination();
-        COPIED_TXT_PATH = configReader.getProps("props.toTxtFiles");
+        COPIED_TXT_PATH = configReader.getProps("props.toTxtFiles_hw_14");
     }
 
 

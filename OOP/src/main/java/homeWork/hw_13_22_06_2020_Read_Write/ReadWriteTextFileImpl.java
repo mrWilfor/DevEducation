@@ -85,7 +85,7 @@ public class ReadWriteTextFileImpl implements ReadWriteTextFile {
         File[] files = new File(pathFrom).listFiles();
         Queue<Integer> names = new LinkedList<>();
 
-        Stream.generate(() -> (int) (Math.random() * (files.length + 1) + 1))
+        Stream.generate(() -> (int) (Math.random() * (files.length) + 1))
                 .distinct()
                 .limit(files.length)
                 .forEach(names::add);
