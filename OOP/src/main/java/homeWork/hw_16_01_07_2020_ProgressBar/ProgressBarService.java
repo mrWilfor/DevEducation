@@ -11,7 +11,6 @@ public class ProgressBarService {
     public static void main(String[] args) throws IOException {
         FIleOperations fIleOperations = new FIleOperations();
         File fileForResult = new File("OOP/src/main/java/homeWork/hw_16_01_07_2020_ProgressBar/results.txt");
-        System.out.println(fileForResult.exists());
 
         try (FileWriter fw = new FileWriter(fileForResult)) {
             String str = "----------------------------------------+-------------+-----------------+-----------------+-----------------\n" +
@@ -20,7 +19,6 @@ public class ProgressBarService {
 
             fw.write(str.toCharArray());
         }
-
         GregorianCalendar dateBefore = new GregorianCalendar();
 
         System.out.println("\nCOPY:\n");
@@ -137,7 +135,6 @@ public class ProgressBarService {
                 operation.append(" ");
             }
             result.add(name).add(fileSize).add(modifiedTime).add(copyDuration).add(operation.append("|"));
-
             fw.write(result.toString());
         } catch (IOException e) {
             e.printStackTrace();

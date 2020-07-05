@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------------------------------
+  System characteristics: Intel(R) Core(TM) i3-8145U CPU @ 2.10GHz 2.30 / 8 Gb / SSD
+--------------------------------------------------------------------------------------------------------
+ === Copy file ===
+ File size:    7.52mb
+ Buffer size:  1b
+ Process time: 43.73s
+
+ File size:    7.52mb
+ Buffer size:  2b
+ Process time: 21.09s
+
+ File size:    7.52mb
+ Buffer size:  4b
+ Process time: 10.29s
+
+ File size:    7.52mb
+ Buffer size:  8b
+ Process time: 5.13s
+
+ File size:    7.52mb
+ Buffer size:  16b
+ Process time: 2.65s
+
+ File size:    7.52mb
+ Buffer size:  32b
+ Process time: 1.32s
+
+ File size:    7.52mb
+ Buffer size:  64b
+ Process time: 0.67s

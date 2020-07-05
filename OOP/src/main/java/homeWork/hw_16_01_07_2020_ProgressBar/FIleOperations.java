@@ -3,7 +3,6 @@ package homeWork.hw_16_01_07_2020_ProgressBar;
 import java.io.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,12 +27,11 @@ public class FIleOperations {
                 bar(file, lengthSum, startProgram);
             }
             System.out.println();
-//            Date finishProgram = new Date();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
     public void archiving(String pathFrom, String pathTo, String name, int sizeOfBuffer) throws FileNotFoundException {
         if (!new File(pathFrom).exists()) {
@@ -179,6 +177,7 @@ public class FIleOperations {
 
                 while ((length = fr.read(bufferArray)) != -1) {
                     lengthSum += length;
+
                     bar(file, lengthSum, startReadOfFile);
                     result.append(bufferArray);
                 }
@@ -222,6 +221,7 @@ public class FIleOperations {
                 .setScale(2, RoundingMode.HALF_EVEN)
                 .doubleValue();
         StringBuilder nameOfFile = new StringBuilder(originFile.getName());
+
         while (nameOfFile.length() < 40) {
             nameOfFile.append(" ");
         }
@@ -250,6 +250,12 @@ public class FIleOperations {
         System.out.print("]");
 
         Date interimDate = new Date();
+
+        System.out.println((double) (interimDate.getTime() - startProgram.getTime()) / 1000.00);
+        System.out.println(interimDate.getTime());
+        System.out.println(startProgram.getTime());
+        System.out.println(percent);
+
         double timeToFinish = new BigDecimal((double) (interimDate.getTime() - startProgram.getTime()) / 1000.00 / percent * (100.00 - percent))
                 .setScale(1, RoundingMode.HALF_EVEN)
                 .doubleValue();
@@ -263,6 +269,7 @@ public class FIleOperations {
                 .setScale(2, RoundingMode.HALF_EVEN)
                 .doubleValue();
         StringBuilder nameOfFile = new StringBuilder(entry.getName());
+
         while (nameOfFile.length() < 40) {
             nameOfFile.append(" ");
         }
