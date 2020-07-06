@@ -1,9 +1,9 @@
 ----------------------------------------+-------------+-----------------+-----------------+-----------------
   file name                             |  file size  |  modified time  |  copy duration  |  operation     |
 ----------------------------------------+-------------+-----------------+-----------------+-----------------
- 13-linkin_park-numb_(zvukoff.ru).mp3   | 0.0Kb       |05.07.2020, 10:03| 0.001s          | copy           |
- listOfTeams.txt                        | 0.292Kb     |05.07.2020, 10:03| 0.006s          | copy           |
- arch1.zip                              | 0.492Kb     |05.07.2020, 10:15| 0.033s          | zipping        |
- 1                                      | 4.096Kb     |05.07.2020, 10:15| 0.007s          | unzipping      |
- listOfTeams.txt                        | 0.292Kb     |05.07.2020, 10:15| 0.245s          | read           |
- listOfTeams1.txt                       | 0.292Kb     |05.07.2020, 10:15| 0.14s           | write          |
+ 13-linkin_park-numb_(zvukoff.ru).mp3   | 7520.422Kb  |05.07.2020, 8:50 | 3.608s          | copy           |
+ listOfTeams.txt                        | 0.292Kb     |03.07.2020, 12:23| 0.002s          | copy           |
+ arch1.zip                              | 14619.236Kb |06.07.2020, 9:23 | 3.803s          | zipping        |
+ 1                                      | 4.096Kb     |06.07.2020, 9:23 | 3.685s          | unzipping      |
+ listOfTeams.txt                        | 0.292Kb     |06.07.2020, 9:23 | 0.052s          | read           |
+ listOfTeams1.txt                       | 0.292Kb     |06.07.2020, 9:23 | 0.068s          | write          |

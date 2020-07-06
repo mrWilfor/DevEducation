@@ -251,11 +251,6 @@ public class FIleOperations {
 
         Date interimDate = new Date();
 
-        System.out.println((double) (interimDate.getTime() - startProgram.getTime()) / 1000.00);
-        System.out.println(interimDate.getTime());
-        System.out.println(startProgram.getTime());
-        System.out.println(percent);
-
         double timeToFinish = new BigDecimal((double) (interimDate.getTime() - startProgram.getTime()) / 1000.00 / percent * (100.00 - percent))
                 .setScale(1, RoundingMode.HALF_EVEN)
                 .doubleValue();
