@@ -23,13 +23,15 @@ public class ProgressBarService {
 
         System.out.println("\nCOPY:\n");
         fIleOperations.copy(
-                "OOP/src/main/java/homeWork/hw_16_01_07_2020_ProgressBar/files/13-linkin_park-numb_(zvukoff.ru).mp3",
+                "OOP/src/main/java/homeWork/hw_16_01_07_2020_ProgressBar/files/" +
+                        "13-linkin_park-numb_(zvukoff.ru).mp3",
                 "OOP/src/main/java/homeWork/hw_16_01_07_2020_ProgressBar/1",
                 1024);
 
         GregorianCalendar dateAfter = new GregorianCalendar();
 
-        writeInfo(new File("OOP/src/main/java/homeWork/hw_16_01_07_2020_ProgressBar/files/13-linkin_park-numb_(zvukoff.ru).mp3"),
+        writeInfo(new File("OOP/src/main/java/homeWork/hw_16_01_07_2020_ProgressBar/files/" +
+                        "13-linkin_park-numb_(zvukoff.ru).mp3"),
                 fileForResult,
                 dateAfter.getTimeInMillis() - dateBefore.getTimeInMillis(),
                 "copy");
