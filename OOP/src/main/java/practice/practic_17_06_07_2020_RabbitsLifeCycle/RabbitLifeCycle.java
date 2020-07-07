@@ -1,7 +1,5 @@
 package practice.practic_17_06_07_2020_RabbitsLifeCycle;
 
-import java.util.TreeMap;
-
 public class RabbitLifeCycle implements Runnable {
     private static long counter = 0;
     private static long quantityOfLifeRabbits = 0;
