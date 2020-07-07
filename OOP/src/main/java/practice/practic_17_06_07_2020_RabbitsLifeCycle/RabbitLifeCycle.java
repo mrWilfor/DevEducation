@@ -1,4 +1,4 @@
-package homeWork;
+package practice.practic_17_06_07_2020_RabbitsLifeCycle;
 
 public class RabbitLifeCycle implements Runnable {
     private long counter;
@@ -35,13 +35,7 @@ public class RabbitLifeCycle implements Runnable {
     }
 
     private void died() {
-        try {
-            rabbitLifeCycle1.join();
-            rabbitLifeCycle2.join();
-            Thread.currentThread().interrupted();
-            System.out.println(Thread.currentThread().getName().concat(" has died"));
-        } catch (InterruptedException ignored) {
-            ignored.printStackTrace();
-        }
+        Thread.currentThread().interrupted();
+        System.out.println(Thread.currentThread().getName().concat(" has died"));
     }
 }
