@@ -1,12 +1,12 @@
 package practice.practic_17_06_07_2020_RabbitsLifeCycle;
 
 public class RabbitLifeCycle implements Runnable {
-    private long counter;
-    private Thread rabbitLifeCycle1;
-    private Thread rabbitLifeCycle2;
+    private static long counter = 0;
+    private static long quantityOfRabbits = 0;
 
-    public RabbitLifeCycle(long counter) {
-        this.counter = counter;
+    public RabbitLifeCycle() {
+        RabbitLifeCycle.counter++;
+        RabbitLifeCycle.quantityOfRabbits++;
     }
 
     @Override
@@ -28,14 +28,21 @@ public class RabbitLifeCycle implements Runnable {
 
     private void multiplied() {
         System.out.println(Thread.currentThread().getName().concat(" has multiplied"));
-        rabbitLifeCycle1 = new Thread(new RabbitLifeCycle(this.counter + 1), "Rabbit ".concat(String.valueOf(this.counter + 1)));
-        rabbitLifeCycle1.start();
-        rabbitLifeCycle2 = new Thread(new RabbitLifeCycle(this.counter + 1), "Rabbit ".concat(String.valueOf(this.counter + 1)));
-        rabbitLifeCycle2.start();
+
+        RabbitLifeCycle rabbitLifeCycle1 = new RabbitLifeCycle();
+        RabbitLifeCycle rabbitLifeCycle2 = new RabbitLifeCycle();
+        new Thread(rabbitLifeCycle1, "Rabbit ".concat(String.valueOf(RabbitLifeCycle.counter))).start();
+        new Thread(rabbitLifeCycle2, "Rabbit ".concat(String.valueOf(RabbitLifeCycle.counter))).start();
+        System.out.println("number of live rabbits: ".concat(String.valueOf(quantityOfRabbits)));
     }
 
     private void died() {
-        Thread.currentThread().interrupted();
         System.out.println(Thread.currentThread().getName().concat(" has died"));
+        Thread.currentThread().interrupted();
+        RabbitLifeCycle.quantityOfRabbits--;
+    }
+
+    public static long getCounter() {
+        return counter;
     }
 }
