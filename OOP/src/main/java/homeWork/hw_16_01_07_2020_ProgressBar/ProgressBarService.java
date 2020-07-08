@@ -12,13 +12,8 @@ public class ProgressBarService {
         FIleOperations fIleOperations = new FIleOperations();
         File fileForResult = new File("OOP/src/main/java/homeWork/hw_16_01_07_2020_ProgressBar/results.txt");
 
-        try (FileWriter fw = new FileWriter(fileForResult)) {
-            String str = "----------------------------------------+-------------+-----------------+-----------------+-----------------\n" +
-                    "  file name                             |  file size  |  modified time  |  copy duration  |  operation     |\n" +
-                    "----------------------------------------+-------------+-----------------+-----------------+-----------------";
+        initialisationOfFileForResult(fileForResult);
 
-            fw.write(str.toCharArray());
-        }
         GregorianCalendar dateBefore = new GregorianCalendar();
 
         System.out.println("\nCOPY:\n");
@@ -140,6 +135,18 @@ public class ProgressBarService {
             fw.write(result.toString());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void initialisationOfFileForResult(File fileForResult){
+        try (FileWriter fw = new FileWriter(fileForResult)) {
+            String str = "----------------------------------------+-------------+-----------------+-----------------+-----------------\n" +
+                    "  file name                             |  file size  |  modified time  |  copy duration  |  operation     |\n" +
+                    "----------------------------------------+-------------+-----------------+-----------------+-----------------";
+
+            fw.write(str.toCharArray());
+        } catch (IOException e) {
+            System.out.println("File for result not found");
         }
     }
 }

@@ -53,15 +53,6 @@ public class FIleOperations {
         }
     }
 
-    public void unArchiving(String pathFrom, int sizeOfBuffer) throws FileNotFoundException {
-        if (!new File(pathFrom).isFile()) {
-            throw new FileNotFoundException("Archive is not exist!");
-        }
-        String pathTo = new File(pathFrom).getParent();
-
-        unArchiving(pathFrom, pathTo, sizeOfBuffer);
-    }
-
     public void unArchiving(String pathFrom, String pathTo, int sizeOfBuffer) throws FileNotFoundException {
         if (!new File(pathFrom).isFile()) {
             throw new FileNotFoundException("Archive is not exist!");
