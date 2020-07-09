@@ -251,11 +251,6 @@ public class FIleOperations {
 
         result.append("\ttime to finish: ").append(timeToFinish).append(" second");
         System.out.print(result.toString());
-        try {
-            Thread.sleep(1);
-        } catch (InterruptedException ie) {
-            System.out.println("Main thread was closed");
-        }
     }
 
     private void bar(ZipEntry entry, ZipFile zf, int sizeOfPartOfFileCopied, Date startProgram) {
@@ -301,10 +296,5 @@ public class FIleOperations {
 
         result.append("\ttime to finish: ").append(timeToFinish).append(" second");
         System.out.print(result.toString());
-        try {
-            Thread.sleep(1);
-        } catch (InterruptedException ie) {
-            System.out.println("Main thread was closed");
-        }
     }
 }
