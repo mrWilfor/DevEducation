@@ -21,7 +21,7 @@ public class RabbitLifeCycle implements Runnable {
         died();
     }
 
-    private synchronized void wasBorn() {
+    private void wasBorn() {
         System.out.println("Was born ".concat(Thread.currentThread().getName()));
     }
 
@@ -52,7 +52,7 @@ public class RabbitLifeCycle implements Runnable {
         System.out.println("quantity of live rabbits: ".concat(String.valueOf(quantityOfLifeRabbits)));
     }
 
-    public synchronized static long getCounter() {
+    public static long getCounter() {
         return counter;
     }
 }

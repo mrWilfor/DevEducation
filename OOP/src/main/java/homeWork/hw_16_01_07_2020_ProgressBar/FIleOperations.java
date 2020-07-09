@@ -217,28 +217,31 @@ public class FIleOperations {
             nameOfFile.append(" ");
         }
 
+        StringBuilder result = new StringBuilder();
         int i = 0;
 
         if (percent != 100.00) {
-            System.out.print("\r");
-            System.out.print(nameOfFile);
-            System.out.print("\t[in progress...]");
+            result.append("\r")
+                    .append(nameOfFile)
+                    .append("\t[in progress...]");
         } else {
-            System.out.print("\r");
-            System.out.print(nameOfFile);
-            System.out.print("\t[Done]          ");
+            result.append("\r")
+                    .append(nameOfFile)
+                    .append("\t[Done]          ");
         }
-        System.out.print("\t" + percent + "%");
-        System.out.print("\t[");
+
+        result.append("\t").append(percent).append("%")
+                .append("\t[");
+
 
         for (; i < (int) (percent * 50) / 100; i++) {
-            System.out.print("*");
+            result.append("*");
         }
 
         for (; i < 50; i++) {
-            System.out.print(".");
+            result.append(".");
         }
-        System.out.print("]");
+        result.append("]");
 
         Date interimDate = new Date();
 
@@ -246,7 +249,13 @@ public class FIleOperations {
                 .setScale(1, RoundingMode.HALF_EVEN)
                 .doubleValue();
 
-        System.out.print("\ttime to finish: " + timeToFinish + " second");
+        result.append("\ttime to finish: ").append(timeToFinish).append(" second");
+        System.out.print(result.toString());
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException ie) {
+            System.out.println("Main thread was closed");
+        }
     }
 
     private void bar(ZipEntry entry, ZipFile zf, int sizeOfPartOfFileCopied, Date startProgram) {
@@ -260,34 +269,42 @@ public class FIleOperations {
             nameOfFile.append(" ");
         }
 
+        StringBuilder result = new StringBuilder();
         int i = 0;
 
         if (percent != 100.00) {
-            System.out.print("\r");
-            System.out.print(nameOfFile);
-            System.out.print("\t[in progress...]");
+            result.append("\r")
+                    .append(nameOfFile)
+                    .append("\t[in progress...]");
         } else {
-            System.out.print("\r");
-            System.out.print(nameOfFile);
-            System.out.print("\t[Done]          ");
+            result.append("\r")
+                    .append(nameOfFile)
+                    .append("\t[Done]          ");
         }
-        System.out.print("\t" + percent + "%");
-        System.out.print("\t[");
+
+        result.append("\t").append(percent).append("%")
+                .append("\t[");
 
         for (; i < (int) (percent * 50) / 100; i++) {
-            System.out.print("*");
+            result.append("*");
         }
 
         for (; i < 50; i++) {
-            System.out.print(".");
+            result.append(".");
         }
-        System.out.print("]");
+        result.append("]");
 
         Date interimDate = new Date();
         double timeToFinish = new BigDecimal((double) (interimDate.getTime() - startProgram.getTime()) / 1000.00 / percent * (100.00 - percent))
                 .setScale(1, RoundingMode.HALF_EVEN)
                 .doubleValue();
 
-        System.out.print("\ttime to finish: " + timeToFinish + " second");
+        result.append("\ttime to finish: ").append(timeToFinish).append(" second");
+        System.out.print(result.toString());
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException ie) {
+            System.out.println("Main thread was closed");
+        }
     }
 }

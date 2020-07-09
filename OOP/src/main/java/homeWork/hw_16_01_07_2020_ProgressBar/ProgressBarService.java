@@ -110,8 +110,12 @@ public class ProgressBarService {
             StringBuilder copyDuration = new StringBuilder(" " + ((double) sizeOfTimeOperation / 1000.00)).append("s");
             StringBuilder operation = new StringBuilder(" " + typeOfOperation);
 
-            while (name.length() < 41) {
+            while (name.length() < 31) {
                 name.append(" ");
+            }
+
+            if (name.length() > 31) {
+                name = new StringBuilder(name.substring(0, 28).concat("..."));
             }
 
             while (fileSize.length() < 13) {
@@ -140,9 +144,9 @@ public class ProgressBarService {
 
     public static void initialisationOfFileForResult(File fileForResult){
         try (FileWriter fw = new FileWriter(fileForResult)) {
-            String str = "----------------------------------------+-------------+-----------------+-----------------+-----------------\n" +
-                    "  file name                             |  file size  |  modified time  |  copy duration  |  operation     |\n" +
-                    "----------------------------------------+-------------+-----------------+-----------------+-----------------";
+            String str = "------------------------------+-------------+-----------------+-----------------+-----------------\n" +
+                    "  file name                   |  file size  |  modified time  |  copy duration  |  operation     |\n" +
+                    "------------------------------+-------------+-----------------+-----------------+-----------------";
 
             fw.write(str.toCharArray());
         } catch (IOException e) {
