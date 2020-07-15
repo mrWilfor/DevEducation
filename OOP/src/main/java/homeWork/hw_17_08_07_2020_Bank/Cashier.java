@@ -1,34 +1,51 @@
 package homeWork.hw_17_08_07_2020_Bank;
 
+import homeWork.hw_17_08_07_2020_Bank.enums.FormatResult;
 import homeWork.hw_17_08_07_2020_Bank.enums.TypeOfTransaction;
 
-import java.util.List;
-
 public class Cashier extends Thread {
+    private FormatResult formatResult;
     private Bank bank;
 
-    public Cashier(Bank bank) {
+    public Cashier(Bank bank, FormatResult formatResult) {
         super("Cashier");
+        this.formatResult = formatResult;
         this.bank = bank;
     }
 
     @Override
     public void run() {
-        try {
-            Thread.sleep(30);
-            bank.stopWorkOfBanker();
-
-            List<Transaction> listCompletedTransaction = bank.getCompletedTransactions();
-
-            if (listCompletedTransaction.size() != 0) {
-                for (Transaction transaction : listCompletedTransaction) {
-                    closeTransaction(transaction);
-                    listCompletedTransaction.remove(transaction);
-                }
+        while (true) {
+            if (!bank.getBanker().isAlive() && bank.getLiveDeals().size() == 0 && bank.getCompletedTransactions().size() == 0) {
+                break;
             }
-            bank.continueWorkOfBanker();
-        } catch (InterruptedException ie) {
-            System.out.println(Thread.currentThread().getName().concat(" has interrupted"));
+
+            try {
+                Transaction transaction;
+
+                Thread.sleep(30);
+
+                if (bank.getBanker().isAlive()) {
+                    bank.stopWorkOfBanker();
+                    System.out.println("Banker " + bank.getBanker().getState());
+                }
+
+
+                while (bank.getCompletedTransactions().size() != 0) {
+                    transaction = bank.getCompletedTransactions().get(0);
+
+                    closeTransaction(transaction);
+                    writeToFileResult(transaction, bank, formatResult);
+                    bank.getCompletedTransactions().remove(transaction);
+                }
+
+                if (bank.getBanker().isAlive()) {
+                    bank.continueWorkOfBanker();
+                    System.out.println("Banker " + bank.getBanker().getState());
+                }
+            } catch (InterruptedException ie) {
+                System.out.println(Thread.currentThread().getName().concat(" was interrupted"));
+            }
         }
     }
 
@@ -46,6 +63,8 @@ public class Cashier extends Thread {
         int valueOfLoan = transaction.getTotalAmount();
 
         client.setMoney(moneyOfClient - valueOfLoan);
+        bank.setCapital(bank.getCapital() + valueOfLoan);
+        System.out.println("loan of ".concat(client.getName()).concat(" was closed"));
     }
 
     private void closeDeposit(Transaction transaction) {
@@ -54,5 +73,13 @@ public class Cashier extends Thread {
         int valueOfDeposit = transaction.getTotalAmount();
 
         client.setMoney(moneyOfClient + valueOfDeposit);
+        bank.setCapital(bank.getCapital() - valueOfDeposit);
+        System.out.println("deposit of ".concat(client.getName()).concat(" was closed"));
+    }
+
+    private void writeToFileResult(Transaction transaction, Bank bank, FormatResult formatResult) {
+            ObjectReport report = new ObjectReport(transaction, bank);
+            CreateReport createReport = new CreateReport(report, formatResult);
+            createReport.start();
     }
 }

@@ -36,6 +36,10 @@ public class Transaction extends Thread {
         bank.moveTransactionToListOfCompletedTransactions(this);
     }
 
+    public Bank getBank() {
+        return bank;
+    }
+
     public Client getClient() {
         return client;
     }

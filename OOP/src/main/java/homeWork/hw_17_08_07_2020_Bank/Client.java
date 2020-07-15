@@ -3,7 +3,7 @@ package homeWork.hw_17_08_07_2020_Bank;
 import homeWork.hw_17_08_07_2020_Bank.enums.TypeOfTransaction;
 
 public class Client extends Thread {
-    private int money;
+    private volatile int money;
     private Application application;
     private TypeOfTransaction type;
 

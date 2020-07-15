@@ -1,48 +1,66 @@
 package homeWork.hw_17_08_07_2020_Bank;
 
+import homeWork.hw_17_08_07_2020_Bank.enums.FormatResult;
 import homeWork.hw_17_08_07_2020_Bank.enums.TypeOfTransaction;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class Bank extends Thread{
-    private long capital = 50_000;
-    private Queue<Client> queue = new LinkedList<>();
-    private List<Transaction> liveDeals = new LinkedList<>();
-    private List<Transaction> completedTransactions = new LinkedList<>();
-    private long sumAllDeposits = 0;
-    private int countOfDeposits = 0;
-    private long sumAllLoan = 0;
-    private int countOfLoan = 0;
+public class Bank extends Thread {
+    private volatile long capital = 50_000;
+    private volatile Queue<Client> queue = new LinkedList<>();
+    private volatile List<Transaction> liveDeals = new LinkedList<>();
+    private volatile List<Transaction> completedTransactions = new LinkedList<>();
+    private volatile long sumAllDeposits = 0;
+    private volatile int countOfDeposits = 0;
+    private volatile long sumAllLoan = 0;
+    private volatile int countOfLoan = 0;
     private int interestRateOfLoan = 13;
     private int interestRateOfDeposit = 10;
-    private int totalProfitOfBank = 0;
-    private boolean isStatusOfLoans = true;
-    private boolean isStatusOfDeposits = true;
-    private Banker banker = new Banker(this, interestRateOfLoan, interestRateOfDeposit);
+    private volatile int totalProfitOfBank = 0;
+    private volatile boolean isStatusOfLoans = true;
+    private volatile boolean isStatusOfDeposits = true;
+    private final Banker banker = new Banker(this, interestRateOfLoan, interestRateOfDeposit);
     private Checking checking = new Checking(this);
-    private Cashier cashier = new Cashier(this);
+    private Cashier cashier;
+    private CreateClient createClient = new CreateClient(this);
+
+    public Bank(FormatResult formatResult) {
+        this.cashier = new Cashier(this, formatResult);
+    }
 
     @Override
     public void run() {
-        CreateClient createClient = new CreateClient();
         createClient.start();
         banker.start();
         checking.start();
         cashier.start();
 
-        while (true);
+        try {
+            banker.join();
+            checking.join();
+            cashier.join();
+        } catch (InterruptedException ie) {
+            System.out.println(";)");
+        }
     }
 
     public void lineUp(Client client) {
         client.start();
+        try {
+            client.join();
+        } catch (InterruptedException ie) {
+            System.out.println("client sldkfsf");
+        }
         queue.add(client);
     }
 
     public void moveTransactionToListOfCompletedTransactions(Transaction transaction) {
-        liveDeals.remove(transaction);
-        completedTransactions.add(transaction);
+        synchronized (completedTransactions) {
+            liveDeals.remove(transaction);
+            completedTransactions.add(transaction);
+        }
     }
 
     public void addToLiveDeals(Transaction transaction) {
@@ -58,15 +76,19 @@ public class Bank extends Thread{
     }
 
     public void stopWorkOfBanker() {
-
+        banker.stopWork();
     }
 
-    public void continueWorkOfBanker() {
-
+    public synchronized void continueWorkOfBanker() {
+        banker.continueWork();
     }
 
     public long getCapital() {
         return capital;
+    }
+
+    public List<Transaction> getLiveDeals() {
+        return liveDeals;
     }
 
     public List<Transaction> getCompletedTransactions() {
@@ -99,5 +121,21 @@ public class Bank extends Thread{
 
     public void setStatusOfDeposits(boolean statusOfDeposits) {
         isStatusOfDeposits = statusOfDeposits;
+    }
+
+    public Banker getBanker() {
+        return banker;
+    }
+
+    public CreateClient getCreateClient() {
+        return createClient;
+    }
+
+    public Checking getChecking() {
+        return checking;
+    }
+
+    public void setCapital(long capital) {
+        this.capital = capital;
     }
 }

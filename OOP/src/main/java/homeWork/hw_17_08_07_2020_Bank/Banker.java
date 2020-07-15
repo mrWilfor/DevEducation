@@ -11,6 +11,7 @@ public class Banker extends Thread {
     private Bank bank;
     private int interestRateOfLoan;
     private int interestRateOfDeposit;
+    private boolean isFlagOfWork = true;
 
     public Banker(Bank bank, int interestRateOfLoan, int interestRateOfDeposit) {
         super("Banker");
@@ -22,27 +23,46 @@ public class Banker extends Thread {
     @Override
     public void run() {
         while (true) {
-            Client client = bank.getQueue().poll();
+            if (isFlagOfWork) {
+                Client client = bank.getQueue().poll();
 
-            if (client != null) {
-                if (checkStatusOfTransaction(client.getTypeOfTransaction())) {
-                    if (checkWaitingLine(client.getTypeOfTransaction())) {
-                        makeTransaction(client);
-                    } else {
-                        lineUpWaiting(client);
-
-                        if (client.getTypeOfTransaction().equals(TypeOfTransaction.LOAN)) {
-                            while (bank.getCapital() >= 54_000 && (client = loanWaitingLine.poll()) != null) {
-                                makeTransaction(client);
-                            }
+                if (client != null) {
+                    if (checkStatusOfTransaction(client.getTypeOfTransaction())) {
+                        if (checkWaitingLine(client.getTypeOfTransaction())) {
+                            makeTransaction(client);
                         } else {
-                            while (bank.getCapital() <= 1_000_000 && (client = depositWaitingLine.poll()) != null) {
-                                makeTransaction(client);
+                            lineUpWaiting(client);
+
+                            if (client.getTypeOfTransaction().equals(TypeOfTransaction.LOAN)) {
+                                while (bank.getCapital() >= 54_000 && (client = loanWaitingLine.poll()) != null) {
+                                    makeTransaction(client);
+                                }
+                            } else {
+                                while (bank.getCapital() <= 1_000_000 && (client = depositWaitingLine.poll()) != null) {
+                                    makeTransaction(client);
+                                }
                             }
                         }
+                    } else {
+                        lineUpWaiting(client);
                     }
-                } else {
-                    lineUpWaiting(client);
+                } else if (!bank.getChecking().isAlive()) {
+                    while ((client = loanWaitingLine.poll()) != null) {
+                        makeTransaction(client);
+                    }
+
+                    while ((client = depositWaitingLine.poll()) != null) {
+                        makeTransaction(client);
+                    }
+                    break;
+                }
+            } else {
+                try {
+                    synchronized (this) {
+                        wait();
+                    }
+                } catch (InterruptedException ie) {
+                    System.out.println(Thread.currentThread().getName().concat(" was interrupted"));
                 }
             }
         }
@@ -61,7 +81,7 @@ public class Banker extends Thread {
 
         transaction.start();
         bank.addToLiveDeals(transaction);
-        System.out.println("Transaction of ".concat(client.getName()).concat(" was created"));
+        System.out.println(transaction.getType().toString() + " Transaction of ".concat(client.getName()).concat(" was created"));
     }
 
     public void lineUpWaiting(Client client) {
@@ -70,13 +90,15 @@ public class Banker extends Thread {
         } else if (client.getTypeOfTransaction().equals(TypeOfTransaction.DEPOSIT)) {
             depositWaitingLine.add(client);
         }
-        System.out.println(client.getName().concat(" wait"));
+        System.out.println(client.getTypeOfTransaction().toString() + client.getName().concat(" wait"));
     }
 
     public boolean checkStatusOfTransaction(TypeOfTransaction type) {
         if (type.equals(TypeOfTransaction.LOAN)) {
+            System.out.println("status of Loan - ".concat(String.valueOf(bank.getIsStatusOfLoan())));
             return bank.getIsStatusOfLoan();
         } else {
+            System.out.println("status of Deposit - ".concat(String.valueOf(bank.getIsStatusOfDeposit())));
             return bank.getIsStatusOfDeposit();
         }
     }
@@ -89,15 +111,18 @@ public class Banker extends Thread {
         }
     }
 
-    public void stopWork() {
-        try {
-            Thread.currentThread().wait();
-        } catch (InterruptedException ie) {
-            System.out.println("Thread ".concat(Thread.currentThread().getName()).concat(" has interrupted"));
+    public synchronized void stopWork() {
+        isFlagOfWork = false;
+    }
+
+    public synchronized void continueWork() {
+        synchronized (this) {
+            isFlagOfWork = true;
+            notify();
         }
     }
 
-    public void continueWork() {
-        Thread.currentThread().notify();
+    public void setFlagOfWork(boolean flagOfWork) {
+        isFlagOfWork = flagOfWork;
     }
 }

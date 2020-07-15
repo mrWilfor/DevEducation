@@ -9,7 +9,6 @@ public class Application {
     private int term;
 
     public Application(Client client, TypeOfTransaction type, int sizeOfTransaction, int term) {
-        System.out.println("Application of ".concat(client.getName()).concat(" was created"));
         this.client = client;
         this.type = type;
         this.sizeOfTransaction = sizeOfTransaction;

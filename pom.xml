@@ -26,7 +26,7 @@
     </modules>
 
     <properties>
-            <jupiter_version>5.4.2</jupiter_version>
+        <jupiter_version>5.4.2</jupiter_version>
     </properties>
 
     <dependencies>
