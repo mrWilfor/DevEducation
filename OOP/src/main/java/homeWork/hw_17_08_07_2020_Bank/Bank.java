@@ -18,16 +18,16 @@ public class Bank extends Thread {
     private volatile int countOfLoan = 0;
     private int interestRateOfLoan = 13;
     private int interestRateOfDeposit = 10;
-    private volatile int totalProfitOfBank = 0;
     private volatile boolean isStatusOfLoans = true;
     private volatile boolean isStatusOfDeposits = true;
     private final Banker banker = new Banker(this, interestRateOfLoan, interestRateOfDeposit);
     private Checking checking = new Checking(this);
     private Cashier cashier;
-    private CreateClient createClient = new CreateClient(this);
+    private CreateClient createClient;
 
-    public Bank(FormatResult formatResult) {
+    public Bank(FormatResult formatResult, int quantityOfClients) {
         this.cashier = new Cashier(this, formatResult);
+        this.createClient = new CreateClient(this, quantityOfClients);
     }
 
     @Override

@@ -3,17 +3,19 @@ package homeWork.hw_17_08_07_2020_Bank;
 import homeWork.hw_17_08_07_2020_Bank.enums.TypeOfTransaction;
 
 public class CreateClient extends Thread {
-    Bank bank;
+    private Bank bank;
+    private int quantityOfClients;
     private static volatile int countClient = 0;
 
-    public CreateClient(Bank bank) {
+    public CreateClient(Bank bank, int quantityOfClients) {
         super("Create client thread");
         this.bank = bank;
+        this.quantityOfClients = quantityOfClients;
     }
 
     @Override
     public void run() {
-        while (countClient < 1000) {
+        while (countClient < quantityOfClients) {
             try {
                 Thread.sleep(10);
                 createClient();

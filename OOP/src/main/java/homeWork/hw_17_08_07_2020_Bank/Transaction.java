@@ -26,14 +26,14 @@ public class Transaction extends Thread {
         for (int i = term; i != 0; i--) {
             try {
                 sleep(1000);
+
+                totalAmount += totalAmount * interestRate / 100;
+
+                bank.moveTransactionToListOfCompletedTransactions(this);
             } catch (InterruptedException ie) {
                 System.out.println("Thread ".concat(Thread.currentThread().getName()).concat(" has interrupted"));
             }
-
-            totalAmount += totalAmount * interestRate / 100;
         }
-
-        bank.moveTransactionToListOfCompletedTransactions(this);
     }
 
     public Bank getBank() {

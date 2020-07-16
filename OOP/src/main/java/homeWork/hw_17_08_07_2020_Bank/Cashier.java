@@ -78,8 +78,8 @@ public class Cashier extends Thread {
     }
 
     private void writeToFileResult(Transaction transaction, Bank bank, FormatResult formatResult) {
-            ObjectReport report = new ObjectReport(transaction, bank);
-            CreateReport createReport = new CreateReport(report, formatResult);
-            createReport.start();
+        ObjectReport report = new ObjectReport(transaction, bank);
+        CreateReport createReport = new CreateReport(report, formatResult);
+        createReport.start();
     }
 }

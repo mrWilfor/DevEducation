@@ -1,21 +1,20 @@
 package homeWork.hw_17_08_07_2020_Bank;
 
-import homeWork.hw_17_08_07_2020_Bank.enums.FormatResult;
 import homeWork.hw_17_08_07_2020_Bank.enums.TypeOfTransaction;
 
 import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
 
 public class ObjectReport {
-    String nameOfClient;
-    String data;
-    String type;
-    int sum;
-    int totalAmount;
-    int term;
-    int interestRate;
-    long balanceOfBank;
-    long sumOfAllOperationForTheTypeTransaction;
+    private String nameOfClient;
+    private String data;
+    private String type;
+    private int sum;
+    private int totalAmount;
+    private int term;
+    private int interestRate;
+    private long balanceOfBank;
+    private long sumOfAllOperationForTheTypeTransaction;
 
     public ObjectReport(Transaction transaction, Bank bank) {
         this.nameOfClient = transaction.getClient().getName();
@@ -26,6 +25,7 @@ public class ObjectReport {
         this.term = transaction.getTerm();
         this.interestRate = transaction.getInterestRate();
         this.balanceOfBank = bank.getCapital();
+
         if (transaction.getType().equals(TypeOfTransaction.LOAN)) {
             sumOfAllOperationForTheTypeTransaction = bank.getSumOfLoans();
         } else {
