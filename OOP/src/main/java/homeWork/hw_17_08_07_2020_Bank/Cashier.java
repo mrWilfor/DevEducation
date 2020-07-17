@@ -6,6 +6,7 @@ import homeWork.hw_17_08_07_2020_Bank.enums.TypeOfTransaction;
 public class Cashier extends Thread {
     private FormatResult formatResult;
     private Bank bank;
+    private ListOfReport listOfReport = new ListOfReport();
 
     public Cashier(Bank bank, FormatResult formatResult) {
         super("Cashier");
@@ -17,6 +18,7 @@ public class Cashier extends Thread {
     public void run() {
         while (true) {
             if (!bank.getBanker().isAlive() && bank.getLiveDeals().size() == 0 && bank.getCompletedTransactions().size() == 0) {
+                writeToFileResult(listOfReport, formatResult);
                 break;
             }
 
@@ -30,13 +32,17 @@ public class Cashier extends Thread {
                     System.out.println("Banker " + bank.getBanker().getState());
                 }
 
+                synchronized (bank.getCompletedTransactions()) {
+                    while (bank.getCompletedTransactions().size() != 0) {
+                        try {
+                            transaction = bank.getCompletedTransactions().get(0);
+                        } catch (NullPointerException e) {
+                            continue;
+                        }
 
-                while (bank.getCompletedTransactions().size() != 0) {
-                    transaction = bank.getCompletedTransactions().get(0);
-
-                    closeTransaction(transaction);
-                    writeToFileResult(transaction, bank, formatResult);
-                    bank.getCompletedTransactions().remove(transaction);
+                        closeTransaction(transaction);
+                        bank.getCompletedTransactions().remove(transaction);
+                    }
                 }
 
                 if (bank.getBanker().isAlive()) {
@@ -51,13 +57,13 @@ public class Cashier extends Thread {
 
     public void closeTransaction(Transaction transaction) {
         if (transaction.getType().equals(TypeOfTransaction.LOAN)) {
-            closeLoan(transaction);
+            closeLoan(transaction, bank);
         } else if (transaction.getType().equals(TypeOfTransaction.DEPOSIT)) {
-            closeDeposit(transaction);
+            closeDeposit(transaction, bank);
         }
     }
 
-    private void closeLoan(Transaction transaction) {
+    private void closeLoan(Transaction transaction, Bank bank) {
         Client client = transaction.getClient();
         int moneyOfClient = client.getMoney();
         int valueOfLoan = transaction.getTotalAmount();
@@ -65,21 +71,25 @@ public class Cashier extends Thread {
         client.setMoney(moneyOfClient - valueOfLoan);
         bank.setCapital(bank.getCapital() + valueOfLoan);
         System.out.println("loan of ".concat(client.getName()).concat(" was closed"));
+        ObjectReport report = new ObjectReport(transaction, bank);
+        listOfReport.addObjectToReport(report);
     }
 
-    private void closeDeposit(Transaction transaction) {
+    private void closeDeposit(Transaction transaction, Bank bank) {
         Client client = transaction.getClient();
         int moneyOfClient = client.getMoney();
         int valueOfDeposit = transaction.getTotalAmount();
 
+
         client.setMoney(moneyOfClient + valueOfDeposit);
         bank.setCapital(bank.getCapital() - valueOfDeposit);
         System.out.println("deposit of ".concat(client.getName()).concat(" was closed"));
+        ObjectReport report = new ObjectReport(transaction, bank);
+        listOfReport.addObjectToReport(report);
     }
 
-    private void writeToFileResult(Transaction transaction, Bank bank, FormatResult formatResult) {
-        ObjectReport report = new ObjectReport(transaction, bank);
-        CreateReport createReport = new CreateReport(report, formatResult);
+    private void writeToFileResult(ListOfReport listOfReport, FormatResult formatResult) {
+        CreateReport createReport = new CreateReport(listOfReport, formatResult);
         createReport.start();
     }
 }

@@ -135,6 +135,10 @@ public class Bank extends Thread {
         return checking;
     }
 
+    public Cashier getCashier() {
+        return cashier;
+    }
+
     public void setCapital(long capital) {
         this.capital = capital;
     }

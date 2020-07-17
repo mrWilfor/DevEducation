@@ -1,45 +1,55 @@
 package homeWork.hw_17_08_07_2020_Bank;
 
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import homeWork.hw_17_08_07_2020_Bank.enums.FormatResult;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class CreateReport extends Thread {
-    ObjectReport objectReport;
+    List<ObjectReport> list;
     FormatResult formatResult;
 
-    public CreateReport(ObjectReport objectReport, FormatResult formatResult) {
-        this.objectReport = objectReport;
+    public CreateReport(ListOfReport listOfReport, FormatResult formatResult) {
+        this.list = listOfReport.getList();
         this.formatResult = formatResult;
     }
 
     @Override
     public void run() {
+        ListOfReport listOfReport = new ListOfReport();
+
         try {
             switch (formatResult) {
                 case JSON:
                     try (BufferedWriter bw = new BufferedWriter(
                             new FileWriter("OOP/src/main/java/homeWork/hw_17_08_07_2020_Bank/result.json", true))) {
                         ObjectMapper mapper = new ObjectMapper();
-                        String result = mapper.writeValueAsString(objectReport);
 
-                        bw.write(result + "\n");
+                        mapper.writeValue(bw, list);
                     }
                     break;
                 case CSV:
-                    try (BufferedWriter bw = new BufferedWriter(
-                            new FileWriter("OOP/src/main/java/homeWork/hw_17_08_07_2020_Bank/result.csv", true))) {
-                        CsvMapper csvMapper = new CsvMapper();
-//                CsvSchema schema = csvMapper.schemaFor(objectReport.getClass()).withHeader();
+                    for (ObjectReport objectReport : list) {
+                        try (BufferedWriter bw = new BufferedWriter(
+                                new FileWriter("OOP/src/main/java/homeWork/hw_17_08_07_2020_Bank/result.csv", true))) {
+                            CsvMapper csvMapper = new CsvMapper();
+                            CsvSchema schema = csvMapper.schemaFor(objectReport.getClass()).withHeader();
 
-                        csvMapper.writerWithSchemaFor(objectReport.getClass()).writeValue(bw, objectReport);
+                            try {
+                                csvMapper.writerWithSchemaFor(objectReport.getClass()).with(schema).writeValue(bw, objectReport);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                     break;
                 case XML:
@@ -47,7 +57,7 @@ public class CreateReport extends Thread {
                             new FileWriter("OOP/src/main/java/homeWork/hw_17_08_07_2020_Bank/result.xml", true))) {
                         XmlMapper xmlMapper = new XmlMapper();
 
-                        xmlMapper.writeValue(bw, objectReport);
+                        xmlMapper.writeValue(bw, list);
                     }
                     break;
                 case YAML:
@@ -55,7 +65,7 @@ public class CreateReport extends Thread {
                             new FileWriter("OOP/src/main/java/homeWork/hw_17_08_07_2020_Bank/result.yaml", true))) {
                         YAMLMapper yamlMapper = new YAMLMapper();
 
-                        yamlMapper.writeValue(bw, objectReport);
+                        yamlMapper.writeValue(bw, list);
                     }
                     break;
             }
